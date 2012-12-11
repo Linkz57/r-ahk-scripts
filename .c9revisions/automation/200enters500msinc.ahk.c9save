@@ -1,1 +1,0 @@
-{"ts":1355236674532,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"sleep 5000\r\n;actually loops forever. I decided on a name before testing it.\r\nLoop\r\n    {\r\n\t\tsend {enter}\r\n\t\tsleep 500\r\n\t}"]],"start1":0,"start2":0,"length1":0,"length2":121}]],"length":121}
