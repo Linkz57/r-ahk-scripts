@@ -4,8 +4,8 @@ Sleep, 1000
 Run %ComSpec% /C "REG ADD "HKCU\SOFTWARE\MICROSOFT\INTERNET EXPLORER\MAIN" /V "START PAGE" /D "http://humble.k12.tx.us/" /F"
 Sleep, 2000
 Run shockwave.exe
-;RunWait flashplayerIE.exe
-;Run flashplayerFF.exe
+RunWait flashplayerIE.exe
+Run flashplayerFF.exe
 ;RunWait %ComSpec% /C "flashplayerIE.msi /passive"
 ;RunWait %ComSpec% /C "flashplayerFF.msi /passive"
 RunWait %ComSpec% /C "del /F /Q c:\mr.bat"
@@ -16,7 +16,7 @@ RunWait C:\mr.bat
 MsgBox, 4, Kronos question, Is this a "Teacher Computer"?, 60
 IfMsgBox Yes
 {
-	RunWait java6u24.exe
+    RunWait java6u24.exe
 }
 else IfMsgBox No
 {
