@@ -9,6 +9,10 @@ else IfMsgBox Yes
 	RunWait %ComSpec% /C "ipconfig /all > ip\ipconfig.txt"
 	Run %ComSpec% /C "ip\ipconfig.txt"
 	sleep 2000
+	send !{space}
+	sleep 500
+	send x
+	sleep 500
 	Send {down}{down}{down}
 	sleep 400
 	Send {right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}{right}
