@@ -1,25 +1,26 @@
 ^!p::
-loop, 14
+loop, 164
 {
-sleep 500
+sleep 700
 send {home}
-sleep 100
+sleep 300
 send +{end}
-sleep 100
+sleep 300
 send ^c
-sleep 100
+sleep 300
 send {down}
-sleep 100
+sleep 300
 send !{tab}
-sleep 100
+sleep 300
 send {home}
-sleep 100
+sleep 300
 send +{end}
-sleep 100
+sleep 300
 send ^v
-sleep 100
+sleep 300
 send {tab}
-sleep 100
+sleep 300
 send !{tab}
-sleep 100
+sleep 300
 }
+MsgBox, 0, done, all done, 1
