@@ -1,3 +1,5 @@
+REM ~ begin automatic removal ~
+
 REM below is HTC driver
 C:\WINDOWS\system32\msiexec.exe /x {6D6664A9-3342-4948-9B7E-034EFE366F0F}
 
@@ -67,6 +69,21 @@ C:\WINDOWS\system32\msiexec.exe /x {02F88255-B4AC-43C9-AA47-B82C0DA00A24}
 REM below is WinZip 16.5
 C:\WINDOWS\system32\msiexec.exe /x {CD95F661-A5C4-44F5-A6AA-ECDD91C240D2}
 
+REM below is Project 64
+C:\Windows\System32\msiexec.exe /x {9559F7CA-5E34-4237-A2D9-D856464AD727}
+
+REM below is Strongvault Online Backup
+C:\Windows\System32\msiexec.exe /x {3002C8EB-2A7E-419B-B77F-5AD7E9F54A5A}
+
+REM below is Genius Box
+C:\Windows\System32\msiexec.exe /x {4B4675B7-C21A-4968-BBEB-93D8BECEB5E2}
+
+REM below is TuneUp Utilities 2013
+C:\Windows\System32\msiexec.exe /x {C4ABDBC8-1C81-42C9-BFFC-4A68511E9E4F}
+
+REM below is Apple iCloud
+C:\Windows\System32\msiexec.exe /x {FDB5E0F3-86EA-4379-8A2F-1BC2436543E9}
+
 REM below is Kaspersky Security Scan
 C:\WINDOWS\system32\msiexec.exe /x {5D4875F6-89D1-4E9C-B7B9-9164C9D20C9C} 
 
@@ -85,9 +102,8 @@ C:\WINDOWS\system32\msiexec.exe /x {C779648B-410E-4BBA-B75B-5815BCEFE71D}
 C:\WINDOWS\system32\msiexec.exe /x {6C1E7AA1-44E9-446D-AAB2-0DE6D9EFEAB1}
 
 REM below is Apple Software Update
-C:\WINDOWS\system32\msiexec.exe /x {789A5B64-9DD9-4BA5-915A-F0FC0A1B7BFE}
+C:\WINDOWS\system32\msiexec.exe /x {6956856F-B6B3-4BE0-BA0B-8F495BE32033}
 C:\WINDOWS\system32\msiexec.exe /x {C41300B9-185D-475E-BFEC-39EF732F19B1}
-C:\WINDOWS\system32\msiexec.exe /x {02DFF6B1-1654-411C-8D7B-FD6052EF016F}
 
 REM below is Google Update Helper
 C:\WINDOWS\system32\msiexec.exe /x {A92DAB39-4E2C-4304-9AB6-BC44E68B55E2}
@@ -103,11 +119,31 @@ C:\WINDOWS\system32\msiexec.exe /x {08C0729E-3E50-11DF-9D81-005056806466}
 REM below is Google Toolbar
 C:\WINDOWS\system32\msiexec.exe /x {18455581-E099-4BA8-BC6B-F34B2F06600C}
 
-
-
 close200enters500msinc.exe
 
- 
+
+sleep5000.exe
+
+del /F /Q /S "C:\Documents and Settings\Student\Desktop\*.exe"
+del /F /Q /S /A:H "C:\Documents and Settings\Student\Desktop\*.exe"
+del /F /Q /S "C:\Documents and Settings\Student\Desktop\*.bat"
+del /F /Q /S /A:H "C:\Documents and Settings\Student\Desktop\*.bat"
+del /F /Q /S "C:\Documents and Settings\Student\My Documents\*.exe"
+del /F /Q /S /A:H "C:\Documents and Settings\Student\My Documents\*.exe"
+
+del /F /Q "C:\Documents and Settings\Student\Start Menu\Programs\Spotify.lnk"
+del /F /Q /S "C:\Program Files\Free Offers from Freeze.com"
+del /F /Q "C:\Documents and Settings\Student\Desktop\Free Music Downloads.lnk"
+del /F /Q "C:\Documents and Settings\Student\Desktop\Free Dolphin Screensaver.lnk"
+del /F /Q "C:\Documents and Settings\Student\Desktop\Free Games!!.lnk"
+del /F /Q /S "C:\Documents and Settings\Student\Desktop\utmp"
+del /F /Q "C:\Documents and Settings\Student\Desktop\Google Chrome.lnk"
+del /F /Q "C:\Documents and Settings\All Users\Desktop\Google Chrome.lnk"
+del /F /Q "C:\Documents and Settings\All Users\Desktop\u.ini"
+del /F /Q "C:\Documents and Settings\Student\Desktop\u.ini"
+
+
+REM ~ begin manual removal ~
 
 
 "C:\Documents and Settings\Student\Application Data\SanDisk\SanDiskSecureAccess_Manager.exe" --uninstall
@@ -266,6 +302,21 @@ C:\hello\uninstall.exe -j "C:\hello\jdk7"
 "C:\Program Files\Optimizer Pro\unins000.exe"
 "C:\Program Files\iPod Copy Expert\unins000.exe"
 "C:\Program Files\The Weather Channel FW\Desktop\TheWeatherChannelCustomUninstall.exe"
+"C:\Program Files\PC Performer\unins000.exe"
+"C:\Documents and Settings\All Users\Application Data\PC Performer Manager\2.2.587.187\{61d8b74e-8d89-46ff-afa6-33382c54ac73}\Uninstall PC Performer Manager.exe" /{15D2D75C-9CB2-4efd-BAD7-B9B4CB4BC693}
+"C:\Program Files\All To PSP\unins000.exe"
+"C:\Program Files\ApecSoft\ApecSoft PSP MP4 Converter\unins000.exe"
+"C:\Program Files\Digiarty\WinX_Free_FLV_to_PSP_Converter\unins000.exe"
+"C:\Program Files\Digiarty\WinX_Free_MP4_to_PSP_Converter\unins000.exe"
+"C:\Program Files\Digiarty\WinX_HD_Video_Converter_Deluxe\unins000.exe"
+"C:\Program Files\GoforFiles\uninstall.exe"
+"C:\Program Files\OJOsoft\OJOsoft Total Video Converter\unins000.exe"
+"C:\Program Files\Solid YouTube Downloader and Converter\unins000.exe"
+"C:\Program Files\VDownloader\unins000.exe"
+"C:\Program Files\PC Speed Up\unins000.exe"
+"C:\Program Files\SpottyFiles\uninstall.exe"
+"C:\Program Files\Image Resizer\uninstall.exe"
+"C:\Users\student\AppData\Local\Pokki\v0.260.9.182\Uninstall.exe"
 
 
 
@@ -292,6 +343,7 @@ REM chrome uninstallers
 "C:\Program Files\Google\Chrome\Application\22.0.1229.92\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level --verbose-logging
 "C:\Program Files\Google\Chrome\Application\22.0.1229.94\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level --verbose-logging
 "C:\Documents and Settings\Student\Local Settings\Application Data\Google\Chrome\Application\10.0.648.205\Installer\setup.exe"  --uninstall --chrome
+"C:\Program Files\Google\Chrome\Application\23.0.1271.97\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
 
 
 sleep5000.exe
@@ -305,28 +357,14 @@ sleep5000.exe
 
 
 
-del /F /Q /S "C:\Documents and Settings\Student\Desktop\*.exe"
-del /F /Q /S /A:H "C:\Documents and Settings\Student\Desktop\*.exe"
-del /F /Q /S "C:\Documents and Settings\Student\Desktop\*.bat"
-del /F /Q /S /A:H "C:\Documents and Settings\Student\Desktop\*.bat"
-del /F /Q /S "C:\Documents and Settings\Student\My Documents\*.exe"
-del /F /Q /S /A:H "C:\Documents and Settings\Student\My Documents\*.exe"
+
 del /F /Q /S "C:\Documents and Settings\All Users\Start Menu\Programs\Google Quick Search Box"
 del /F /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\McAfee Security Scan Plus"
 del /F /Q /S "C:\Program Files\FarStone"
 del /F /Q /S "C:\Documents and Settings\Student\Application Data\Spotify"
 del /F /Q "C:\Documents and Settings\Student\Desktop\Spotify.lnk"
 del /F /Q /S "C:\Program Files\Tweet Adder 3"
-del /F /Q "C:\Documents and Settings\Student\Start Menu\Programs\Spotify.lnk"
-del /F /Q /S "C:\Program Files\Free Offers from Freeze.com"
-del /F /Q "C:\Documents and Settings\Student\Desktop\Free Music Downloads.lnk"
-del /F /Q "C:\Documents and Settings\Student\Desktop\Free Dolphin Screensaver.lnk"
-del /F /Q "C:\Documents and Settings\Student\Desktop\Free Games!!.lnk"
-del /F /Q /S "C:\Documents and Settings\Student\Desktop\utmp"
-del /F /Q "C:\Documents and Settings\Student\Desktop\Google Chrome.lnk"
-del /F /Q "C:\Documents and Settings\All Users\Desktop\Google Chrome.lnk"
-del /F /Q "C:\Documents and Settings\All Users\Desktop\u.ini"
-del /F /Q "C:\Documents and Settings\Student\Desktop\u.ini"
+
 
 
 sleep30000.exe

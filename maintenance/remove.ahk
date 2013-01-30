@@ -7,5 +7,5 @@ Sleep, 2000
 FileCopy, %A_WorkingDir%\mr.txt, C:\mr.bat
 Run 200enters500msinc.exe
 RunWait C:\mr.bat
-MsgBox,0,Successfully Cleaned,the Quick Clean process has completed successfully.
+MsgBox,0,Successfully Cleaned,the Quick Clean process has completed successfully., 20
 RunWait %ComSpec% /C "del /F /Q c:\mr.bat"
