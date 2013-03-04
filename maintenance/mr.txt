@@ -1,125 +1,126 @@
 REM ~ begin automatic removal ~
 
 REM below is HTC driver
-C:\WINDOWS\system32\msiexec.exe /x {6D6664A9-3342-4948-9B7E-034EFE366F0F}
+C:\WINDOWS\system32\msiexec.exe /qn /x {6D6664A9-3342-4948-9B7E-034EFE366F0F}
 
 REM below is HTC sync
-C:\WINDOWS\system32\msiexec.exe /i {7A3FFA58-876F-489C-B6CF-0503916224DF}
+C:\WINDOWS\system32\msiexec.exe /qn /x {7A3FFA58-876F-489C-B6CF-0503916224DF}
 
 REM below is Flip Toast
-C:\WINDOWS\system32\msiexec.exe /x {B25D67C4-E885-43F8-8085-B532F6261529}
+C:\WINDOWS\system32\msiexec.exe /qn /x {B25D67C4-E885-43F8-8085-B532F6261529}
 
 REM below is Music Oasis
-C:\WINDOWS\system32\msiexec.exe /x {c6c214df-2922-4809-94aa-f4d67d4451ec}
+C:\WINDOWS\system32\msiexec.exe /qn /x {c6c214df-2922-4809-94aa-f4d67d4451ec}
 
 REM below is Text-To-Speech-Runtime
-C:\WINDOWS\system32\msiexec.exe /x {7B3F0113-E63C-4D6D-AF19-111A3165CCA2}
+C:\WINDOWS\system32\msiexec.exe /qn /x {7B3F0113-E63C-4D6D-AF19-111A3165CCA2}
 
 REM below is MAGIX Toolbar OR Ask Toolbar... aparently they're the same thing
-C:\WINDOWS\system32\msiexec.exe /x {86D4B82A-ABED-442A-BE86-96357B70F4FE}
+C:\WINDOWS\system32\msiexec.exe /qn /x {86D4B82A-ABED-442A-BE86-96357B70F4FE}
 
 REM below is MAGIX Screenshare
-C:\WINDOWS\system32\msiexec.exe /x {F5E68EFB-F916-4A37-9F13-628F42C1B683}
+C:\WINDOWS\system32\msiexec.exe /qn /x {F5E68EFB-F916-4A37-9F13-628F42C1B683}
 
 REM below is MAGIX Goya burnR (MSI)
-C:\WINDOWS\system32\msiexec.exe /x {71F51705-0AC8-46B8-B016-C0848D9A54AD}
+C:\WINDOWS\system32\msiexec.exe /qn /x {71F51705-0AC8-46B8-B016-C0848D9A54AD}
 
 REM below is Net Assistant
-C:\WINDOWS\system32\msiexec.exe /x {C792A75A-2A1F-4991-9B85-291745478A79}
+C:\WINDOWS\system32\msiexec.exe /qn /x {C792A75A-2A1F-4991-9B85-291745478A79}
 
 REM below is myTV
-C:\WINDOWS\system32\msiexec.exe /x {7B1ED116-6308-01CA-2CFE-542F23AA6FE5}
+C:\WINDOWS\system32\msiexec.exe /qn /x {7B1ED116-6308-01CA-2CFE-542F23AA6FE5}
 
 REM below is WeatherBug
-C:\WINDOWS\system32\msiexec.exe /x {297DCADA-86A1-4A42-8A13-66B7D7A09FD2}
+C:\WINDOWS\system32\msiexec.exe /qn /x {297DCADA-86A1-4A42-8A13-66B7D7A09FD2}
 
 REM beliw is reens W Photo Studio
-C:\WINDOWS\system32\msiexec.exe /x {CBF3C503-946E-45EA-B347-EACC41781989}
+C:\WINDOWS\system32\msiexec.exe /qn /x {CBF3C503-946E-45EA-B347-EACC41781989}
 
 REM below is Fantapper Player
-C:\WINDOWS\system32\msiexec.exe /x {9584B2EF-99BE-41A5-8AF0-779B92E1C015}
+C:\WINDOWS\system32\msiexec.exe /qn /x {9584B2EF-99BE-41A5-8AF0-779B92E1C015}
 
 REM below is Free Natural Text to Speech Reader 2007
-C:\WINDOWS\system32\msiexec.exe /x {3E5DA526-F420-45A6-9F27-D2B5246D6823}
+C:\WINDOWS\system32\msiexec.exe /qn /x {3E5DA526-F420-45A6-9F27-D2B5246D6823}
 
 REM below is Angry Birds
-C:\WINDOWS\system32\msiexec.exe /x {0CE0711D-A5E3-4E98-B3C0-0227A5E000CA}
+C:\WINDOWS\system32\msiexec.exe /qn /x {0CE0711D-A5E3-4E98-B3C0-0227A5E000CA}
 
 REM below is Angry Birds Space
-C:\WINDOWS\system32\msiexec.exe /x {3F2A323E-60C4-41E8-8CCB-9715D1D750C3}
+C:\WINDOWS\system32\msiexec.exe /qn /x {3F2A323E-60C4-41E8-8CCB-9715D1D750C3}
 
 REM below is UPEK TouchChip Fingerprint Reader
-C:\WINDOWS\system32\msiexec.exe /x {C3FA63E2-AFD3-41FD-B48F-1D942CC71943}
+C:\WINDOWS\system32\msiexec.exe /qn /x {C3FA63E2-AFD3-41FD-B48F-1D942CC71943}
 
 REM below is Google Talk Plugin
-C:\WINDOWS\system32\msiexec.exe /x {DFD30824-6BD0-34E1-ABE8-308AD3CBB9A0}
+C:\WINDOWS\system32\msiexec.exe /qn /x {DFD30824-6BD0-34E1-ABE8-308AD3CBB9A0}
 
 REM below is SportTracks 3.1
-C:\WINDOWS\system32\msiexec.exe /x {9036076A-1473-48A2-AB08-6C765754DCF1}
+C:\WINDOWS\system32\msiexec.exe /qn /x {9036076A-1473-48A2-AB08-6C765754DCF1}
 
 REM below is Beatz Maker Evolution Demo
-C:\WINDOWS\system32\msiexec.exe /x {C9FD453E-45B2-4168-9728-FF0F64791637}
+C:\WINDOWS\system32\msiexec.exe /qn /x {C9FD453E-45B2-4168-9728-FF0F64791637}
 
 REM below is Document Manager Lite
-C:\WINDOWS\system32\msiexec.exe /x {51AE9E42-640D-4C14-A9B6-43F64AA4E3E2}
+C:\WINDOWS\system32\msiexec.exe /qn /x {51AE9E42-640D-4C14-A9B6-43F64AA4E3E2}
 
 REM below is Snap.Do
-C:\WINDOWS\system32\msiexec.exe /x {02F88255-B4AC-43C9-AA47-B82C0DA00A24}
+C:\WINDOWS\system32\msiexec.exe /qn /x {02F88255-B4AC-43C9-AA47-B82C0DA00A24}
 
 REM below is WinZip 16.5
-C:\WINDOWS\system32\msiexec.exe /x {CD95F661-A5C4-44F5-A6AA-ECDD91C240D2}
+C:\WINDOWS\system32\msiexec.exe /qn /x {CD95F661-A5C4-44F5-A6AA-ECDD91C240D2}
 
 REM below is Project 64
-C:\Windows\System32\msiexec.exe /x {9559F7CA-5E34-4237-A2D9-D856464AD727}
+C:\WINDOWS\system32\msiexec.exe /qn /x {9559F7CA-5E34-4237-A2D9-D856464AD727}
 
 REM below is Strongvault Online Backup
-C:\Windows\System32\msiexec.exe /x {3002C8EB-2A7E-419B-B77F-5AD7E9F54A5A}
+C:\WINDOWS\system32\msiexec.exe /qn /x {3002C8EB-2A7E-419B-B77F-5AD7E9F54A5A}
 
 REM below is Genius Box
-C:\Windows\System32\msiexec.exe /x {4B4675B7-C21A-4968-BBEB-93D8BECEB5E2}
+C:\WINDOWS\system32\msiexec.exe /qn /x {4B4675B7-C21A-4968-BBEB-93D8BECEB5E2}
 
 REM below is TuneUp Utilities 2013
-C:\Windows\System32\msiexec.exe /x {C4ABDBC8-1C81-42C9-BFFC-4A68511E9E4F}
+C:\WINDOWS\system32\msiexec.exe /qn /x {C4ABDBC8-1C81-42C9-BFFC-4A68511E9E4F}
 
 REM below is Apple iCloud
-C:\Windows\System32\msiexec.exe /x {FDB5E0F3-86EA-4379-8A2F-1BC2436543E9}
+C:\WINDOWS\system32\msiexec.exe /qn /x {FDB5E0F3-86EA-4379-8A2F-1BC2436543E9}
 
 REM below is Kaspersky Security Scan
-C:\WINDOWS\system32\msiexec.exe /x {5D4875F6-89D1-4E9C-B7B9-9164C9D20C9C} 
+C:\WINDOWS\system32\msiexec.exe /qn /x {5D4875F6-89D1-4E9C-B7B9-9164C9D20C9C} 
 
 REM below is J2SE Runtime Environment 5.0 Update 10
-C:\WINDOWS\system32\msiexec.exe /x {3248F0A8-6813-11D6-A77B-00B0D0150100}
+C:\WINDOWS\system32\msiexec.exe /qn /x {3248F0A8-6813-11D6-A77B-00B0D0150100}
 
 REM below is MSN Toolbar
-C:\WINDOWS\system32\msiexec.exe /x {B6EF6DCE-078E-4952-A7FA-352A9C349EB0}
+C:\WINDOWS\system32\msiexec.exe /qn /x {B6EF6DCE-078E-4952-A7FA-352A9C349EB0}
 
 REM below is MobileMe Control Panel
-C:\WINDOWS\system32\msiexec.exe /x {1E5E2F9A-17D3-45CA-8FF0-B0C2927D4B03}
+C:\WINDOWS\system32\msiexec.exe /qn /x {1E5E2F9A-17D3-45CA-8FF0-B0C2927D4B03}
 
 REM below is Safari
-C:\WINDOWS\system32\msiexec.exe /x {20ACB2F8-3BCA-45A8-80A2-9D3CB5C25F43}
-C:\WINDOWS\system32\msiexec.exe /x {C779648B-410E-4BBA-B75B-5815BCEFE71D}
-C:\WINDOWS\system32\msiexec.exe /x {6C1E7AA1-44E9-446D-AAB2-0DE6D9EFEAB1}
+C:\WINDOWS\system32\msiexec.exe /qn /x {20ACB2F8-3BCA-45A8-80A2-9D3CB5C25F43}
+C:\WINDOWS\system32\msiexec.exe /qn /x {C779648B-410E-4BBA-B75B-5815BCEFE71D}
+C:\WINDOWS\system32\msiexec.exe /qn /x {6C1E7AA1-44E9-446D-AAB2-0DE6D9EFEAB1}
 
 REM below is Apple Software Update
-C:\WINDOWS\system32\msiexec.exe /x {6956856F-B6B3-4BE0-BA0B-8F495BE32033}
-C:\WINDOWS\system32\msiexec.exe /x {C41300B9-185D-475E-BFEC-39EF732F19B1}
+C:\WINDOWS\system32\msiexec.exe /qn /x {6956856F-B6B3-4BE0-BA0B-8F495BE32033}
+C:\WINDOWS\system32\msiexec.exe /qn /x {C41300B9-185D-475E-BFEC-39EF732F19B1}
 
 REM below is Google Update Helper
-C:\WINDOWS\system32\msiexec.exe /x {A92DAB39-4E2C-4304-9AB6-BC44E68B55E2}
+C:\WINDOWS\system32\msiexec.exe /qn /x {A92DAB39-4E2C-4304-9AB6-BC44E68B55E2}
 
 REM below is Google Earth
-C:\WINDOWS\system32\msiexec.exe /x {7A25D130-4EC8-11E1-BEA4-B8AC6F97B88E}
-C:\WINDOWS\system32\msiexec.exe /x {28E82311-8616-11E1-BEB0-B8AC6F97B88E}
-C:\WINDOWS\system32\msiexec.exe /x {5A3C1721-F8ED-11E0-8AFB-B8AC6F97B88E}
-C:\WINDOWS\system32\msiexec.exe /x {33286280-8617-11E1-8FF6-B8AC6F97B88E}
-C:\WINDOWS\system32\msiexec.exe /x {4286E640-B5FB-11DF-AC4B-005056C00008}
-C:\WINDOWS\system32\msiexec.exe /x {08C0729E-3E50-11DF-9D81-005056806466}
+C:\WINDOWS\system32\msiexec.exe /qn /x {7A25D130-4EC8-11E1-BEA4-B8AC6F97B88E}
+C:\WINDOWS\system32\msiexec.exe /qn /x {28E82311-8616-11E1-BEB0-B8AC6F97B88E}
+C:\WINDOWS\system32\msiexec.exe /qn /x {5A3C1721-F8ED-11E0-8AFB-B8AC6F97B88E}
+C:\WINDOWS\system32\msiexec.exe /qn /x {33286280-8617-11E1-8FF6-B8AC6F97B88E}
+C:\WINDOWS\system32\msiexec.exe /qn /x {4286E640-B5FB-11DF-AC4B-005056C00008}
+C:\WINDOWS\system32\msiexec.exe /qn /x {08C0729E-3E50-11DF-9D81-005056806466}
+C:\WINDOWS\system32\msiexec.exe /qn /x {08C0729E-3E50-11DF-9D81-005056806466}
 
 REM below is Google Toolbar
-C:\WINDOWS\system32\msiexec.exe /x {18455581-E099-4BA8-BC6B-F34B2F06600C}
+C:\WINDOWS\system32\msiexec.exe /qn /x {18455581-E099-4BA8-BC6B-F34B2F06600C}
 
-close200enters500msinc.exe
+REM REM close200enters500msinc.exe
 
 
 sleep5000.exe
@@ -141,6 +142,7 @@ del /F /Q "C:\Documents and Settings\Student\Desktop\Google Chrome.lnk"
 del /F /Q "C:\Documents and Settings\All Users\Desktop\Google Chrome.lnk"
 del /F /Q "C:\Documents and Settings\All Users\Desktop\u.ini"
 del /F /Q "C:\Documents and Settings\Student\Desktop\u.ini"
+del /F /Q /S "C:\Program Files\FilmFanatic"
 
 
 REM ~ begin manual removal ~
@@ -317,6 +319,7 @@ C:\hello\uninstall.exe -j "C:\hello\jdk7"
 "C:\Program Files\SpottyFiles\uninstall.exe"
 "C:\Program Files\Image Resizer\uninstall.exe"
 "C:\Users\student\AppData\Local\Pokki\v0.260.9.182\Uninstall.exe"
+"C:\Program Files\The Weather Channel\The Weather Channel App\TheWeatherChannelCustomUninstall.exe"
 
 
 
@@ -364,6 +367,8 @@ del /F /Q /S "C:\Program Files\FarStone"
 del /F /Q /S "C:\Documents and Settings\Student\Application Data\Spotify"
 del /F /Q "C:\Documents and Settings\Student\Desktop\Spotify.lnk"
 del /F /Q /S "C:\Program Files\Tweet Adder 3"
+del /F /Q "C:\Documents and Settings\All Users\Start Menu\Programs\Startup\Adobe Acrobat Speed Launcher.lnk"
+del /F /Q "C:\Documents and Settings\All Users\Start Menu\Programs\Startup\Adobe Acrobat Synchronizer.lnk"
 
 
 
