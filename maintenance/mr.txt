@@ -1,3 +1,6 @@
+REM mr.txt v1.0 
+REM This is a very basic batch file written by Tyler Francis that--in tandum with another script cleverly named "Remove"--attempts to remove many programs that would not be useful and/or allowed in a school environment. It's rather aggressive about this, especially in the first "silent" half of this file, so make sure you're ok with losing all of the programs and files mentioned here.
+
 REM ~ begin automatic removal ~
 
 REM below is HTC driver
@@ -198,11 +201,10 @@ REM ~ begin manual removal ~
 "%HOMEPATH%\Local Settings\Application Data\Yahoo!\BrowserPlus\BrowserPlusUninstaller.exe"
 "%ProgramFiles%\Registry Mechanic\unins000.exe"
 "%HOMEPATH%\Application Data\WindSolutions\CopyTransControlCenter\Applications\CopyTransControlCenter.exe" /uninstall
-"%ProgramFiles%\TI Education\TI-83 Plus Flash Debugger\UNWISE.EXE"
+REM "%ProgramFiles%\TI Education\TI-83 Plus Flash Debugger\UNWISE.EXE"
 "%ProgramFiles%\Enterbrain\RPGVX\unins000.exe"
 "%ProgramFiles%\MAGIX\Music_Maker_17_Premium_Download_Version\mm17dlx_en-US_setup.exe"
 "%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\17.0.963.83\Installer\setup.exe"  --uninstall --multi-install --chrome
-"%ProgramFiles%\Google\Quick Search Box\GoogleQuickSearchBoxSetup.exe"  /force /standalone /uninstall
 "%ProgramFiles%\Blubster\uninstall.exe"
 "%ProgramFiles%\Youtube to MP4 Converter\unins000.exe"
 "%ProgramFiles%\MAGIX\Music_Maker_MX_Download_Version\mm18_en-US_setup.exe"
