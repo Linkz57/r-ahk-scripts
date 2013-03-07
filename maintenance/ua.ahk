@@ -1,4 +1,4 @@
-MsgBox,4,Update Computer?,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this?,120
+MsgBox,4,Update Automatically v1.0,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this?,120
 IfMsgBox No
 {
     MsgBox,0,Nothing Installed,Ok some other time maybe
@@ -179,11 +179,20 @@ else
 		sleep 500
 		Run %ComSpec% /C "shutdown -s -t 5"
 		MsgBox, 4096, Shutdown, Alright--shutting down..., 5
+        ExitApp
 	}
 	else IfMsgBox No
 	{
 		Run %ComSpec% /C "shutdown -a"
 		Run %ComSpec% /C "explorer"
 		MsgBox, 4096, Abort Shutdown, Alright--aborting shutdown.,10
+            ExitApp
+	}
+    
+	ExitApp
+	esc::
+	{
+		Run %ComSpec% /C "explorer"
+		ExitApp
 	}
 }
