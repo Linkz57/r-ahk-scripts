@@ -1,3 +1,4 @@
+MsgBox, 0, Embedded CS5 Install v1.0, Copy completed--beginning installation now...,4
 sleep 5000
 RunWait c:\Adobe CS5\CS5\disk 1\Adobe CS5_5\Set-up.exe
 sleep 60000
@@ -39,14 +40,34 @@ Run c:\deleteadobecs5.exe
 Run %ComSpec% /C "shutdown -s -t 600"
 MsgBox, 3, Alright you're done, Do you wanna shutdown or something? *YES* to shutdown now or *No* to abort the automatic Shutdown of 10 minutes. BTdubs the error level is "%ErrorLevel%" [this message will self-distruct in 7 minutes],420
 IfMsgBox Yes
-    {
+{
     Run %ComSpec% /C "shutdown -a"
 	sleep 500
 	Run %ComSpec% /C "shutdown -s"
 	MsgBox, 4096, Shutdown, Alright--shutting down in 10..., 5
-	}
+}
 else IfMsgBox No
-	{
+{
 	Run %ComSpec% /C "shutdown -a"
 	MsgBox, 4096, Abort Shutdown, Alright--aborting shutdown.,10
-	}
+    Run %ComSpec% /C "explorer"
+}
+
+;; Allows me to abort the operation by using a difficult to guess keyboard shortcut 
+^!esc::
+{
+	Run %ComSpec% /C "explorer"
+	ExitApp
+}
+
+;; Prevents most people from coming in after me to use the system with my user privileges and perform potentially malicious acts while disguised with my account.
+^!Delete::
+{
+	Run %ComSpec% /C "shutdown /r /t 0"
+	ExitApp
+}
+^+Esc::
+{
+	Run %ComSpec% /C "shutdown /r /t 0"
+	ExitApp
+}
