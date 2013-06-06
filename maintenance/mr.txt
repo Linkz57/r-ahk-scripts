@@ -84,6 +84,12 @@ REM below is Genius Box
 REM below is TuneUp Utilities 2013
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {C4ABDBC8-1C81-42C9-BFFC-4A68511E9E4F}
 
+REM below is Linkury Smartbar
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {30B1FC04-B0D2-4A36-8997-10CC93E04E26}
+
+REM below is PxMergeModule
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {024521CF-C07E-4F8E-8481-0D75695E03AF}
+
 REM below is Apple iCloud
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {FDB5E0F3-86EA-4379-8A2F-1BC2436543E9}
 
@@ -95,6 +101,46 @@ REM below is J2SE Runtime Environment 5.0 Update 10
 
 REM below is MSN Toolbar
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {B6EF6DCE-078E-4952-A7FA-352A9C349EB0}
+
+REM below is PlayStation Network Downloader
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {B6659DD8-00A7-4A24-BBFB-C1F6982E5D66}
+
+REM below is PhotoShowExpress
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {3250260C-7A95-4632-893B-89657EB5545B}
+
+REM below is Sonic CinePlayer Decoder Pack
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {9A00EC4E-27E1-42C4-98DD-662F32AC8870}
+
+REM below is Sonic CinePlayer Decoder Pack
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {E500DF84-3A0A-4989-93C2-D33B935008C1}
+
+REM below is VAFPlayer
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {EBE677C0-CBCB-4EBF-8098-E27E1B5271CF}
+
+REM below is My Perfect Wedding Planner
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {BD8EFE10-3B64-4094-9F18-FDF8BE155C78}
+
+REM below is Bing Rewards Client Installer
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {61EDBE71-5D3E-4AB7-AD95-E53FEAF68C17}
+
+REM below is HP Deskjet 2050 J510 series Product Improvement Study
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {29498512-A137-4478-8691-922829F108DC}
+
+REM below is HP Deskjet 2050 J510 series Help
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {7A3DF2E2-CF13-44FB-A93E-F71D5381DB3F}
+
+REM below is Bing Bar Platform
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {623B8278-8CAD-45C1-B844-58B687C07805}
+
+REM below is HP Update
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {B0069CFA-5BB9-4C03-B1C6-89CE290E5AFE}
+
+REM below is Strongvault Online Backup
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {C8A17402-051A-471B-BA64-9147A7467005}
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {5E33D30D-D896-4D92-B033-5F45819B2937}
+
+REM below is Spelling Dictionaries Support For Adobe Reader 9
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {AC76BA86-7AD7-5464-3428-900000000004}
 
 REM below is MobileMe Control Panel
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {1E5E2F9A-17D3-45CA-8FF0-B0C2927D4B03}
@@ -119,6 +165,10 @@ REM below is Google Earth
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {4286E640-B5FB-11DF-AC4B-005056C00008}
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {08C0729E-3E50-11DF-9D81-005056806466}
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {08C0729E-3E50-11DF-9D81-005056806466}
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {468D22C0-8080-11E2-B86E-B8AC6F98CCE3}
+
+REM below is Google Earth plugin
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {34B32B70-8081-11E2-89AF-B8AC6F98CCE3}
 
 REM below is Google Toolbar
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {18455581-E099-4BA8-BC6B-F34B2F06600C}
@@ -136,7 +186,6 @@ del /F /Q /S "%HOMEPATH%\My Documents\*.exe"
 del /F /Q /S /A:H "%HOMEPATH%\My Documents\*.exe"
 
 del /F /Q "%HOMEPATH%\Start Menu\Programs\Spotify.lnk"
-del /F /Q /S "%ProgramFiles%\Free Offers from Freeze.com"
 del /F /Q "%HOMEPATH%\Desktop\Free Music Downloads.lnk"
 del /F /Q "%HOMEPATH%\Desktop\Free Dolphin Screensaver.lnk"
 del /F /Q "%HOMEPATH%\Desktop\Free Games!!.lnk"
@@ -146,6 +195,8 @@ del /F /Q "%ALLUSERSPROFILE%\Desktop\Google Chrome.lnk"
 del /F /Q "%ALLUSERSPROFILE%\Desktop\u.ini"
 del /F /Q "%HOMEPATH%\Desktop\u.ini"
 del /F /Q /S "%ProgramFiles%\FilmFanatic"
+
+REM    del /F /Q /S "%ProgramFiles%\Free Offers from Freeze.com"
 
 
 REM ~ begin manual removal ~
@@ -193,7 +244,6 @@ REM ~ begin manual removal ~
 "%ProgramFiles%\McAfee Security Scan\uninstall.exe"
 "%ProgramFiles%\Punch! Pro\UNWISE.EXE"
 "%ProgramFiles%\Malwarebytes' Anti-Malware\unins000.exe"
-"%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\chrome.exe" /uninstall
 "%ProgramFiles%\Norton Security Scan\Engine\2.7.3.34\InstWrap.exe"
 "%ProgramFiles%\Google\Quick Search Box\GoogleQuickSearchBoxSetup.exe"  /force /standalone /uninstall
 "%ProgramFiles%\Yahoo! Games\Homesteader\Uninstall.exe"
@@ -275,7 +325,6 @@ REM "%ProgramFiles%\TI Education\TI-83 Plus Flash Debugger\UNWISE.EXE"
 "%ProgramFiles%\NCH Software\VideoPad\uninst.exe"
 "%ProgramFiles%\NCH Software\Pixillion\uninst.exe"
 "%ProgramFiles%\NCH Software\ExpressZip\uninst.exe"
-"%ProgramFiles%\NCH Software"%ProgramFiles%\Google\Chrome\Application\21.0.1180.89\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level\MixPad\uninst.exe"
 "%ProgramFiles%\Convert Pdf to Gif Psd Jpeg\unins000.exe"
 "%ProgramFiles%\PrivacySafeGuard\unins000.exe"
 "%ProgramFiles%\Flash Player Pro\unins000.exe"
@@ -320,8 +369,40 @@ REM "%ProgramFiles%\TI Education\TI-83 Plus Flash Debugger\UNWISE.EXE"
 "%ProgramFiles%\PC Speed Up\unins000.exe"
 "%ProgramFiles%\SpottyFiles\uninstall.exe"
 "%ProgramFiles%\Image Resizer\uninstall.exe"
-"%HOMEDRIVE%\Users\student\AppData\Local\Pokki\v0.260.9.182\Uninstall.exe"
+"%HOMEPATH%\AppData\Local\Pokki\v0.260.9.182\Uninstall.exe"
 "%ProgramFiles%\The Weather Channel\The Weather Channel App\TheWeatherChannelCustomUninstall.exe"
+"%ProgramFiles%\SaveValet\ie\uninstaller.exe"
+"%ProgramFiles%\Solid Savings\Uninstall.exe"
+"%ProgramFiles%\UnfriendApp\Uninstall.exe"
+"%ProgramFiles%\J River\Media Jukebox 12\JRMediaUninstall.exe"
+"%ProgramFiles%\RegClean Pro\unins000.exe"
+"%ProgramFiles%\SearchYa!\1.8.8.0\uninstall.exe"
+"%ProgramFiles%\AnvSoft\Any DVD Converter Professional\unins000.exe"
+"%ProgramFiles%\ApecSoft\ApecSoft PSP MP4 Converter\unins000.exe"
+"%ProgramFiles%\Coupon Caddy\Uninstall.exe"
+"%ProgramFiles%\Direct Video Downloader\unins000.exe"
+"%ProgramFiles%\Direct YouTube Downloader\unins000.exe"
+"%ProgramFiles%\InfoAtoms\Uninstall.exe"
+"%ProgramFiles%\JollyWallet\Uninstall.exe"
+"%ProgramFiles%\Magic PSP Video Converter\unins000.exe"
+"%ProgramFiles%\Sendori\Uninstall.exe"
+"%ProgramFiles%\SuperLyrics\Uninstall.exe"
+"%ProgramFiles%\AOL Toolbar\uninstall.exe"
+"%ProgramFiles%\DomaIQ Uninstaller\DomaIQUninstall.exe"
+"%ProgramFiles%\Download Manager and Options\Uninstaller.exe"
+"%ProgramFiles%\Qwiklinx\unins000.exe"
+"%ProgramFiles%\Updater By SweetPacks\unins000.exe"
+"%ProgramFiles%\Minecraft PC Gamer Demo\unins000.exe"
+"%ProgramFiles%\Facebook Pro\unins000.exe"
+"%ProgramFiles%\CEV Multimedia\MPU20024 Housing Design & Decisions\MPU20024_Uninstal.exe"
+"%ProgramFiles%\CEV Multimedia\trg\MPU20007\MPU20007_Uninstal.exe"
+"%ProgramFiles%\CEV Multimedia\trg\MPU20013\MPU20007_Uninstal.exe"
+"%ProgramFiles%\CEV Multimedia\trg\MPU20015\MPU20007_Uninstal.exe"
+"%ProgramFiles%\CEV Multimedia\trg\MPU20027\MPU20007_Uninstal.exe"
+"%ProgramFiles%\CEV Multimedia\trg Parenting\MPU20027_Uninstal.exe"
+
+
+
 
 
 
@@ -349,6 +430,8 @@ REM chrome uninstallers
 "%ProgramFiles%\Google\Chrome\Application\22.0.1229.94\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level --verbose-logging
 "%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\10.0.648.205\Installer\setup.exe"  --uninstall --chrome
 "%ProgramFiles%\Google\Chrome\Application\23.0.1271.97\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
+"%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\chrome.exe" /uninstall
+"%ProgramFiles%\Google\Chrome\Application\21.0.1180.89\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level\MixPad\uninst.exe"
 
 
 sleep5000.exe
@@ -371,8 +454,9 @@ del /F /Q "%HOMEPATH%\Desktop\Spotify.lnk"
 del /F /Q /S "%ProgramFiles%\Tweet Adder 3"
 del /F /Q "%ALLUSERSPROFILE%\Start Menu\Programs\Startup\Adobe Acrobat Speed Launcher.lnk"
 del /F /Q "%ALLUSERSPROFILE%\Start Menu\Programs\Startup\Adobe Acrobat Synchronizer.lnk"
-
-
+del /F /Q /S "%ProgramFiles%\DefaultTab"
+del /F /Q /S "%ProgramFiles%\Iminent"
+del /F /Q /S "%ProgramFiles%\SaveValet"
 
 sleep30000.exe
 
