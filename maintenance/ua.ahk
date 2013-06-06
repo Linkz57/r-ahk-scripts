@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v1.0,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this?,120
+MsgBox,4,Update Automatically v1.1,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this?,120
 IfMsgBox No
 {
     MsgBox,0,Nothing Installed,Ok some other time maybe
@@ -62,8 +62,15 @@ else
 
 	;; Flash Player Firefox plugin installation
 	sleep 2000
-	Run flashplayerFF.exe
-	sleep 12000
+    if A_OSVersion in WIN_XP
+    {
+		Run fp117fx.exe
+	}
+	if A_OSVersion in WIN_VISTA
+	{
+	    Run flashplayerFF.exe
+    }
+    sleep 12000
 	send +{tab}
 	sleep 200
 	send {space}
@@ -74,8 +81,17 @@ else
 	sleep 200
 	send {enter}
 	sleep 2000
-	send {tab}
-	sleep 200
+    if A_OSVersion in WIN_XP
+    {
+		send {down}
+		sleep 200
+		send {down}
+	}
+	if A_OSVersion in WIN_VISTA
+	{
+    	send {tab}
+	}
+    sleep 200
 	send {enter}
 
 	;; Misc Removal Script setup
@@ -93,54 +109,58 @@ else
 	sleep 500
 	send {enter}
 	sleep 1000
-	send {esc}
+	send !{F4}
 	sleep 1000
 	send ^+{end}
 	sleep 1000
 	send {backspace}
 	sleep 1000
+    if A_OSVersion in WIN_XP
+    {
+		;; replace homepath
+		send ^h
+		sleep 500
+		send `%Homepath`%
+		sleep 500
+		send {tab}
+		sleep 500
+		send C:\Documents and Settings\student
+		sleep 500
+		send !a
+		sleep 2500
+		
+		;; replace programdata
+		send +{tab}
+		sleep 500
+		send `%ProgramData`%\Microsoft\Windows
+		sleep 500
+		send {tab}
+		sleep 500
+		send C:\Documents and Settings\All Users
+		sleep 500
+		send !a
+		sleep 2000		
+		
+		;;finish replacement
+		send !{F4}
+		sleep 500
+	}
 	send ^s
 	sleep 500
 	send !{F4}
 
 	;; Misc Removal Script execution
 	sleep 2000
-	; Run 200enters500msinc.exe
-	RunWait C:\mr.bat
-	Run %ComSpec% /C "del /F /Q c:\mr.bat"
+	RunWait %ComSpec% /C "C:\mr.bat"
+    sleep 1000
+	RunWait %ComSpec% /C "del /F /Q c:\mr.bat"
 
 	;; Java selection
-	; MsgBox, 4, Kronos question, Is this a "Teacher Computer"?, 60
-	; IfMsgBox Yes
-	; {
-	; Run java6u24.exe
-	; }
-	; else IfMsgBox No
-	; {
-	; Run java.exe
-	; }
-	; else IfMsgBox TIMEOUT
-	; {
-	Run java.exe
-	; }
-
-	;; Java Installation
-	sleep 180000
-	send {tab}
-	sleep 200
-	send {tab}
-	sleep 200
-	send {tab}
-	sleep 200
-	send {enter}
-	sleep 240000
-	send {tab}
-	sleep 200
-	send {enter}
+    RunWait %ComSpec% /C "java.msi /passive /norestart"
 
 	;; Adobe Reader installation
 	sleep 2000
-	RunWait %ComSpec% /C "adobereader.msi /passive"
+	RunWait %ComSpec% /C "adobereader.msi /passive /norestart"
 	; sleep 384000 ;; Confirmed: does not need sleep
 
 	;; Internet Explorer installation
@@ -192,6 +212,7 @@ else
 	ExitApp
 	esc::
 	{
+        Run %ComSpec% /C "shutdown -a
 		Run %ComSpec% /C "explorer"
 		ExitApp
 	}
