@@ -1,4 +1,4 @@
-MsgBox,4,Update Manually v1.0.1,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this?
+MsgBox,4,Update Manually v1.1,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this?
 IfMsgBox No
 {
     MsgBox,0,Nothing Installed,Ok some other time maybe
@@ -24,22 +24,61 @@ else IfMsgBox Yes
 	RunWait flashplayerIE.exe
 	
 	;; Flash Player Firefox plugin installation
-	Run flashplayerFF.exe
-	
-	; RunWait %ComSpec% /C "flashplayerIE.msi /passive"
-	; RunWait %ComSpec% /C "flashplayerFF.msi /passive"
+    if A_OSVersion in WIN_XP
+    {
+		Run fp117fx.exe
+	}
+	if A_OSVersion in WIN_VISTA
+	{
+    	Run flashplayerFF.exe
+	}
 	
 	;; Misc Removal Script setup
 	RunWait %ComSpec% /C "del /F /Q c:\mr.bat"
-	Sleep, 1000
+	Sleep 2000
 	FileCopy, %A_WorkingDir%\mr.txt, C:\mr.bat
-	; Run 200enters500msinc.exe
-	
+    sleep 2000
+    Run %ComSpec% /C "notepad c:\mr.bat"
+	sleep 3000
+	if A_OSVersion in WIN_XP
+	{
+		;; replace homepath
+		send ^h
+		sleep 500
+		send `%Homepath`%
+		sleep 500
+		send {tab}
+		sleep 500
+		send C:\Documents and Settings\student
+		sleep 500
+		send !a
+		sleep 1000
+		
+		;; replace programdata
+		send +{tab}
+		sleep 500
+		send `%ProgramData`%\Microsoft\Windows
+		sleep 500
+		send {tab}
+		sleep 500
+		send C:\Documents and Settings\All Users
+		sleep 500
+		send !a
+		sleep 1000		
+		
+		;;finish replacement
+		send !{F4}
+		sleep 500
+	}
+	send ^s
+	sleep 500
+	send !{F4}
+
 	;; Misc Removal Script execution
-	RunWait C:\mr.bat
+	RunWait %ComSpec% /C "C:\mr.bat"
 	
 	;; Java installation
-	RunWait java.exe
+	RunWait %ComSpec% /C "java.msi /passive /norestart"
 	
 	;; Adobe Reader installation
 	RunWait %ComSpec% /C "adobereader.msi /passive"
@@ -71,7 +110,6 @@ else IfMsgBox Yes
 		MsgBox, 4096, Restart, Alright--restarting in 10..., 5
         ExitApp
     }
-    
 	esc::
 	{
 		Run %ComSpec% /C "explorer"
