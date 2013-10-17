@@ -1,7 +1,7 @@
 MsgBox,4,Update Automatically v1.1,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this?,120
 IfMsgBox No
 {
-    MsgBox,0,Nothing Installed,Ok some other time maybe
+	MsgBox,0,Nothing Installed,Ok some other time maybe
 	exitapp
 }
 else
@@ -26,7 +26,7 @@ else
 
 	;; Remove Internet Explorer proxy settings
 	Run %ComSpec% /C "REG ADD "HKCU\SOFTWARE\MICROSOFT\WINDOWS\CURRENTVERSION\INTERNET SETTINGS" /V "PROXYENABLE" /T REG_DWORD /D "0" /F"
-	Sleep 1000
+	Sleep 4000
 
 	;; Change Internet Explorer homepage back to default
 	Run %ComSpec% /C "REG ADD "HKCU\SOFTWARE\MICROSOFT\INTERNET EXPLORER\MAIN" /V "START PAGE" /D "http://humble.k12.tx.us/" /F"
@@ -42,57 +42,67 @@ else
 	; sleep 3000
 	; send {enter}
 
-	;; Flash Player Internet Explorer installation
+;	; Flash Player Internet Explorer installation
+	SetTimer,altr,-10000
+	Runwait %ComSpec% /C "flashplayerIE.msi /qb /norestart"
 	sleep 2000
-	Run flashplayerIE.exe
-	sleep 12000
-	send +{tab}
-	sleep 200
-	send {space}
-	sleep 200
-	send {tab}
-	sleep 200
-	send {tab}
-	sleep 200
-	send {enter}
-	sleep 2000
-	send {tab}
-	sleep 200
-	send {enter}
 
-	;; Flash Player Firefox plugin installation
+	
+	; sleep 2000
+	; Run flashplayerIE.exe
+	; sleep 12000
+	; send +{tab}
+	; sleep 200
+	; send {space}
+	; sleep 200
+	; send {tab}
+	; sleep 200
+	; send {tab}
+	; sleep 200
+	; send {enter}
+	; sleep 2000
+	; send {tab}
+	; sleep 200
+	; send {enter}
+
+;	; Flash Player Firefox plugin installation
 	sleep 2000
-    if A_OSVersion in WIN_XP
-    {
-		Run fp117fx.exe
+	if A_OSVersion in WIN_XP
+	{
+		SetTimer,altr,-7000
+		Runwait %ComSpec% /C "flashplayerFF.msi /qb /norestart"
 	}
 	if A_OSVersion in WIN_VISTA
 	{
-	    Run flashplayerFF.exe
-    }
-    sleep 12000
-	send +{tab}
-	sleep 200
-	send {space}
-	sleep 200
-	send {tab}
-	sleep 200
-	send {tab}
-	sleep 200
-	send {enter}
-	sleep 2000
-    if A_OSVersion in WIN_XP
-    {
-		send {down}
+		Run flashplayerFF-old_win7.exe
+		sleep 12000
+		send +{tab}
 		sleep 200
-		send {down}
+		send {space}
+		sleep 200
+		send {tab}
+		sleep 200
+		send {tab}
+		sleep 200
+		send {enter}
+		sleep 2000
+		send {tab}
+		sleep 200
+		send {enter}
 	}
-	if A_OSVersion in WIN_VISTA
-	{
-    	send {tab}
-	}
-    sleep 200
-	send {enter}
+	sleep 2000
+	
+	; if A_OSVersion in WIN_XP
+	; {
+		; send {down}
+		; sleep 200
+		; send {down}
+	; }
+	; if A_OSVersion in WIN_VISTA
+	; {
+		
+	; }
+	
 
 	;; Misc Removal Script setup
 	RunWait %ComSpec% /C "del /F /Q c:\mr.bat"
@@ -115,8 +125,8 @@ else
 	sleep 1000
 	send {backspace}
 	sleep 1000
-    if A_OSVersion in WIN_XP
-    {
+	if A_OSVersion in WIN_XP
+	{
 		;; replace homepath
 		send ^h
 		sleep 500
@@ -152,15 +162,19 @@ else
 	;; Misc Removal Script execution
 	sleep 2000
 	RunWait %ComSpec% /C "C:\mr.bat"
-    sleep 1000
+	sleep 1000
 	RunWait %ComSpec% /C "del /F /Q c:\mr.bat"
 
 	;; Java selection
-    RunWait %ComSpec% /C "java.msi /passive /norestart"
+	SetTimer,altr,-10000
+	RunWait %ComSpec% /C "java.msi /passive /norestart"
 
 	;; Adobe Reader installation
 	sleep 2000
-	RunWait %ComSpec% /C "adobereader.msi /passive /norestart"
+	SetTimer,altr,-7000
+	RunWait %ComSpec% /C "adobereader.msi /qb /norestart"
+	SetTimer,altr,-5000
+	RunWait %ComSpec% /C "msiexec.exe /update adobereaderpatch.msp /qb /norestart"
 	; sleep 384000 ;; Confirmed: does not need sleep
 
 	;; Internet Explorer installation
@@ -168,11 +182,13 @@ else
 
 	if A_OSVersion in WIN_VISTA
 	{
+		SetTimer,altr,-15000
 		RunWait %ComSpec% /C "IE9-Windows7-x86-enu.exe /passive /norestart"
 	}
 	sleep 200
 	if A_OSVersion in WIN_XP
 	{
+		SetTimer,altr,-15000
 		RunWait %ComSpec% /C "IE8-WindowsXP-x86-ENU.exe /passive /norestart /sqm"
 	}
 	sleep 1000
@@ -199,21 +215,28 @@ else
 		sleep 500
 		Run %ComSpec% /C "shutdown -s -t 5"
 		MsgBox, 4096, Shutdown, Alright--shutting down..., 5
-        ExitApp
+		ExitApp
 	}
 	else IfMsgBox No
 	{
 		Run %ComSpec% /C "shutdown -a"
 		Run %ComSpec% /C "explorer"
 		MsgBox, 4096, Abort Shutdown, Alright--aborting shutdown.,10
-            ExitApp
+		ExitApp
 	}
-    
 	ExitApp
 	esc::
 	{
-        Run %ComSpec% /C "shutdown -a
+		Run %ComSpec% /C "shutdown -a"
 		Run %ComSpec% /C "explorer"
 		ExitApp
 	}
+	goto,computerover
+	
+	altr:
+	send !r
+	return
+	
+	computerover:
+	exitapp
 }
