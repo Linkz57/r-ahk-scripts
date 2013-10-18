@@ -1,5 +1,5 @@
-REM mr.txt v1.0 
-REM This is a very basic batch file written by Tyler Francis that--in tandum with another script cleverly named "Remove"--attempts to remove many programs that would not be useful and/or allowed in a school environment. It's rather aggressive about this, especially in the first "silent" half of this file, so make sure you're ok with losing all of the programs and files mentioned here.
+REM mr.txt v1.1
+REM This is a very basic batch file written by Tyler Francis that--in tandem with another script cleverly named "Remove"--attempts to remove many programs that would not be useful and/or allowed in a school environment. It's rather aggressive about this, especially in the first "silent" half of this file, so make sure you're ok with losing all of the programs and files mentioned here.
 
 REM ~ begin automatic removal ~
 
@@ -138,6 +138,20 @@ REM below is HP Update
 REM below is Strongvault Online Backup
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {C8A17402-051A-471B-BA64-9147A7467005}
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {5E33D30D-D896-4D92-B033-5F45819B2937}
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {59DB31A9-BCB0-4985-ACA6-F6477C7BE367}
+
+REM below is QuickShare
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {62BC7EFB-47F5-4619-9B74-7DDA72D5AF7E}
+
+REM below is EZ Fonts
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {02F5BEE7-0AB6-4E42-9BF8-2588AAECC7F2}
+
+REM below is Playalot Games
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {3A3532ED-A121-4297-AA4F-70B60E4BD631}
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {9EA32328-5070-4EBC-A42D-460FD15E1424}
+
+
+
 
 REM below is Spelling Dictionaries Support For Adobe Reader 9
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {AC76BA86-7AD7-5464-3428-900000000004}
@@ -155,20 +169,20 @@ REM below is Apple Software Update
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {C41300B9-185D-475E-BFEC-39EF732F19B1}
 
 REM below is Google Update Helper
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {A92DAB39-4E2C-4304-9AB6-BC44E68B55E2}
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {A92DAB39-4E2C-4304-9AB6-BC44E68B55E2}
 
 REM below is Google Earth
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {7A25D130-4EC8-11E1-BEA4-B8AC6F97B88E}
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {28E82311-8616-11E1-BEB0-B8AC6F97B88E}
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {5A3C1721-F8ED-11E0-8AFB-B8AC6F97B88E}
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {33286280-8617-11E1-8FF6-B8AC6F97B88E}
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {4286E640-B5FB-11DF-AC4B-005056C00008}
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {08C0729E-3E50-11DF-9D81-005056806466}
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {08C0729E-3E50-11DF-9D81-005056806466}
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {468D22C0-8080-11E2-B86E-B8AC6F98CCE3}
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {7A25D130-4EC8-11E1-BEA4-B8AC6F97B88E}
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {28E82311-8616-11E1-BEB0-B8AC6F97B88E}
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {5A3C1721-F8ED-11E0-8AFB-B8AC6F97B88E}
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {33286280-8617-11E1-8FF6-B8AC6F97B88E}
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {4286E640-B5FB-11DF-AC4B-005056C00008}
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {08C0729E-3E50-11DF-9D81-005056806466}
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {08C0729E-3E50-11DF-9D81-005056806466}
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {468D22C0-8080-11E2-B86E-B8AC6F98CCE3}
 
 REM below is Google Earth plugin
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {34B32B70-8081-11E2-89AF-B8AC6F98CCE3}
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {34B32B70-8081-11E2-89AF-B8AC6F98CCE3}
 
 REM below is Google Toolbar
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {18455581-E099-4BA8-BC6B-F34B2F06600C}
@@ -176,7 +190,8 @@ REM below is Google Toolbar
 REM REM close200enters500msinc.exe
 
 
-sleep5000.exe
+REM sleep5000.exe
+timout /t 5
 
 del /F /Q /S "%HOMEPATH%\Desktop\*.exe"
 del /F /Q /S /A:H "%HOMEPATH%\Desktop\*.exe"
@@ -189,14 +204,18 @@ del /F /Q "%HOMEPATH%\Start Menu\Programs\Spotify.lnk"
 del /F /Q "%HOMEPATH%\Desktop\Free Music Downloads.lnk"
 del /F /Q "%HOMEPATH%\Desktop\Free Dolphin Screensaver.lnk"
 del /F /Q "%HOMEPATH%\Desktop\Free Games!!.lnk"
+del /F /Q "%HOMEPATH%\Desktop\Create Your Own Video Screensaver!.lnk"
+del /F /Q "%HOMEPATH%\Desktop\Click to Find and Fix Errors.lnk"
+del /F /Q "%HOMEPATH%\Desktop\Facebook Photo Drag-n-Drop.lnk"
+del /F /Q "%HOMEPATH%\Desktop\Play Disney® Club Penguin.lnk"
 del /F /Q /S "%HOMEPATH%\Desktop\utmp"
-del /F /Q "%HOMEPATH%\Desktop\Google Chrome.lnk"
-del /F /Q "%ALLUSERSPROFILE%\Desktop\Google Chrome.lnk"
+REM del /F /Q "%HOMEPATH%\Desktop\Google Chrome.lnk"
+REM del /F /Q "%ALLUSERSPROFILE%\Desktop\Google Chrome.lnk"
 del /F /Q "%ALLUSERSPROFILE%\Desktop\u.ini"
 del /F /Q "%HOMEPATH%\Desktop\u.ini"
 del /F /Q /S "%ProgramFiles%\FilmFanatic"
 
-REM    del /F /Q /S "%ProgramFiles%\Free Offers from Freeze.com"
+REM	del /F /Q /S "%ProgramFiles%\Free Offers from Freeze.com"
 
 
 REM ~ begin manual removal ~
@@ -254,7 +273,6 @@ REM ~ begin manual removal ~
 REM "%ProgramFiles%\TI Education\TI-83 Plus Flash Debugger\UNWISE.EXE"
 "%ProgramFiles%\Enterbrain\RPGVX\unins000.exe"
 "%ProgramFiles%\MAGIX\Music_Maker_17_Premium_Download_Version\mm17dlx_en-US_setup.exe"
-"%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\17.0.963.83\Installer\setup.exe"  --uninstall --multi-install --chrome
 "%ProgramFiles%\Blubster\uninstall.exe"
 "%ProgramFiles%\Youtube to MP4 Converter\unins000.exe"
 "%ProgramFiles%\MAGIX\Music_Maker_MX_Download_Version\mm18_en-US_setup.exe"
@@ -264,7 +282,7 @@ REM "%ProgramFiles%\TI Education\TI-83 Plus Flash Debugger\UNWISE.EXE"
 "%ProgramFiles%\Mediaplayer Lite\unins000.exe"
 "%ProgramFiles%\Blinkx\templates\uninstall.exe"
 "%ProgramFiles%\SugarSync\uninstall.exe"
-"%ProgramFiles%\Google\Picasa3\Uninstall.exe"
+REM "%ProgramFiles%\Google\Picasa3\Uninstall.exe"
 "%ProgramFiles%\PC Tools Registry Mechanic\unins000.exe"
 "%ProgramFiles%\Netscape\Netscape Browser\NSUninst.exe"
 "%ProgramFiles%\Three Rings Design\Puzzle Pirates\Uninstall-yohoho.exe"
@@ -338,7 +356,7 @@ REM "%ProgramFiles%\TI Education\TI-83 Plus Flash Debugger\UNWISE.EXE"
 "%ProgramFiles%\PC Optimizer Pro\uninst.exe"
 "%HOMEPATH%\Application Data\Dropbox\bin\Uninstall.exe"
 "%ProgramFiles%\PopCap Games\Amazing Adventures 5\PopUninstall.exe" "%ProgramFiles%\PopCap Games\Amazing Adventures 5\Install.log"
-"%ProgramFiles%\Google\Google Updater\GoogleUpdater.exe" -uninstall
+REM "%ProgramFiles%\Google\Google Updater\GoogleUpdater.exe" -uninstall
 "%ProgramFiles%\InterActual\InterActual Player\inuninst.exe"
 "%ProgramFiles%\Free YouTube Downloader\unins000.exe"
 "%ProgramFiles%\AC3Filter\AC3Filter1.63_Uninstall.EXE"
@@ -400,48 +418,121 @@ REM "%ProgramFiles%\TI Education\TI-83 Plus Flash Debugger\UNWISE.EXE"
 "%ProgramFiles%\CEV Multimedia\trg\MPU20015\MPU20007_Uninstal.exe"
 "%ProgramFiles%\CEV Multimedia\trg\MPU20027\MPU20007_Uninstal.exe"
 "%ProgramFiles%\CEV Multimedia\trg Parenting\MPU20027_Uninstal.exe"
+"%ProgramFiles%\Google\Google Toolbar\Component\GoogleToolbarManager_80ACC8E3971CD605.exe" /uninstall
+"%ProgramFiles%\MyPC Backup\uninst.exe"
+"%ProgramFiles%\OpenIt\Open It!\uninstall.exe"
+"%ProgramFiles%\Simnet\Simple Sticky Notes\unins000.exe"
+REM I this looks like it needs to be removed, but I don't want to touch the WIN"C:\Windows\system32\WNLT\Installation\uninstaller.exe"
+"%HOMEPATH%\AppData\Roaming\DSite\UpdateProc\UpdateTask.exe"
+"%ProgramFiles%\FRESHG~1\WORDMO~1\UNWISE.EXE C:\PROGRA~1\FRESHG~1\WORDMO~1\INSTALL.LOG" /Uninstall
+"%HOMEPATH%\AppData\Roaming\Zip Opener Packages\uninstaller.exe" /Uninstall /NM="Zip Opener Packages" /AN="" /MBN="Zip Opener Packages"
+"%ProgramFiles%\BabylonToolbar\BabylonToolbar\1.5.3.17\uninstall.exe"
+"%ProgramFiles%\DealRunner\unins000.exe"
+"%ProgramFiles%\EpicPlay\epicRemoval.exe"
+"%ProgramFiles%\Surf Canyon\uninstall.exe"
+"%ProgramFiles%\Google\Quick Search Box\GoogleQuickSearchBoxSetup.exe" /force /standalone /uninstall
+"%ProgramFiles%\Google\Google Toolbar\Component\GoogleToolbarManager_714BFB3B4B0991F6.exe" /uninstall
+"%ProgramFiles%\I Want This\Uninstall.exe"
+"%ProgramFiles%\Mp3Tube Toolbar\uninstall.exe" bho /S
+"%ProgramFiles%\Itibiti Soft Phone\unins000.exe" /SILENT
+"%ProgramFiles%\PriceGong\uninst.exe"
+"%ProgramFiles%\WildGames\Uninstall.exe"
+REM below is Community Smartbar
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {DA71C701-617E-492D-A548-66DDC6ABFA74}
+"%ProgramFiles%\Incredibar.com\incredibar\1.5.11.14\uninstall.exe"
+"%ProgramFiles%\ContinueToSave\uninstall.exe" /FULLPATH="C:\Program Files\ContinueToSave"
+"%ProgramFiles%\DealPly\uninst.exe" /uninstall
+"%ProgramFiles%\Google\Google Toolbar\Component\GoogleToolbarManager_94DDE1EDD1CDF6A3.exe" /uninstall
+"%HOMEPATH%\AppData\Local\SevereWeatherAlerts\uninstall.exe"
+"%HOMEPATH%\AppData\Local\SwvUpdater\Updater.exe" /uninstall
+"%ProgramFiles%\Web Layers\WebLayersuninstall.exe"
+"%ProgramFiles%\Extreme Media Player\Uninstall.exe"
+"%ProgramFiles%\Fast Free Converter\uninstall.exe"
+"%ProgramFiles%\Glary Utilities\unins000.exe"
+"%ProgramFiles%\lucky leap\luckyleapuninstall.exe"
+"%ProgramFiles%\LyricsBuddy-1\Uninstall.exe" /fromcontrolpanel=1
+"%ProgramFiles%\AVG SafeGuard toolbar\UNINSTALL.exe" /UNINSTALL
+"%ProgramFiles%\diamondata\diamondatauninstall.exe"
+"%ProgramFiles%\Ask4Expert\Smart PC Booster 7\Uninstall.exe"
+"%HOMEPATH%\Application Data\Cartwheel\unins000.exe"
+"%ProgramFiles%\Flash Player Pro\unins000.exe"
+"%ProgramFiles%\Playbryte\uninstall.exe" /u /UserID=dfa001d1-c45c-4cf0-9be2-b37f26cf8bfd /SourceID=slice_updater /ImplementationID=playbryte-fa-ptn
+"%ProgramFiles%\Linksicle\Uninstall.exe"
+"C:\PROGRA~1\MYSEAR~1\\uninstall.exe"
+"%ProgramFiles%\OnlineVault\unins000.exe"
+"%ProgramFiles%\PCFixSpeed\unins000.exe"
+"%ProgramFiles%\PC Health Kit\unins000.exe"
+"%ProgramFiles%\Desk 365\eUninstall.exe"
+"%HOMEPATH%\AppData\Local\FilesFrog Update Checker\uninstall.exe"
+"%ProgramFiles%\Iminent\inst\Bootstrapper\Bootstrapper.exe" uninstall
+"%ProgramFiles%\Linksicle\Uninstall.exe"
+"%ProgramFiles%\Uniblue\SpeedUpMyPC\unins000.exe"
+"%ProgramFiles%\SuperLyrics-1\Uninstall.exe" /fromcontrolpanel=1
+REM C:\Windows\IsUninst.exe -f"C:\Program Files\Goodheart-Willcox\Housing Decisions\Uninst.isu"
+"C:\Users\student\AppData\Roaming\defaulttab\defaulttab\uninstalldt.exe"
+"C:\Program Files\iRobinHood\iRobinHood Addon\uninstall.exe" /S
+C:\Program Files\LyricsBuddy-1\Uninstall.exe /fromcontrolpanel=1
+C:\Users\student\AppData\Roaming\okitspace\uninstall.exe
+C:\Program Files\Olive\uninstall.exe
+C:\Program Files\SaltarSmart\SaltarSmartuninstall.exe
+C:\Users\student\AppData\Local\SevereWeatherAlerts\uninstall.exe
+C:\Program Files\SoftwareUpdater\uninstall.exe
+
+
+
+
+
+rundll32.exe dfshim.dll,ShArpMaintain DellSystemDetect.application, Culture=neutral, PublicKeyToken=0f612f649c4a10af, processorArchitecture=msil
+rundll32 C:\PROGRA~1\DICTIO~2\bar\1.bin\v4Bar.dll,O
+rundll32 C:\PROGRA~1\RECIPE~2\bar\1.bin\2jBar.dll,O
 
 
 
 
 
 
-sleep5000.exe
+REM sleep5000.exe
+timeout /t 5
 
 
 REM ****************
 REM chrome uninstallers
-"%ProgramFiles%\Google\Chrome\Application\15.0.874.120\Installer\setup.exe"  --uninstall --system-level
-"%ProgramFiles%\Google\Chrome\Application\18.0.1025.142\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
-"%ProgramFiles%\Google\Chrome\Application\17.0.963.83\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
-"%ProgramFiles%\Google\Chrome\Application\18.0.1025.152\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
-"%ProgramFiles%\Google\Chrome\Application\17.0.963.56\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
-"%ProgramFiles%\Google\Chrome\Application\18.0.1025.162\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
-"%ProgramFiles%\Google\Chrome\Application\12.0.742.100\Installer\setup.exe"  --uninstall --system-level
-"%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\9.0.597.94\Installer\setup.exe"  --uninstall
-"%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\18.0.1025.168\Installer\setup.exe"  --uninstall --multi-install --chrome
-"%ProgramFiles%\Google\Chrome\Application\18.0.1025.168\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
-"%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\11.0.696.68\Installer\setup.exe"  --uninstall
-"%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\11.0.696.60\Installer\setup.exe"  --uninstall
-"%ProgramFiles%\Google\Chrome\Application\21.0.1180.89\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
-"%ProgramFiles%\Google\Chrome\Application\13.0.782.220\Installer\setup.exe"  --uninstall --system-level
-"%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\22.0.1229.79\Installer\setup.exe"  --uninstall --multi-install --chrome
-"%ProgramFiles%\Google\Chrome\Application\22.0.1229.92\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level --verbose-logging
-"%ProgramFiles%\Google\Chrome\Application\22.0.1229.94\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level --verbose-logging
-"%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\10.0.648.205\Installer\setup.exe"  --uninstall --chrome
-"%ProgramFiles%\Google\Chrome\Application\23.0.1271.97\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
-"%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\chrome.exe" /uninstall
-"%ProgramFiles%\Google\Chrome\Application\21.0.1180.89\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level\MixPad\uninst.exe"
 
+REM "%ProgramFiles%\Google\Chrome\Application\15.0.874.120\Installer\setup.exe"  --uninstall --system-level
+REM "%ProgramFiles%\Google\Chrome\Application\18.0.1025.142\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
+REM "%ProgramFiles%\Google\Chrome\Application\17.0.963.83\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
+REM "%ProgramFiles%\Google\Chrome\Application\18.0.1025.152\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
+REM "%ProgramFiles%\Google\Chrome\Application\17.0.963.56\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
+REM "%ProgramFiles%\Google\Chrome\Application\18.0.1025.162\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
+REM "%ProgramFiles%\Google\Chrome\Application\12.0.742.100\Installer\setup.exe"  --uninstall --system-level
+REM "%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\9.0.597.94\Installer\setup.exe"  --uninstall
+REM "%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\18.0.1025.168\Installer\setup.exe"  --uninstall --multi-install --chrome
+REM "%ProgramFiles%\Google\Chrome\Application\18.0.1025.168\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
+REM "%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\11.0.696.68\Installer\setup.exe"  --uninstall
+REM "%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\11.0.696.60\Installer\setup.exe"  --uninstall
+REM "%ProgramFiles%\Google\Chrome\Application\21.0.1180.89\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
+REM "%ProgramFiles%\Google\Chrome\Application\13.0.782.220\Installer\setup.exe"  --uninstall --system-level
+REM "%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\22.0.1229.79\Installer\setup.exe"  --uninstall --multi-install --chrome
+REM "%ProgramFiles%\Google\Chrome\Application\22.0.1229.92\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level --verbose-logging
+REM "%ProgramFiles%\Google\Chrome\Application\22.0.1229.94\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level --verbose-logging
+REM "%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\10.0.648.205\Installer\setup.exe"  --uninstall --chrome
+REM "%ProgramFiles%\Google\Chrome\Application\23.0.1271.97\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
+REM "%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\chrome.exe" /uninstall
+REM "%ProgramFiles%\Google\Chrome\Application\21.0.1180.89\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level\MixPad\uninst.exe"
+REM "%ProgramFiles%\Google\Chrome\Application\28.0.1500.95\Installer\setup.exe" --uninstall --multi-install --chrome --system-level
+REM "%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\17.0.963.83\Installer\setup.exe"  --uninstall --multi-install --chrome
 
-sleep5000.exe
+REM sleep5000.exe
+timeout /t 5
 
-del /F /Q "%ProgramFiles%\Google\Chrome\Application\chrome.exe"
-del /F /Q /S "%ProgramFiles%\Google"
+REM del /F /Q "%ProgramFiles%\Google\Chrome\Application\chrome.exe"
+REM del /F /Q /S "%ProgramFiles%\Google"
+
 REM ****************
 
 
-sleep5000.exe
+REM sleep5000.exe
+timeout /t 5
 
 
 
@@ -458,7 +549,8 @@ del /F /Q /S "%ProgramFiles%\DefaultTab"
 del /F /Q /S "%ProgramFiles%\Iminent"
 del /F /Q /S "%ProgramFiles%\SaveValet"
 
-sleep30000.exe
+REM sleep30000.exe
+timeout /t 30
 
 
 
