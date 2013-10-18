@@ -1,7 +1,7 @@
 MsgBox,4,Update Manually v1.1,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this?
 IfMsgBox No
 {
-    MsgBox,0,Nothing Installed,Ok some other time maybe
+	MsgBox,0,Nothing Installed,Ok some other time maybe
 	exitapp
 }
 else IfMsgBox Yes
@@ -21,27 +21,28 @@ else IfMsgBox Yes
 	Run shockwave.exe
 	
 	;; Flash Player Internet Explorer installation
-	RunWait flashplayerIE.exe
-	
+	Runwait %ComSpec% /C "flashplayerIE.msi /qb /norestart"
+	sleep 2000
+
 	;; Flash Player Firefox plugin installation
-    if A_OSVersion in WIN_XP
-    {
-		Run fp117fx.exe
+	if A_OSVersion in WIN_XP
+	{
+		Runwait %ComSpec% /C "flashplayerFF.msi /qb /norestart"
 	}
 	if A_OSVersion in WIN_VISTA
 	{
-    	Run flashplayerFF.exe
+		Run flashplayerFF-old_win7.exe
 	}
-	
+
 	;; Misc Removal Script setup
 	RunWait %ComSpec% /C "del /F /Q c:\mr.bat"
 	Sleep 2000
 	FileCopy, %A_WorkingDir%\mr.txt, C:\mr.bat
-    sleep 2000
-    Run %ComSpec% /C "notepad c:\mr.bat"
-	sleep 3000
+	sleep 2000
 	if A_OSVersion in WIN_XP
 	{
+		Run %ComSpec% /C "notepad c:\mr.bat"
+		sleep 3000
 		;; replace homepath
 		send ^h
 		sleep 500
@@ -64,25 +65,26 @@ else IfMsgBox Yes
 		send C:\Documents and Settings\All Users
 		sleep 500
 		send !a
-		sleep 1000		
+		sleep 1000
 		
 		;;finish replacement
 		send !{F4}
 		sleep 500
+		send ^s
+		sleep 500
+		send !{F4}
 	}
-	send ^s
-	sleep 500
-	send !{F4}
 
 	;; Misc Removal Script execution
 	RunWait %ComSpec% /C "C:\mr.bat"
-	
+
 	;; Java installation
 	RunWait %ComSpec% /C "java.msi /passive /norestart"
-	
+
 	;; Adobe Reader installation
-	RunWait %ComSpec% /C "adobereader.msi /passive"
-	
+	RunWait %ComSpec% /C "adobereader.msi /qb /norestart"
+	RunWait %ComSpec% /C "msiexec.exe /update "adobereaderpatch.msp" /qb /norestart
+
 	;; Internet Explorer installation
 	if A_OSVersion in WIN_VISTA
 	{
@@ -92,7 +94,7 @@ else IfMsgBox Yes
 	{
 		RunWait %ComSpec% /C "IE8-WindowsXP-x86-ENU.exe /passive /norestart /sqm"
 	}
-	
+
 	;; One Final cleanup
 	Run %ComSpec% /C "del /F /Q c:\mr.bat"
 	
@@ -102,14 +104,14 @@ else IfMsgBox Yes
 	{
 		Run %ComSpec% /C "shutdown -s -t 10"
 		MsgBox, 4096, Shutdown, Alright--shutting down in 10..., 5
-        ExitApp
+		ExitApp
 	}
 	else IfMsgBox No
 	{
 		Run %ComSpec% /C "shutdown -r -t 10"
 		MsgBox, 4096, Restart, Alright--restarting in 10..., 5
-        ExitApp
-    }
+		ExitApp
+	}
 	esc::
 	{
 		Run %ComSpec% /C "explorer"
