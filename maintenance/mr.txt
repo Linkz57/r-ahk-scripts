@@ -1,4 +1,4 @@
-REM mr.txt v1.1
+REM mr.txt v1.1.2
 REM This is a very basic batch file written by Tyler Francis that--in tandem with another script cleverly named "Remove"--attempts to remove many programs that would not be useful and/or allowed in a school environment. It's rather aggressive about this, especially in the first "silent" half of this file, so make sure you're ok with losing all of the programs and files mentioned here.
 
 REM ~ begin automatic removal ~
@@ -150,6 +150,9 @@ REM below is Playalot Games
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {3A3532ED-A121-4297-AA4F-70B60E4BD631}
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {9EA32328-5070-4EBC-A42D-460FD15E1424}
 
+REM below is Winzip
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {CD95F661-A5C4-44F5-A6AA-ECDD91C240DA}
+
 
 
 
@@ -199,6 +202,24 @@ del /F /Q /S "%HOMEPATH%\Desktop\*.bat"
 del /F /Q /S /A:H "%HOMEPATH%\Desktop\*.bat"
 del /F /Q /S "%HOMEPATH%\My Documents\*.exe"
 del /F /Q /S /A:H "%HOMEPATH%\My Documents\*.exe"
+del /F /Q /S "%HOMEPATH%\Documents\*.exe"
+del /F /Q /S /A:H "%HOMEPATH%\Documents\*.exe"
+del /F /Q /S "%HOMEPATH%\My Documents\*.bat"
+del /F /Q /S /A:H "%HOMEPATH%\My Documents\*.bat"
+del /F /Q /S "%HOMEPATH%\Documents\*.bat"
+del /F /Q /S /A:H "%HOMEPATH%\Documents\*.bat"
+del /F /Q /S "%PUBLIC%\Desktop\*.exe"
+del /F /Q /S /A:H "%PUBLIC%\Desktop\*.exe"
+del /F /Q /S "%PUBLIC%\Desktop\*.bat"
+del /F /Q /S /A:H "%PUBLIC%\Desktop\*.bat"
+del /F /Q /S "%PUBLIC%\My Documents\*.exe"
+del /F /Q /S /A:H "%PUBLIC%\My Documents\*.exe"
+del /F /Q /S "%PUBLIC%\Documents\*.exe"
+del /F /Q /S /A:H "%PUBLIC%\Documents\*.exe"
+del /F /Q /S "%PUBLIC%\My Documents\*.bat"
+del /F /Q /S /A:H "%PUBLIC%\My Documents\*.bat"
+del /F /Q /S "%PUBLIC%\Documents\*.bat"
+del /F /Q /S /A:H "%PUBLIC%\Documents\*.bat"
 
 del /F /Q "%HOMEPATH%\Start Menu\Programs\Spotify.lnk"
 del /F /Q "%HOMEPATH%\Desktop\Free Music Downloads.lnk"
@@ -469,15 +490,20 @@ REM below is Community Smartbar
 "%ProgramFiles%\Uniblue\SpeedUpMyPC\unins000.exe"
 "%ProgramFiles%\SuperLyrics-1\Uninstall.exe" /fromcontrolpanel=1
 REM C:\Windows\IsUninst.exe -f"C:\Program Files\Goodheart-Willcox\Housing Decisions\Uninst.isu"
-"C:\Users\student\AppData\Roaming\defaulttab\defaulttab\uninstalldt.exe"
-"C:\Program Files\iRobinHood\iRobinHood Addon\uninstall.exe" /S
-C:\Program Files\LyricsBuddy-1\Uninstall.exe /fromcontrolpanel=1
-C:\Users\student\AppData\Roaming\okitspace\uninstall.exe
-C:\Program Files\Olive\uninstall.exe
-C:\Program Files\SaltarSmart\SaltarSmartuninstall.exe
-C:\Users\student\AppData\Local\SevereWeatherAlerts\uninstall.exe
-C:\Program Files\SoftwareUpdater\uninstall.exe
-
+"%HOMEPATH%\AppData\Roaming\defaulttab\defaulttab\uninstalldt.exe"
+"%ProgramFiles%\iRobinHood\iRobinHood Addon\uninstall.exe" /S
+"%ProgramFiles%\LyricsBuddy-1\Uninstall.exe" /fromcontrolpanel=1
+"%HOMEPATH%\AppData\Roaming\okitspace\uninstall.exe"
+"%ProgramFiles%\Olive\uninstall.exe"
+"%ProgramFiles%\SaltarSmart\SaltarSmartuninstall.exe"
+"%HOMEPATH%\AppData\Local\SevereWeatherAlerts\uninstall.exe"
+"%ProgramFiles%\SoftwareUpdater\uninstall.exe"
+"%ProgramFiles%\Advanced System Protector\unins000.exe"
+"%ProgramFiles%\Google\Google Toolbar\Component\GoogleToolbarManager_08875ABF44579E20.exe" /uninstall
+"%HOMEPATH%\AppData\Local\SwvUpdater\Updater.exe" /uninstall
+"%ProgramFiles%\WinZip Driver Updater\unins000.exe"
+REM "C:\Program Files\Browsersafeguard\uninstall.browsersafeguard.exe" /u /UserID=37efb983-f474-4743-9d78-72652319a23a /SourceID=google_browsersafeguard-display-us-CPC-300x250-23909039453 /ImplementationID=browsersafeguard-pitch
+"%ProgramFiles%\Browsersafeguard\uninstall.browsersafeguard.exe" /u
 
 
 
