@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v1.1,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this?,120
+MsgBox,4,Update Automatically v1.2,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe
@@ -6,10 +6,25 @@ IfMsgBox No
 }
 else
 {
-	MsgBox,0,Ok here we go,Remove your hands from the mouse and keyboard! At the very end you'll be asked if you want to shut down your computer and that is the ONLY time you can click anything. At times it will look like your computer is just sitting here doing nothing. Please resist the urge to "help it along". DO NOT click anything. DO NOT type anything. This entire process is automated. Any interaction on your part will cause this update to go all haywire and you'll have to start it all over again. Don't even click "ok" on this box. In fact get up and walk away. Make yourself some tea and come back in about 17 minutes and this will be done. Don't keep reading this to see what will happen--leave. Go. Now. Make like a tree and turn off your monitor.,30
+	MsgBox,0,Ok here we go,Remove your hands from the mouse and keyboard! At the very end you'll be asked if you want to shut down your computer and that is the ONLY time you can click anything. At times it will look like your computer is just sitting here doing nothing. Please resist the urge to "help it along". DO NOT click anything. DO NOT type anything. This entire process is automated. Any interaction on your part will cause this update to go all haywire and you'll have to start it all over again. Don't even click "ok" on this box. In fact get up and walk away. Make yourself some tea and come back in about 10 minutes and this will be done. Don't keep reading this to see what will happen--leave. Go. Now. Make like a tree and turn off your monitor.,30
 	;; Kill Windows Explorer to discourage the user from interacting with the computer, and also to reduce the chance of problems that are inherent with macros.
 	RunWait %ComSpec% /C "taskkill /F /IM explorer.exe"
+	
+	;; close some other things
+	Runwait %ComSpec% /C "taskkill /F /IM iexplore.exe"
+	sleep 1000
+	Runwait %ComSpec% /C "taskkill /F /IM firefox.exe"
+	sleep 1000
+	Runwait %ComSpec% /C "taskkill /F /IM chrome.exe"
+	sleep 1000
+	Runwait %ComSpec% /C "taskkill /F /IM AcroRd32.exe"
+	sleep 1000
+	Runwait %ComSpec% /C "taskkill /F /IM AcroRd64.exe"
+	sleep 1000
+	Runwait %ComSpec% /C "taskkill /F /IM grpwise.exe"
+	sleep 1000
 
+	;; The time assumption on the next line is out of date; one of these days I'll re-calculate and version-stamp it.
 	;; All of the sleep timers and message box timeouts add up to about 16 minutes. This time doesn't take into account the runwait time on mr.bat, adobereader.msi or either IE*.exe executions, but I'll assume they aren't in excess of 45 minutes. Therefore, if this script takes longer than an hour to run, I'll assume it's broken. As a "fix" here is a timed shutdown at the beginning of this script.
 
 	if A_OSVersion in WIN_VISTA ; Vista and 7 only. I think XP's shutdown program can't take a delay longer than 99 seconds.
@@ -149,6 +164,18 @@ else
 		send C:\Documents and Settings\All Users
 		sleep 500
 		send !a
+		sleep 2000
+		
+		;; replace public
+		send +{tab}
+		sleep 500
+		send `%PUBLIC`%
+		sleep 500
+		send {tab}
+		sleep 500
+		send C:\Documents and Settings\All Users
+		sleep 500
+		send !a
 		sleep 2000		
 		
 		;;finish replacement
@@ -171,9 +198,9 @@ else
 
 	;; Adobe Reader installation
 	sleep 2000
-	SetTimer,altr,-7000
+	SetTimer,altr,-10000
 	RunWait %ComSpec% /C "adobereader.msi /qb /norestart"
-	SetTimer,altr,-5000
+	SetTimer,altr,-10000
 	RunWait %ComSpec% /C "msiexec.exe /update adobereaderpatch.msp /qb /norestart"
 	; sleep 384000 ;; Confirmed: does not need sleep
 
@@ -233,8 +260,21 @@ else
 	}
 	goto,computerover
 	
+	
+	;; gotostuff
+	
 	altr:
 	send !r
+	goto,msiissues
+	return
+	
+	msiissues:
+	sleep 7000
+	IfWinExist,Windows Installer,OK
+	{
+		send {space}
+		goto,msiissues
+	}
 	return
 	
 	computerover:
