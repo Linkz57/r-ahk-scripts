@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v1.2,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
+MsgBox,4,Update Automatically v1.3,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe
@@ -8,7 +8,7 @@ else
 {
 	MsgBox,0,Ok here we go,Remove your hands from the mouse and keyboard! At the very end you'll be asked if you want to shut down your computer and that is the ONLY time you can click anything. At times it will look like your computer is just sitting here doing nothing. Please resist the urge to "help it along". DO NOT click anything. DO NOT type anything. This entire process is automated. Any interaction on your part will cause this update to go all haywire and you'll have to start it all over again. Don't even click "ok" on this box. In fact get up and walk away. Make yourself some tea and come back in about 10 minutes and this will be done. Don't keep reading this to see what will happen--leave. Go. Now. Make like a tree and turn off your monitor.,30
 	;; Kill Windows Explorer to discourage the user from interacting with the computer, and also to reduce the chance of problems that are inherent with macros.
-	progress,1,%A_Space%,Closing some remaining programs,The Unfaltering March Of `Progress
+	progress,FS10 W600 Y650,%A_Space% `n %A_Space%,Closing some remaining programs,The Unfaltering March Of `Progress,Segoe UI
 	RunWait %ComSpec% /C "taskkill /F /IM explorer.exe"
 	progress,2,there goes Windows Explorer,Closing some remaining programs,The Unfaltering March Of `Progress
 	
@@ -17,16 +17,16 @@ else
 	progress,3,there goes Internet Explorer,Closing some remaining programs,The Unfaltering March Of `Progress
 	sleep 1000
 	Runwait %ComSpec% /C "taskkill /F /IM firefox.exe"
-	progress,4,,Closing some remaining programs,The Unfaltering March Of `Progress
+	progress,4,%A_Space%,Closing some remaining programs,The Unfaltering March Of `Progress
 	sleep 1000
 	Runwait %ComSpec% /C "taskkill /F /IM chrome.exe"
-	progress,5,,Closing some remaining programs,The Unfaltering March Of `Progress
+	progress,5,%A_Space%,Closing some remaining programs,The Unfaltering March Of `Progress
 	sleep 1000
 	Runwait %ComSpec% /C "taskkill /F /IM AcroRd32.exe"
-	progress,6,,Closing some remaining programs,The Unfaltering March Of `Progress
+	progress,6,%A_Space%,Closing some remaining programs,The Unfaltering March Of `Progress
 	sleep 1000
 	Runwait %ComSpec% /C "taskkill /F /IM AcroRd64.exe"
-	progress,7,,Closing some remaining programs,The Unfaltering March Of `Progress
+	progress,7,%A_Space%,Closing some remaining programs,The Unfaltering March Of `Progress
 	sleep 1000
 	Runwait %ComSpec% /C "taskkill /F /IM grpwise.exe"
 	progress,10,if there any programs left open`, please `send my master an email,Finished closing programs,The Unfaltering March Of `Progress
@@ -37,7 +37,7 @@ else
 
 	if A_OSVersion in WIN_VISTA ; Vista and 7 only. I think XP's shutdown program can't take a delay longer than 99 seconds.
 	{
-		progress,15,,Preparing provisions for potential problems,The Unfaltering March Of `Progress
+		progress,15,%A_Space%,Preparing provisions for potential problems,The Unfaltering March Of `Progress
 		RunWait %ComSpec% /C "copy notes\A_Message_from_Tyler_Francis.txt "%USERPROFILE%\Start Menu\Programs\Startup"" ; This is a small message telling the user that the update process failed and that they should send me an email saying as much. Were this a *Nix machine I'd CAT in some info like where it failed. I'll have to find out how to do that in Windows without opening Notepad at every action.
 		sleep 500
 		RunWait %ComSpec% /C "copy notes\remove_message.bat "%USERPROFILE%\Desktop""
@@ -46,7 +46,7 @@ else
 	}
 
 	;; Install Firefox silently
-	progress,17,,Starting the Firefox updater,The Unfaltering March Of `Progress
+	progress,17,%A_Space%,Starting the Firefox updater,The Unfaltering March Of `Progress
 	Run FirefoxSetup.exe -ms
 	sleep 2000
 
@@ -136,7 +136,7 @@ else
 	
 
 	;; Misc Removal Script setup
-	progress,39,,Getting ready to remove a bunch of junk,The Unfaltering March Of `Progress
+	progress,39,%A_Space%,Getting ready to remove a bunch of junk,The Unfaltering March Of `Progress
 	RunWait %ComSpec% /C "del /F /Q c:\mr.bat"
 	Sleep 2000
 	FileCopy, %A_WorkingDir%\mr.txt, C:\mr.bat
@@ -205,19 +205,19 @@ else
 	send !{F4}
 
 	;; Misc Removal Script execution
-	progress,50,,Removing a bunch of junk,The Unfaltering March Of `Progress
+	progress,50,%A_Space%,Removing a bunch of junk,The Unfaltering March Of `Progress
 	sleep 2000
 	RunWait %ComSpec% /C "C:\mr.bat"
 	sleep 1000
 	RunWait %ComSpec% /C "del /F /Q c:\mr.bat"
 
 	;; Java selection
-	progress,60,,Updating Java,The Unfaltering March Of `Progress
+	progress,60,%A_Space%,Updating Java,The Unfaltering March Of `Progress
 	SetTimer,altr,-10000
 	RunWait %ComSpec% /C "java.msi /passive /norestart"
 
 	;; Adobe Reader installation
-	progress,70,,Updating Adobe Reader,The Unfaltering March Of `Progress
+	progress,70,%A_Space%,Updating Adobe Reader,The Unfaltering March Of `Progress
 	sleep 2000
 	SetTimer,altr,-10000
 	RunWait %ComSpec% /C "adobereader.msi /qb /norestart"
@@ -231,14 +231,14 @@ else
 
 	if A_OSVersion in WIN_VISTA
 	{
-		progress,90,,Installing Internet Explorer 9,The Unfaltering March Of `Progress
+		progress,90,%A_Space%,Installing Internet Explorer 9,The Unfaltering March Of `Progress
 		SetTimer,altr,-15000
 		RunWait %ComSpec% /C "IE9-Windows7-x86-enu.exe /passive /norestart"
 	}
 	sleep 200
 	if A_OSVersion in WIN_XP
 	{
-		progress,90,,Installing Internet Explorer 8,The Unfaltering March Of `Progress
+		progress,90,%A_Space%,Installing Internet Explorer 8,The Unfaltering March Of `Progress
 		SetTimer,altr,-15000
 		RunWait %ComSpec% /C "IE8-WindowsXP-x86-ENU.exe /passive /norestart /sqm"
 	}
