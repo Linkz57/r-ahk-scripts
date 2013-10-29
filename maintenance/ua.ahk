@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v1.3,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
+MsgBox,4,Update Automatically v1.3.2,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe
@@ -17,20 +17,20 @@ else
 	progress,3,there goes Internet Explorer,Closing some remaining programs,The Unfaltering March Of `Progress
 	sleep 1000
 	Runwait %ComSpec% /C "taskkill /F /IM firefox.exe"
-	progress,4,%A_Space%,Closing some remaining programs,The Unfaltering March Of `Progress
+	progress,4,there goes Firefox,Closing some remaining programs,The Unfaltering March Of `Progress
 	sleep 1000
 	Runwait %ComSpec% /C "taskkill /F /IM chrome.exe"
-	progress,5,%A_Space%,Closing some remaining programs,The Unfaltering March Of `Progress
+	progress,5,there goes Chrome,Closing some remaining programs,The Unfaltering March Of `Progress
 	sleep 1000
 	Runwait %ComSpec% /C "taskkill /F /IM AcroRd32.exe"
-	progress,6,%A_Space%,Closing some remaining programs,The Unfaltering March Of `Progress
+	progress,6,there goes Adoobe Reader,Closing some remaining programs,The Unfaltering March Of `Progress
 	sleep 1000
 	Runwait %ComSpec% /C "taskkill /F /IM AcroRd64.exe"
-	progress,7,%A_Space%,Closing some remaining programs,The Unfaltering March Of `Progress
+	progress,7,here goes GroupWise,Closing some remaining programs,The Unfaltering March Of `Progress
 	sleep 1000
 	Runwait %ComSpec% /C "taskkill /F /IM grpwise.exe"
-	progress,10,if there any programs left open`, please `send my master an email,Finished closing programs,The Unfaltering March Of `Progress
-	sleep 1000
+	progress,10,if there any programs left open`, please `send an email to Mr. Francis--obviously not now`, wait until I'm done here.,Finished closing programs,The Unfaltering March Of `Progress
+	sleep 2000
 
 	;; The time assumption on the next line is out of date; one of these days I'll re-calculate and version-stamp it.
 	;; All of the sleep timers and message box timeouts add up to about 16 minutes. This time doesn't take into account the runwait time on mr.bat, adobereader.msi or either IE*.exe executions, but I'll assume they aren't in excess of 45 minutes. Therefore, if this script takes longer than an hour to run, I'll assume it's broken. As a "fix" here is a timed shutdown at the beginning of this script.
@@ -72,55 +72,37 @@ else
 
 ;	; Flash Player Internet Explorer installation
 	progress,26,for Internet Explorer,Updating Adobe Flash,The Unfaltering March Of `Progress
-	SetTimer,altr,-10000
+	SetTimer,altr,-15000
 	Runwait %ComSpec% /C "flashplayerIE.msi /qb /norestart"
 	sleep 2000
 
-	
-	; sleep 2000
-	; Run flashplayerIE.exe
-	; sleep 12000
-	; send +{tab}
-	; sleep 200
-	; send {space}
-	; sleep 200
-	; send {tab}
-	; sleep 200
-	; send {tab}
-	; sleep 200
-	; send {enter}
-	; sleep 2000
-	; send {tab}
-	; sleep 200
-	; send {enter}
-
 ;	; Flash Player Firefox plugin installation
 	sleep 2000
-	if A_OSVersion in WIN_XP
-	{
+;	if A_OSVersion in WIN_XP
+;	{
 		progress,35,for Firefox,Updating Adobe Flash,The Unfaltering March Of `Progress
-		SetTimer,altr,-7000
+		SetTimer,altr,-13000
 		Runwait %ComSpec% /C "flashplayerFF.msi /qb /norestart"
-	}
-	if A_OSVersion in WIN_VISTA
-	{
-		progress,35,for Firefox--bad news`,bro`,you have to use an older version,Updating Adobe Flash,The Unfaltering March Of `Progress
-		Run flashplayerFF-old_win7.exe
-		sleep 12000
-		send +{tab}
-		sleep 200
-		send {space}
-		sleep 200
-		send {tab}
-		sleep 200
-		send {tab}
-		sleep 200
-		send {enter}
-		sleep 2000
-		send {tab}
-		sleep 200
-		send {enter}
-	}
+	; }
+	; if A_OSVersion in WIN_VISTA
+	; {
+		; progress,35,for Firefox--bad news`,bro`,you have to use an older version,Updating Adobe Flash,The Unfaltering March Of `Progress
+		; Run flashplayerFF-old_win7.exe
+		; sleep 12000
+		; send +{tab}
+		; sleep 200
+		; send {space}
+		; sleep 200
+		; send {tab}
+		; sleep 200
+		; send {tab}
+		; sleep 200
+		; send {enter}
+		; sleep 2000
+		; send {tab}
+		; sleep 200
+		; send {enter}
+	; }
 	sleep 2000
 	
 	; if A_OSVersion in WIN_XP
@@ -194,7 +176,7 @@ else
 		send C:\Documents and Settings\All Users
 		sleep 500
 		send !a
-		sleep 2000		
+		sleep 2000
 		
 		;; finish replacement
 		send !{F4}
@@ -220,11 +202,10 @@ else
 	progress,70,%A_Space%,Updating Adobe Reader,The Unfaltering March Of `Progress
 	sleep 2000
 	SetTimer,altr,-10000
-	RunWait %ComSpec% /C "adobereader.msi /qb /norestart"
-	progress,80,and probably failing--this part needs some work,Patching Adobe Reader,The Unfaltering March Of `Progress
-	SetTimer,altr,-10000
-	RunWait %ComSpec% /C "msiexec.exe /update adobereaderpatch.msp /qb /norestart"
-	; sleep 384000 ;; Confirmed: does not need sleep
+	RunWait %ComSpec% /C "adobereader.msi /qb /norestart /update adobereaderpatch.msp"
+;	progress,80,and probably failing--this part needs some work,Patching Adobe Reader,The Unfaltering March Of `Progress
+;	SetTimer,altr,-10000
+;	RunWait %ComSpec% /C "msiexec.exe /update adobereaderpatch.msp /qb /norestart"
 
 	;; Internet Explorer installation
 	sleep 2000
@@ -249,7 +230,7 @@ else
 	Run %ComSpec% /C "del /F /Q c:\mr.bat"
 
 	;; Automatic Shutdown
-	progress,100,feel free to grab the mouse and keyboard again. `If anything went wrong`, please `send my master an email,And we're done,The Unfaltering March Of `Progress
+	progress,100,feel free to grab the mouse and keyboard again. `If anything went wrong`, please `send an email,And we're done,The Unfaltering March Of `Progress
 	sleep 2000
 	Run %ComSpec% /C "shutdown -a"
 	sleep 500
@@ -260,7 +241,7 @@ else
 	}
 	sleep 1000
 	Run %ComSpec% /C "shutdown -s -t 600"
-	MsgBox, 4, Alright you're done, Do you wanna shutdown or something? *YES* to shutdown now or *NO* to abort the automatic Shutdown of 10 minutes already inprogress. BTdubs the error level is "%ErrorLevel%" on the off chance that you're interested. [this message will self-distruct in seven minutes],420
+	MsgBox, 4, Alright you're done, Do you wanna shutdown or something? *YES* to shutdown now or *NO* to abort the automatic Shutdown of 10 minutes already in progress. BTdubs the error level is "%ErrorLevel%" on the off chance that you're interested. [this message will self-distruct in seven minutes],420
 	IfMsgBox Yes
 	{
 		Run %ComSpec% /C "shutdown -a"
