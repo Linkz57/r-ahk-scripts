@@ -1,16 +1,16 @@
-MsgBox,4,Remove Stuff v1.0,This script written by Tyler Francis wants to remove a bunch of the junk programs that you probably don't want. It's pretty aggressive so you may want to review mr.txt to make sure you're ok with losing all of the programs and files listed therein. Are you ok with this?
+MsgBox,4,Remove Stuff v1.2.0,This script written by Tyler Francis wants to remove a bunch of the junk programs that you probably don't want. It's pretty aggressive so you may want to review mr.txt to make sure you're ok with losing all of the programs and files listed therein. Are you ok with this?
 IfMsgBox No
 {
-    MsgBox,0,Nothing Removed,Ok some other time maybe
+	MsgBox,0,Nothing Removed,Ok some other time maybe
 	exitapp
 }
 else IfMsgBox Yes
 {
-    ;; disable IE proxies
+	;; disable IE proxies
 	Run %ComSpec% /C "REG ADD "HKCU\SOFTWARE\MICROSOFT\WINDOWS\CURRENTVERSION\INTERNET SETTINGS" /V "PROXYENABLE" /T REG_DWORD /D "0" /F"
 	Sleep, 500
-    ;; sets homepage to Google. I prefer about:blank myself, but some end users will stare at their blank browser and wait for a page to load.
-	Run %ComSpec% /C "REG ADD "HKCU\SOFTWARE\MICROSOFT\INTERNET EXPLORER\MAIN" /V "START PAGE" /D "https://google.com" /F"
+	;; sets homepage to district website
+	Run %ComSpec% /C "REG ADD "HKCU\SOFTWARE\MICROSOFT\INTERNET EXPLORER\MAIN" /V "START PAGE" /D "http://humble.k12.tx.us/" /F"
 	Sleep, 500
 	
 	;; Misc Removal Script setup
@@ -36,7 +36,7 @@ else IfMsgBox Yes
 		send C:\Documents and Settings\student
 		sleep 500
 		send !a
-		sleep 2500
+		sleep 3500
 		
 		;; replace programdata
 		send +{tab}
@@ -48,7 +48,19 @@ else IfMsgBox Yes
 		send C:\Documents and Settings\All Users
 		sleep 500
 		send !a
-		sleep 2000		
+		sleep 2000
+		
+		;; replace public
+		send +{tab}
+		sleep 500
+		send `%PUBLIC`%
+		sleep 500
+		send {tab}
+		sleep 500
+		send C:\Documents and Settings\All Users
+		sleep 500
+		send !a
+		sleep 2000
 		
 		;; finish replacement
 		send !{F4}
