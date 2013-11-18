@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v1.3.2,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
+MsgBox,4,Update Automatically v1.3.3,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe
@@ -193,7 +193,7 @@ else
 	sleep 1000
 	RunWait %ComSpec% /C "del /F /Q c:\mr.bat"
 
-	;; Java selection
+	;; Java Installation
 	progress,60,%A_Space%,Updating Java,The Unfaltering March Of `Progress
 	SetTimer,altr,-10000
 	RunWait %ComSpec% /C "java.msi /passive /norestart"
@@ -201,11 +201,11 @@ else
 	;; Adobe Reader installation
 	progress,70,%A_Space%,Updating Adobe Reader,The Unfaltering March Of `Progress
 	sleep 2000
+	SetTimer,altr,-15000
+	RunWait %ComSpec% /C "msiexec /package adobereader.msi /qb /norestart" ; /update adobereaderpatch.msp"
+	progress,80,and probably failing--this part needs some work,Patching Adobe Reader,The Unfaltering March Of `Progress
 	SetTimer,altr,-10000
-	RunWait %ComSpec% /C "adobereader.msi /qb /norestart /update adobereaderpatch.msp"
-;	progress,80,and probably failing--this part needs some work,Patching Adobe Reader,The Unfaltering March Of `Progress
-;	SetTimer,altr,-10000
-;	RunWait %ComSpec% /C "msiexec.exe /update adobereaderpatch.msp /qb /norestart"
+	RunWait %ComSpec% /C "msiexec.exe /update adobereaderpatch.msp /qb /norestart"
 
 	;; Internet Explorer installation
 	sleep 2000
@@ -275,7 +275,7 @@ else
 	return
 	
 	msiissues:
-	sleep 7000
+	sleep 10000
 	IfWinExist,Windows Installer,OK
 	{
 		send {space}
