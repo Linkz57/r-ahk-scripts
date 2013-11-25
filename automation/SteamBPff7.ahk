@@ -1,4 +1,5 @@
 ;Helps launch FF7 from Steam Big Picture Mode
+;doesn't work yet
 loop
 {
 	sleep 2000
