@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v1.3.3,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
+MsgBox,4,Update Automatically v1.4.0,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe
@@ -258,6 +258,12 @@ else
 		ExitApp
 	}
 	ExitApp
+	
+	
+	;;  Hotkeys
+	;;  And
+	;;  Gotos
+	
 	esc::
 	{
 		Run %ComSpec% /C "shutdown -a"
@@ -276,8 +282,15 @@ else
 	
 	msiissues:
 	sleep 10000
-	IfWinExist,Windows Installer,OK
+	IfWinExist,Windows Installer,OK  ; Should automatically dismiss Adobe Reader installation errors.
 	{
+		WinActivate
+		send {space}
+		goto,msiissues
+	}
+	IfWinExist,,Error 1722  ; Should automatically dismiss Adobe Flash Player installation errors.
+	{
+		WinActivate
 		send {space}
 		goto,msiissues
 	}
