@@ -1,5 +1,7 @@
-REM mr.txt v1.2.2
+REM mr.txt v1.2.4
 REM This is a very basic batch file written by Tyler Francis that--in tandem with another script cleverly named "Remove"--attempts to remove many programs that would not be useful and/or allowed in a school environment. It's rather aggressive about this, especially in the first "silent" half of this file, so make sure you're ok with losing all of the programs and files mentioned here.
+
+C:
 
 REM ~ begin automatic removal ~
 
@@ -66,9 +68,6 @@ REM below is Beatz Maker Evolution Demo
 
 REM below is Document Manager Lite
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {51AE9E42-640D-4C14-A9B6-43F64AA4E3E2}
-
-REM below is Snap.Do
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {02F88255-B4AC-43C9-AA47-B82C0DA00A24}
 
 REM below is WinZip 16.5
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {CD95F661-A5C4-44F5-A6AA-ECDD91C240D2}
@@ -160,6 +159,27 @@ REM below is Norton Security Scan
 REM below is Print Perfect Clip Art
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {D26233EA-A72D-42E0-8E0F-5FCC11FF5FCD}
 
+REM below is Print Perfect Clip Art
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {D322A9E3-758B-4D60-A7C4-65C88FD378D0}
+
+REM below is CWA Reminder by We-Care.com v4.1.22.3
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {DB9BF6DA-8030-4A21-9FF4-8856A7556FCF}
+
+REM below is NaturalReaderFree 11
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {C5E7BF75-007E-44AD-8962-627ED44CB63B}
+
+REM below is QuickShare 10.169.60.13223
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {F40711CD-60B3-45F5-85C5-F1AA400C1B6E}
+
+REM below is ScorpionSaver 1.0.0.0
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {9B65F9A3-9D24-452A-B6EF-1457D65E4259}
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {273E1F1A-7B1A-436C-A783-A4A8C97AD036}
+
+REM below is ABBYY FineReader 6.0 Sprint
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {ACF60000-22B9-4CE9-98D6-2CCF359BAC07}
+
+
+
 
 REM below is Spelling Dictionaries Support For Adobe Reader 9
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {AC76BA86-7AD7-5464-3428-900000000004}
@@ -201,7 +221,6 @@ REM Below are some old versions of Java
 
 REM Below are Java version 6
 REM 32 bit java
-
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83216000FF} && REM Java 16u0
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83216001FF} && REM Java 16u1
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83216002FF} && REM Java 16u2
@@ -335,18 +354,18 @@ REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217045
 REM sleep5000.exe
 timout /t 5
 
-del /F /Q /S "%HOMEPATH%\Desktop\*.exe"
-del /F /Q /S /A:H "%HOMEPATH%\Desktop\*.exe"
-del /F /Q /S "%HOMEPATH%\Desktop\*.bat"
-del /F /Q /S /A:H "%HOMEPATH%\Desktop\*.bat"
-del /F /Q /S "%HOMEPATH%\My Documents\*.exe"
-del /F /Q /S /A:H "%HOMEPATH%\My Documents\*.exe"
-del /F /Q /S "%HOMEPATH%\Documents\*.exe"
-del /F /Q /S /A:H "%HOMEPATH%\Documents\*.exe"
-del /F /Q /S "%HOMEPATH%\My Documents\*.bat"
-del /F /Q /S /A:H "%HOMEPATH%\My Documents\*.bat"
-del /F /Q /S "%HOMEPATH%\Documents\*.bat"
-del /F /Q /S /A:H "%HOMEPATH%\Documents\*.bat"
+del /F /Q /S "%HOMEDRIVE%%HOMEPATH%\Desktop\*.exe"
+del /F /Q /S /A:H "%HOMEDRIVE%%HOMEPATH%\Desktop\*.exe"
+del /F /Q /S "%HOMEDRIVE%%HOMEPATH%\Desktop\*.bat"
+del /F /Q /S /A:H "%HOMEDRIVE%%HOMEPATH%\Desktop\*.bat"
+del /F /Q /S "%HOMEDRIVE%%HOMEPATH%\My Documents\*.exe"
+del /F /Q /S /A:H "%HOMEDRIVE%%HOMEPATH%\My Documents\*.exe"
+del /F /Q /S "%HOMEDRIVE%%HOMEPATH%\Documents\*.exe"
+del /F /Q /S /A:H "%HOMEDRIVE%%HOMEPATH%\Documents\*.exe"
+del /F /Q /S "%HOMEDRIVE%%HOMEPATH%\My Documents\*.bat"
+del /F /Q /S /A:H "%HOMEDRIVE%%HOMEPATH%\My Documents\*.bat"
+del /F /Q /S "%HOMEDRIVE%%HOMEPATH%\Documents\*.bat"
+del /F /Q /S /A:H "%HOMEDRIVE%%HOMEPATH%\Documents\*.bat"
 del /F /Q /S "%PUBLIC%\Desktop\*.exe"
 del /F /Q /S /A:H "%PUBLIC%\Desktop\*.exe"
 del /F /Q /S "%PUBLIC%\Desktop\*.bat"
@@ -360,21 +379,21 @@ del /F /Q /S /A:H "%PUBLIC%\My Documents\*.bat"
 del /F /Q /S "%PUBLIC%\Documents\*.bat"
 del /F /Q /S /A:H "%PUBLIC%\Documents\*.bat"
 
-del /F /Q "%HOMEPATH%\Start Menu\Programs\Spotify.lnk"
-del /F /Q "%HOMEPATH%\Desktop\Free Music Downloads.lnk"
-del /F /Q "%HOMEPATH%\Desktop\Free Dolphin Screensaver.lnk"
-del /F /Q "%HOMEPATH%\Desktop\Free Games!!.lnk"
-del /F /Q "%HOMEPATH%\Desktop\FREE Games.url"
-del /F /Q "%HOMEPATH%\Desktop\Create Your Own Video Screensaver!.lnk"
-del /F /Q "%HOMEPATH%\Desktop\Click to Find and Fix Errors.lnk"
-del /F /Q "%HOMEPATH%\Desktop\Facebook Photo Drag-n-Drop.lnk"
-del /F /Q "%HOMEPATH%\Desktop\Play Disney® Club Penguin.lnk"
-del /F /Q "%HOMEPATH%\Desktop\Continue Music Remote.lnk"
-del /F /Q /S "%HOMEPATH%\Desktop\utmp"
-REM del /F /Q "%HOMEPATH%\Desktop\Google Chrome.lnk"
+del /F /Q "%HOMEDRIVE%%HOMEPATH%\Start Menu\Programs\Spotify.lnk"
+del /F /Q "%HOMEDRIVE%%HOMEPATH%\Desktop\Free Music Downloads.lnk"
+del /F /Q "%HOMEDRIVE%%HOMEPATH%\Desktop\Free Dolphin Screensaver.lnk"
+del /F /Q "%HOMEDRIVE%%HOMEPATH%\Desktop\Free Games!!.lnk"
+del /F /Q "%HOMEDRIVE%%HOMEPATH%\Desktop\FREE Games.url"
+del /F /Q "%HOMEDRIVE%%HOMEPATH%\Desktop\Create Your Own Video Screensaver!.lnk"
+del /F /Q "%HOMEDRIVE%%HOMEPATH%\Desktop\Click to Find and Fix Errors.lnk"
+del /F /Q "%HOMEDRIVE%%HOMEPATH%\Desktop\Facebook Photo Drag-n-Drop.lnk"
+del /F /Q "%HOMEDRIVE%%HOMEPATH%\Desktop\Play Disney® Club Penguin.lnk"
+del /F /Q "%HOMEDRIVE%%HOMEPATH%\Desktop\Continue Music Remote.lnk"
+del /F /Q /S "%HOMEDRIVE%%HOMEPATH%\Desktop\utmp"
+REM del /F /Q "%HOMEDRIVE%%HOMEPATH%\Desktop\Google Chrome.lnk"
 REM del /F /Q "%ALLUSERSPROFILE%\Desktop\Google Chrome.lnk"
 del /F /Q "%ALLUSERSPROFILE%\Desktop\u.ini"
-del /F /Q "%HOMEPATH%\Desktop\u.ini"
+del /F /Q "%HOMEDRIVE%%HOMEPATH%\Desktop\u.ini"
 del /F /Q /S "%ProgramFiles%\FilmFanatic"
 
 REM	del /F /Q /S "%ProgramFiles%\Free Offers from Freeze.com"
@@ -383,7 +402,7 @@ REM	del /F /Q /S "%ProgramFiles%\Free Offers from Freeze.com"
 REM ~ begin manual removal ~
 
 
-"%HOMEPATH%\Application Data\SanDisk\SanDiskSecureAccess_Manager.exe" --uninstall
+"%HOMEDRIVE%%HOMEPATH%\Application Data\SanDisk\SanDiskSecureAccess_Manager.exe" --uninstall
 "%ProgramFiles%\WinRAR\Uninstall.exe"
 "%ProgramFiles%\AssaultCube_v1.1.0.4\Uninstall.exe"
 "%ProgramFiles%\Vocal Remover\unins000.exe"
@@ -394,18 +413,18 @@ REM ~ begin manual removal ~
 "%ProgramFiles%\PCFix\unins000.exe"
 %HOMEDRIVE%\hello\uninstall.exe -j "%HOMEDRIVE%\hello\jdk7"
 "%ProgramFiles%\WinUtilities\unins000.exe"
-"%HOMEPATH%\Application Data\Spotify\Uninstall.exe"
+"%HOMEDRIVE%%HOMEPATH%\Application Data\Spotify\Uninstall.exe"
 "%ProgramFiles%\Reviversoft\Registry Reviver\unins000.exe"
 "%ProgramFiles%\Notepad++\uninstall.exe"
-"%HOMEPATH%\Local Settings\Application Data\Mixxx\uninst.exe"
+"%HOMEDRIVE%%HOMEPATH%\Local Settings\Application Data\Mixxx\uninst.exe"
 "%ProgramFiles%\K-Lite Codec Pack\unins000.exe"
 "%ProgramFiles%\MusicFrost\unins000.exe"
 "%ProgramFiles%\FinalVideoDownloader\unins000.exe"
 "%ProgramFiles%\miniMRP\unins000.exe"
 "%ProgramFiles%\DealPly\uninst.exe"
 "%ProgramFiles%\BrotherSoft_Extreme\uninstall.exe"
-"%HOMEPATH%\Desktop\Scorched3D\uninst.exe"
-"%HOMEPATH%\Local Settings\Application Data\Audiogalaxy\uninstall.exe"
+"%HOMEDRIVE%%HOMEPATH%\Desktop\Scorched3D\uninst.exe"
+"%HOMEDRIVE%%HOMEPATH%\Local Settings\Application Data\Audiogalaxy\uninstall.exe"
 "%ProgramFiles%\iZotope\Vinyl\unins000.exe"
 "%ProgramFiles%\AssaultCube_v1.1.0.4\Uninstall.exe"
 "%ALLUSERSPROFILE%\Application Data\{3C0AACBF-B491-4BE5-BAF9-AA46E0629E42}\bm_installer.exe" MODIFY=FALSE REMOVE=TRUE UNINSTALL=YES
@@ -429,9 +448,9 @@ REM ~ begin manual removal ~
 "%ProgramFiles%\Google\Quick Search Box\GoogleQuickSearchBoxSetup.exe"  /force /standalone /uninstall
 "%ProgramFiles%\Yahoo! Games\Homesteader\Uninstall.exe"
 "%ProgramFiles%\Yahoo! Games\Mahjongg Dimensions Deluxe - Tiles in Time\Uninstall.exe"
-"%HOMEPATH%\Local Settings\Application Data\Yahoo!\BrowserPlus\BrowserPlusUninstaller.exe"
+"%HOMEDRIVE%%HOMEPATH%\Local Settings\Application Data\Yahoo!\BrowserPlus\BrowserPlusUninstaller.exe"
 "%ProgramFiles%\Registry Mechanic\unins000.exe"
-"%HOMEPATH%\Application Data\WindSolutions\CopyTransControlCenter\Applications\CopyTransControlCenter.exe" /uninstall
+"%HOMEDRIVE%%HOMEPATH%\Application Data\WindSolutions\CopyTransControlCenter\Applications\CopyTransControlCenter.exe" /uninstall
 REM "%ProgramFiles%\TI Education\TI-83 Plus Flash Debugger\UNWISE.EXE"
 "%ProgramFiles%\Enterbrain\RPGVX\unins000.exe"
 "%ProgramFiles%\MAGIX\Music_Maker_17_Premium_Download_Version\mm17dlx_en-US_setup.exe"
@@ -463,11 +482,11 @@ REM "%ProgramFiles%\Google\Picasa3\Uninstall.exe"
 "%ProgramFiles%\Wajam\uninstall.exe"
 "%ProgramFiles%\24x7Help\unins000.exe"
 "%ProgramFiles%\AppGraffiti\unins000.exe"
-"%HOMEPATH%\Application Data\Genieo\Application\Partner\uninstall\w3i4\partner_uninstall.exe"
+"%HOMEDRIVE%%HOMEPATH%\Application Data\Genieo\Application\Partner\uninstall\w3i4\partner_uninstall.exe"
 "%ProgramFiles%\GamesBar\uninst.exe"
 "%ProgramFiles%\PriceGong\uninst.exe"
 "%ProgramFiles%\Inbox Toolbar\unins000.exe"
-"%HOMEPATH%\Application Data\Jenkat\Jenkat Games Arcade\uninstall.exe"
+"%HOMEDRIVE%%HOMEPATH%\Application Data\Jenkat\Jenkat Games Arcade\uninstall.exe"
 "%ProgramFiles%\InstallShield Installation Information\{30ED44CB-7314-4C6E-800C-C4BADDE67D8A}\setup.exe" -uninst
 "%ProgramFiles%\PCPowerSpeed\unins000.exe"
 "%ProgramFiles%\RebateRobot\unins000.exe"
@@ -491,7 +510,7 @@ REM "%ProgramFiles%\Google\Picasa3\Uninstall.exe"
 "%ProgramFiles%\GameSpy Arcade\UNWISE.EXE"
 "%ProgramFiles%\Microsoft Games\Halo Trial\UNINSTAL.EXE" /runtemp
 "%ProgramFiles%\PopCap Games\Plants vs. Zombies\PopUninstall.exe" "%ProgramFiles%\PopCap Games\Plants vs. Zombies\Install.log"
-"%HOMEPATH%\Local Settings\Application Data\ArcadeCandy\candyRemove.exe"
+"%HOMEDRIVE%%HOMEPATH%\Local Settings\Application Data\ArcadeCandy\candyRemove.exe"
 "%ProgramFiles%\Moviestorm\uninstall.exe"
 "%ProgramFiles%\pazera-software\FLV_to_AVI_Converter\unins000.exe"
 "%ProgramFiles%\XaviWare Software\Twitter Password Recovery\unins000.exe"
@@ -516,7 +535,7 @@ REM "%ProgramFiles%\Google\Picasa3\Uninstall.exe"
 "%ProgramFiles%\HotPotatoes6\unins000.exe"
 "%ProgramFiles%\TeacherWorks\UNWISE.EXE"
 "%ProgramFiles%\PC Optimizer Pro\uninst.exe"
-"%HOMEPATH%\Application Data\Dropbox\bin\Uninstall.exe"
+"%HOMEDRIVE%%HOMEPATH%\Application Data\Dropbox\bin\Uninstall.exe"
 "%ProgramFiles%\PopCap Games\Amazing Adventures 5\PopUninstall.exe" "%ProgramFiles%\PopCap Games\Amazing Adventures 5\Install.log"
 REM "%ProgramFiles%\Google\Google Updater\GoogleUpdater.exe" -uninstall
 "%ProgramFiles%\InterActual\InterActual Player\inuninst.exe"
@@ -528,7 +547,7 @@ REM "%ProgramFiles%\Google\Google Updater\GoogleUpdater.exe" -uninstall
 "%ProgramFiles%\GameTop.com\Extreme Racers\unins000.exe"
 "%ProgramFiles%\GameTop.com\Real Race\unins000.exe"
 "%ProgramFiles%\MP3FreeDownloader\uninst.exe"
-"%HOMEPATH%\Local Settings\Application Data\MapleStudio\ChromePlus\Application\2.0.3.55\Installer\setup.exe"  --uninstall
+"%HOMEDRIVE%%HOMEPATH%\Local Settings\Application Data\MapleStudio\ChromePlus\Application\2.0.3.55\Installer\setup.exe"  --uninstall
 "%ProgramFiles%\Mario Forever\Uninstall.exe"
 "%ProgramFiles%\Minecraft\unins000.exe"
 "%ProgramFiles%\InstallShield Installation Information\{2987EE84-C4EE-4FF5-8160-32DE00D6ABC6}\setup.exe"
@@ -549,7 +568,7 @@ REM "%ProgramFiles%\Google\Google Updater\GoogleUpdater.exe" -uninstall
 "%ProgramFiles%\PC Speed Up\unins000.exe"
 "%ProgramFiles%\SpottyFiles\uninstall.exe"
 "%ProgramFiles%\Image Resizer\uninstall.exe"
-"%HOMEPATH%\AppData\Local\Pokki\v0.260.9.182\Uninstall.exe"
+"%HOMEDRIVE%%HOMEPATH%\AppData\Local\Pokki\v0.260.9.182\Uninstall.exe"
 "%ProgramFiles%\The Weather Channel\The Weather Channel App\TheWeatherChannelCustomUninstall.exe"
 "%ProgramFiles%\SaveValet\ie\uninstaller.exe"
 "%ProgramFiles%\Solid Savings\Uninstall.exe"
@@ -585,9 +604,9 @@ REM "%ProgramFiles%\Google\Google Updater\GoogleUpdater.exe" -uninstall
 "%ProgramFiles%\OpenIt\Open It!\uninstall.exe"
 "%ProgramFiles%\Simnet\Simple Sticky Notes\unins000.exe"
 REM I this looks like it needs to be removed, but I don't want to touch the WIN"C:\Windows\system32\WNLT\Installation\uninstaller.exe"
-"%HOMEPATH%\AppData\Roaming\DSite\UpdateProc\UpdateTask.exe"
+"%HOMEDRIVE%%HOMEPATH%\AppData\Roaming\DSite\UpdateProc\UpdateTask.exe"
 "%ProgramFiles%\FRESHG~1\WORDMO~1\UNWISE.EXE C:\PROGRA~1\FRESHG~1\WORDMO~1\INSTALL.LOG" /Uninstall
-"%HOMEPATH%\AppData\Roaming\Zip Opener Packages\uninstaller.exe" /Uninstall /NM="Zip Opener Packages" /AN="" /MBN="Zip Opener Packages"
+"%HOMEDRIVE%%HOMEPATH%\AppData\Roaming\Zip Opener Packages\uninstaller.exe" /Uninstall /NM="Zip Opener Packages" /AN="" /MBN="Zip Opener Packages"
 "%ProgramFiles%\BabylonToolbar\BabylonToolbar\1.5.3.17\uninstall.exe"
 "%ProgramFiles%\DealRunner\unins000.exe"
 "%ProgramFiles%\EpicPlay\epicRemoval.exe"
@@ -605,8 +624,8 @@ REM below is Community Smartbar
 "%ProgramFiles%\ContinueToSave\uninstall.exe" /FULLPATH="C:\Program Files\ContinueToSave"
 "%ProgramFiles%\DealPly\uninst.exe" /uninstall
 "%ProgramFiles%\Google\Google Toolbar\Component\GoogleToolbarManager_94DDE1EDD1CDF6A3.exe" /uninstall
-"%HOMEPATH%\AppData\Local\SevereWeatherAlerts\uninstall.exe"
-"%HOMEPATH%\AppData\Local\SwvUpdater\Updater.exe" /uninstall
+"%HOMEDRIVE%%HOMEPATH%\AppData\Local\SevereWeatherAlerts\uninstall.exe"
+"%HOMEDRIVE%%HOMEPATH%\AppData\Local\SwvUpdater\Updater.exe" /uninstall
 "%ProgramFiles%\Web Layers\WebLayersuninstall.exe"
 "%ProgramFiles%\Extreme Media Player\Uninstall.exe"
 "%ProgramFiles%\Fast Free Converter\uninstall.exe"
@@ -616,7 +635,7 @@ REM below is Community Smartbar
 "%ProgramFiles%\AVG SafeGuard toolbar\UNINSTALL.exe" /UNINSTALL
 "%ProgramFiles%\diamondata\diamondatauninstall.exe"
 "%ProgramFiles%\Ask4Expert\Smart PC Booster 7\Uninstall.exe"
-"%HOMEPATH%\Application Data\Cartwheel\unins000.exe"
+"%HOMEDRIVE%%HOMEPATH%\Application Data\Cartwheel\unins000.exe"
 "%ProgramFiles%\Flash Player Pro\unins000.exe"
 "%ProgramFiles%\Playbryte\uninstall.exe" /u /UserID=dfa001d1-c45c-4cf0-9be2-b37f26cf8bfd /SourceID=slice_updater /ImplementationID=playbryte-fa-ptn
 "%ProgramFiles%\Linksicle\Uninstall.exe"
@@ -625,27 +644,27 @@ REM below is Community Smartbar
 "%ProgramFiles%\PCFixSpeed\unins000.exe"
 "%ProgramFiles%\PC Health Kit\unins000.exe"
 "%ProgramFiles%\Desk 365\eUninstall.exe"
-"%HOMEPATH%\AppData\Local\FilesFrog Update Checker\uninstall.exe"
+"%HOMEDRIVE%%HOMEPATH%\AppData\Local\FilesFrog Update Checker\uninstall.exe"
 "%ProgramFiles%\Iminent\inst\Bootstrapper\Bootstrapper.exe" uninstall
 "%ProgramFiles%\Linksicle\Uninstall.exe"
 "%ProgramFiles%\Uniblue\SpeedUpMyPC\unins000.exe"
 "%ProgramFiles%\SuperLyrics-1\Uninstall.exe" /fromcontrolpanel=1
 REM C:\Windows\IsUninst.exe -f"C:\Program Files\Goodheart-Willcox\Housing Decisions\Uninst.isu"
-"%HOMEPATH%\AppData\Roaming\defaulttab\defaulttab\uninstalldt.exe"
+"%HOMEDRIVE%%HOMEPATH%\AppData\Roaming\defaulttab\defaulttab\uninstalldt.exe"
 "%ProgramFiles%\iRobinHood\iRobinHood Addon\uninstall.exe" /S
 "%ProgramFiles%\LyricsBuddy-1\Uninstall.exe" /fromcontrolpanel=1
-"%HOMEPATH%\AppData\Roaming\okitspace\uninstall.exe"
+"%HOMEDRIVE%%HOMEPATH%\AppData\Roaming\okitspace\uninstall.exe"
 "%ProgramFiles%\Olive\uninstall.exe"
 "%ProgramFiles%\SaltarSmart\SaltarSmartuninstall.exe"
-"%HOMEPATH%\AppData\Local\SevereWeatherAlerts\uninstall.exe"
+"%HOMEDRIVE%%HOMEPATH%\AppData\Local\SevereWeatherAlerts\uninstall.exe"
 "%ProgramFiles%\SoftwareUpdater\uninstall.exe"
 "%ProgramFiles%\Advanced System Protector\unins000.exe"
 "%ProgramFiles%\Google\Google Toolbar\Component\GoogleToolbarManager_08875ABF44579E20.exe" /uninstall
-"%HOMEPATH%\AppData\Local\SwvUpdater\Updater.exe" /uninstall
+"%HOMEDRIVE%%HOMEPATH%\AppData\Local\SwvUpdater\Updater.exe" /uninstall
 "%ProgramFiles%\WinZip Driver Updater\unins000.exe"
 REM "C:\Program Files\Browsersafeguard\uninstall.browsersafeguard.exe" /u /UserID=37efb983-f474-4743-9d78-72652319a23a /SourceID=google_browsersafeguard-display-us-CPC-300x250-23909039453 /ImplementationID=browsersafeguard-pitch
 "%ProgramFiles%\Browsersafeguard\uninstall.browsersafeguard.exe" /u
-"%HOMEPATH%\AppData\Roaming\Spotify\Spotify.exe" /uninstall
+"%HOMEDRIVE%%HOMEPATH%\AppData\Roaming\Spotify\Spotify.exe" /uninstall
 "%ProgramFiles%\TeamViewer\Version7\uninstall.exe"
 "%ProgramFiles%\FLV Media Player\unins000.exe"
 "%ProgramFiles%\glindorus\glindorusuninstall.exe"
@@ -659,24 +678,72 @@ REM "C:\Program Files\Browsersafeguard\uninstall.browsersafeguard.exe" /u /UserI
 "%ProgramFiles%\McAfee\SiteAdvisor\uninstall.exe
 "%ProgramFiles%\ParetoLogic\RegCure Pro\uninstall.exe
 "%ProgramFiles%\InstallShield Installation Information\{6336C0CC-BA32-4949-9D3D-C86B76147CCA}\setup.exe" -runfromtemp -l0x0009"
-"%HOMEPATH%\AppData\Roaming\DefaultTab\DefaultTab\uninstalldt.exe" -removeonly
+"%HOMEDRIVE%%HOMEPATH%\AppData\Roaming\DefaultTab\DefaultTab\uninstalldt.exe" -removeonly
 "%ProgramFiles%\DefaultTab\uninstaller.exe"
 "%ProgramFiles%\FileOpenerPro\uninstall.exe" /u /UserID=76876b9b-d424-44ca-bd97-1128124f94eb /SourceID=google_fileopenerpro-display-us-manualowl-728x90-31920941409
 "%ProgramFiles%\LyricsParty-16\Uninstall.exe" /fromcontrolpanel=1
-"%HOMEPATH%\AppData\Local\SwvUpdater\Updater.exe" /uninstall
-"%HOMEPATH%\AppData\Local\SySaver\uninst.exe"
-"%HOMEPATH%\Application Data\defaulttab\defaulttab\uninstalldt.exe"
-"%HOMEPATH%\Local Settings\Application Data\DefineExt\uninst.exe"
+"%HOMEDRIVE%%HOMEPATH%\AppData\Local\SwvUpdater\Updater.exe" /uninstall
+"%HOMEDRIVE%%HOMEPATH%\AppData\Local\SySaver\uninst.exe"
+"%HOMEDRIVE%%HOMEPATH%\Application Data\defaulttab\defaulttab\uninstalldt.exe"
+"%HOMEDRIVE%%HOMEPATH%\Local Settings\Application Data\DefineExt\uninst.exe"
 "%ProgramFiles%\LyricsParty-16\Uninstall.exe"
 "%ProgramFiles%\SearchProtect\Main\bin\uninstall.exe" /s
-"%HOMEPATH%\Local Settings\Application Data\SevereWeatherAlerts\uninstall.exe"
-"%HOMEPATH%\Local Settings\Application Data\SySaver\uninst.exe"
+"%HOMEDRIVE%%HOMEPATH%\Local Settings\Application Data\SevereWeatherAlerts\uninstall.exe"
+"%HOMEDRIVE%%HOMEPATH%\Local Settings\Application Data\SySaver\uninst.exe"
 "%ProgramFiles%\AVCWare\iPad Mate Platinum\Uninstall.exe"
 "%ProgramFiles%\BatBrowse\BatBrowseuninstall.exe"
-"%HOMEPATH%\AppData\Roaming\WindSolutions\CopyTransControlCenter\Applications\CopyTransControlCenter.exe" /uninstall
+"%HOMEDRIVE%%HOMEPATH%\AppData\Roaming\WindSolutions\CopyTransControlCenter\Applications\CopyTransControlCenter.exe" /uninstall
 "C:\Program Files\Mysearchdial\1.8.21.0\uninstall.exe" 
-"%HOMEPATH%\AppData\Roaming\DIGITA~1\UpdateProc\UpdateTask.exe" /Uninstall
-"%HOMEPATH%AppData\Roaming\0D0S1L2Z1P1B\Zip Extractor Packages\uninstaller.exe" /Uninstall /NM="Zip Extractor Packages" /AN="0D0S1L2Z1P1B" /MBN="Zip Extractor Packages"
+"%HOMEDRIVE%%HOMEPATH%\AppData\Roaming\DIGITA~1\UpdateProc\UpdateTask.exe" /Uninstall
+"%HOMEDRIVE%%HOMEPATH%\AppData\Roaming\0D0S1L2Z1P1B\Zip Extractor Packages\uninstaller.exe" /Uninstall /NM="Zip Extractor Packages" /AN="0D0S1L2Z1P1B" /MBN="Zip Extractor Packages"
+"%ProgramFiles%\Giant Savings\Uninstall.exe"
+"%ProgramFiles%\PDFReader\Uninstall\Uninstall.exe" /Uninstall
+"%ProgramFiles%\TubeSaver-15\Uninstall.exe" /fromcontrolpanel=1
+"%ProgramFiles%\Whilokii\Whilokiiuninstall.exe"
+"%ProgramFiles%\Plus-HD-1.6\Uninstall.exe" /fromcontrolpanel=1
+REM below is Snap.do
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {86C4F07E-AA71-4C6A-A9D3-CF0A6F386799} ENGINE=1
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {86C4F07E-AA71-4C6A-A9D3-CF0A6F386799}
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {02F88255-B4AC-43C9-AA47-B82C0DA00A24}
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {92109C97-2662-4353-9386-B64309F595C9}
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {B7D59920-4502-4A1B-843D-BD51E8BF3689}
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {9EA32328-5070-4EBC-A42D-460FD15E1424} ENGINE=1
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {92109C97-2662-4353-9386-B64309F595C9} ENGINE=1
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {B5FD7C0D-0470-4EB7-A07B-003CC2CAF059}
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {B5FD7C0D-0470-4EB7-A07B-003CC2CAF059} ENGINE=1
+"%ProgramFiles%\HiDefMedia\HiDefMedia\uninstall.exe"
+"%ProgramFiles%\Plus-HD-1.3\Uninstall.exe" /fromcontrolpanel=1
+"%ProgramFiles%\Re-markit\Uninstall.exe"
+"%HOMEDRIVE%%HOMEPATH%\AppData\Local\SevereWeatherAlerts\uninstall.exe"
+"%HOMEDRIVE%%HOMEPATH%\AppData\Local\SwvUpdater\Updater.exe" /uninstall
+"%ProgramFiles%\TextAloud\unins000.exe"
+"%ProgramFiles%\JFileManager\uninstall.exe"
+"%HOMEDRIVE%%HOMEPATH%\AppData\Roaming\DefaultTab\DefaultTab\uninstalldt.exe"
+"%HOMEDRIVE%%HOMEPATH%\AppData\Local\DProtect\DPUninstall.exe" -silence
+"%HOMEDRIVE%%HOMEPATH%\AppData\Local\FilesFrog Update Checker\uninstall.exe"
+"%ProgramFiles%\LyricsBuddy-1\Uninstall.exe" /fromcontrolpanel=1
+"%ProgramFiles%\Plus-HD-1.3\Uninstall.exe" /fromcontrolpanel=1
+"%ProgramFiles%\PricePeep\uninstall.exe"
+"%ProgramFiles%\Project64 2.1\unins000.exe" /SILENT
+"%ProgramFiles%\SaltarSmart\SaltarSmartuninstall.exe" /S
+"%HOMEDRIVE%%HOMEPATH%\AppData\Local\SevereWeatherAlerts\uninstall.exe"
+"%ProgramFiles%\Social Privacy\uninstall.exe"
+"%ProgramFiles%\Social Privacy  DNS\uninstall.exe"
+C:\ProgramData\TubeDimmer\uninstall.exe" /kb=y /ic=2
+C:\ProgramData\Updater\Uninstall.exe" /ic=U2
+"%ProgramFiles%\VideoPlayer\uninstall.exe"
+"%ProgramFiles%\Yahoo Games\Burger Shop\Uninstall.exe"
+"%ProgramFiles%\Google\Google Toolbar\Component\GoogleToolbarManager_231F3FD17DB59CFD.exe" /uninstall
+REM below is SanDisk TransferMate
+RunDll32 C:\PROGRA~1\COMMON~1\INSTAL~1\engine\6\INTEL3~1\Ctor.dll,LaunchSetup "C:\Program Files\InstallShield Installation Information\{601C6E14-DF1E-4113-A8C8-F9DB90CB0D88}\Setup.exe" -l0x9 
+"%ProgramFiles%\Unity\Editor\Uninstall.exe"
+"%HOMEDRIVE%%HOMEPATH%\Local Settings\Application Data\Unity\WebPlayer\Uninstall.exe"
+"%ProgramFiles%\Sony Online Entertainment\Wheel of Fortune Deluxe\Uninstall Wheel of Fortune Deluxe.exe"
+"%ProgramFiles%\WinPcap\uninstall.exe"
+"%HOMEDRIVE%%HOMEPATH%\AppData\Local\GCC\uninstall.exe
+"%HOMEDRIVE%%HOMEPATH%\AppData\Local\SevereWeatherAlerts\uninstall.exe
+"%ProgramFiles%\Fighters\SLOW-PCfighter\Uninstall.exe" Remove SHORT_UNINSTALL=1
+"%HOMEDRIVE%%HOMEPATH%\AppData\Local\SwvUpdater\Updater.exe /uninstall
 
 
 
@@ -705,22 +772,22 @@ REM "%ProgramFiles%\Google\Chrome\Application\18.0.1025.152\Installer\setup.exe"
 REM "%ProgramFiles%\Google\Chrome\Application\17.0.963.56\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
 REM "%ProgramFiles%\Google\Chrome\Application\18.0.1025.162\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
 REM "%ProgramFiles%\Google\Chrome\Application\12.0.742.100\Installer\setup.exe"  --uninstall --system-level
-REM "%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\9.0.597.94\Installer\setup.exe"  --uninstall
-REM "%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\18.0.1025.168\Installer\setup.exe"  --uninstall --multi-install --chrome
+REM "%HOMEDRIVE%%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\9.0.597.94\Installer\setup.exe"  --uninstall
+REM "%HOMEDRIVE%%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\18.0.1025.168\Installer\setup.exe"  --uninstall --multi-install --chrome
 REM "%ProgramFiles%\Google\Chrome\Application\18.0.1025.168\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
-REM "%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\11.0.696.68\Installer\setup.exe"  --uninstall
-REM "%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\11.0.696.60\Installer\setup.exe"  --uninstall
+REM "%HOMEDRIVE%%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\11.0.696.68\Installer\setup.exe"  --uninstall
+REM "%HOMEDRIVE%%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\11.0.696.60\Installer\setup.exe"  --uninstall
 REM "%ProgramFiles%\Google\Chrome\Application\21.0.1180.89\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
 REM "%ProgramFiles%\Google\Chrome\Application\13.0.782.220\Installer\setup.exe"  --uninstall --system-level
-REM "%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\22.0.1229.79\Installer\setup.exe"  --uninstall --multi-install --chrome
+REM "%HOMEDRIVE%%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\22.0.1229.79\Installer\setup.exe"  --uninstall --multi-install --chrome
 REM "%ProgramFiles%\Google\Chrome\Application\22.0.1229.92\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level --verbose-logging
 REM "%ProgramFiles%\Google\Chrome\Application\22.0.1229.94\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level --verbose-logging
-REM "%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\10.0.648.205\Installer\setup.exe"  --uninstall --chrome
+REM "%HOMEDRIVE%%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\10.0.648.205\Installer\setup.exe"  --uninstall --chrome
 REM "%ProgramFiles%\Google\Chrome\Application\23.0.1271.97\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
-REM "%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\chrome.exe" /uninstall
+REM "%HOMEDRIVE%%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\chrome.exe" /uninstall
 REM "%ProgramFiles%\Google\Chrome\Application\21.0.1180.89\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level\MixPad\uninst.exe"
 REM "%ProgramFiles%\Google\Chrome\Application\28.0.1500.95\Installer\setup.exe" --uninstall --multi-install --chrome --system-level
-REM "%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\17.0.963.83\Installer\setup.exe"  --uninstall --multi-install --chrome
+REM "%HOMEDRIVE%%HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\17.0.963.83\Installer\setup.exe"  --uninstall --multi-install --chrome
 
 REM sleep5000.exe
 timeout /t 5
@@ -740,8 +807,8 @@ timeout /t 5
 del /F /Q /S "%ALLUSERSPROFILE%\Start Menu\Programs\Google Quick Search Box"
 del /F /Q "%ProgramData%\Microsoft\Windows\Start Menu\Programs\Startup\McAfee Security Scan Plus"
 del /F /Q /S "%ProgramFiles%\FarStone"
-del /F /Q /S "%HOMEPATH%\Application Data\Spotify"
-del /F /Q "%HOMEPATH%\Desktop\Spotify.lnk"
+del /F /Q /S "%HOMEDRIVE%%HOMEPATH%\Application Data\Spotify"
+del /F /Q "%HOMEDRIVE%%HOMEPATH%\Desktop\Spotify.lnk"
 del /F /Q /S "%ProgramFiles%\Tweet Adder 3"
 del /F /Q "%ALLUSERSPROFILE%\Start Menu\Programs\Startup\Adobe Acrobat Speed Launcher.lnk"
 del /F /Q "%ALLUSERSPROFILE%\Start Menu\Programs\Startup\Adobe Acrobat Synchronizer.lnk"
