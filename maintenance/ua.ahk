@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v1.4.0,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
+MsgBox,4,Update Automatically v1.4.1,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe
@@ -6,7 +6,7 @@ IfMsgBox No
 }
 else
 {
-	MsgBox,0,Ok here we go,Remove your hands from the mouse and keyboard! At the very end you'll be asked if you want to shut down your computer and that is the ONLY time you can click anything. At times it will look like your computer is just sitting here doing nothing. Please resist the urge to "help it along". DO NOT click anything. DO NOT type anything. This entire process is automated. Any interaction on your part will cause this update to go all haywire and you'll have to start it all over again. Don't even click "ok" on this box. In fact get up and walk away. Make yourself some tea and come back in about 10 minutes and this will be done. Don't keep reading this to see what will happen--leave. Go. Now. Make like a tree and turn off your monitor.,30
+	MsgBox,0,Ok here we go,Remove your hands from the mouse and keyboard! At the very end you'll be asked `if you want to shut down your computer and that is the ONLY time you can `click anything. At times it will look like your computer is just sitting here doing nothing. Please resist the urge to "help it along". DO NOT `click anything. DO NOT type anything. This entire `process is automated. Any interaction on your part will cause this update to go all haywire and you'll have to start it all over again. Don't even `click "ok" on this box. In fact get up and walk away. Make yourself some tea and come back in about 10 minutes and this will be done. Don't keep reading this to see what will happen--leave. Go. Now. Make like a tree and turn off your monitor.,30
 	;; Kill Windows Explorer to discourage the user from interacting with the computer, and also to reduce the chance of problems that are inherent with macros.
 	progress,FS10 W600 Y650,%A_Space% `n %A_Space%,Closing some remaining programs,The Unfaltering March Of `Progress,Segoe UI
 	RunWait %ComSpec% /C "taskkill /F /IM explorer.exe"
@@ -38,12 +38,18 @@ else
 	if A_OSVersion in WIN_VISTA ; Vista and 7 only. I think XP's shutdown program can't take a delay longer than 99 seconds.
 	{
 		progress,15,%A_Space%,Preparing provisions for potential problems,The Unfaltering March Of `Progress
-		RunWait %ComSpec% /C "copy notes\A_Message_from_Tyler_Francis.txt "%USERPROFILE%\Start Menu\Programs\Startup"" ; This is a small message telling the user that the update process failed and that they should send me an email saying as much. Were this a *Nix machine I'd CAT in some info like where it failed. I'll have to find out how to do that in Windows without opening Notepad at every action.
-		sleep 500
-		RunWait %ComSpec% /C "copy notes\remove_message.bat "%USERPROFILE%\Desktop""
+;		RunWait %ComSpec% /C "copy notes\A_Message_from_Tyler_Francis.txt "%USERPROFILE%\Start Menu\Programs\Startup"" ; This is a small message telling the user that the update process failed and that they should send me an email saying as much. Were this a *Nix machine I'd CAT in some info like where it failed. I'll have to find out how to do that in Windows without opening Notepad at every action.
+;		sleep 500
+;		RunWait %ComSpec% /C "copy notes\remove_message.bat "%USERPROFILE%\Desktop""
 		sleep 500
 		Run %ComSpec% /C "shutdown -s -t 3600"
 	}
+	
+	;; remove old debugging information
+	Run %ComSpec% /C "del /F /Q "C:\Documents and Settings\Student\Start Menu\Programs\Startup\A_Message_from_Tyler_Francis.txt""
+	Run %ComSpec% /C "del /F /Q "C:\Users\Student\Start Menu\Programs\Startup\A_Message_from_Tyler_Francis.txt""
+	Run %ComSpec% /C "del /F /Q "C:\Documents and Settings\Student\Desktop\remove_message.bat""
+	Run %ComSpec% /C "del /F /Q "C:\Users\Student\Desktop\remove_message.bat""
 
 	;; Install Firefox silently
 	progress,17,%A_Space%,Starting the Firefox updater,The Unfaltering March Of `Progress
@@ -120,6 +126,7 @@ else
 	;; Misc Removal Script setup
 	progress,39,%A_Space%,Getting ready to remove a bunch of junk,The Unfaltering March Of `Progress
 	RunWait %ComSpec% /C "del /F /Q c:\mr.bat"
+	RunWait %ComSpec% /C "del /F /Q c:\mr.txt"
 	Sleep 2000
 	FileCopy, %A_WorkingDir%\mr.txt, C:\mr.bat
 	sleep 2000
@@ -139,6 +146,14 @@ else
 	sleep 1000
 	send {backspace}
 	sleep 1000
+	
+	; Work around for not being allowed to run batch files
+	; send ^a
+	; sleep 500
+	; send ^c
+	; sleep 1000
+	
+	
 	if A_OSVersion in WIN_XP
 	{
 		progress,40,ooh this part is my favorite,Getting ready to remove a bunch of junk,The Unfaltering March Of `Progress
@@ -177,10 +192,6 @@ else
 		sleep 500
 		send !a
 		sleep 2000
-		
-		;; finish replacement
-		send !{F4}
-		sleep 500
 	}
 	send ^s
 	sleep 500
@@ -189,6 +200,7 @@ else
 	;; Misc Removal Script execution
 	progress,50,%A_Space%,Removing a bunch of junk,The Unfaltering March Of `Progress
 	sleep 2000
+;	RunWait %ComSpec% /C "%Clipboard%"
 	RunWait %ComSpec% /C "C:\mr.bat"
 	sleep 1000
 	RunWait %ComSpec% /C "del /F /Q c:\mr.bat"
