@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v1.4.1,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
+MsgBox,4,Update Automatically v1.4.5,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe
@@ -26,7 +26,10 @@ else
 	progress,6,there goes Adoobe Reader,Closing some remaining programs,The Unfaltering March Of `Progress
 	sleep 1000
 	Runwait %ComSpec% /C "taskkill /F /IM AcroRd64.exe"
-	progress,7,here goes GroupWise,Closing some remaining programs,The Unfaltering March Of `Progress
+	progress,7,there goes Notepad,Closing some remaining programs,The Unfaltering March Of `Progress
+	sleep 1000
+	Runwait %ComSpec% /C "taskkill /F /IM notepad.exe
+	progress,8,here goes GroupWise,Closing some remaining programs,The Unfaltering March Of `Progress
 	sleep 1000
 	Runwait %ComSpec% /C "taskkill /F /IM grpwise.exe"
 	progress,10,if there any programs left open`, please `send an email to Mr. Francis--obviously not now`, wait until I'm done here.,Finished closing programs,The Unfaltering March Of `Progress
@@ -192,6 +195,10 @@ else
 		sleep 500
 		send !a
 		sleep 2000
+		
+		;; finish replacement
+		send !{F4}
+		sleep 500
 	}
 	send ^s
 	sleep 500
@@ -248,12 +255,16 @@ else
 	sleep 500
 	if A_OSVersion in WIN_VISTA
 	{
-		RunWait %USERPROFILE%\Desktop\remove_message.bat ; If the script got this far in execution, I'll assume everything went smoothly and remove the error message from the startup folder.
+;		RunWait %USERPROFILE%\Desktop\remove_message.bat ; If the script got this far in execution, I'll assume everything went smoothly and remove the error message from the startup folder.
+		Run %ComSpec% /C "del /F /Q "C:\Documents and Settings\Student\Start Menu\Programs\Startup\A_Message_from_Tyler_Francis.txt""
+		Run %ComSpec% /C "del /F /Q "C:\Users\Student\Start Menu\Programs\Startup\A_Message_from_Tyler_Francis.txt""
+		Run %ComSpec% /C "del /F /Q "C:\Documents and Settings\Student\Desktop\remove_message.bat""
+		Run %ComSpec% /C "del /F /Q "C:\Users\Student\Desktop\remove_message.bat""
 		sleep 500
 	}
 	sleep 1000
-	Run %ComSpec% /C "shutdown -s -t 600"
-	MsgBox, 4, Alright you're done, Do you wanna shutdown or something? *YES* to shutdown now or *NO* to abort the automatic Shutdown of 10 minutes already in progress. BTdubs the error level is "%ErrorLevel%" on the off chance that you're interested. [this message will self-distruct in seven minutes],420
+	Run %ComSpec% /C "shutdown -s -t 180"
+	MsgBox, 4, Alright you're done, Do you wanna shutdown or something? *YES* to shutdown now or *NO* to abort the automatic Shutdown of 10 minutes already in progress. BTdubs the error level is "%ErrorLevel%" on the off chance that you're interested. [this message will self-distruct in two minutes],120
 	IfMsgBox Yes
 	{
 		Run %ComSpec% /C "shutdown -a"
@@ -305,6 +316,28 @@ else
 		WinActivate
 		send {space}
 		goto,msiissues
+	}
+	sleep 15000
+	IfWinExist,Open File - Security Warning,Run
+	{
+		goto,altr
+	}
+	IfWinExist,Windows Installer,OK  ; Should automatically dismiss Adobe Reader installation errors.
+	{
+		WinActivate
+		send {space}
+		goto,msiissues
+	}
+	IfWinExist,,Error 1722  ; Should automatically dismiss Adobe Flash Player installation errors.
+	{
+		WinActivate
+		send {space}
+		goto,msiissues
+	}
+	sleep 15000
+	IfWinExist,Open File - Security Warning,Run
+	{
+		goto,altr
 	}
 	return
 	
