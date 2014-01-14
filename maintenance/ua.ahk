@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v1.4.5,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
+MsgBox,4,Update Automatically v1.4.6,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe
@@ -264,7 +264,11 @@ else
 	}
 	sleep 1000
 	Run %ComSpec% /C "shutdown -s -t 180"
-	MsgBox, 4, Alright you're done, Do you wanna shutdown or something? *YES* to shutdown now or *NO* to abort the automatic Shutdown of 10 minutes already in progress. BTdubs the error level is "%ErrorLevel%" on the off chance that you're interested. [this message will self-distruct in two minutes],120
+	sleep 1000
+	SetTimer,movewin,-1000
+	MsgBox, 4, Alright you're done, Do you wanna shutdown or something? *YES* to shutdown now or *NO* to abort the automatic Shutdown of 3 minutes already in progress. BTdubs the error level is "%ErrorLevel%" on the off chance that you're interested. [this message will self-distruct in two minutes],120
+	WinWait, Alright you're done
+	WinMove, 375, 75
 	IfMsgBox Yes
 	{
 		Run %ComSpec% /C "shutdown -a"
@@ -280,6 +284,14 @@ else
 		MsgBox, 4096, Abort Shutdown, Alright--aborting shutdown.,10
 		ExitApp
 	}
+	IfMsgBox Timeout
+	{
+		Run %ComSpec% /C "shutdown -r -t 10"
+		sleep 1000
+		MsgBox, 4096, Restart, Alright--restarting..., 5
+		ExitApp
+	}
+	
 	ExitApp
 	
 	
@@ -299,49 +311,63 @@ else
 	;; gotostuff
 	
 	altr:
-	send !r
-	goto,msiissues
-	return
+	{
+		send !r
+		goto,msiissues
+		return
+	}
 	
 	msiissues:
-	sleep 10000
-	IfWinExist,Windows Installer,OK  ; Should automatically dismiss Adobe Reader installation errors.
 	{
-		WinActivate
-		send {space}
-		goto,msiissues
+		sleep 10000
+		IfWinExist,Windows Installer,OK  ; Should automatically dismiss Adobe Reader installation errors.
+		{
+			WinActivate
+			send {space}
+			goto,msiissues
+		}
+		IfWinExist,,Error 1722  ; Should automatically dismiss Adobe Flash Player installation errors.
+		{
+			WinActivate
+			send {space}
+			goto,msiissues
+		}
+		sleep 15000
+		IfWinExist,Open File - Security Warning,Run
+		{
+			goto,altr
+		}
+		IfWinExist,Windows Installer,OK  ; Should automatically dismiss Adobe Reader installation errors.
+		{
+			WinActivate
+			send {space}
+			goto,msiissues
+		}
+		IfWinExist,,Error 1722  ; Should automatically dismiss Adobe Flash Player installation errors.
+		{
+			WinActivate
+			send {space}
+			goto,msiissues
+		}
+		sleep 15000
+		IfWinExist,Open File - Security Warning,Run
+		{
+			goto,altr
+		}
+		return
 	}
-	IfWinExist,,Error 1722  ; Should automatically dismiss Adobe Flash Player installation errors.
+	
+	movewin:
 	{
-		WinActivate
-		send {space}
-		goto,msiissues
+		WinMove, Alright you're done, Do you wanna shutdown or something? *YES* to shutdown now or *NO* to abort the automatic Shutdown of,375, 75
+		sleep 500
+		winactivate, Alright you're done
+		return
 	}
-	sleep 15000
-	IfWinExist,Open File - Security Warning,Run
-	{
-		goto,altr
-	}
-	IfWinExist,Windows Installer,OK  ; Should automatically dismiss Adobe Reader installation errors.
-	{
-		WinActivate
-		send {space}
-		goto,msiissues
-	}
-	IfWinExist,,Error 1722  ; Should automatically dismiss Adobe Flash Player installation errors.
-	{
-		WinActivate
-		send {space}
-		goto,msiissues
-	}
-	sleep 15000
-	IfWinExist,Open File - Security Warning,Run
-	{
-		goto,altr
-	}
-	return
 	
 	computerover:
-	;; virus=veryYes
-	exitapp
+	{
+;;		virus=veryYes
+		exitapp
+	}
 }
