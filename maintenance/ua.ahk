@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v1.4.6,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
+MsgBox,4,Update Automatically v1.4.7,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe
@@ -28,7 +28,7 @@ else
 	Runwait %ComSpec% /C "taskkill /F /IM AcroRd64.exe"
 	progress,7,there goes Notepad,Closing some remaining programs,The Unfaltering March Of `Progress
 	sleep 1000
-	Runwait %ComSpec% /C "taskkill /F /IM notepad.exe
+	Runwait %ComSpec% /C "taskkill /F /IM notepad.exe"
 	progress,8,here goes GroupWise,Closing some remaining programs,The Unfaltering March Of `Progress
 	sleep 1000
 	Runwait %ComSpec% /C "taskkill /F /IM grpwise.exe"
@@ -203,6 +203,31 @@ else
 	send ^s
 	sleep 500
 	send !{F4}
+	sleep 1000
+	
+	;; setup error catching
+	IfWinExist, mr.bat - Notepad
+	{
+		WinActivate
+		send ^s
+		sleep 1000
+		send !{F4}
+		sleep 500
+	
+		IfWinExist, mr.bat - Notepad
+		{
+			Run %ComSpec% /C "taskkill /F /IM notepad.exe"
+			sleep 1000
+			IfWinExist, mr.bat - Notepad
+			{
+				msgbox,0,Whelp there's a snag,It seems I can't get Notepad to close. I've tried three times and am still stuck. Mind giving me a hand with this? Don't `click OK until Notepad is SAVED and CLOSED. `If you're not sure what you should do then just don't `click anything and I'll skip this bit in a minute.,120
+				IfMsgBox Timeout
+				{
+					goto,javainstall
+				}
+			}
+		}
+	}
 
 	;; Misc Removal Script execution
 	progress,50,%A_Space%,Removing a bunch of junk,The Unfaltering March Of `Progress
@@ -213,6 +238,7 @@ else
 	RunWait %ComSpec% /C "del /F /Q c:\mr.bat"
 
 	;; Java Installation
+	javainstall:
 	progress,60,%A_Space%,Updating Java,The Unfaltering March Of `Progress
 	SetTimer,altr,-10000
 	RunWait %ComSpec% /C "java.msi /passive /norestart"
