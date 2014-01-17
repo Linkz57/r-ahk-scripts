@@ -2,6 +2,8 @@ r-ahk-scripts
 =============
 
 Random AutoHotKey scripts. It's not great but it's what I'm writing.
+All commits before 2014-01-17 07:59:53 CST were written for AutoHotKey v1.0.48.05 on Windows 7, usually 32-bit.
+On 2014-01-17 07:59:53 CST I updated to AutoHotKey v1.1.14.01 on my main development computer (Win 7 32-bit). Just in case that's relivant.
 
 What's in the repo
 ------------------
