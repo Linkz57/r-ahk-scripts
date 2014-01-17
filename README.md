@@ -21,6 +21,6 @@ The following directories:
     - The u.ahk and ua.ahk scripts are really just frames around the actual installer files. I keep the installers up to date by downloading packages made available by their respective companies. 
         - [Adobe Reader is found here](ftp://ftp.adobe.com/pub/adobe/reader/win/ "Adobe's public FTP server")
         - [Adobe Flash is found here](http://helpx.adobe.com/flash-player/kb/archived-flash-player-versions.html "Adobe's Flash Archive page")
-        - Firefox will run fine from its normal .exe installer with the argument <code>-ms</code>. I use [Firefox ESR](https://www.mozilla.org/en-US/firefox/organizations/all.html "Firefox ESR download page")
-        - Java is weird. First you have to install it on a computer using the _offline installer_. Once that's done go to <code>%HOMEDRIVE%%HOMEPATH%\AppData\LocalLow\Sun\Java</code>, find the version you want, then use the .msi and .cab in there to install it on other computers.
+        - Firefox will run fine from its normal .exe installer with the option <code>-ms</code>. I use [Firefox ESR](https://www.mozilla.org/en-US/firefox/organizations/all.html "Firefox ESR download page")
+        - Java is weird. First you have to install it on a computer using the [offline installer](https://www.java.com/en/download/manual.jsp "Java download page"). Once that's done go to <code>%HOMEDRIVE%%HOMEPATH%\AppData\LocalLow\Sun\Java</code>, find the version you want, then use the .msi and .cab in there to install it on other computers.
         - The download location of Internet Explorer seems to change with every version. 
