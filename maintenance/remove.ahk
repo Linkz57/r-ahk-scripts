@@ -1,4 +1,4 @@
-MsgBox,4,Remove Stuff v1.2.0,This script written by Tyler Francis wants to remove a bunch of the junk programs that you probably don't want. It's pretty aggressive so you may want to review mr.txt to make sure you're ok with losing all of the programs and files listed therein. Are you ok with this?
+MsgBox,4,Remove Stuff v1.2.1,This script written by Tyler Francis wants to remove a bunch of the junk programs that you probably don't want. It's pretty aggressive so you may want to review mr.txt to make sure you're ok with losing all of the programs and files listed therein. Are you ok with this?
 IfMsgBox No
 {
 	MsgBox,0,Nothing Removed,Ok some other time maybe
@@ -26,6 +26,7 @@ else IfMsgBox Yes
 		sleep 500
 		send x
 		sleep 1000
+		
 		;; replace homepath
 		send ^h
 		sleep 500
@@ -33,10 +34,10 @@ else IfMsgBox Yes
 		sleep 500
 		send {tab}
 		sleep 500
-		send C:\Documents and Settings\student
+		send \Documents and Settings\student
 		sleep 500
 		send !a
-		sleep 3500
+		sleep 4500
 		
 		;; replace programdata
 		send +{tab}
