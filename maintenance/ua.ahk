@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v1.4.7,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
+MsgBox,4,Update Automatically v1.5,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe
@@ -55,8 +55,8 @@ else
 	Run %ComSpec% /C "del /F /Q "C:\Users\Student\Desktop\remove_message.bat""
 
 	;; Install Firefox silently
-	progress,17,%A_Space%,Starting the Firefox updater,The Unfaltering March Of `Progress
-	Run FirefoxSetup.exe -ms
+	progress,17,%A_Space%,Updating Firefox,The Unfaltering March Of `Progress
+	Runwait FirefoxSetup.exe -ms
 	sleep 2000
 
 	;; Remove Internet Explorer proxy settings
@@ -167,10 +167,10 @@ else
 		sleep 500
 		send {tab}
 		sleep 500
-		send C:\Documents and Settings\student
+		send \Documents and Settings\student
 		sleep 500
 		send !a
-		sleep 2500
+		sleep 4500
 		
 		;; replace programdata
 		send +{tab}
