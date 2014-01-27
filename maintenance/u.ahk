@@ -1,4 +1,4 @@
-MsgBox,4,Update Manually v1.1,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this?
+MsgBox,4,Update Manually v1.2,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this?
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe
@@ -38,11 +38,17 @@ else IfMsgBox Yes
 	RunWait %ComSpec% /C "del /F /Q c:\mr.bat"
 	Sleep 2000
 	FileCopy, %A_WorkingDir%\mr.txt, C:\mr.bat
+	msgbox,48,Heads up,Hey hold on a second--this next bit is automated so don't touch anything,3
 	sleep 2000
 	if A_OSVersion in WIN_XP
 	{
 		Run %ComSpec% /C "notepad c:\mr.bat"
 		sleep 3000
+		send !{space}
+		sleep 500
+		send x
+		sleep 1000
+		
 		;; replace homepath
 		send ^h
 		sleep 500
@@ -50,10 +56,10 @@ else IfMsgBox Yes
 		sleep 500
 		send {tab}
 		sleep 500
-		send C:\Documents and Settings\student
+		send \Documents and Settings\student
 		sleep 500
 		send !a
-		sleep 1000
+		sleep 4500
 		
 		;; replace programdata
 		send +{tab}
@@ -65,15 +71,30 @@ else IfMsgBox Yes
 		send C:\Documents and Settings\All Users
 		sleep 500
 		send !a
-		sleep 1000
+		sleep 2000
 		
-		;;finish replacement
+		;; replace public
+		send +{tab}
+		sleep 500
+		send `%PUBLIC`%
+		sleep 500
+		send {tab}
+		sleep 500
+		send C:\Documents and Settings\All Users
+		sleep 500
+		send !a
+		sleep 2000
+		
+		;; finish replacement
 		send !{F4}
 		sleep 500
 		send ^s
 		sleep 500
 		send !{F4}
+		sleep 1000
 	}
+	sleep 1000
+	msgbox,0,OK we're good,See? That wasn't so bad. OK get back to clicking now.
 
 	;; Misc Removal Script execution
 	RunWait %ComSpec% /C "C:\mr.bat"
