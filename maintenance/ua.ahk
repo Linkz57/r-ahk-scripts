@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v1.5,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
+MsgBox,4,Update Automatically v1.5.1,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe
@@ -38,7 +38,7 @@ else
 	;; The time assumption on the next line is out of date; one of these days I'll re-calculate and version-stamp it.
 	;; All of the sleep timers and message box timeouts add up to about 16 minutes. This time doesn't take into account the runwait time on mr.bat, adobereader.msi or either IE*.exe executions, but I'll assume they aren't in excess of 45 minutes. Therefore, if this script takes longer than an hour to run, I'll assume it's broken. As a "fix" here is a timed shutdown at the beginning of this script.
 
-	if A_OSVersion in WIN_VISTA ; Vista and 7 only. I think XP's shutdown program can't take a delay longer than 99 seconds.
+	if A_OSVersion in WIN_VISTA,WIN_7 ; Vista and 7 only. I think XP's shutdown program can't take a delay longer than 99 seconds.
 	{
 		progress,15,%A_Space%,Preparing provisions for potential problems,The Unfaltering March Of `Progress
 ;		RunWait %ComSpec% /C "copy notes\A_Message_from_Tyler_Francis.txt "%USERPROFILE%\Start Menu\Programs\Startup"" ; This is a small message telling the user that the update process failed and that they should send me an email saying as much. Were this a *Nix machine I'd CAT in some info like where it failed. I'll have to find out how to do that in Windows without opening Notepad at every action.
@@ -93,7 +93,7 @@ else
 		SetTimer,altr,-13000
 		Runwait %ComSpec% /C "flashplayerFF.msi /qb /norestart"
 	; }
-	; if A_OSVersion in WIN_VISTA
+	; if A_OSVersion in WIN_VISTA,WIN_7
 	; {
 		; progress,35,for Firefox--bad news`,bro`,you have to use an older version,Updating Adobe Flash,The Unfaltering March Of `Progress
 		; Run flashplayerFF-old_win7.exe
@@ -120,7 +120,7 @@ else
 		; sleep 200
 		; send {down}
 	; }
-	; if A_OSVersion in WIN_VISTA
+	; if A_OSVersion in WIN_VISTA,WIN_7
 	; {
 		
 	; }
@@ -255,18 +255,18 @@ else
 	;; Internet Explorer installation
 	sleep 2000
 
-	if A_OSVersion in WIN_VISTA
+	if A_OSVersion in WIN_VISTA,WIN_7
 	{
 		progress,90,%A_Space%,Installing Internet Explorer 9,The Unfaltering March Of `Progress
 		SetTimer,altr,-15000
-		RunWait %ComSpec% /C "IE9-Windows7-x86-enu.exe /passive /norestart"
+		RunWait %ComSpec% /C "IE9-Windows7-x86-enu.exe /passive /norestart" ; IE 9 is the last version that runs on Vista
 	}
 	sleep 200
 	if A_OSVersion in WIN_XP
 	{
 		progress,90,%A_Space%,Installing Internet Explorer 8,The Unfaltering March Of `Progress
 		SetTimer,altr,-15000
-		RunWait %ComSpec% /C "IE8-WindowsXP-x86-ENU.exe /passive /norestart /sqm"
+		RunWait %ComSpec% /C "IE8-WindowsXP-x86-ENU.exe /passive /norestart /sqm" ; IE 8 is the last version that runs on XP
 	}
 	sleep 1000
 
@@ -279,7 +279,7 @@ else
 	sleep 2000
 	Run %ComSpec% /C "shutdown -a"
 	sleep 500
-	if A_OSVersion in WIN_VISTA
+	if A_OSVersion in WIN_VISTA,WIN_7
 	{
 ;		RunWait %USERPROFILE%\Desktop\remove_message.bat ; If the script got this far in execution, I'll assume everything went smoothly and remove the error message from the startup folder.
 		Run %ComSpec% /C "del /F /Q "C:\Documents and Settings\Student\Start Menu\Programs\Startup\A_Message_from_Tyler_Francis.txt""
