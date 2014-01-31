@@ -1,4 +1,4 @@
-MsgBox,4,Update Manually v1.2.1,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this?
+MsgBox,4,Update Manually v1.3,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this?
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe
@@ -107,13 +107,18 @@ else IfMsgBox Yes
 	RunWait %ComSpec% /C "msiexec.exe /update "adobereaderpatch.msp" /qb /norestart
 
 	;; Internet Explorer installation
-	if A_OSVersion in WIN_VISTA,WIN_7
+	if A_OSVersion in WIN_7
 	{
-		RunWait %ComSpec% /C "IE9-Windows7-x86-enu.exe /passive /norestart"
+		Run %ComSpec% /C "REG ADD "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" /T REG_BINARY /D "411f00005308adba010000003000000001000000010000000c000000980f7f42a0e0ce010100000009006b0072006f006e006f0073002d0061007300" /F"
+		RunWait %ComSpec% /C "IE11-W7.exe /passive /norestart"
+	}
+	if A_OSVersion in WIN_VISTA
+	{
+		RunWait %ComSpec% /C "IE9-vista.exe /passive /norestart"
 	}
 	if A_OSVersion in WIN_XP
 	{
-		RunWait %ComSpec% /C "IE8-WindowsXP-x86-ENU.exe /passive /norestart /sqm"
+		RunWait %ComSpec% /C "IE8-XP.exe /passive /norestart /sqm"
 	}
 
 	;; One Final cleanup
