@@ -1,4 +1,4 @@
-MsgBox,4,Update Manually v1.2,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this?
+MsgBox,4,Update Manually v1.2.1,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this?
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe
@@ -29,7 +29,7 @@ else IfMsgBox Yes
 	{
 		Runwait %ComSpec% /C "flashplayerFF.msi /qb /norestart"
 	}
-	if A_OSVersion in WIN_VISTA
+	if A_OSVersion in WIN_VISTA,WIN_7
 	{
 		Run flashplayerFF-old_win7.exe
 	}
@@ -107,7 +107,7 @@ else IfMsgBox Yes
 	RunWait %ComSpec% /C "msiexec.exe /update "adobereaderpatch.msp" /qb /norestart
 
 	;; Internet Explorer installation
-	if A_OSVersion in WIN_VISTA
+	if A_OSVersion in WIN_VISTA,WIN_7
 	{
 		RunWait %ComSpec% /C "IE9-Windows7-x86-enu.exe /passive /norestart"
 	}
