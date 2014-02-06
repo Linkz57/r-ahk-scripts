@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v1.6,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
+MsgBox,4,Update Automatically v2,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe
@@ -6,6 +6,62 @@ IfMsgBox No
 }
 else
 {
+	if A_OSVersion in WIN_7
+	{
+		; success test
+		msgbox,0,Alright let's do this,Sounds like a plan.`nBefore we start I'm going to test your chances of sucess and make some recommendations from there.,10
+		RunWait %ComSpec% /C "del /F /Q c:\t.txt"
+
+		RunWait %ComSpec% /C "REG QUERY "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" > C:\t.txt"
+		sleep 1000
+		rej := ""
+		kronus := ""
+		; SizeCheck
+		FileGetSize, Size, C:\t.txt
+		;msgbox,0,0,size is %Size%
+		if (Size == 329) ;equal to 329B
+		{
+			msgbox,0,This computer looks familiar,I think this script has `run on this machine before. No worries, I'll just skip some of the one-time tasks. `nAll is well so far as I can tell,15
+			rej = beenhere
+			kronus = good
+			goto,scriptstart
+		}
+		else
+		{
+			RunWait %ComSpec% /C "del /F /Q c:\t.txt"
+;			RunWait %ComSpec% /C "REG ADD "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" /T REG_BINARY /D "411f00005308adba010000003000000001000000010000000c000000980f7f42a0e0ce010100000009006b0072006f006e006f0073002d0061007300" /F" ; kronos-as
+			RunWait %ComSpec% /C "REG ADD "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" /T REG_BINARY /D "411f00005308adba020000005800000001000000020000000c000000980f7f42a0e0ce010100000009006b0072006f006e006f0073002d00610073000c0000009de374514d23cf01010000000b00730074006100740065002e00740078002e0075007300" /F" ; kronos-as && state.tx.us
+			sleep 500
+			RunWait %ComSpec% /C "REG QUERY "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" > C:\t.txt"
+			sleep 1000
+			FileGetSize, newSize, C:\t.txt
+			if (newSize == 329)
+			{
+				msgbox,0,All shiny here`, captain,Everything seems to check out. Continuing as planned.,15
+				rej = firsttime
+				kronus = good
+				goto,scriptstart
+			}
+			if (newSize < 329)
+			{
+				msgbox,0,Bad news`, bro,Bad news`, it seems that I'm unable to automatically add Kronos to the Internet Explorer compatibility list. This is a problem`, because Internet Explorer 11 (the version I want to install) doesn't work with Kronos except in compatibility mode. `nThis is really only a problem for non-teacher staff members who clock in and out with Kronos. Because I can't automatically add Kronos to the list, I'm going to install an older version of Internet Explorer.,30
+				kronus = bad
+				rej = locked
+				goto,scriptstart
+			}
+			else
+			{
+				msgbox,0,Well this is odd,The internet explorer compatibility list might be bigger than 329 bytes. I don't really know how to handle this situation, so I'll just ignore it and keep going.,10
+				rej = toobig
+				kronos = bad
+				goto,scriptstart
+			}
+		}
+	}
+
+	scriptstart:
+	RunWait %ComSpec% /C "del /F /Q c:\t.txt"
+
 	MsgBox,0,Ok here we go,Remove your hands from the mouse and keyboard! At the very end you'll be asked `if you want to shut down your computer and that is the ONLY time you can `click anything. At times it will look like your computer is just sitting here doing nothing. Please resist the urge to "help it along". DO NOT `click anything. DO NOT type anything. This entire `process is automated. Any interaction on your part will cause this update to go all haywire and you'll have to start it all over again. Don't even `click "ok" on this box. In fact get up and walk away. Make yourself some tea and come back in about 10 minutes and this will be done. Don't keep reading this to see what will happen--leave. Go. Now. Make like a tree and turn off your monitor.,30
 	
 	;; Kill Windows Explorer to discourage the user from interacting with the computer, and also to reduce the chance of problems that are inherent with macros.
@@ -211,8 +267,18 @@ else
 	
 	if A_OSVersion in WIN_7
 	{
-		Run %ComSpec% /C "REG ADD "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" /T REG_BINARY /D "411f00005308adba010000003000000001000000010000000c000000980f7f42a0e0ce010100000009006b0072006f006e006f0073002d0061007300" /F"
-		RunWait %ComSpec% /C "IE11-W7.exe /passive /norestart"
+		if kronus in good
+		{
+			progress,90,%A_Space%,Installing Internet Explorer 11,The Unfaltering March Of `Progress
+			SetTimer,altr,-15000
+			RunWait %ComSpec% /C "IE11-W7.exe /passive /norestart"
+		}
+		else
+		{
+			progress,90,%A_Space%,Installing Internet Explorer 9,The Unfaltering March Of `Progress
+			SetTimer,altr,-15000
+			RunWait %ComSpec% /C "IE9-W7.exe /passive /norestart"
+		}
 	}
 	if A_OSVersion in WIN_VISTA
 	{
