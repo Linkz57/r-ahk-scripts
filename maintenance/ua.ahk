@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v2,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
+MsgBox,4,Update Automatically v2.0.1,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe
@@ -9,19 +9,20 @@ else
 	if A_OSVersion in WIN_7
 	{
 		; success test
-		msgbox,0,Alright let's do this,Sounds like a plan.`nBefore we start I'm going to test your chances of sucess and make some recommendations from there.,10
+		msgbox,0,Alright let's do this,Sounds like a plan.`nBefore we start I'm going to test your chances of success and make some recommendations from there.,10
 		RunWait %ComSpec% /C "del /F /Q c:\t.txt"
 
 		RunWait %ComSpec% /C "REG QUERY "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" > C:\t.txt"
 		sleep 1000
 		rej := ""
 		kronus := ""
+		
 		; SizeCheck
 		FileGetSize, Size, C:\t.txt
 		;msgbox,0,0,size is %Size%
 		if (Size == 329) ;equal to 329B
 		{
-			msgbox,0,This computer looks familiar,I think this script has `run on this machine before. No worries, I'll just skip some of the one-time tasks. `nAll is well so far as I can tell,15
+			msgbox,0,This computer looks familiar,I think this script has ran on this machine before. No worries`, I'll just skip some of the one-time tasks. `nAll is well so far as I can tell,15
 			rej = beenhere
 			kronus = good
 			goto,scriptstart
