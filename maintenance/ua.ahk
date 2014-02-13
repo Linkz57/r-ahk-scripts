@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v2.0.1,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
+MsgBox,4,Update Automatically v2.0.2,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe
@@ -45,7 +45,7 @@ else
 			}
 			if (newSize < 329)
 			{
-				msgbox,0,Bad news`, bro,Bad news`, it seems that I'm unable to automatically add Kronos to the Internet Explorer compatibility list. This is a problem`, because Internet Explorer 11 (the version I want to install) doesn't work with Kronos except in compatibility mode. `nThis is really only a problem for non-teacher staff members who clock in and out with Kronos. Because I can't automatically add Kronos to the list, I'm going to install an older version of Internet Explorer.,30
+				msgbox,0,Bad news`, bro,Bad news`, it seems that I'm unable to automatically add Kronos to the Internet Explorer compatibility list. This is a problem`, because Internet Explorer 11 (the version I want to install) doesn't work with Kronos except in compatibility mode. `nThis is really only a problem for non-teacher staff members who clock in and out with Kronos. Because I can't automatically add Kronos to the list`, I'm going to install an older version of Internet Explorer.,30
 				kronus = bad
 				rej = locked
 				goto,scriptstart
@@ -312,10 +312,8 @@ else
 	sleep 1000
 	Run %ComSpec% /C "shutdown -s -t 180"
 	sleep 1000
-	SetTimer,movewin,-1000
-	MsgBox, 4, Alright you're done, Do you wanna shutdown or something? *YES* to shutdown now or *NO* to abort the automatic Shutdown of 3 minutes already in progress. BTdubs the error level is "%ErrorLevel%" on the off chance that you're interested. [this message will self-distruct in two minutes],120
-	WinWait, Alright you're done
-	WinMove, 375, 75
+	SetTimer,movewin,-100
+	MsgBox, 4, Alright you're done, Do you wanna restart or something? *YES* to restart now or *NO* to abort the automatic Shutdown of 3 minutes already in progress. BTdubs the error level is "%ErrorLevel%" on the off chance that you're interested. [this message will self-distruct in two minutes],120
 	IfMsgBox Yes
 	{
 		Run %ComSpec% /C "shutdown -a"
@@ -406,7 +404,9 @@ else
 	
 	movewin:
 	{
-		WinMove, Alright you're done, Do you wanna shutdown or something? *YES* to shutdown now or *NO* to abort the automatic Shutdown of,375, 75
+		WinWait, Alright you're done
+		WinMove, 375, 75
+;		WinMove, Alright you're done, Do you wanna shutdown or something? *YES* to shutdown now or *NO* to abort the automatic Shutdown of,375, 75
 		sleep 500
 		winactivate, Alright you're done
 		return
