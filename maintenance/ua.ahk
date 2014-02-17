@@ -1,65 +1,299 @@
-MsgBox,4,Update Automatically v2.0.2,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
+MsgBox,4,Update Automatically v2.1,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
-	MsgBox,0,Nothing Installed,Ok some other time maybe
+	MsgBox,0,Nothing Installed,Ok some other time maybe,10
 	exitapp
 }
 else
 {
-	if A_OSVersion in WIN_7
-	{
-		; success test
-		msgbox,0,Alright let's do this,Sounds like a plan.`nBefore we start I'm going to test your chances of success and make some recommendations from there.,10
-		RunWait %ComSpec% /C "del /F /Q c:\t.txt"
+	rej = unset
+	kronus = unset
+	areedr = unset
+	aflsh = unset
+	ojavr = unset
+	ieversion = unset
+	currentCompatibilityKey = 461
 
+	; Regestry and IE success test
+	msgbox,0,Alright let's do this,Sounds like a plan.`nBefore we start I'm going to test your chances of success and make some recommendations from there.,10
+	RunWait %ComSpec% /C "del /F /Q c:\t.txt"
+
+	RunWait %ComSpec% /C "REG QUERY "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" > C:\t.txt"
+	sleep 1000
+	
+	; SizeCheck
+	FileGetSize, Size, C:\t.txt
+	;msgbox,0,0,size is %Size%
+	if (Size == currentCompatibilityKey) ;equal to 461B
+	{
+		msgbox,0,This computer looks familiar,I think this script has ran on this machine before. No worries`, I'll just skip some of the one-time tasks. `nAll is well so far as I can tell,10
+		rej = open
+		kronus = good
+		goto,scriptstart
+	}
+	else
+	{
+	
+		RunWait %ComSpec% /C "del /F /Q c:\t.txt"
+;		RunWait %ComSpec% /C "REG ADD "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" /T REG_BINARY /D "411f00005308adba010000003000000001000000010000000c000000980f7f42a0e0ce010100000009006b0072006f006e006f0073002d0061007300" /F" ; kronos-as
+;		RunWait %ComSpec% /C "REG ADD "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" /T REG_BINARY /D "411f00005308adba020000005800000001000000020000000c000000980f7f42a0e0ce010100000009006b0072006f006e006f0073002d00610073000c0000009de374514d23cf01010000000b00730074006100740065002e00740078002e0075007300" /F" ; kronos-as && state.tx.us
+		RunWait %ComSpec% /C "REG ADD "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" /T REG_BINARY /D "411F00005308ADBA030000009A00000001000000030000000C000000980F7F42A0E0CE010100000009006B0072006F006E006F0073002D00610073000C0000009DE374514D23CF01010000000B00730074006100740065002E00740078002E00750073000C000000FF2D9D320D2CCF0101000000180074006500730074007300650063007500720069007400790074007200610069006E0069006E0067002E0063006F006D00" /F" ; kronos-as && state.tx.us && testsecuritytraining.com
+		sleep 500
 		RunWait %ComSpec% /C "REG QUERY "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" > C:\t.txt"
 		sleep 1000
-		rej := ""
-		kronus := ""
-		
-		; SizeCheck
-		FileGetSize, Size, C:\t.txt
-		;msgbox,0,0,size is %Size%
-		if (Size == 329) ;equal to 329B
+		FileGetSize, newSize, C:\t.txt
+		if (newSize == currentCompatibilityKey)
 		{
-			msgbox,0,This computer looks familiar,I think this script has ran on this machine before. No worries`, I'll just skip some of the one-time tasks. `nAll is well so far as I can tell,15
-			rej = beenhere
+			msgbox,0,All shiny here`, captain,Everything seems to check out. Continuing as planned.,5
+			rej = open
 			kronus = good
+			goto,scriptstart
+		}
+		if (newSize < currentCompatibilityKey)
+		{
+			msgbox,0,Bad news`, bro,Bad news`, it seems that I'm unable to automatically add Kronos to the Internet Explorer compatibility list. This is a problem`, because Internet Explorer 11 (the version I want to install) doesn't work with Kronos except in compatibility mode. `nThis is really only a problem for non-teacher staff members who clock in and out with Kronos. Because I can't automatically add Kronos to the list`, I'm going to install an older version of Internet Explorer.,30
+			kronus = bad
+			rej = locked
 			goto,scriptstart
 		}
 		else
 		{
-			RunWait %ComSpec% /C "del /F /Q c:\t.txt"
-;			RunWait %ComSpec% /C "REG ADD "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" /T REG_BINARY /D "411f00005308adba010000003000000001000000010000000c000000980f7f42a0e0ce010100000009006b0072006f006e006f0073002d0061007300" /F" ; kronos-as
-			RunWait %ComSpec% /C "REG ADD "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" /T REG_BINARY /D "411f00005308adba020000005800000001000000020000000c000000980f7f42a0e0ce010100000009006b0072006f006e006f0073002d00610073000c0000009de374514d23cf01010000000b00730074006100740065002e00740078002e0075007300" /F" ; kronos-as && state.tx.us
-			sleep 500
-			RunWait %ComSpec% /C "REG QUERY "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" > C:\t.txt"
-			sleep 1000
-			FileGetSize, newSize, C:\t.txt
-			if (newSize == 329)
-			{
-				msgbox,0,All shiny here`, captain,Everything seems to check out. Continuing as planned.,15
-				rej = firsttime
-				kronus = good
-				goto,scriptstart
-			}
-			if (newSize < 329)
-			{
-				msgbox,0,Bad news`, bro,Bad news`, it seems that I'm unable to automatically add Kronos to the Internet Explorer compatibility list. This is a problem`, because Internet Explorer 11 (the version I want to install) doesn't work with Kronos except in compatibility mode. `nThis is really only a problem for non-teacher staff members who clock in and out with Kronos. Because I can't automatically add Kronos to the list`, I'm going to install an older version of Internet Explorer.,30
-				kronus = bad
-				rej = locked
-				goto,scriptstart
-			}
-			else
-			{
-				msgbox,0,Well this is odd,The internet explorer compatibility list might be bigger than 329 bytes. I don't really know how to handle this situation, so I'll just ignore it and keep going.,10
-				rej = toobig
-				kronos = bad
-				goto,scriptstart
-			}
+			msgbox,0,Well this is odd,The internet explorer compatibility list might be bigger than %currentCompatibilityKey% bytes. I don't really know how to handle this situation, so I'll just ignore it and keep going.,10
+			rej = toobig
+			kronos = bad
+			goto,scriptstart
 		}
 	}
-
+	RunWait %ComSpec% /C "del /F /Q c:\t.txt"
+	
+	; Adobe Reader version check
+	if rej in open
+	{
+		RunWait %ComSpec% /C "REG QUERY "HKEY_LOCAL_MACHINE\SOFTWARE\Adobe\Acrobat Reader" > c:\t.txt"
+		sleep 1000
+		run %ComSpec% /C "notepad c:\t.txt"
+		sleep 3000
+		send ^{home}
+		sleep 500
+		send ^f
+		sleep 500
+		send Reader\
+		sleep 500
+		send {enter}
+		sleep 500
+		send !{F4}
+		sleep 500
+		send +{home}
+		sleep 500
+		send {backspace 2}
+		sleep 500
+		send {del 6}
+		sleep 500
+		send +{end}
+		sleep 500
+		send ^c
+		sleep 500
+		send !{F4}
+		sleep 1000
+		send !n
+		sleep 2000
+		areedr = %clipboard%
+		RunWait %ComSpec% /C "del /F /Q c:\t.txt"
+		msgbox,0,Adobe Reader found,You already have Adobe Reader installed (major version %areedr%),5
+	}
+	else
+	{
+		msgbox,0,Sorry,I can't figure out what version of Adobe Reader you're using`, so I'm just going to install the latest one I have`, even `if you don't need it.,5
+		areedr = unknown
+	}
+	if rej in open
+	{
+		if (areedr == "unset")
+		{
+			msgbox,0,Sorry,I can't figure out what version of Adobe Reader you're using which probably means you don't have it installed. I'm going to install the latest one I have`, even `if you don't need it.,5
+		}
+	}
+	
+	; Adobe Flash version check
+	if rej in open
+	{
+		RunWait %ComSpec% /C "del /F /Q c:\t.txt"
+		sleep 1000
+		RunWait %ComSpec% /C "REG QUERY HKEY_LOCAL_MACHINE\SOFTWARE\Macromedia\FlashPlayer /V "CurrentVersion" > c:\t.txt"
+		sleep 1000
+		run %ComSpec% /C "notepad c:\t.txt"
+		sleep 3000
+		send ^{home}
+		sleep 500
+		send ^f
+		sleep 500
+		send REG_SZ
+		sleep 500
+		send {enter}
+		sleep 500
+		send !{F4}
+		sleep 500
+		send +^{home}
+		sleep 500
+		send {backspace}
+		sleep 500
+		send {del 10}
+		sleep 500
+		send ^h
+		sleep 500
+		send `,
+		sleep 500
+		send {tab}
+		sleep 500
+		send `.
+		sleep 500
+		send !a
+		sleep 1000
+		send !{F4}
+		sleep 500
+		send +{end}
+		sleep 500
+		send ^c
+		sleep 500
+		send !{F4}
+		sleep 1000
+		send !n
+		sleep 2000
+		aflsh = %clipboard%
+		RunWait %ComSpec% /C "del /F /Q c:\t.txt"
+		msgbox,0,Adobe Flash found,You already have Adobe Flash installed (version %aflsh%),5
+	}
+	else
+	{
+		msgbox,0,Sorry,I can't figure out what version of Adobe Flash you're using`, so I'm just going to install the latest one I have`, even `if you don't need it.,5
+		aflsh = unknown
+	}
+	if rej in open
+	{
+		if (aflsh == "unset")
+		{
+			msgbox,0,Sorry,I can't figure out what version of Adobe Flash you're using which probably means you don't have it installed. I'm going to install the latest one I have`, even `if you don't need it.,5
+		}
+	}
+	
+	; Java version check
+	if rej in open
+	{
+		RunWait %ComSpec% /C "del /F /Q c:\t.txt"
+		sleep 1000
+		RunWait %ComSpec% /C "REG QUERY "HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Plug-in" > c:\t.txt"
+		sleep 1000
+		run %ComSpec% /C "notepad c:\t.txt"
+		sleep 3000
+		send ^{home}
+		sleep 500
+		send ^f
+		sleep 500
+		send Plug-in\
+		sleep 500
+		send {enter}
+		sleep 500
+		send !{F4}
+		sleep 500
+		send +^{home}
+		sleep 500
+		send {backspace}
+		sleep 500
+		send {del 8}
+		sleep 500
+		send +{end}
+		sleep 500
+		send ^c
+		sleep 500
+		send !{F4}
+		sleep 1000
+		send !n
+		sleep 2000
+		ojavr = %clipboard%
+		RunWait %ComSpec% /C "del /F /Q c:\t.txt"
+		msgbox,0,Oracle Java found,You already have Oracle Java installed (version %ojavr%),5
+	}
+	else
+	{
+		msgbox,0,Sorry,I can't figure out what version of Oracle Java you're using`, so I'm just going to install the latest one I have`, even `if you don't need it.,5
+		ojavr = unknown
+	}
+	if rej in open
+	{
+		if (ojavr == "unset")
+		{
+			msgbox,0,Sorry,I can't figure out what version of Oracle Java you're using which probably means you don't have it installed. I'm going to install the latest one I have`, even `if you don't need it.,5
+		}
+	}
+	
+	; IE version check
+	if rej in open
+	{
+		RunWait %ComSpec% /C "del /F /Q c:\ci.txt"
+		sleep 1000
+		RunWait %ComSpec% /C "REG QUERY "HKLM\SOFTWARE\Microsoft\Internet Explorer" /V "svcVersion" > C:\ci.txt"
+		sleep 1000
+		; SizeCheck
+		FileGetSize, ciSize, C:\ci.txt
+		;msgbox,0,0,size is %Size%
+		if (ciSize < 5) ; less than 5B
+		{
+			RunWait %ComSpec% /C "del /F /Q c:\ci.txt"
+			sleep 1000
+			RunWait %ComSpec% /C "REG QUERY "HKLM\SOFTWARE\Microsoft\Internet Explorer" /V "Version" > C:\ci.txt"
+			sleep 1000
+			FileGetSize, ci2Size, C:\ci.txt
+			if (ci2Size < 5) ; less than 5B
+			{
+				RunWait %ComSpec% /C "del /F /Q c:\ci.txt"
+				msgbox,0,Sorry about this,Sorry but I'm unable to get access to the specific information your want.
+			}
+		}
+		Run %ComSpec% /C "notepad c:\ci.txt"
+		sleep 3000
+		send ^{home}
+		sleep 500
+		send ^f
+		sleep 500
+		send REG_SZ
+		sleep 500
+		send {enter}
+		sleep 500
+		send !{F4}
+		sleep 500
+		send +^{home}
+		sleep 500
+		send {backspace}
+		sleep 500
+		send {del 10}
+		sleep 500
+		send +{end}
+		sleep 500
+		send ^c
+		sleep 500
+		send !{F4}
+		sleep 1000
+		send !n
+		sleep 2000
+		ieversion = %clipboard%
+		RunWait %ComSpec% /C "del /F /Q c:\ci.txt"
+		msgbox,0,Microsoft Internet Explorer found,You already have Microsoft Internet Explorer installed (version %ieversion%),7
+	}
+	else
+	{
+		msgbox,0,Sorry,I can't figure out what version of Microsoft Internet Explorer you're using`, so I'm just going to install the latest one I have`, even `if you don't need it.,5
+		ojavr = unknown
+	}
+	if rej in open
+	{
+		if (ieversion == "unset")
+		{
+			msgbox,0,Sorry,I can't figure out what version of Microsoft Internet Explorer you're using which probably means you don't have it installed. I'm going to install the latest one I have`, even `if you don't need it.,5
+		}
+	}
+	
+	
+	
 	scriptstart:
 	RunWait %ComSpec% /C "del /F /Q c:\t.txt"
 
@@ -319,7 +553,7 @@ else
 		Run %ComSpec% /C "shutdown -a"
 		sleep 500
 		Run %ComSpec% /C "shutdown -s -t 5"
-		MsgBox, 4096, Shutdown, Alright--shutting down..., 5
+		MsgBox, 4096, Shutdown, Alright--shutting down...,5
 		ExitApp
 	}
 	else IfMsgBox No
@@ -333,7 +567,7 @@ else
 	{
 		Run %ComSpec% /C "shutdown -r -t 10"
 		sleep 1000
-		MsgBox, 4096, Restart, Alright--restarting..., 5
+		MsgBox, 4096, Restart, Alright--restarting...,5
 		ExitApp
 	}
 	
