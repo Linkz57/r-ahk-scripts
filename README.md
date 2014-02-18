@@ -19,7 +19,7 @@ The following directories:
 
     - ua.ahk is where most of my time is spent. u, and to a lesser extent ua, are designed to be modular. Swap out the installer files with newer versions to update programs and add a few lines to mr.txt to remove other programs. As of [2013-10-24](https://github.com/Linkz57/r-ahk-scripts/blob/c4c69fbb4712c2155e520adbfaafaedf53f0e5b2/maintenance/ua.ahk "commit c4c69fbb4712c2155e520adbfaafaedf53f0e5b2") ua has a lovely little progress bar, bringing it closer to having a propper end-user experiance.
     - The u.ahk and ua.ahk scripts are really just frames around the actual installer files. I keep the installers up to date by downloading packages made available by their respective companies. 
-        - [Adobe Reader is found here](ftp://ftp.adobe.com/pub/adobe/reader/win/ "Adobe's public FTP server")
+        - [Adobe Reader is found here](ftp://ftp.adobe.com/pub/adobe/reader/win/ "Adobe's public FTP server") No FTP links in Markdown? Here's the raw link: ftp://ftp.adobe.com/pub/adobe/reader/win/
         - [Adobe Flash is found here](http://helpx.adobe.com/flash-player/kb/archived-flash-player-versions.html "Adobe's Flash Archive page")
         - Firefox will run fine from its normal .exe installer with the option <code>-ms</code>. I use [Firefox ESR](https://www.mozilla.org/en-US/firefox/organizations/all.html "Firefox ESR download page")
         - Java is weird. First you have to install it on a computer using the [offline installer](https://www.java.com/en/download/manual.jsp "Java download page"). Once that's done go to <code>%HOMEDRIVE%%HOMEPATH%\AppData\LocalLow\Sun\Java</code>, find the version you want, then use the .msi and .cab in there to install it on other computers.
