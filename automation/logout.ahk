@@ -1,4 +1,4 @@
-; logout.ahk v2
+; logout.ahk v2.1
 ; the idea is I close a bunch of programs then open Truecrypt and then shutdown.
 
 ;	closing firefox
@@ -98,3 +98,5 @@ sleep 2000
 run C:\Users\student\Documents\TrueCrypt\TrueCrypt.exe
 Runwait %ComSpec% /C "shutdown /s /t 300"
 exitapp
+
+esc::exitapp
