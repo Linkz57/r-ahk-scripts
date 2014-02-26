@@ -526,6 +526,7 @@ else
 	javainstall:
 	progress,60,%A_Space%,Updating Java,The Unfaltering March Of `Progress
 	SetTimer,altr,-10000
+	SetTimer,javadllerror,-30000
 	RunWait %ComSpec% /C "java.msi /passive /norestart"
 
 	;; Adobe Reader installation
@@ -642,6 +643,13 @@ else
 		send !r
 		goto,msiissues
 		return
+	}
+	
+	javadllerror:
+	{
+		IfWinExist,RunDLL,There was a problem starting C:\Program Files\Java\jre7\bin\\installer.dll
+		WinActivate
+		send {space}
 	}
 	
 	msiissues:
