@@ -23,4 +23,4 @@ The following directories:
         - [Adobe Flash is found here](http://helpx.adobe.com/flash-player/kb/archived-flash-player-versions.html "Adobe's Flash Archive page")
         - Firefox will run fine from its normal .exe installer with the option <code>-ms</code>. I use [Firefox ESR](https://www.mozilla.org/en-US/firefox/organizations/all.html "Firefox ESR download page")
         - Java is weird. First you have to install it on a computer using the [offline installer](https://www.java.com/en/download/manual.jsp "Java download page"). Once that's done go to <code>%HOMEDRIVE%%HOMEPATH%\AppData\LocalLow\Sun\Java</code>, find the version you want, then use the .msi and .cab in there to install it on other computers.
-        - The download location of Internet Explorer seems to change with every version. 
+        - The download location of Internet Explorer seems to change with every version; here's [version 11](http://windows.microsoft.com/en-us/internet-explorer/ie-11-worldwide-languages "Internet Explorer 11 offline installer")
