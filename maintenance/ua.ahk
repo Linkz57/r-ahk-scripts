@@ -6,13 +6,50 @@ IfMsgBox No
 }
 else
 {
+	;; Variables, flags and other pre-run setup
 	rej = unset
 	kronus = unset
 	areedr = unset
 	aflsh = unset
 	ojavr = unset
 	ieversion = unset
+	restaart = true
+	remuve = true
 	currentCompatibilityKey = 461
+	;; check for restart flag
+	if A_OSVersion in WIN_7,WIN_VISTA
+	{
+		ifexist, %HOMEDRIVE%%HOMEPATH%\Desktop\ahknorestart.txt
+		{
+			restaart = false
+			RunWait %ComSpec% /C "del /F /Q %HOMEDRIVE%%HOMEPATH%\Desktop\ahknorestart.txt"
+		}
+	}
+	if A_OSVersion in WIN_XP
+	{
+		ifexist, "C:\Documents and Settings\student\Desktop\ahknorestart.txt"
+		{
+			restaart = false
+			RunWait %ComSpec% /C "del /F /Q C:\Documents and Settings\student\Desktop\ahknorestart.txt"
+		}
+	}
+	;; check for remove flag
+	if A_OSVersion in WIN_7,WIN_VISTA
+	{
+		ifexist, %HOMEDRIVE%%HOMEPATH%\Desktop\ahknoremove.txt
+		{
+			remuve = false
+			RunWait %ComSpec% /C "del /F /Q %HOMEDRIVE%%HOMEPATH%\Desktop\ahknoremove.txt"
+		}
+	}
+	if A_OSVersion in WIN_XP
+	{
+		ifexist, "C:\Documents and Settings\student\Desktop\ahknoremove.txt"
+		{
+			remuve = false
+			RunWait %ComSpec% /C "del /F /Q C:\Documents and Settings\student\Desktop\ahknoremove.txt"
+		}
+	}
 
 	; Regestry and IE success test
 	msgbox,0,Alright let's do this,Sounds like a plan.`nBefore we start I'm going to test your chances of success and make some recommendations from there.,10
@@ -58,7 +95,7 @@ else
 		}
 		else
 		{
-			msgbox,0,Well this is odd,The internet explorer compatibility list might be bigger than %currentCompatibilityKey% bytes. I don't really know how to handle this situation, so I'll just ignore it and keep going.,10
+			msgbox,0,Well this is odd,The internet explorer compatibility list might be bigger than %currentCompatibilityKey% bytes. I don't really know how to handle this situation`, so I'll just ignore it and keep going.,10
 			rej = toobig
 			kronos = bad
 			goto,scriptstart
@@ -372,115 +409,118 @@ else
 	sleep 2000
 	
 	;; Misc Removal Script setup
-	progress,39,%A_Space%,Getting ready to remove a bunch of junk,The Unfaltering March Of `Progress
-	RunWait %ComSpec% /C "del /F /Q c:\mr.bat"
-	RunWait %ComSpec% /C "del /F /Q c:\mr.txt"
-	Sleep 2000
-	FileCopy, %A_WorkingDir%\mr.txt, C:\mr.bat
-	sleep 2000
-	Run %ComSpec% /C "notepad c:\mr.bat"
-	sleep 3000
-	send ^{home}
-	sleep 500
-	send ^f
-	sleep 1000
-	send REM ~ begin manual removal ~
-	sleep 500
-	send {enter}
-	sleep 1000
-	send !{F4}
-	sleep 1000
-	send ^+{end}
-	sleep 1000
-	send {backspace}
-	sleep 1000
-	
-	; Work around for not being allowed to run batch files
-	; send ^a
-	; sleep 500
-	; send ^c
-	; sleep 1000
-	
-	
-	if A_OSVersion in WIN_XP
+	if remuve in true
 	{
-		progress,40,ooh this part is my favorite,Getting ready to remove a bunch of junk,The Unfaltering March Of `Progress
-		;; replace homepath
-		send ^h
-		sleep 500
-		send `%Homepath`%
-		sleep 500
-		send {tab}
-		sleep 500
-		send \Documents and Settings\student
-		sleep 500
-		send !a
-		sleep 4500
-		
-		;; replace programdata
-		send +{tab}
-		sleep 500
-		send `%ProgramData`%\Microsoft\Windows
-		sleep 500
-		send {tab}
-		sleep 500
-		send C:\Documents and Settings\All Users
-		sleep 500
-		send !a
+		progress,39,%A_Space%,Getting ready to remove a bunch of junk,The Unfaltering March Of `Progress
+		RunWait %ComSpec% /C "del /F /Q c:\mr.bat"
+		RunWait %ComSpec% /C "del /F /Q c:\mr.txt"
+		Sleep 2000
+		FileCopy, %A_WorkingDir%\mr.txt, C:\mr.bat
 		sleep 2000
-		
-		;; replace public
-		send +{tab}
+		Run %ComSpec% /C "notepad c:\mr.bat"
+		sleep 3000
+		send ^{home}
 		sleep 500
-		send `%PUBLIC`%
+		send ^f
+		sleep 1000
+		send REM ~ begin manual removal ~
 		sleep 500
-		send {tab}
-		sleep 500
-		send C:\Documents and Settings\All Users
-		sleep 500
-		send !a
-		sleep 2000
-		
-		;; finish replacement
-		send !{F4}
-		sleep 500
-	}
-	send ^s
-	sleep 500
-	send !{F4}
-	sleep 1000
-	
-	;; setup error catching
-	IfWinExist, mr.bat - Notepad
-	{
-		WinActivate
-		send ^s
+		send {enter}
 		sleep 1000
 		send !{F4}
+		sleep 1000
+		send ^+{end}
+		sleep 1000
+		send {backspace}
+		sleep 1000
+		
+		; Work around for not being allowed to run batch files
+		; send ^a
+		; sleep 500
+		; send ^c
+		; sleep 1000
+		
+		
+		if A_OSVersion in WIN_XP
+		{
+			progress,40,ooh this part is my favorite,Getting ready to remove a bunch of junk,The Unfaltering March Of `Progress
+			;; replace homepath
+			send ^h
+			sleep 500
+			send `%Homepath`%
+			sleep 500
+			send {tab}
+			sleep 500
+			send \Documents and Settings\student
+			sleep 500
+			send !a
+			sleep 4500
+			
+			;; replace programdata
+			send +{tab}
+			sleep 500
+			send `%ProgramData`%\Microsoft\Windows
+			sleep 500
+			send {tab}
+			sleep 500
+			send C:\Documents and Settings\All Users
+			sleep 500
+			send !a
+			sleep 2000
+			
+			;; replace public
+			send +{tab}
+			sleep 500
+			send `%PUBLIC`%
+			sleep 500
+			send {tab}
+			sleep 500
+			send C:\Documents and Settings\All Users
+			sleep 500
+			send !a
+			sleep 2000
+			
+			;; finish replacement
+			send !{F4}
+			sleep 500
+		}
+		send ^s
 		sleep 500
-	
+		send !{F4}
+		sleep 1000
+		
+		;; setup error catching
 		IfWinExist, mr.bat - Notepad
 		{
-			Run %ComSpec% /C "taskkill /F /IM notepad.exe"
+			WinActivate
+			send ^s
 			sleep 1000
+			send !{F4}
+			sleep 500
+		
 			IfWinExist, mr.bat - Notepad
 			{
-				msgbox,0,Whelp there's a snag,It seems I can't get Notepad to close. I've tried three times and am still stuck. `nMind giving me a hand with this? `nDon't `click OK until Notepad is SAVED and CLOSED. `If you're not sure what you should do then just don't `click anything and I'll skip this bit in a minute.,120
-				IfMsgBox Timeout
+				Run %ComSpec% /C "taskkill /F /IM notepad.exe"
+				sleep 1000
+				IfWinExist, mr.bat - Notepad
 				{
-					goto,javainstall
+					msgbox,0,Whelp there's a snag,It seems I can't get Notepad to close. I've tried three times and am still stuck. `nMind giving me a hand with this? `nDon't `click OK until Notepad is SAVED and CLOSED. `If you're not sure what you should do then just don't `click anything and I'll skip this bit in a minute.,120
+					IfMsgBox Timeout
+					{
+						goto,javainstall
+					}
 				}
 			}
 		}
-	}
 
-	;; Misc Removal Script execution
-	progress,50,%A_Space%,Removing a bunch of junk,The Unfaltering March Of `Progress
-	sleep 2000
-;	RunWait %ComSpec% /C "%Clipboard%"
-	RunWait %ComSpec% /C "C:\mr.bat"
-	sleep 1000
-	RunWait %ComSpec% /C "del /F /Q c:\mr.bat"
+		;; Misc Removal Script execution
+		progress,50,%A_Space%,Removing a bunch of junk,The Unfaltering March Of `Progress
+		sleep 2000
+	;	RunWait %ComSpec% /C "%Clipboard%"
+		RunWait %ComSpec% /C "C:\mr.bat"
+		sleep 1000
+		RunWait %ComSpec% /C "del /F /Q c:\mr.bat"
+	}
 
 	;; Java Installation
 	javainstall:
@@ -544,31 +584,39 @@ else
 	sleep 2000
 	Run %ComSpec% /C "shutdown -a"
 	sleep 1000
-	Run %ComSpec% /C "shutdown -s -t 180"
-	sleep 1000
-	SetTimer,movewin,-100
-	MsgBox, 4, Alright you're done, Do you wanna restart or something? *YES* to restart now or *NO* to abort the automatic Shutdown of 3 minutes already in progress. BTdubs the error level is "%ErrorLevel%" on the off chance that you're interested. [this message will self-distruct in two minutes],120
-	IfMsgBox Yes
+	if restaart in true
 	{
-		Run %ComSpec% /C "shutdown -a"
-		sleep 500
-		Run %ComSpec% /C "shutdown -s -t 5"
-		MsgBox, 4096, Shutdown, Alright--shutting down...,5
-		ExitApp
-	}
-	else IfMsgBox No
-	{
-		Run %ComSpec% /C "shutdown -a"
-		Run %ComSpec% /C "explorer"
-		MsgBox, 4096, Abort Shutdown, Alright--aborting shutdown.,10
-		ExitApp
-	}
-	IfMsgBox Timeout
-	{
-		Run %ComSpec% /C "shutdown -r -t 10"
+		Run %ComSpec% /C "shutdown -s -t 180"
 		sleep 1000
-		MsgBox, 4096, Restart, Alright--restarting...,5
-		ExitApp
+		SetTimer,movewin,-100
+		MsgBox, 4, Alright you're done, Do you wanna restart or something? *YES* to restart now or *NO* to abort the automatic Shutdown of 3 minutes already in progress. BTdubs the error level is "%ErrorLevel%" on the off chance that you're interested. [this message will self-distruct in two minutes],120
+		IfMsgBox Yes
+		{
+			Run %ComSpec% /C "shutdown -a"
+			sleep 500
+			Run %ComSpec% /C "shutdown -s -t 5"
+			MsgBox, 4096, Shutdown, Alright--shutting down...,5
+			ExitApp
+		}
+		else IfMsgBox No
+		{
+			Run %ComSpec% /C "shutdown -a"
+			Run %ComSpec% /C "explorer"
+			MsgBox, 4096, Abort Shutdown, Alright--aborting shutdown.,10
+			ExitApp
+		}
+		IfMsgBox Timeout
+		{
+			Run %ComSpec% /C "shutdown -r -t 10"
+			sleep 1000
+			MsgBox, 4096, Restart, Alright--restarting...,5
+			ExitApp
+		}
+	}
+	if restaart in false
+	{
+		msgbox,0,Stick THIS on a fortune cookie and eat it,Well that's all finished. I'd recommend you restart this computer soon`, but then again I'd also recommend you not let a program tell you how to live your life.,10
+		Run %ComSpec% /C "explorer"
 	}
 	
 	ExitApp
@@ -639,7 +687,7 @@ else
 	movewin:
 	{
 		WinWait, Alright you're done
-		WinMove, 375, 75
+		WinMove, 375, 45
 ;		WinMove, Alright you're done, Do you wanna shutdown or something? *YES* to shutdown now or *NO* to abort the automatic Shutdown of,375, 75
 		sleep 500
 		winactivate, Alright you're done
