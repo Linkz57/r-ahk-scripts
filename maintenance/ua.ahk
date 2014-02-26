@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v2.1,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
+MsgBox,4,Update Automatically v2.2.1,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe,10
@@ -30,7 +30,7 @@ else
 		ifexist, "C:\Documents and Settings\student\Desktop\ahknorestart.txt"
 		{
 			restaart = false
-			RunWait %ComSpec% /C "del /F /Q C:\Documents and Settings\student\Desktop\ahknorestart.txt"
+			RunWait %ComSpec% /C "del /F /Q "C:\Documents and Settings\student\Desktop\ahknorestart.txt""
 		}
 	}
 	;; check for remove flag
@@ -47,7 +47,7 @@ else
 		ifexist, "C:\Documents and Settings\student\Desktop\ahknoremove.txt"
 		{
 			remuve = false
-			RunWait %ComSpec% /C "del /F /Q C:\Documents and Settings\student\Desktop\ahknoremove.txt"
+			RunWait %ComSpec% /C "del /F /Q "C:\Documents and Settings\student\Desktop\ahknoremove.txt""
 		}
 	}
 
