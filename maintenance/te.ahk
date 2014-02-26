@@ -1,4 +1,4 @@
-;;;; te.ahk v2
+;;;; te.ahk v2.1
 ;;;; The idea is, I test a computer for TestNav compatibility and try to fix any issues I find.
 ranUAatLeastOnce = false
 runwait QRes.exe /x 1280 /y 1024
@@ -62,6 +62,14 @@ IfWinExist,Internet Explorer,The page you are viewing uses Java. More informatio
 }
 sleep 5000
 IfWinExist,Windows Internet Explorer 9
+{
+	WinActivate
+	sleep 500
+	send {space}
+	sleep 1000
+	send {enter}
+}
+IfWinExist,Windows Internet Explorer 11
 {
 	WinActivate
 	sleep 500
