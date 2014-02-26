@@ -29,7 +29,7 @@ msgbox,48,error,Error! This line should never be seen
 
 ;;test begin
 testbegin:
-Run %ComSpec% /C ""C:\Program Files\Internet Explorer\iexplore.exe" https://proctorcaching.pearsonaccess.com/ems/systemCheck/systemCheck.jsp?acc=tx"
+Run %ComSpec% /C ""C:\Program Files\Internet Explorer\iexplore.exe" -k https://proctorcaching.pearsonaccess.com/ems/systemCheck/systemCheck.jsp?acc=tx"
 sleep 15000
 IfWinExist,Java Update Needed
 {
@@ -42,7 +42,7 @@ IfWinExist,Java Update Needed
 	if ranUAatLeastOnce in true
 	{
 		msgbox,48,Picnic!,Well I've already tried updating it once so I won't try again. You'll have to test this thing thing manually.
-		Run %ComSpec% /C ""C:\Program Files\Internet Explorer\iexplore.exe" http://tx.testnav.com/txqc"
+		Run %ComSpec% /C ""C:\Program Files\Internet Explorer\iexplore.exe" -k http://tx.testnav.com/txqc"
 		exitapp
 	}
 }
@@ -52,6 +52,13 @@ IfWinExist,Security Warning
 	send {left}
 	sleep 500
 	send {space}
+}
+IfWinExist,Internet Explorer,The page you are viewing uses Java. More information on Java support is available from the Microsoft website.
+{
+	WinActivate
+	send !d
+	sleep 500
+	send {enter}
 }
 sleep 5000
 IfWinExist,Windows Internet Explorer 9
@@ -92,19 +99,27 @@ IfWinExist,Choose Add-ons
 sleep 1000
 send !y
 sleep 1000
-send {F11}
+;send {F11}
 sleep 3000
 send ^0
 sleep 1000
-click 220,338
+click 220,330
+sleep 3000
+IfWinExist,Message from webpage,Java version blocked or not installed.
+{
+	Run %ComSpec% /C "taskkill /F /IM iexplore.exe"
+	msgbox,0,Fail,It seems java is not up to date. I'm going to try to update it now.,5
+	goto,uabegin
+}
 sleep 10000
 Runwait %ComSpec% /C "timeout /t 60"
 
 ;; moving on to the second check
+secondcheck:
 sleep 2000
 Run %ComSpec% /C "taskkill /F /IM iexplore.exe"
 sleep 5000
-Run %ComSpec% /C ""C:\Program Files\Internet Explorer\iexplore.exe" http://tx.testnav.com/txqc"
+Run %ComSpec% /C ""C:\Program Files\Internet Explorer\iexplore.exe" -k http://tx.testnav.com/txqc"
 sleep 10000
 IfWinExist,Java Update Needed
 {
@@ -126,47 +141,57 @@ IfWinExist,Security Warning
 	sleep 500
 	send !y
 }
-sleep 5000
-IfWinExist,TestNav - Windows Internet Explorer
+sleep 10000
+IfWinExist,https://tx.testnav.com/ - TestNav - Windows Internet Explorer
+{
 	WinActivate
-sleep 500
-send {F11}
-sleep 2000
-send {tab}
-sleep 1000
-send systemcheck7
-sleep 500
-send {tab}
-sleep 500
-send testcode7
-sleep 1000
-send {enter}
-sleep 30000
-;Runwait %ComSpec% /C "timeout /t 60"
-loop,2
-{
+	sleep 500
+	;send {F11}
+	sleep 2000
+	send {tab}
+	sleep 1000
+	send systemcheck7
+	sleep 500
 	send {tab}
 	sleep 500
-}
-send {space}
-sleep 1000
-loop,2
-{
+	send testcode7
+	sleep 1000
+	send {enter}
+	sleep 30000
+	;Runwait %ComSpec% /C "timeout /t 60"
+	loop,2
+	{
+		send {tab}
+		sleep 500
+	}
+	send {space}
+	sleep 1000
+	loop,2
+	{
+		send {tab}
+		sleep 500
+	}
+	loop,2
+	{
+		send {down}
+		sleep 500
+	}
 	send {tab}
 	sleep 500
-}
-loop,2
-{
-	send {down}
+	send {space}
+	sleep 2000
+	send {tab}
 	sleep 500
+	send {space}
+	sleep 3000
+	msgbox,0,Done!,Done!,20
+	Run %ComSpec% /C "shutdown -s -t 10"
+	exitapp
 }
-send {tab}
-sleep 500
-send {space}
-sleep 2000
-send {tab}
-sleep 500
-send {space}
+else
+{
+	goto,secondcheck
+}
 
 altr:
 send !r
