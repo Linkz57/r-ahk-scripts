@@ -150,7 +150,8 @@ IfWinExist,Security Warning
 	send !y
 }
 sleep 10000
-IfWinExist,https://tx.testnav.com/ - TestNav - Windows Internet Explorer
+SetTitleMatchMode,2
+IfWinExist,https://tx.testnav.com/ - TestNav
 {
 	WinActivate
 	sleep 500
@@ -210,3 +211,4 @@ sleep 3000
 Esc::
 msgbox,0,k,k,1
 exitapp
+
