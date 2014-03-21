@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v2.2.1,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
+MsgBox,4,Update Automatically v2.2.2,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe,10
@@ -102,6 +102,24 @@ else
 		}
 	}
 	RunWait %ComSpec% /C "del /F /Q c:\t.txt"
+	
+;;	Check Firefox installed version against installer version
+	loop, firefox*.version
+	FirefoxInstallerVersion = %A_LoopFileName%
+
+	IniRead, FirefoxVersion, %ProgramFiles%\Mozilla Firefox\application.ini, App, Version
+	IniRead, FirefoxRepo, %ProgramFiles%\Mozilla Firefox\application.ini, App, SourceRepository
+
+
+	FoundPos := RegExMatch(FirefoxRepo, "(esr)", FirefoxRepoFiltered)
+	msgbox,0,0,Firefox %FirefoxVersion% %FirefoxRepoFiltered% is currently installed,3
+
+	; if %FirefoxRepoFiltered% === "esr"
+	; {
+		; msgbox,toats esr
+	; }
+	msgbox,0,0,%FirefoxInstallerVersion% is the version I want to install.,3
+
 	
 	; Adobe Reader version check
 	if rej in open
