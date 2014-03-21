@@ -1,4 +1,4 @@
-REM mr.txt v1.2.4
+REM mr.txt v1.2.6
 REM This is a very basic batch file written by Tyler Francis that--in tandem with another script cleverly named "Remove"--attempts to remove many programs that would not be useful and/or allowed in a school environment. It's rather aggressive about this, especially in the first "silent" half of this file, so make sure you're ok with losing all of the programs and files mentioned here.
 
 C:
@@ -177,6 +177,16 @@ REM below is ScorpionSaver 1.0.0.0
 
 REM below is ABBYY FineReader 6.0 Sprint
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {ACF60000-22B9-4CE9-98D6-2CCF359BAC07}
+
+REM below is something
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {4195E93E-D888-4547-B52D-D2D34E161812}
+
+REM below is NXPowerLite
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {D332A993-88A6-47CC-AA5E-68107FF88CCF}
+
+REM below is Surveyor Agent
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {387C6048-ABD5-4862-9DF7-711AABE561BB}
+
 
 
 
@@ -389,12 +399,19 @@ del /F /Q "%HOMEDRIVE%%HOMEPATH%\Desktop\Click to Find and Fix Errors.lnk"
 del /F /Q "%HOMEDRIVE%%HOMEPATH%\Desktop\Facebook Photo Drag-n-Drop.lnk"
 del /F /Q "%HOMEDRIVE%%HOMEPATH%\Desktop\Play Disney® Club Penguin.lnk"
 del /F /Q "%HOMEDRIVE%%HOMEPATH%\Desktop\Continue Music Remote.lnk"
+del /F /Q "%HOMEDRIVE%%HOMEPATH%\Desktop\Live PC Help.lnk"
+del /F /Q "%HOMEDRIVE%%HOMEPATH%\Desktop\Install RealArcade BookWorm Deluxe.lnk"
 del /F /Q /S "%HOMEDRIVE%%HOMEPATH%\Desktop\utmp"
 REM del /F /Q "%HOMEDRIVE%%HOMEPATH%\Desktop\Google Chrome.lnk"
 REM del /F /Q "%ALLUSERSPROFILE%\Desktop\Google Chrome.lnk"
 del /F /Q "%ALLUSERSPROFILE%\Desktop\u.ini"
 del /F /Q "%HOMEDRIVE%%HOMEPATH%\Desktop\u.ini"
 del /F /Q /S "%ProgramFiles%\FilmFanatic"
+del /F /Q /S "%HOMEDRIVE%%HOMEPATH%\Application Data\.minecraft"
+del /F /Q "%HOMEDRIVE%%HOMEPATH%\Desktop\MySearchDial.url"
+del /F /Q "%ALLUSERSPROFILE%\Desktop\MySearchDial.url"
+del /F /Q "C:\Users\student\AppData\Local\Microsoft\Windows\Temporary Internet Files\Content.IE5\QGAHD3IY\realarcadebookwormdeluxe-setup[1].exe"
+
 
 REM	del /F /Q /S "%ProgramFiles%\Free Offers from Freeze.com"
 
@@ -743,15 +760,39 @@ RunDll32 C:\PROGRA~1\COMMON~1\INSTAL~1\engine\6\INTEL3~1\Ctor.dll,LaunchSetup "C
 "%HOMEDRIVE%%HOMEPATH%\AppData\Local\GCC\uninstall.exe
 "%HOMEDRIVE%%HOMEPATH%\AppData\Local\SevereWeatherAlerts\uninstall.exe
 "%ProgramFiles%\Fighters\SLOW-PCfighter\Uninstall.exe" Remove SHORT_UNINSTALL=1
-"%HOMEDRIVE%%HOMEPATH%\AppData\Local\SwvUpdater\Updater.exe /uninstall
-
-
+"%HOMEDRIVE%%HOMEPATH%\AppData\Local\SwvUpdater\Updater.exe" /uninstall
+"%ProgramFiles%\Game Downloader\Uninstall.exe"
+"%HOMEDRIVE%%HOMEPATH%\AppData\Local\GreatArcadeHits\GAHUninstaller.exe"
+"%ProgramFiles%\LyricSing\Uninstall.exe"
+REM below is QuickShare 1.135.60.12323
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {232F1B14-7126-491F-AC8C-6123BA58FDE2}
+"%HOMEDRIVE%%HOMEPATH%\AppData\Local\TidyNetwork.com\TidyNetwork.exe" /U
+"%HOMEDRIVE%%HOMEPATH%\AppData\Local\WordOv\uninst.exe"
+"%ProgramFiles%\NortonInstaller\{170fa89a-6886-4c9e-b17b-12bccdd80788}\NortonPCCheckup\LicenseType\2.0.17.48\InstStub.exe" /X
+REM need to first disable network adapter before running this "%ProgramFiles%\Hotspot Shield\Uninstall.exe"
+"%ProgramFiles%\PassShow\Uninstall.exe
+"%ProgramFiles%\DLCleaner\unins000.exe" /SILENT
+"%ProgramFiles%\EnhanceTronic\EnhanceTronicUninstall.exe" /S
+"%ProgramFiles%\Highlightly\Uninstall.exe"
+"%ProgramFiles%\Mobogenie\uninst.exe"
+"%HOMEDRIVE%%HOMEPATH%\AppData\Roaming\0D0S1L2Z1P1B0T1P1B2Z\Zip Opener Packages\uninstaller.exe" /Uninstall /NM="Zip Opener Packages" /AN="0D0S1L2Z1P1B0T1P1B2Z" /MBN="Zip Opener Packages"
+"%HOMEDRIVE%%HOMEPATH%\AppData\Local\BrowserSafeguard\uninstall.BrowserSafeguard.exe" /u /ImplementationID=browsersafeguard-rockettab-ptn
+"%ProgramFiles%\BrowseForTheCause\BrowseForTheCause.exe" uninstall
+"%ProgramFiles%\Mobile App Sync\uninstall.exe"
+"%ProgramFiles%\Download Internet Explorer 10\unins000.exe"
+"%ProgramFiles%\LyricsParty-1\Uninstall.exe"
+"%PUBLIC%\Application Data\SaveAs\uninstall.exe"
+"C:\Users\student\AppData\Roaming\uTorrent\uTorrent.exe" /UNINSTALL
+"%ProgramFiles%\Applian Technologies\Applian FLV and Media Player\uninstall.exe"
+"%ProgramFiles%\ZipDownloader\uninstall.exe"
+"%ProgramFiles%\Video Performer Manager\2.6.1249.132\{16cdff19-861d-48e3-a751-d99a27784753}\uninstall.exe" /Uninstall /{15D2D75C-9CB2-4efd-BAD7-B9B4CB4BC693} /su=3c3761ed8b873225 /um
 
 
 
 REM rundll32.exe dfshim.dll,ShArpMaintain DellSystemDetect.application, Culture=neutral, PublicKeyToken=0f612f649c4a10af, processorArchitecture=msil
 rundll32 C:\PROGRA~1\DICTIO~2\bar\1.bin\v4Bar.dll,O
 rundll32 C:\PROGRA~1\RECIPE~2\bar\1.bin\2jBar.dll,O
+rundll32 C:\PROGRA~1\HOMEWO~2\bar\1.bin\7eBar.dll,O
 
 
 
@@ -797,7 +838,6 @@ REM del /F /Q /S "%ProgramFiles%\Google"
 
 REM ****************
 
-
 REM sleep5000.exe
 timeout /t 5
 
@@ -815,6 +855,7 @@ del /F /Q "%ALLUSERSPROFILE%\Start Menu\Programs\Startup\Adobe Acrobat Synchroni
 del /F /Q /S "%ProgramFiles%\DefaultTab"
 del /F /Q /S "%ProgramFiles%\Iminent"
 del /F /Q /S "%ProgramFiles%\SaveValet"
+
 
 REM sleep30000.exe
 timeout /t 30
