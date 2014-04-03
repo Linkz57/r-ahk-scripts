@@ -1,4 +1,4 @@
-REM mr.txt v1.2.6
+REM mr.txt v1.2.7
 REM This is a very basic batch file written by Tyler Francis that--in tandem with another script cleverly named "Remove"--attempts to remove many programs that would not be useful and/or allowed in a school environment. It's rather aggressive about this, especially in the first "silent" half of this file, so make sure you're ok with losing all of the programs and files mentioned here.
 
 C:
@@ -187,6 +187,11 @@ REM below is NXPowerLite
 REM below is Surveyor Agent
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {387C6048-ABD5-4862-9DF7-711AABE561BB}
 
+REM below is Google Drive
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {E87022D3-C8C9-4C76-8E27-BC7F18F9B8FB}
+
+REM below is Strongvault Online Backup
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {4DC876FD-105A-431A-87B2-C1BE7C1CDD51}
 
 
 
@@ -786,6 +791,9 @@ REM need to first disable network adapter before running this "%ProgramFiles%\Ho
 "%ProgramFiles%\Applian Technologies\Applian FLV and Media Player\uninstall.exe"
 "%ProgramFiles%\ZipDownloader\uninstall.exe"
 "%ProgramFiles%\Video Performer Manager\2.6.1249.132\{16cdff19-861d-48e3-a751-d99a27784753}\uninstall.exe" /Uninstall /{15D2D75C-9CB2-4efd-BAD7-B9B4CB4BC693} /su=3c3761ed8b873225 /um
+%ProgramData%\Updater\Uninstall.exe /ic=U2
+%ProgramData%\InternetUpdater\uninstall.exe /kb=y /ic=2
+
 
 
 
