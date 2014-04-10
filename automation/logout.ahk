@@ -1,20 +1,66 @@
-; logout.ahk v2.1
-; the idea is I close a bunch of programs then open Truecrypt and then shutdown.
+; logout.ahk v2.3
+; the idea is I close a bunch of programs then open Truecrypt.
 
 ;	closing firefox
-SetTitleMatchMode,2
-ifwinexist,  - Mozilla Firefox
+process,exist,firefox.exe
+while (%errorlevel% != 0)
 {
-	winactivate
-	sleep 1000
-	msgbox,0,Closing Firefox,Closing Firefox,1
-	Winclose
+	SetTitleMatchMode,2
+	ifwinexist,  - Mozilla Firefox
+	{
+		winactivate
+		sleep 500
+		send #{down}
+		sleep 500
+		winactivate
+		sleep 1000
+		Winclose
+		msgbox,0,Closing Firefox,Closing Firefox,1
+	}
+	else
+	{
+		msgbox,0,whelp,I couldn't find Firefox.,2
+	}
+	sleep 2000
+	process,exist,firefox.exe
 }
-else
-{
-	msgbox,0,whelp,I couldn't find Firefox.,2
-}
+msgbox,0,done,done,1
 
+;	closing Chrome
+
+process,exist,GoogleChromePortable.exe
+while (%errorlevel% != 0)
+{
+	if (%A_Index% > 10)
+	{
+		Runwait %ComSpec% /C "taskkill /F /IM GoogleChromePortable.exe"
+	}
+	Runwait %ComSpec% /C "taskkill /F /IM chrome.exe"
+	sleep 1000
+	process,exist,GoogleChromePortable.exe
+}
+msgbox,0,done,done,1
+
+;	closing Notepad++
+process,exist,notepad++.exe
+while (%errorlevel% != 0)
+{
+	SetTitleMatchMode,2
+	ifwinexist,  - Notepad++
+	{
+		winactivate
+		sleep 1000
+		Winclose
+		msgbox,0,Closing Notepad++,Closing Notepad++,1
+	}
+	else
+	{
+		msgbox,0,whelp,I couldn't find Notepad++.,2
+	}
+	sleep 2000
+	process,exist,notepad++.exe
+}
+msgbox,0,done,done,1
 
 
 ;	closing texter
@@ -31,24 +77,6 @@ while (%errorlevel% != 0)
 	process,exist,texter.exe
 }
 msgbox,0,0,done,1
-
-
-
-;	closing wintabs
-msgbox,0,Closing WindowTabs,Closing WindowTabs,1
-process,exist,WindowTabs.exe
-while (%errorlevel% != 0)
-{
-	if (%A_Index% > 3)
-	{
-		Runwait %ComSpec% /C "taskkill /F /IM WindowTabs.exe"
-	}
-	Runwait %ComSpec% /C "taskkill /IM WindowTabs.exe"
-	sleep 1000
-	process,exist,WindowTabs.exe
-}
-msgbox,0,0,done,1
-
 
 
 ;	closing PortableApps thing
@@ -92,11 +120,28 @@ while (%errorlevel% != 0)
 msgbox,0,0,done,1
 
 
+;	closing wintabs
+msgbox,0,Closing WindowTabs,Closing WindowTabs,1
+process,exist,WindowTabs.exe
+while (%errorlevel% != 0)
+{
+	if (%A_Index% > 5)
+	{
+		msgbox,0,failed,Failed to close WindowTabs so go do it yourself,5
+		break
+	}
+	Runwait %ComSpec% /C "taskkill /F /T /IM WindowTabs.exe"
+	sleep 1000
+	process,exist,WindowTabs.exe
+}
+msgbox,0,0,done,1
+
 
 ; opening TrueCrypt
 sleep 2000
 run C:\Users\student\Documents\TrueCrypt\TrueCrypt.exe
-Runwait %ComSpec% /C "shutdown /s /t 300"
+run C:\Users\student\Documents\finalLogout.ahk
+;Runwait %ComSpec% /C "shutdown /s /t 300"
 exitapp
 
 esc::exitapp
