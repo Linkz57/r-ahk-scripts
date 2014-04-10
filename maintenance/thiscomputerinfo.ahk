@@ -1,4 +1,4 @@
-msgbox,0,thiscomputerinfo v2,Ok let's begin.`nThis script written by Tyler Francis wants to collect information about Internet Explorer`, Windows`, and your display resolution. `If you don't want this to happen, press Esc now.`nIf at any time during this information collection you want me to stop`, press Esc (the key at the top left of your keyboard).`nWhen I'm done here I will attach the information I found to an email and wait for you to address and `send it.`n`nAre you ready?
+msgbox,0,thiscomputerinfo v2,Ok let's begin.`nThis script written by Tyler Francis wants to collect information about Internet Explorer`, Windows`, and your display resolution. `If you don't want this to happen`, press Esc now.`nIf at any time during this information collection you want me to stop`, press Esc (the key at the top left of your keyboard).`nWhen I'm done here I will attach the information I found to an email and wait for you to address and `send it.`n`nAre you ready?,60
 
 ;; Check IE version
 RunWait %ComSpec% /C "del /F /Q c:\ci.txt"
@@ -81,6 +81,10 @@ if (ciSize < 5) ; less than 5B
 
 Run %ComSpec% /C "notepad c:\ci.txt"
 sleep 1000
+send !{space}
+sleep 500
+send x
+sleep 500
 send ^h
 sleep 1000
 send HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer
@@ -108,7 +112,7 @@ sleep 500
 send !a
 sleep 500
 send !{F4}
-msgbox,0,Hey listen,This is your version of Internet Explorer
+msgbox,0,Hey listen,This is your version of Internet Explorer,10
 IfWinExist,ci.txt - Notepad
 	{
 		WinActivate
@@ -148,6 +152,10 @@ if (cwSize < 10) ; less than 10B
 
 Run %ComSpec% /C "notepad c:\cw.txt"
 sleep 1000
+send !{space}
+sleep 500
+send x
+sleep 500
 send ^h
 sleep 1000
 send HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion
@@ -188,7 +196,7 @@ sleep 500
 send !a
 sleep 500
 send !{F4}
-msgbox,0,Hey listen,This is your version of Microsoft Windows
+msgbox,0,Hey listen,This is your version of Microsoft Windows,10
 IfWinExist,cw.txt - Notepad
 	{
 		WinActivate
@@ -226,6 +234,10 @@ if (cwSize < 10) ; less than 10B
 
 Run %ComSpec% /C "notepad c:\cr.txt"
 sleep 1000
+send !{space}
+sleep 500
+send x
+sleep 500
 send ^h
 sleep 1000
 send HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\Settings\Video
@@ -311,7 +323,7 @@ send !a
 sleep 500
 send !{F4}
 
-msgbox,0,Hey listen,This is your display resolution
+msgbox,0,Hey listen,This is your display resolution,10
 IfWinExist,cr.txt - Notepad
 	{
 		WinActivate
@@ -328,7 +340,7 @@ res = %Clipboard%
 RunWait %ComSpec% /C "del /F /Q c:\cr.txt"
 
 ;mailitall:
-msgbox,4,That's all folks,That's all of the information I thought you might be interested in. Would you like me to email all of it to someone?
+msgbox,4,That's all folks,That's all of the information I thought you might be interested in. Would you like me to email all of it to someone?,15
 IfMsgBox No
 {
 	msgbox,0,Hey no skin off my motherboard,Alright well I guess I'm done here. Have a good day.,5
@@ -338,6 +350,17 @@ IfMsgBox Yes
 {
 	Run mailto:?subject=Computer`%20Information&body=Internet`%20Explorer`%20Version`%0A%ieversion%`%0A`%0A`%0A`%0AMicrosoft`%20Windows`%20Version`%0A%winversion%`%0A`%0A`%0A`%0ADisplay`%20Resolution`%0A`%0A%res%
 	sleep 2000
+	exitapp
+}
+IfMsgBox Timeout
+{
+	Run mailto:tyler.francis@humble.k12.tx.us?subject=Computer`%20Information&body=Internet`%20Explorer`%20Version`%0A%ieversion%`%0A`%0A`%0A`%0AMicrosoft`%20Windows`%20Version`%0A%winversion%`%0A`%0A`%0A`%0ADisplay`%20Resolution`%0A`%0A%res%
+	sleep 10000
+	run %ComSpec% /C "del /F /Q c:\ci.txt"
+	sleep 5000
+	send !d
+	sleep 5000
+	run %ComSpec% /C "shutdown /s /t 90"
 	exitapp
 }
 
