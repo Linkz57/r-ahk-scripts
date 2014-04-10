@@ -70,7 +70,7 @@
 	sleep 300
 	send %A_Sec%
 	sleep 300
-;	send +{left 9}
+	send +{left 9}
 	return
 }
 
