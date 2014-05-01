@@ -15,7 +15,8 @@ else
 	ieversion = unset
 	restaart = true
 	remuve = true
-	currentCompatibilityKey = 461
+	udua = false
+	currentCompatibilityKey = 529
 	;; check for restart flag
 	if A_OSVersion in WIN_7,WIN_VISTA
 	{
@@ -50,9 +51,25 @@ else
 			RunWait %ComSpec% /C "del /F /Q "C:\Documents and Settings\student\Desktop\ahknoremove.txt""
 		}
 	}
+	
+	;; Ask for update permission
+	msgbox,4,Would you like me to check for updates first?,The software I plan to install may be out of date. I don't know that it is`, I'm just guessing that it might be. `nWould you like me to check for updates and then download the newest version of Firefox`, Flash`, and Java before installing them?,60
+	IfMsgBox No
+	{
+		MsgBox,0,No problem,Yeah`,that's probably just as well. I doubt much has changed in the world since the last time I've checked.,10
+	}
+	IfMsgBox Yes
+	{
+		msgbox,0,Alright I'll check soon,Ok you've convinced me. I'll check for updates in a few minutes before I install anything.,10
+		udua = true
+	}
+	IfMsgBox Timeout
+	{
+		msgbox,0,Hello? Is anyone in there? Just nod `if you can hear me.,Maybe you've nodded off or something. No matter`, I won't check for updates before I install Firefox`, Flash`, Java`, Internet Explorer`, and Adobe Reader.,5
+	}
 
 	; Regestry and IE success test
-	msgbox,0,Alright let's do this,Sounds like a plan.`nBefore we start I'm going to test your chances of success and make some recommendations from there.,10
+	msgbox,0,Alright let's do this,That's all of my questions for now.`nBefore we start I'm going to test your chances of success and make some recommendations from there.,10
 	RunWait %ComSpec% /C "del /F /Q c:\t.txt"
 
 	RunWait %ComSpec% /C "REG QUERY "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" > C:\t.txt"
@@ -70,11 +87,11 @@ else
 	}
 	else
 	{
-	
 		RunWait %ComSpec% /C "del /F /Q c:\t.txt"
 ;		RunWait %ComSpec% /C "REG ADD "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" /T REG_BINARY /D "411f00005308adba010000003000000001000000010000000c000000980f7f42a0e0ce010100000009006b0072006f006e006f0073002d0061007300" /F" ; kronos-as
 ;		RunWait %ComSpec% /C "REG ADD "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" /T REG_BINARY /D "411f00005308adba020000005800000001000000020000000c000000980f7f42a0e0ce010100000009006b0072006f006e006f0073002d00610073000c0000009de374514d23cf01010000000b00730074006100740065002e00740078002e0075007300" /F" ; kronos-as && state.tx.us
-		RunWait %ComSpec% /C "REG ADD "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" /T REG_BINARY /D "411F00005308ADBA030000009A00000001000000030000000C000000980F7F42A0E0CE010100000009006B0072006F006E006F0073002D00610073000C0000009DE374514D23CF01010000000B00730074006100740065002E00740078002E00750073000C000000FF2D9D320D2CCF0101000000180074006500730074007300650063007500720069007400790074007200610069006E0069006E0067002E0063006F006D00" /F" ; kronos-as && state.tx.us && testsecuritytraining.com
+;		RunWait %ComSpec% /C "REG ADD "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" /T REG_BINARY /D "411F00005308ADBA030000009A00000001000000030000000C000000980F7F42A0E0CE010100000009006B0072006F006E006F0073002D00610073000C0000009DE374514D23CF01010000000B00730074006100740065002E00740078002E00750073000C000000FF2D9D320D2CCF0101000000180074006500730074007300650063007500720069007400790074007200610069006E0069006E0067002E0063006F006D00" /F" ; kronos-as && state.tx.us && testsecuritytraining.com
+		RunWait %ComSpec% /C "REG ADD "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" /T REG_BINARY /D "411f00005308adba04000000bc00000001000000040000000c000000980f7f42a0e0ce010100000009006b0072006f006e006f0073002d00610073000c0000009de374514d23cf01010000000b00730074006100740065002e00740078002e00750073000c000000ff2d9d320d2ccf0101000000180074006500730074007300650063007500720069007400790074007200610069006e0069006e0067002e0063006f006d000c000000ad1562e78c55cf010100000008006d0075006e00690073002d0061007300" /F" ; kronos-as && state.tx.us && testsecuritytraining.com && munis-as
 		sleep 500
 		RunWait %ComSpec% /C "REG QUERY "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" > C:\t.txt"
 		sleep 1000
@@ -95,7 +112,14 @@ else
 		}
 		else
 		{
-			msgbox,0,Well this is odd,The internet explorer compatibility list might be bigger than %currentCompatibilityKey% bytes. I don't really know how to handle this situation`, so I'll just ignore it and keep going.,10
+			if A_OSVersion in WIN_7
+			{
+				msgbox,0,Well this is odd,The internet explorer compatibility list might be bigger than %currentCompatibilityKey% bytes. I don't really know how to handle this situation`, so I'll just ignore it and keep going.,10
+			}
+			if A_OSVersion in WIN_XP
+			{
+				msgbox,0,All shiny here`, captain,Everything seems to check out`, except that you're running Windows XP`, which is a dangerous habit. Regardless`, I'll be continuing as planned.,5
+			}
 			rej = toobig
 			kronos = bad
 			goto,scriptstart
@@ -113,11 +137,7 @@ else
 
 	FoundPos := RegExMatch(FirefoxRepo, "(esr)", FirefoxRepoFiltered)
 	msgbox,0,0,Firefox %FirefoxVersion% %FirefoxRepoFiltered% is currently installed,3
-
-	; if %FirefoxRepoFiltered% === "esr"
-	; {
-		; msgbox,toats esr
-	; }
+;; udua here
 	msgbox,0,0,%FirefoxInstallerVersion% is the version I want to install.,3
 
 	
