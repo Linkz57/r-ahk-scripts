@@ -1,4 +1,4 @@
-;;;; te.ahk v3
+;;;; te.ahk v3.1
 ;;;; The idea is, I test a computer for TestNav compatibility and try to fix any issues I find.
 ranUAatLeastOnce = false
 firstCheck = fail
@@ -10,7 +10,7 @@ runwait QRes.exe /x 1280 /y 1024
 sleep 500
 goto,testbegin
 
-msgbox,48,error,Error! This line should never be seen
+
 
 ;;ua begin
 uabegin:
@@ -28,16 +28,15 @@ SetTimer,altr,-10000
 runwait ua.exe
 ranUAatLeastOnce = true
 sleep 5000
-goto,testbegin
 
-msgbox,48,error,Error! This line should never be seen
+
 
 ;;test begin
 testbegin:
 Run %ComSpec% /C "taskkill /F /IM iexplore.exe"
 if testFailCount > 3
 {
-	msgbox,0,Actually you know what?,This test has failed too many times. I obviously don't know what I'm doing, so I'll defer descernment to you`, human.
+	msgbox,0,Actually you know what?,This test has failed too many times. I obviously don't know what I'm doing, so I'll defer discernment to you`, human.
 	Run %ComSpec% /C ""C:\Program Files\Internet Explorer\iexplore.exe" http://tx.testnav.com/txqc"
 	exitapp
 }
@@ -144,6 +143,74 @@ if buttonClicked in notsure
 		click 220,330
 	}
 }
+
+IfWinExist,Security Warning
+{
+	send {left}
+	sleep 500
+	send {space}
+}
+IfWinExist,Security Information
+{
+	WinActivate
+	send !d
+	sleep 500
+	send !r
+	sleep 3000
+}
+IfWinExist,Internet Explorer,Internet Explorer is not currently your default browser.
+{
+	WinActivate
+	send !y
+}
+IfWinExist,Internet Explorer,The page you are viewing uses Java. More information on Java support is available from the Microsoft website.
+{
+	WinActivate
+	send !d
+	sleep 500
+	send {enter}
+}
+IfWinExist,Windows Internet Explorer 9
+{
+	WinActivate
+	sleep 500
+	send {space}
+	sleep 1000
+	send {enter}
+}
+IfWinExist,Windows Internet Explorer 11
+{
+	WinActivate
+	sleep 500
+	send {space}
+	sleep 1000
+	send {enter}
+}
+IfWinExist,Internet Explorer 9 - Microsoft Windows - Windows Internet Explorer
+{
+	WinActivate
+	sleep 500
+	send ^w
+}
+loop,2
+{
+	IfWinExist,Security Information
+	{
+		WinActivate
+		sleep 500
+		send {enter}
+	}
+	sleep 10000
+}
+IfWinExist,System Check for TestNav - Windows Internet Explorer
+WinActivate
+IfWinExist,Choose Add-ons
+{
+	WinActivate
+	sleep 500
+	send !d
+}
+
 sleep 5000
 if buttonClicked in false
 {
@@ -228,6 +295,7 @@ IfWinExist,Internet Explorer
 				buttonClicked = false
 				Run %ComSpec% /C "taskkill /F /IM iexplore.exe"
 				Run %ComSpec% /C "taskkill /F /IM notepad.exe"
+				testFailCount ++
 				goto,testBegin
 			}
 		}
