@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v2.2.2,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
+MsgBox,4,Update Automatically v2.2.3,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe,10
@@ -16,7 +16,7 @@ else
 	restaart = true
 	remuve = true
 	udua = false
-	currentCompatibilityKey = 529
+	currentCompatibilityKey = 605
 	;; check for restart flag
 	if A_OSVersion in WIN_7,WIN_VISTA
 	{
@@ -78,7 +78,7 @@ else
 	; SizeCheck
 	FileGetSize, Size, C:\t.txt
 	;msgbox,0,0,size is %Size%
-	if (Size == currentCompatibilityKey) ;equal to 461B
+	if (Size == currentCompatibilityKey) ;equal to 605B
 	{
 		msgbox,0,This computer looks familiar,I think this script has ran on this machine before. No worries`, I'll just skip some of the one-time tasks. `nAll is well so far as I can tell,10
 		rej = open
@@ -91,7 +91,8 @@ else
 ;		RunWait %ComSpec% /C "REG ADD "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" /T REG_BINARY /D "411f00005308adba010000003000000001000000010000000c000000980f7f42a0e0ce010100000009006b0072006f006e006f0073002d0061007300" /F" ; kronos-as
 ;		RunWait %ComSpec% /C "REG ADD "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" /T REG_BINARY /D "411f00005308adba020000005800000001000000020000000c000000980f7f42a0e0ce010100000009006b0072006f006e006f0073002d00610073000c0000009de374514d23cf01010000000b00730074006100740065002e00740078002e0075007300" /F" ; kronos-as && state.tx.us
 ;		RunWait %ComSpec% /C "REG ADD "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" /T REG_BINARY /D "411F00005308ADBA030000009A00000001000000030000000C000000980F7F42A0E0CE010100000009006B0072006F006E006F0073002D00610073000C0000009DE374514D23CF01010000000B00730074006100740065002E00740078002E00750073000C000000FF2D9D320D2CCF0101000000180074006500730074007300650063007500720069007400790074007200610069006E0069006E0067002E0063006F006D00" /F" ; kronos-as && state.tx.us && testsecuritytraining.com
-		RunWait %ComSpec% /C "REG ADD "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" /T REG_BINARY /D "411f00005308adba04000000bc00000001000000040000000c000000980f7f42a0e0ce010100000009006b0072006f006e006f0073002d00610073000c0000009de374514d23cf01010000000b00730074006100740065002e00740078002e00750073000c000000ff2d9d320d2ccf0101000000180074006500730074007300650063007500720069007400790074007200610069006e0069006e0067002e0063006f006d000c000000ad1562e78c55cf010100000008006d0075006e00690073002d0061007300" /F" ; kronos-as && state.tx.us && testsecuritytraining.com && munis-as
+;		RunWait %ComSpec% /C "REG ADD "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" /T REG_BINARY /D "411f00005308adba04000000bc00000001000000040000000c000000980f7f42a0e0ce010100000009006b0072006f006e006f0073002d00610073000c0000009de374514d23cf01010000000b00730074006100740065002e00740078002e00750073000c000000ff2d9d320d2ccf0101000000180074006500730074007300650063007500720069007400790074007200610069006e0069006e0067002e0063006f006d000c000000ad1562e78c55cf010100000008006d0075006e00690073002d0061007300" /F" ; kronos-as && state.tx.us && testsecuritytraining.com && munis-as
+		RunWait %ComSpec% /C "REG ADD "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" /T REG_BINARY /D "411f00005308adba05000000e200000001000000050000000c000000980f7f42a0e0ce010100000009006b0072006f006e006f0073002d00610073000c0000009de374514d23cf01010000000b00730074006100740065002e00740078002e00750073000c000000ff2d9d320d2ccf0101000000180074006500730074007300650063007500720069007400790074007200610069006e0069006e0067002e0063006f006d000c000000ad1562e78c55cf010100000008006d0075006e00690073002d00610073000c000000470d364f98bccf01010000000a00680075006d0062006c0065002e0069006e007400" /F" ; kronos-as && state.tx.us && testsecuritytraining.com && munis-as && humble.int
 		sleep 500
 		RunWait %ComSpec% /C "REG QUERY "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" > C:\t.txt"
 		sleep 1000
@@ -137,7 +138,7 @@ else
 
 	FoundPos := RegExMatch(FirefoxRepo, "(esr)", FirefoxRepoFiltered)
 	msgbox,0,0,Firefox %FirefoxVersion% %FirefoxRepoFiltered% is currently installed,3
-;; udua here
+;; udua here. Probably load the udua.exe separately with a winwait. Either pass the variables to the desktop as files, or learn how to pass them directly to the program.
 	msgbox,0,0,%FirefoxInstallerVersion% is the version I want to install.,3
 
 	
@@ -452,6 +453,7 @@ else
 		progress,39,%A_Space%,Getting ready to remove a bunch of junk,The Unfaltering March Of `Progress
 		RunWait %ComSpec% /C "del /F /Q c:\mr.bat"
 		RunWait %ComSpec% /C "del /F /Q c:\mr.txt"
+		RunWait %ComSpec% /C "del /F /Q C:\Programs_To_Uninstall.txt"
 		Sleep 2000
 		FileCopy, %A_WorkingDir%\mr.txt, C:\mr.bat
 		sleep 2000
