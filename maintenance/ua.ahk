@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v2.2.3,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
+MsgBox,4,Update Automatically v2.3,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe,10
@@ -106,10 +106,74 @@ else
 		}
 		if (newSize < currentCompatibilityKey)
 		{
-			msgbox,0,Bad news`, bro,Bad news`, it seems that I'm unable to automatically add Kronos to the Internet Explorer compatibility list. This is a problem`, because Internet Explorer 11 (the version I want to install) doesn't work with Kronos except in compatibility mode. `nThis is really only a problem for non-teacher staff members who clock in and out with Kronos. Because I can't automatically add Kronos to the list`, I'm going to install an older version of Internet Explorer.,30
-			kronus = bad
-			rej = locked
-			goto,scriptstart
+			Run %ComSpec% /C ""%ProgramFiles%\Internet Explorer\iexplore.exe" about:blank"
+
+			settitlematchmode,2
+			winwait,Internet Explorer
+			sleep 5000
+			loop
+			{
+				winactivate,Internet Explorer
+				sleep 1000
+				send !x
+				sleep 1000
+				send b
+				sleep 2000
+
+				settitlematchmode,2
+				ifwinexist,Compatibility View Settings
+				{
+					break
+				}
+				if %A_INDEX% > 10
+				{
+					send {tab}
+				}
+				if %A_INDEX% > 20
+				{
+					break
+					msgbox,0,Well This is embarrassing,I can't figure out how to manually add those sites. I won't be able to install the latest Internet Explorer.`n`nSorry...,20
+					kronus = bad
+					rej = locked
+					goto,scriptstart
+				}
+			}
+			settitlematchmode,2
+			ifwinexist,Compatibility View Settings
+			{
+				winactivate,Compatibility View Settings
+				sleep, 1000
+				send kronos-as
+				sleep 500
+				send {enter}
+				sleep 500
+				send state.tx.us
+				sleep 500
+				send {enter}
+				sleep 500
+				send testsecuritytraining.com
+				sleep 500
+				send {enter}
+				sleep 500
+				send munis-as
+				sleep 500
+				send {enter}
+				sleep 500
+				send humble.int
+				sleep 500
+				send {enter}
+				sleep 1000
+				send !c
+				settitlematchmode,2
+				winclose,Internet Explorer
+			}
+			else
+			{
+				msgbox,0,I'm confused,Well this is odd... I swear I just opened Internet Explorer`, but now I can't find it.`nOh well`, I suppose I won't be able to install the latest Internet Explorer.,20
+				kronus = bad
+				rej = locked
+				goto,scriptstart
+			}
 		}
 		else
 		{
@@ -687,6 +751,7 @@ else
 	
 	javadllerror:
 	{
+		settitlematchmode,2
 		IfWinExist,RunDLL,There was a problem starting C:\Program Files\Java\jre7\bin\\installer.dll
 		WinActivate
 		send {space}
@@ -695,12 +760,14 @@ else
 	msiissues:
 	{
 		sleep 10000
+		settitlematchmode,2
 		IfWinExist,Windows Installer,OK  ; Should automatically dismiss Adobe Reader installation errors.
 		{
 			WinActivate
 			send {space}
 			goto,msiissues
 		}
+		settitlematchmode,2
 		IfWinExist,,Error 1722  ; Should automatically dismiss Adobe Flash Player installation errors.
 		{
 			WinActivate
@@ -708,16 +775,19 @@ else
 			goto,msiissues
 		}
 		sleep 15000
+		settitlematchmode,2
 		IfWinExist,Open File - Security Warning,Run
 		{
 			goto,altr
 		}
+		settitlematchmode,2
 		IfWinExist,Windows Installer,OK  ; Should automatically dismiss Adobe Reader installation errors.
 		{
 			WinActivate
 			send {space}
 			goto,msiissues
 		}
+		settitlematchmode,2
 		IfWinExist,,Error 1722  ; Should automatically dismiss Adobe Flash Player installation errors.
 		{
 			WinActivate
@@ -725,6 +795,7 @@ else
 			goto,msiissues
 		}
 		sleep 15000
+		settitlematchmode,2
 		IfWinExist,Open File - Security Warning,Run
 		{
 			goto,altr
@@ -734,6 +805,7 @@ else
 	
 	movewin:
 	{
+		settitlematchmode,2
 		WinWait, Alright you're done
 		WinMove, 375, 45
 ;		WinMove, Alright you're done, Do you wanna shutdown or something? *YES* to shutdown now or *NO* to abort the automatic Shutdown of,375, 75
