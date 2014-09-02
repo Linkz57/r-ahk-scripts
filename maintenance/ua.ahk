@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v2.3,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
+MsgBox,4,Update Automatically v2.4,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe,10
@@ -57,6 +57,7 @@ else
 	IfMsgBox No
 	{
 		MsgBox,0,No problem,Yeah`,that's probably just as well. I doubt much has changed in the world since the last time I've checked.,10
+		udua = false
 	}
 	IfMsgBox Yes
 	{
@@ -66,10 +67,46 @@ else
 	IfMsgBox Timeout
 	{
 		msgbox,0,Hello? Is anyone in there? Just nod `if you can hear me.,Maybe you've nodded off or something. No matter`, I won't check for updates before I install Firefox`, Flash`, Java`, Internet Explorer`, and Adobe Reader.,5
+		udua = false
 	}
 
 	; Regestry and IE success test
-	msgbox,0,Alright let's do this,That's all of my questions for now.`nBefore we start I'm going to test your chances of success and make some recommendations from there.,10
+	msgbox,0,Alright let's do this,Thanks`, that's all of my questions for now.,10
+	
+	MsgBox,0,Ok here we go,Remove your hands from the mouse and keyboard!`n`nAt the very end you'll be asked `if you want to shut down your computer and that is the ONLY time you can `click anything. At times it will look like your computer is just sitting here doing nothing. Please resist the urge to "help it along". DO NOT `click anything. DO NOT type anything. This entire `process is automated. Any interaction on your part will cause this update to go all haywire and you'll have to start it all over again. Don't even `click "ok" on this box. In fact get up and walk away. Make yourself some tea and come back in about 10 minutes and this will be done. Don't keep reading this to see what will happen--leave. Go. Now. Make like a tree and turn off your monitor.,30
+	
+	;; Kill Windows Explorer to discourage the user from interacting with the computer, and also to reduce the chance of problems that are inherent with macros.
+	progress,FS10 W600 Y650,%A_Space% `n %A_Space%,Closing some remaining programs,The Unfaltering March Of `Progress,Segoe UI
+	RunWait %ComSpec% /C "taskkill /F /IM explorer.exe"
+	progress,2,there goes Windows Explorer,Closing some remaining programs,The Unfaltering March Of `Progress
+	
+	;; close some other things
+	Runwait %ComSpec% /C "taskkill /F /IM iexplore.exe"
+	progress,3,there goes Internet Explorer,Closing some remaining programs,The Unfaltering March Of `Progress
+	sleep 1000
+	Runwait %ComSpec% /C "taskkill /F /IM firefox.exe"
+	progress,4,there goes Firefox,Closing some remaining programs,The Unfaltering March Of `Progress
+	sleep 1000
+	Runwait %ComSpec% /C "taskkill /F /IM chrome.exe"
+	progress,5,there goes Chrome,Closing some remaining programs,The Unfaltering March Of `Progress
+	sleep 1000
+	Runwait %ComSpec% /C "taskkill /F /IM AcroRd32.exe"
+	progress,6,there goes Adoobe Reader,Closing some remaining programs,The Unfaltering March Of `Progress
+	sleep 1000
+	Runwait %ComSpec% /C "taskkill /F /IM AcroRd64.exe"
+	progress,7,there goes Notepad,Closing some remaining programs,The Unfaltering March Of `Progress
+	sleep 1000
+	Runwait %ComSpec% /C "taskkill /F /IM notepad.exe"
+	progress,8,here goes GroupWise,Closing some remaining programs,The Unfaltering March Of `Progress
+	sleep 1000
+	Runwait %ComSpec% /C "taskkill /F /IM grpwise.exe"
+	progress,9,if there any programs left open`, please `send an email to Mr. Francis--obviously not now`, wait until I'm done here.,Finished closing programs,The Unfaltering March Of `Progress
+	sleep 2000
+	
+	progress,10,,Checking probability of success,The Unfaltering March Of `Progress
+	sleep 1000
+	
+	; prepare SizeCheck
 	RunWait %ComSpec% /C "del /F /Q c:\t.txt"
 
 	RunWait %ComSpec% /C "REG QUERY "HKCU\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData" /V "UserFilter" > C:\t.txt"
@@ -99,80 +136,84 @@ else
 		FileGetSize, newSize, C:\t.txt
 		if (newSize == currentCompatibilityKey)
 		{
-			msgbox,0,All shiny here`, captain,Everything seems to check out. Continuing as planned.,5
+			progress,11,Probability is... high,Checking probability of success,The Unfaltering March Of `Progress
 			rej = open
 			kronus = good
 			goto,scriptstart
 		}
+		
 		if (newSize < currentCompatibilityKey)
 		{
-			Run %ComSpec% /C ""%ProgramFiles%\Internet Explorer\iexplore.exe" about:blank"
-
-			settitlematchmode,2
-			winwait,Internet Explorer
-			sleep 5000
-			loop
+			if A_OSVersion in WIN_7,WIN_VISTA
 			{
-				winactivate,Internet Explorer
-				sleep 1000
-				send !x
-				sleep 1000
-				send b
-				sleep 2000
+				Run %ComSpec% /C ""%ProgramFiles%\Internet Explorer\iexplore.exe" about:blank"
 
+				settitlematchmode,2
+				winwait,Internet Explorer
+				sleep 5000
+				loop
+				{
+					winactivate,Internet Explorer
+					sleep 1000
+					send !x
+					sleep 1000
+					send b
+					sleep 2000
+
+					settitlematchmode,2
+					ifwinexist,Compatibility View Settings
+					{
+						break
+					}
+					if %A_INDEX% > 10
+					{
+						send {tab}
+					}
+					if %A_INDEX% > 20
+					{
+						break
+						msgbox,0,Well This is embarrassing,I can't figure out how to manually add those sites. I won't be able to install the latest Internet Explorer.`n`nSorry...,20
+						kronus = bad
+						rej = locked
+						goto,scriptstart
+					}
+				}
 				settitlematchmode,2
 				ifwinexist,Compatibility View Settings
 				{
-					break
+					winactivate,Compatibility View Settings
+					sleep, 1000
+					send kronos-as
+					sleep 500
+					send {enter}
+					sleep 500
+					send state.tx.us
+					sleep 500
+					send {enter}
+					sleep 500
+					send testsecuritytraining.com
+					sleep 500
+					send {enter}
+					sleep 500
+					send munis-as
+					sleep 500
+					send {enter}
+					sleep 500
+					send humble.int
+					sleep 500
+					send {enter}
+					sleep 1000
+					send !c
+					settitlematchmode,2
+					winclose,Internet Explorer
 				}
-				if %A_INDEX% > 10
+				else
 				{
-					send {tab}
-				}
-				if %A_INDEX% > 20
-				{
-					break
-					msgbox,0,Well This is embarrassing,I can't figure out how to manually add those sites. I won't be able to install the latest Internet Explorer.`n`nSorry...,20
+					msgbox,0,I'm confused,Well this is odd... I swear I just opened Internet Explorer`, but now I can't find it.`nOh well`, I suppose I won't be able to install the latest Internet Explorer.,20
 					kronus = bad
 					rej = locked
 					goto,scriptstart
 				}
-			}
-			settitlematchmode,2
-			ifwinexist,Compatibility View Settings
-			{
-				winactivate,Compatibility View Settings
-				sleep, 1000
-				send kronos-as
-				sleep 500
-				send {enter}
-				sleep 500
-				send state.tx.us
-				sleep 500
-				send {enter}
-				sleep 500
-				send testsecuritytraining.com
-				sleep 500
-				send {enter}
-				sleep 500
-				send munis-as
-				sleep 500
-				send {enter}
-				sleep 500
-				send humble.int
-				sleep 500
-				send {enter}
-				sleep 1000
-				send !c
-				settitlematchmode,2
-				winclose,Internet Explorer
-			}
-			else
-			{
-				msgbox,0,I'm confused,Well this is odd... I swear I just opened Internet Explorer`, but now I can't find it.`nOh well`, I suppose I won't be able to install the latest Internet Explorer.,20
-				kronus = bad
-				rej = locked
-				goto,scriptstart
 			}
 		}
 		else
@@ -191,288 +232,273 @@ else
 		}
 	}
 	RunWait %ComSpec% /C "del /F /Q c:\t.txt"
-	
-;;	Check Firefox installed version against installer version
-	loop, firefox*.version
-	FirefoxInstallerVersion = %A_LoopFileName%
-
-	IniRead, FirefoxVersion, %ProgramFiles%\Mozilla Firefox\application.ini, App, Version
-	IniRead, FirefoxRepo, %ProgramFiles%\Mozilla Firefox\application.ini, App, SourceRepository
-
-
-	FoundPos := RegExMatch(FirefoxRepo, "(esr)", FirefoxRepoFiltered)
-	msgbox,0,0,Firefox %FirefoxVersion% %FirefoxRepoFiltered% is currently installed,3
-;; udua here. Probably load the udua.exe separately with a winwait. Either pass the variables to the desktop as files, or learn how to pass them directly to the program.
-	msgbox,0,0,%FirefoxInstallerVersion% is the version I want to install.,3
-
-	
-	; Adobe Reader version check
-	if rej in open
-	{
-		RunWait %ComSpec% /C "REG QUERY "HKEY_LOCAL_MACHINE\SOFTWARE\Adobe\Acrobat Reader" > c:\t.txt"
+	if udua in true
+	{	
+		progress,12,Checking Firefox,Checking versions of installed programs,The Unfaltering March Of `Progress
 		sleep 1000
-		run %ComSpec% /C "notepad c:\t.txt"
-		sleep 3000
-		send ^{home}
-		sleep 500
-		send ^f
-		sleep 500
-		send Reader\
-		sleep 500
-		send {enter}
-		sleep 500
-		send !{F4}
-		sleep 500
-		send +{home}
-		sleep 500
-		send {backspace 2}
-		sleep 500
-		send {del 6}
-		sleep 500
-		send +{end}
-		sleep 500
-		send ^c
-		sleep 500
-		send !{F4}
+		
+	;;	Check Firefox installed version against installer version
+		loop, firefox*.version
+		FirefoxInstallerVersion = %A_LoopFileName%
+
+		IniRead, FirefoxVersion, %ProgramFiles%\Mozilla Firefox\application.ini, App, Version
+		IniRead, FirefoxRepo, %ProgramFiles%\Mozilla Firefox\application.ini, App, SourceRepository
+
+
+		FoundPos := RegExMatch(FirefoxRepo, "(esr)", FirefoxRepoFiltered)
+		msgbox,0,0,Firefox %FirefoxVersion% %FirefoxRepoFiltered% is currently installed,3
+		msgbox,0,0,%FirefoxInstallerVersion% is the version I want to install.,3
+
+		progress,13,Checking Adobe Reader,Checking versions of installed programs,The Unfaltering March Of `Progress
 		sleep 1000
-		send !n
-		sleep 2000
-		areedr = %clipboard%
-		RunWait %ComSpec% /C "del /F /Q c:\t.txt"
-		msgbox,0,Adobe Reader found,You already have Adobe Reader installed (major version %areedr%),5
-	}
-	else
-	{
-		msgbox,0,Sorry,I can't figure out what version of Adobe Reader you're using`, so I'm just going to install the latest one I have`, even `if you don't need it.,5
-		areedr = unknown
-	}
-	if rej in open
-	{
-		if (areedr == "unset")
+		
+		; Adobe Reader version check
+		if rej in open
 		{
-			msgbox,0,Sorry,I can't figure out what version of Adobe Reader you're using which probably means you don't have it installed. I'm going to install the latest one I have`, even `if you don't need it.,5
+			RunWait %ComSpec% /C "REG QUERY "HKEY_LOCAL_MACHINE\SOFTWARE\Adobe\Acrobat Reader" > c:\t.txt"
+			sleep 1000
+			run %ComSpec% /C "notepad c:\t.txt"
+			sleep 3000
+			send ^{home}
+			sleep 500
+			send ^f
+			sleep 500
+			send Reader\
+			sleep 500
+			send {enter}
+			sleep 500
+			send !{F4}
+			sleep 500
+			send +{home}
+			sleep 500
+			send {backspace 2}
+			sleep 500
+			send {del 6}
+			sleep 500
+			send +{end}
+			sleep 500
+			send ^c
+			sleep 500
+			send !{F4}
+			sleep 1000
+			send !n
+			sleep 2000
+			areedr = %clipboard%
+			RunWait %ComSpec% /C "del /F /Q c:\t.txt"
+			msgbox,0,Adobe Reader found,You already have Adobe Reader installed (major version %areedr%),5
 		}
-	}
-	
-	; Adobe Flash version check
-	if rej in open
-	{
-		RunWait %ComSpec% /C "del /F /Q c:\t.txt"
-		sleep 1000
-		RunWait %ComSpec% /C "REG QUERY HKEY_LOCAL_MACHINE\SOFTWARE\Macromedia\FlashPlayer /V "CurrentVersion" > c:\t.txt"
-		sleep 1000
-		run %ComSpec% /C "notepad c:\t.txt"
-		sleep 3000
-		send ^{home}
-		sleep 500
-		send ^f
-		sleep 500
-		send REG_SZ
-		sleep 500
-		send {enter}
-		sleep 500
-		send !{F4}
-		sleep 500
-		send +^{home}
-		sleep 500
-		send {backspace}
-		sleep 500
-		send {del 10}
-		sleep 500
-		send ^h
-		sleep 500
-		send `,
-		sleep 500
-		send {tab}
-		sleep 500
-		send `.
-		sleep 500
-		send !a
-		sleep 1000
-		send !{F4}
-		sleep 500
-		send +{end}
-		sleep 500
-		send ^c
-		sleep 500
-		send !{F4}
-		sleep 1000
-		send !n
-		sleep 2000
-		aflsh = %clipboard%
-		RunWait %ComSpec% /C "del /F /Q c:\t.txt"
-		msgbox,0,Adobe Flash found,You already have Adobe Flash installed (version %aflsh%),5
-	}
-	else
-	{
-		msgbox,0,Sorry,I can't figure out what version of Adobe Flash you're using`, so I'm just going to install the latest one I have`, even `if you don't need it.,5
-		aflsh = unknown
-	}
-	if rej in open
-	{
-		if (aflsh == "unset")
+		else
 		{
-			msgbox,0,Sorry,I can't figure out what version of Adobe Flash you're using which probably means you don't have it installed. I'm going to install the latest one I have`, even `if you don't need it.,5
+			msgbox,0,Sorry,I can't figure out what version of Adobe Reader you're using`, so I'm just going to install the latest one I have`, even `if you don't need it.,5
+			areedr = unknown
 		}
-	}
-	
-	; Java version check
-	if rej in open
-	{
-		RunWait %ComSpec% /C "del /F /Q c:\t.txt"
-		sleep 1000
-		RunWait %ComSpec% /C "REG QUERY "HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Plug-in" > c:\t.txt"
-		sleep 1000
-		run %ComSpec% /C "notepad c:\t.txt"
-		sleep 3000
-		send ^{home}
-		sleep 500
-		send ^f
-		sleep 500
-		send Plug-in\
-		sleep 500
-		send {enter}
-		sleep 500
-		send !{F4}
-		sleep 500
-		send +^{home}
-		sleep 500
-		send {backspace}
-		sleep 500
-		send {del 8}
-		sleep 500
-		send +{end}
-		sleep 500
-		send ^c
-		sleep 500
-		send !{F4}
-		sleep 1000
-		send !n
-		sleep 2000
-		ojavr = %clipboard%
-		RunWait %ComSpec% /C "del /F /Q c:\t.txt"
-		msgbox,0,Oracle Java found,You already have Oracle Java installed (version %ojavr%),5
-	}
-	else
-	{
-		msgbox,0,Sorry,I can't figure out what version of Oracle Java you're using`, so I'm just going to install the latest one I have`, even `if you don't need it.,5
-		ojavr = unknown
-	}
-	if rej in open
-	{
-		if (ojavr == "unset")
+		if rej in open
 		{
-			msgbox,0,Sorry,I can't figure out what version of Oracle Java you're using which probably means you don't have it installed. I'm going to install the latest one I have`, even `if you don't need it.,5
+			if (areedr == "unset")
+			{
+				msgbox,0,Sorry,I can't figure out what version of Adobe Reader you're using which probably means you don't have it installed. I'm going to install the latest one I have`, even `if you don't need it.,5
+			}
 		}
-	}
-	
-	; IE version check
-	if rej in open
-	{
-		RunWait %ComSpec% /C "del /F /Q c:\ci.txt"
+		
+		progress,14,Checking Adobe Flash Player,Checking versions of installed programs,The Unfaltering March Of `Progress
 		sleep 1000
-		RunWait %ComSpec% /C "REG QUERY "HKLM\SOFTWARE\Microsoft\Internet Explorer" /V "svcVersion" > C:\ci.txt"
+		
+		; Adobe Flash version check
+		if rej in open
+		{
+			RunWait %ComSpec% /C "del /F /Q c:\t.txt"
+			sleep 1000
+			RunWait %ComSpec% /C "REG QUERY HKEY_LOCAL_MACHINE\SOFTWARE\Macromedia\FlashPlayer /V "CurrentVersion" > c:\t.txt"
+			sleep 1000
+			run %ComSpec% /C "notepad c:\t.txt"
+			sleep 3000
+			send ^{home}
+			sleep 500
+			send ^f
+			sleep 500
+			send REG_SZ
+			sleep 500
+			send {enter}
+			sleep 500
+			send !{F4}
+			sleep 500
+			send +^{home}
+			sleep 500
+			send {backspace}
+			sleep 500
+			send {del 10}
+			sleep 500
+			send ^h
+			sleep 500
+			send `,
+			sleep 500
+			send {tab}
+			sleep 500
+			send `.
+			sleep 500
+			send !a
+			sleep 1000
+			send !{F4}
+			sleep 500
+			send +{end}
+			sleep 500
+			send ^c
+			sleep 500
+			send !{F4}
+			sleep 1000
+			send !n
+			sleep 2000
+			aflsh = %clipboard%
+			RunWait %ComSpec% /C "del /F /Q c:\t.txt"
+			msgbox,0,Adobe Flash found,You already have Adobe Flash installed (version %aflsh%),5
+		}
+		else
+		{
+			msgbox,0,Sorry,I can't figure out what version of Adobe Flash you're using`, so I'm just going to install the latest one I have`, even `if you don't need it.,5
+			aflsh = unknown
+		}
+		if rej in open
+		{
+			if (aflsh == "unset")
+			{
+				msgbox,0,Sorry,I can't figure out what version of Adobe Flash you're using which probably means you don't have it installed. I'm going to install the latest one I have`, even `if you don't need it.,5
+			}
+		}
+		
+		progress,15,Checking Java,Checking versions of installed programs,The Unfaltering March Of `Progress
 		sleep 1000
-		; SizeCheck
-		FileGetSize, ciSize, C:\ci.txt
-		;msgbox,0,0,size is %Size%
-		if (ciSize < 5) ; less than 5B
+		
+		; Java version check
+		if rej in open
+		{
+			RunWait %ComSpec% /C "del /F /Q c:\t.txt"
+			sleep 1000
+			RunWait %ComSpec% /C "REG QUERY "HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Plug-in" > c:\t.txt"
+			sleep 1000
+			run %ComSpec% /C "notepad c:\t.txt"
+			sleep 3000
+			send ^{home}
+			sleep 500
+			send ^f
+			sleep 500
+			send Plug-in\
+			sleep 500
+			send {enter}
+			sleep 500
+			send !{F4}
+			sleep 500
+			send +^{home}
+			sleep 500
+			send {backspace}
+			sleep 500
+			send {del 8}
+			sleep 500
+			send +{end}
+			sleep 500
+			send ^c
+			sleep 500
+			send !{F4}
+			sleep 1000
+			send !n
+			sleep 2000
+			ojavr = %clipboard%
+			RunWait %ComSpec% /C "del /F /Q c:\t.txt"
+			msgbox,0,Oracle Java found,You already have Oracle Java installed (version %ojavr%),5
+		}
+		else
+		{
+			msgbox,0,Sorry,I can't figure out what version of Oracle Java you're using`, so I'm just going to install the latest one I have`, even `if you don't need it.,5
+			ojavr = unknown
+		}
+		if rej in open
+		{
+			if (ojavr == "unset")
+			{
+				msgbox,0,Sorry,I can't figure out what version of Oracle Java you're using which probably means you don't have it installed. I'm going to install the latest one I have`, even `if you don't need it.,5
+			}
+		}
+		
+		progress,16,Checking Internet Explorer,Checking versions of installed programs,The Unfaltering March Of `Progress
+		sleep 1000
+		
+		
+		; IE version check
+		if rej in open
 		{
 			RunWait %ComSpec% /C "del /F /Q c:\ci.txt"
 			sleep 1000
-			RunWait %ComSpec% /C "REG QUERY "HKLM\SOFTWARE\Microsoft\Internet Explorer" /V "Version" > C:\ci.txt"
+			RunWait %ComSpec% /C "REG QUERY "HKLM\SOFTWARE\Microsoft\Internet Explorer" /V "svcVersion" > C:\ci.txt"
 			sleep 1000
-			FileGetSize, ci2Size, C:\ci.txt
-			if (ci2Size < 5) ; less than 5B
+			; SizeCheck
+			FileGetSize, ciSize, C:\ci.txt
+			;msgbox,0,0,size is %Size%
+			if (ciSize < 5) ; less than 5B
 			{
 				RunWait %ComSpec% /C "del /F /Q c:\ci.txt"
-				msgbox,0,Sorry about this,Sorry but I'm unable to get access to the specific information your want.
+				sleep 1000
+				RunWait %ComSpec% /C "REG QUERY "HKLM\SOFTWARE\Microsoft\Internet Explorer" /V "Version" > C:\ci.txt"
+				sleep 1000
+				FileGetSize, ci2Size, C:\ci.txt
+				if (ci2Size < 5) ; less than 5B
+				{
+					RunWait %ComSpec% /C "del /F /Q c:\ci.txt"
+					msgbox,0,Sorry about this,Sorry but I'm unable to get access to the specific information your want.
+				}
+			}
+			Run %ComSpec% /C "notepad c:\ci.txt"
+			sleep 3000
+			send ^{home}
+			sleep 500
+			send ^f
+			sleep 500
+			send REG_SZ
+			sleep 500
+			send {enter}
+			sleep 500
+			send !{F4}
+			sleep 500
+			send +^{home}
+			sleep 500
+			send {backspace}
+			sleep 500
+			send {del 10}
+			sleep 500
+			send +{end}
+			sleep 500
+			send ^c
+			sleep 500
+			send !{F4}
+			sleep 1000
+			send !n
+			sleep 2000
+			ieversion = %clipboard%
+			RunWait %ComSpec% /C "del /F /Q c:\ci.txt"
+			msgbox,0,Microsoft Internet Explorer found,You already have Microsoft Internet Explorer installed (version %ieversion%),7
+		}
+		else
+		{
+			msgbox,0,Sorry,I can't figure out what version of Microsoft Internet Explorer you're using`, so I'm just going to install the latest one I have`, even `if you don't need it.,5
+			ojavr = unknown
+		}
+		if rej in open
+		{
+			if (ieversion == "unset")
+			{
+				msgbox,0,Sorry,I can't figure out what version of Microsoft Internet Explorer you're using, which is odd. I'm going to install the latest one I have`, even `if you don't need it.,5
 			}
 		}
-		Run %ComSpec% /C "notepad c:\ci.txt"
-		sleep 3000
-		send ^{home}
-		sleep 500
-		send ^f
-		sleep 500
-		send REG_SZ
-		sleep 500
-		send {enter}
-		sleep 500
-		send !{F4}
-		sleep 500
-		send +^{home}
-		sleep 500
-		send {backspace}
-		sleep 500
-		send {del 10}
-		sleep 500
-		send +{end}
-		sleep 500
-		send ^c
-		sleep 500
-		send !{F4}
-		sleep 1000
-		send !n
-		sleep 2000
-		ieversion = %clipboard%
-		RunWait %ComSpec% /C "del /F /Q c:\ci.txt"
-		msgbox,0,Microsoft Internet Explorer found,You already have Microsoft Internet Explorer installed (version %ieversion%),7
 	}
-	else
-	{
-		msgbox,0,Sorry,I can't figure out what version of Microsoft Internet Explorer you're using`, so I'm just going to install the latest one I have`, even `if you don't need it.,5
-		ojavr = unknown
-	}
-	if rej in open
-	{
-		if (ieversion == "unset")
-		{
-			msgbox,0,Sorry,I can't figure out what version of Microsoft Internet Explorer you're using which probably means you don't have it installed. I'm going to install the latest one I have`, even `if you don't need it.,5
-		}
-	}
-	
 	
 	
 	scriptstart:
 	RunWait %ComSpec% /C "del /F /Q c:\t.txt"
-
-	MsgBox,0,Ok here we go,Remove your hands from the mouse and keyboard! At the very end you'll be asked `if you want to shut down your computer and that is the ONLY time you can `click anything. At times it will look like your computer is just sitting here doing nothing. Please resist the urge to "help it along". DO NOT `click anything. DO NOT type anything. This entire `process is automated. Any interaction on your part will cause this update to go all haywire and you'll have to start it all over again. Don't even `click "ok" on this box. In fact get up and walk away. Make yourself some tea and come back in about 10 minutes and this will be done. Don't keep reading this to see what will happen--leave. Go. Now. Make like a tree and turn off your monitor.,30
-	
-	;; Kill Windows Explorer to discourage the user from interacting with the computer, and also to reduce the chance of problems that are inherent with macros.
-	progress,FS10 W600 Y650,%A_Space% `n %A_Space%,Closing some remaining programs,The Unfaltering March Of `Progress,Segoe UI
-	RunWait %ComSpec% /C "taskkill /F /IM explorer.exe"
-	progress,2,there goes Windows Explorer,Closing some remaining programs,The Unfaltering March Of `Progress
-	
-	;; close some other things
-	Runwait %ComSpec% /C "taskkill /F /IM iexplore.exe"
-	progress,3,there goes Internet Explorer,Closing some remaining programs,The Unfaltering March Of `Progress
-	sleep 1000
-	Runwait %ComSpec% /C "taskkill /F /IM firefox.exe"
-	progress,4,there goes Firefox,Closing some remaining programs,The Unfaltering March Of `Progress
-	sleep 1000
-	Runwait %ComSpec% /C "taskkill /F /IM chrome.exe"
-	progress,5,there goes Chrome,Closing some remaining programs,The Unfaltering March Of `Progress
-	sleep 1000
-	Runwait %ComSpec% /C "taskkill /F /IM AcroRd32.exe"
-	progress,6,there goes Adoobe Reader,Closing some remaining programs,The Unfaltering March Of `Progress
-	sleep 1000
-	Runwait %ComSpec% /C "taskkill /F /IM AcroRd64.exe"
-	progress,7,there goes Notepad,Closing some remaining programs,The Unfaltering March Of `Progress
-	sleep 1000
-	Runwait %ComSpec% /C "taskkill /F /IM notepad.exe"
-	progress,8,here goes GroupWise,Closing some remaining programs,The Unfaltering March Of `Progress
-	sleep 1000
-	Runwait %ComSpec% /C "taskkill /F /IM grpwise.exe"
-	progress,10,if there any programs left open`, please `send an email to Mr. Francis--obviously not now`, wait until I'm done here.,Finished closing programs,The Unfaltering March Of `Progress
-	sleep 2000
 
 	;; The time assumption on the next line is out of date; one of these days I'll re-calculate and version-stamp it.
 	;; All of the sleep timers and message box timeouts add up to about 16 minutes. This time doesn't take into account the runwait time on mr.bat, adobereader.msi or either IE*.exe executions, but I'll assume they aren't in excess of 45 minutes. Therefore, if this script takes longer than an hour to run, I'll assume it's broken. As a "fix", here is a timed shutdown at the beginning of this script.
 
 	if A_OSVersion in WIN_VISTA,WIN_7 ; Vista and 7 only. I think XP's shutdown program can't take a delay longer than 99 seconds.
 	{
-		progress,15,%A_Space%,Preparing provisions for potential problems,The Unfaltering March Of `Progress
+		progress,20,%A_Space%,Preparing provisions for potential problems,The Unfaltering March Of `Progress
 		sleep 500
 		Run %ComSpec% /C "shutdown -s -t 3600"
 	}
@@ -484,7 +510,7 @@ else
 	Run %ComSpec% /C "del /F /Q "C:\Users\Student\Desktop\remove_message.bat""
 
 	;; Install Firefox silently
-	progress,17,%A_Space%,Updating Firefox,The Unfaltering March Of `Progress
+	progress,20,%A_Space%,Updating Firefox,The Unfaltering March Of `Progress
 	Runwait FirefoxSetup.exe -ms
 	sleep 2000
 
