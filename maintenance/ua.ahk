@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v2.4,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
+MsgBox,4,Update Automatically v2.5,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe,10
@@ -6,7 +6,7 @@ IfMsgBox No
 }
 else
 {
-	;; Variables, flags and other pre-run setup
+	;; Variables, flags, and other pre-run setup
 	rej = unset
 	kronus = unset
 	areedr = unset
@@ -700,6 +700,17 @@ else
 		RunWait %ComSpec% /C "IE8-XP.exe /passive /norestart /sqm" ; IE 8 is the last version that runs on XP
 	}
 	sleep 1000
+	
+	;; install Intel q45/q43 express chipset drivers
+	if A_OSVersion in WIN_7
+	{
+		fileread,imagetypetext,c:\780w72010.txt
+		FoundPos := RegExMatch(imagetypetext, "(Jun-25-2014)", imagetypetextcut)
+		if imagetypetextcut in Jun-25-2014
+		{
+			Runwait,%ComSpec% /C "PnPutil.exe -i -a "igdlh.inf" && timeout /t 15",i:\it\o\intelq45
+		}
+	}
 
 	;; One Final cleanup
 	sleep 2000
