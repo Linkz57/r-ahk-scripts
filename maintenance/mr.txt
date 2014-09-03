@@ -1,4 +1,4 @@
-REM mr.txt v1.3
+REM mr.txt v1.7
 REM This is a very basic batch file written by Tyler Francis that--in tandem with another script cleverly named "Remove"--attempts to remove many programs that would not be useful and/or allowed in a school environment. It's rather aggressive about this, especially in the first "silent" half of this file, so make sure you're ok with losing all of the programs and files mentioned here.
 
 C:
@@ -227,8 +227,14 @@ REM below is Driver Support 8.1
 REM below is DriverUpdate 2.2.35877
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {E966BB4C-DB80-46E6-900A-BD5DB99976B4}
 
+REM below is Driver Restore 8.1
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {273130E8-117C-4237-A0FA-83EBBF11E051}
 
+REM below is PC Speed Maximizer 3.2
+"C:\Program Files\PC Speed Maximizer\unins000.exe" /SILENT
 
+REM below is PC PC Driver Kit 3.1
+"C:\Program Files\PC Driver Kit\unins000.exe" /SILENT
 
 
 
@@ -564,7 +570,7 @@ del /F /Q "%USERPROFILE%\Desktop\MySearchDial.url"
 del /F /Q "%ALLUSERSPROFILE%\Desktop\MySearchDial.url"
 del /F /Q "%ALLUSERSPROFILE%\Desktop\Create Amazing Presentations.url"
 del /F /Q "%USERPROFILE%\Desktop\Create Amazing Presentations.url"
-del /F /Q "%appdata%\Local\Microsoft\Windows\Temporary Internet Files\Content.IE5\QGAHD3IY\realarcadebookwormdeluxe-setup[1].exe"
+del /F /Q "%userprofile%\AppData\Local\Microsoft\Windows\Temporary Internet Files\Content.IE5\QGAHD3IY\realarcadebookwormdeluxe-setup[1].exe"
 
 
 REM	del /F /Q /S "%ProgramFiles%\Free Offers from Freeze.com"
@@ -739,7 +745,7 @@ REM "%ProgramFiles%\Google\Google Updater\GoogleUpdater.exe" -uninstall
 "%ProgramFiles%\PC Speed Up\unins000.exe"
 "%ProgramFiles%\SpottyFiles\uninstall.exe"
 "%ProgramFiles%\Image Resizer\uninstall.exe"
-"%appdata%\Local\Pokki\v0.260.9.182\Uninstall.exe"
+"%userprofile%\AppData\Local\Pokki\v0.260.9.182\Uninstall.exe"
 "%ProgramFiles%\The Weather Channel\The Weather Channel App\TheWeatherChannelCustomUninstall.exe"
 "%ProgramFiles%\SaveValet\ie\uninstaller.exe"
 "%ProgramFiles%\Solid Savings\Uninstall.exe"
@@ -764,12 +770,12 @@ REM "%ProgramFiles%\Google\Google Updater\GoogleUpdater.exe" -uninstall
 "%ProgramFiles%\Updater By SweetPacks\unins000.exe"
 "%ProgramFiles%\Minecraft PC Gamer Demo\unins000.exe"
 "%ProgramFiles%\Facebook Pro\unins000.exe"
-"%ProgramFiles%\CEV Multimedia\MPU20024 Housing Design & Decisions\MPU20024_Uninstal.exe"
-"%ProgramFiles%\CEV Multimedia\trg\MPU20007\MPU20007_Uninstal.exe"
-"%ProgramFiles%\CEV Multimedia\trg\MPU20013\MPU20007_Uninstal.exe"
-"%ProgramFiles%\CEV Multimedia\trg\MPU20015\MPU20007_Uninstal.exe"
-"%ProgramFiles%\CEV Multimedia\trg\MPU20027\MPU20007_Uninstal.exe"
-"%ProgramFiles%\CEV Multimedia\trg Parenting\MPU20027_Uninstal.exe"
+REM "%ProgramFiles%\CEV Multimedia\MPU20024 Housing Design & Decisions\MPU20024_Uninstal.exe"
+REM "%ProgramFiles%\CEV Multimedia\trg\MPU20007\MPU20007_Uninstal.exe"
+REM "%ProgramFiles%\CEV Multimedia\trg\MPU20013\MPU20007_Uninstal.exe"
+REM "%ProgramFiles%\CEV Multimedia\trg\MPU20015\MPU20007_Uninstal.exe"
+REM "%ProgramFiles%\CEV Multimedia\trg\MPU20027\MPU20007_Uninstal.exe"
+REM "%ProgramFiles%\CEV Multimedia\trg Parenting\MPU20027_Uninstal.exe"
 "%ProgramFiles%\Google\Google Toolbar\Component\GoogleToolbarManager_80ACC8E3971CD605.exe" /uninstall
 "%ProgramFiles%\MyPC Backup\uninst.exe"
 "%ProgramFiles%\OpenIt\Open It!\uninstall.exe"
@@ -795,8 +801,8 @@ REM below is Community Smartbar
 "%ProgramFiles%\ContinueToSave\uninstall.exe" /FULLPATH="C:\Program Files\ContinueToSave"
 "%ProgramFiles%\DealPly\uninst.exe" /uninstall
 "%ProgramFiles%\Google\Google Toolbar\Component\GoogleToolbarManager_94DDE1EDD1CDF6A3.exe" /uninstall
-"%appdata%\Local\SevereWeatherAlerts\uninstall.exe"
-"%appdata%\Local\SwvUpdater\Updater.exe" /uninstall
+"%userprofile%\AppData\Local\SevereWeatherAlerts\uninstall.exe"
+"%userprofile%\AppData\Local\SwvUpdater\Updater.exe" /uninstall
 "%ProgramFiles%\Web Layers\WebLayersuninstall.exe"
 "%ProgramFiles%\Extreme Media Player\Uninstall.exe"
 "%ProgramFiles%\Fast Free Converter\uninstall.exe"
@@ -815,7 +821,7 @@ REM below is Community Smartbar
 "%ProgramFiles%\PCFixSpeed\unins000.exe"
 "%ProgramFiles%\PC Health Kit\unins000.exe"
 "%ProgramFiles%\Desk 365\eUninstall.exe"
-"%appdata%\Local\FilesFrog Update Checker\uninstall.exe"
+"%userprofile%\AppData\Local\FilesFrog Update Checker\uninstall.exe"
 "%ProgramFiles%\Iminent\inst\Bootstrapper\Bootstrapper.exe" uninstall
 "%ProgramFiles%\Linksicle\Uninstall.exe"
 "%ProgramFiles%\Uniblue\SpeedUpMyPC\unins000.exe"
@@ -827,11 +833,11 @@ REM C:\Windows\IsUninst.exe -f"C:\Program Files\Goodheart-Willcox\Housing Decisi
 "%appdata%\okitspace\uninstall.exe"
 "%ProgramFiles%\Olive\uninstall.exe"
 "%ProgramFiles%\SaltarSmart\SaltarSmartuninstall.exe"
-"%appdata%\Local\SevereWeatherAlerts\uninstall.exe"
+"%userprofile%\AppData\Local\SevereWeatherAlerts\uninstall.exe"
 "%ProgramFiles%\SoftwareUpdater\uninstall.exe"
 "%ProgramFiles%\Advanced System Protector\unins000.exe"
 "%ProgramFiles%\Google\Google Toolbar\Component\GoogleToolbarManager_08875ABF44579E20.exe" /uninstall
-"%appdata%\Local\SwvUpdater\Updater.exe" /uninstall
+"%userprofile%\AppData\Local\SwvUpdater\Updater.exe" /uninstall
 "%ProgramFiles%\WinZip Driver Updater\unins000.exe"
 REM "C:\Program Files\Browsersafeguard\uninstall.browsersafeguard.exe" /u /UserID=37efb983-f474-4743-9d78-72652319a23a /SourceID=google_browsersafeguard-display-us-CPC-300x250-23909039453 /ImplementationID=browsersafeguard-pitch
 "%ProgramFiles%\Browsersafeguard\uninstall.browsersafeguard.exe" /u
@@ -853,8 +859,8 @@ REM "C:\Program Files\Browsersafeguard\uninstall.browsersafeguard.exe" /u /UserI
 "%ProgramFiles%\DefaultTab\uninstaller.exe"
 "%ProgramFiles%\FileOpenerPro\uninstall.exe" /u /UserID=76876b9b-d424-44ca-bd97-1128124f94eb /SourceID=google_fileopenerpro-display-us-manualowl-728x90-31920941409
 "%ProgramFiles%\LyricsParty-16\Uninstall.exe" /fromcontrolpanel=1
-"%appdata%\Local\SwvUpdater\Updater.exe" /uninstall
-"%appdata%\Local\SySaver\uninst.exe"
+"%userprofile%\AppData\Local\SwvUpdater\Updater.exe" /uninstall
+"%userprofile%\AppData\Local\SySaver\uninst.exe"
 "%USERPROFILE%\Application Data\defaulttab\defaulttab\uninstalldt.exe"
 "%USERPROFILE%\Local Settings\Application Data\DefineExt\uninst.exe"
 "%ProgramFiles%\LyricsParty-16\Uninstall.exe"
@@ -885,19 +891,19 @@ REM below is Snap.do
 "%ProgramFiles%\HiDefMedia\HiDefMedia\uninstall.exe"
 "%ProgramFiles%\Plus-HD-1.3\Uninstall.exe" /fromcontrolpanel=1
 "%ProgramFiles%\Re-markit\Uninstall.exe"
-"%appdata%\Local\SevereWeatherAlerts\uninstall.exe"
-"%appdata%\Local\SwvUpdater\Updater.exe" /uninstall
+"%userprofile%\AppData\Local\SevereWeatherAlerts\uninstall.exe"
+"%userprofile%\AppData\Local\SwvUpdater\Updater.exe" /uninstall
 "%ProgramFiles%\TextAloud\unins000.exe"
 "%ProgramFiles%\JFileManager\uninstall.exe"
 "%appdata%\DefaultTab\DefaultTab\uninstalldt.exe"
-"%appdata%\Local\DProtect\DPUninstall.exe" -silence
-"%appdata%\Local\FilesFrog Update Checker\uninstall.exe"
+"%userprofile%\AppData\Local\DProtect\DPUninstall.exe" -silence
+"%userprofile%\AppData\Local\FilesFrog Update Checker\uninstall.exe"
 "%ProgramFiles%\LyricsBuddy-1\Uninstall.exe" /fromcontrolpanel=1
 "%ProgramFiles%\Plus-HD-1.3\Uninstall.exe" /fromcontrolpanel=1
 "%ProgramFiles%\PricePeep\uninstall.exe"
 "%ProgramFiles%\Project64 2.1\unins000.exe" /SILENT
 "%ProgramFiles%\SaltarSmart\SaltarSmartuninstall.exe" /S
-"%appdata%\Local\SevereWeatherAlerts\uninstall.exe"
+"%userprofile%\AppData\Local\SevereWeatherAlerts\uninstall.exe"
 "%ProgramFiles%\Social Privacy\uninstall.exe"
 "%ProgramFiles%\Social Privacy  DNS\uninstall.exe"
 C:\ProgramData\TubeDimmer\uninstall.exe" /kb=y /ic=2
@@ -911,17 +917,17 @@ RunDll32 C:\PROGRA~1\COMMON~1\INSTAL~1\engine\6\INTEL3~1\Ctor.dll,LaunchSetup "C
 "%USERPROFILE%\Local Settings\Application Data\Unity\WebPlayer\Uninstall.exe"
 "%ProgramFiles%\Sony Online Entertainment\Wheel of Fortune Deluxe\Uninstall Wheel of Fortune Deluxe.exe"
 "%ProgramFiles%\WinPcap\uninstall.exe"
-"%appdata%\Local\GCC\uninstall.exe
-"%appdata%\Local\SevereWeatherAlerts\uninstall.exe
+"%userprofile%\AppData\Local\GCC\uninstall.exe
+"%userprofile%\AppData\Local\SevereWeatherAlerts\uninstall.exe
 "%ProgramFiles%\Fighters\SLOW-PCfighter\Uninstall.exe" Remove SHORT_UNINSTALL=1
-"%appdata%\Local\SwvUpdater\Updater.exe" /uninstall
+"%userprofile%\AppData\Local\SwvUpdater\Updater.exe" /uninstall
 "%ProgramFiles%\Game Downloader\Uninstall.exe"
-"%appdata%\Local\GreatArcadeHits\GAHUninstaller.exe"
+"%userprofile%\AppData\Local\GreatArcadeHits\GAHUninstaller.exe"
 "%ProgramFiles%\LyricSing\Uninstall.exe"
 REM below is QuickShare 1.135.60.12323
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {232F1B14-7126-491F-AC8C-6123BA58FDE2}
-"%appdata%\Local\TidyNetwork.com\TidyNetwork.exe" /U
-"%appdata%\Local\WordOv\uninst.exe"
+"%userprofile%\AppData\Local\TidyNetwork.com\TidyNetwork.exe" /U
+"%userprofile%\AppData\Local\WordOv\uninst.exe"
 "%ProgramFiles%\NortonInstaller\{170fa89a-6886-4c9e-b17b-12bccdd80788}\NortonPCCheckup\LicenseType\2.0.17.48\InstStub.exe" /X
 REM need to first disable network adapter before running this "%ProgramFiles%\Hotspot Shield\Uninstall.exe"
 "%ProgramFiles%\PassShow\Uninstall.exe
@@ -930,7 +936,7 @@ REM need to first disable network adapter before running this "%ProgramFiles%\Ho
 "%ProgramFiles%\Highlightly\Uninstall.exe"
 "%ProgramFiles%\Mobogenie\uninst.exe"
 "%appdata%\0D0S1L2Z1P1B0T1P1B2Z\Zip Opener Packages\uninstaller.exe" /Uninstall /NM="Zip Opener Packages" /AN="0D0S1L2Z1P1B0T1P1B2Z" /MBN="Zip Opener Packages"
-"%appdata%\Local\BrowserSafeguard\uninstall.BrowserSafeguard.exe" /u /ImplementationID=browsersafeguard-rockettab-ptn
+"%userprofile%\AppData\Local\BrowserSafeguard\uninstall.BrowserSafeguard.exe" /u /ImplementationID=browsersafeguard-rockettab-ptn
 "%ProgramFiles%\BrowseForTheCause\BrowseForTheCause.exe" uninstall
 "%ProgramFiles%\Mobile App Sync\uninstall.exe"
 "%ProgramFiles%\Download Internet Explorer 10\unins000.exe"
@@ -944,28 +950,28 @@ REM need to first disable network adapter before running this "%ProgramFiles%\Ho
 %ProgramData%\InternetUpdater\uninstall.exe /kb=y /ic=2
 REM below is CWA Reminder by We-Care.com v4.1.22.3
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {DB9BF6DA-8030-4A21-9FF4-8856A7556FCF}
-"%appdata%\Local\iLivid\uninstall.exe"
+"%userprofile%\AppData\Local\iLivid\uninstall.exe"
 %ProgramData%\InternetUpdater\uninstall.exe /kb=y /ic=2
 C:\PROGRA~1\MOVIES~1\Datamngr\SRTOOL~1\GC\uninstall.exe /UN=CR /PID=LVD2-DTX /PCD=IMH
 "%ProgramFiles%\USTechSupport\PC Optimizer\unins000.exe" /SILENT
 c:\Config.msi\{AB56B977-66D9-411E-B4AA-F4BAD1AD5EBF}\PCOSetup_1.0.15.0.exe /uninstall
 "%ProgramFiles%\System Optimizer Pro\uninst.exe"
 %ProgramData%\Websteroids\uninstall.exe /kb=y /ic=2
-"%appdata%\Local\TidyNetwork\TidyNetwork.exe" /U CID=AdKnowledge2 AUTOGUID={40AEDB18-89EA-3AC7-EE5E-8148ECB3A3BD}
-"%appdata%\Local\VisualBeeExe\uninstaller.exe"
+"%userprofile%\AppData\Local\TidyNetwork\TidyNetwork.exe" /U CID=AdKnowledge2 AUTOGUID={40AEDB18-89EA-3AC7-EE5E-8148ECB3A3BD}
+"%userprofile%\AppData\Local\VisualBeeExe\uninstaller.exe"
 "%ProgramFiles%\Google\Google Toolbar\Component\GoogleToolbarManager_8CA8B41417E66DEB.exe" /uninstall
 "%ProgramFiles%\BrowseBurst\BrowseBurstuninstall.exe" /S
 "%ProgramFiles%\PureLeads\Uninstall.exe"
 "%ProgramFiles%\The weDownload Manager\Uninstall.exe" /fromcontrolpanel=1
-"%appdata%\Local\Unity\WebPlayer\Uninstall.exe"
+"%userprofile%\AppData\Local\Unity\WebPlayer\Uninstall.exe"
 "%appdata%\PriceMeterUpdater\UpdateProc\UpdateTask.exe" /Uninstall
 "%appdata%\DIGITA~1\UpdateProc\UpdateTask.exe" /Uninstall
 "%appdata%\VOPackage\uninstall.exe"
 "%ProgramFiles%\WindowShopper\uninstall.exe"
 "%ProgramFiles%\PassShow-soft\Uninstall.exe"
 "%appdata%\ShopAtHome\ShopAtHomeToolbar\ShopAtHomeUninstall.exe"
-"%appdata%\Local\Start Savin\uninstall.exe"
-"%appdata%\Local\Ice\uninstall.Ice.exe" /u /ImplementationID=ice
+"%userprofile%\AppData\Local\Start Savin\uninstall.exe"
+"%userprofile%\AppData\Local\Ice\uninstall.Ice.exe" /u /ImplementationID=ice
 "%ProgramFiles%\OutfoxTV\uninstaller.exe"
 "%appdata%\FlvPlayer\uninstall.exe"
 "%ProgramFiles%\Linkey\uninstall.exe"
@@ -975,9 +981,20 @@ C:\WINDOWS\system32\javaws.exe -uninstall
 "%USERPROFILE%\Application Data\HoolappForAndroid\UpdateProc\UpdateTask.exe" /Uninstall
 "%ProgramFiles%\PasswordBox\uninstall.exe"
 "%USERPROFILE%\Application Data\0T1F0D1F2W1G1I1F1T1Q\WinZip Packages\uninstaller.exe" /Uninstall /NM="WinZip Packages" /AN="0T1F0D1F2W1G1I1F1T1Q" /MBN="WinZip Packages"
-
-
-
+"%ProgramFiles%\Buzz-it\Uninstall.exe"
+"%ProgramFiles%\Quiknowledge\Uninstall.exe"
+"%userprofile%\AppData\Local\iLivid\uninstall.exe"
+C:\PROGRA~1\MOVIES~1\Datamngr\SRTOOL~1\IE\uninstall.exe
+C:\PROGRA~1\MOVIES~1\Datamngr\SRTOOL~1\FF\uninstall.exe
+"%userprofile%\AppData\Local\Torch\uninstall.exe"
+"%ProgramFiles%\Free Games (4357)\uninst.exe"
+"%ProgramFiles%\Speed Test (4354)\uninst.exe"
+"%ProgramFiles%\Speed Test 127\uninstall.exe"
+"%ProgramFiles%\NewPlayer\uninstall.exe
+"%ProgramFiles%\ver4Re-markit\Uninstall.exe
+"%ProgramData%\WindowsMangerProtect\ProtectWindowsManager.exe" -uninstall
+"%appdata%\istart123\UninstallManager.exe"  -ptid=tugs
+"%ProgramFiles%\fst_us_217\unins000.exe"
 
 
 
@@ -1050,9 +1067,29 @@ del /F /Q "%ALLUSERSPROFILE%\Start Menu\Programs\Startup\Adobe Acrobat Synchroni
 del /F /Q /S "%ProgramFiles%\DefaultTab"
 del /F /Q /S "%ProgramFiles%\Iminent"
 del /F /Q /S "%ProgramFiles%\SaveValet"
-del /F /Q /S "%appdata%\Local\Ice"
-del /F /Q /S "%appdata%\Local\Blaze"
+del /F /Q /S "%userprofile%\AppData\Local\Ice"
+del /F /Q /S "%userprofile%\AppData\Local\Blaze"
 del /F /Q /S "%ProgramFiles%\Amazon
+del /F /Q /S "%appdata%\istart123"
+
+
+
+REM remove more spesific and troublesome things
+REM ===========================================
+
+REM Quiknowledge
+REM ------------
+
+taskkill /f /im qksvc.exe
+del /F /Q /S "%ProgramFiles%\Quiknowledge"
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Quiknowledge" /F
+reg delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\qksvc" /F
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Quiknowledge" /F
+
+REM ===========================================
+
+
+
 
 
 REM sleep30000.exe
