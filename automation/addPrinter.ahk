@@ -6,7 +6,7 @@ if A_OSVersion in WIN_XP
 	exitapp
 }
 
-msgbox,4,Install printer script v1,I'm about to install the Brother Printer from room 3103. Are you OK with this?,120
+msgbox,4,Install printer script v2,I'm about to install the Brother Printer from room 3103. Are you OK with this?,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe,10
@@ -14,9 +14,10 @@ IfMsgBox No
 }
 else
 {
+	settitlematchmode,2
 	progress,FS10 W600 Y650,%A_Space% `n %A_Space%,Please Wait,The Unfaltering March Of `Progress,Segoe UI
 	run control printers
-	winwait,Devices and Printers,Address: Control Panel\Hardware and Sound\Devices and Printers
+	winwait,Devices and Printers
 	progress,2,Preparing your computer,Please Wait,The Unfaltering March Of `Progress
 	sleep 2000
 	winactivate
@@ -40,37 +41,39 @@ else
 	sleep 2000
 	winactivate
 	send !f
-	sleep 1000
+	sleep 2000
 	send t
 	winwait,Add Printer,Local or network printer
 	progress,30,About to actually add the printer,Please Wait,The Unfaltering March Of `Progress
-	sleep 2000
+	sleep 3000
 	winactivate
 	send w
-	sleep 1000
+	sleep 2000
 ;	send {tab}
 	progress,40,About to actually add the printer,Please Wait,The Unfaltering March Of `Progress
-	loop
-	{
-		IfWinExist,Add Printer,Add a printer using a TCP/&IP address or hostname
-		{
-			break
-		}
-		else
-		{
+	; loop
+	; {
+		; winwait,Add Printer,Add a printer using a TCP
+		sleep 10000
+		; IfWinExist,Add Printer,Add a printer using a TCP
+		; {
+			; break
+		; }
+		; else
+		; {
 			send !r
-		}
-		sleep 1000
-		if A_Index > 10
-		{
-			send {tab}
-			if A_Index > 20
-			{
-				msgbox,0,Ooops,I'm having some trouble here. `n`nCould you `click the button labelled "The printer that I want isn't listed" for me?,10
-				sleep 10000
-			}
-		}
-	}
+		; }
+		; sleep 1000
+		; if A_Index > 10
+		; {
+			; send {tab}
+			; if A_Index > 20
+			; {
+				; msgbox,0,Ooops,I'm having some trouble here. `n`nCould you `click the button labelled "The printer that I want isn't listed" for me?,10
+				; sleep 10000
+			; }
+		; }
+	; }
 	winactivate
 	send i
 	sleep 1000
