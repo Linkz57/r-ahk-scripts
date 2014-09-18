@@ -1,25 +1,24 @@
-; logout.ahk v2.3
+; logout.ahk v2.4
 ; the idea is I close a bunch of programs then open Truecrypt.
 
 ;	closing firefox
+
+Run %ComSpec% /C "shutdown /r /t 600
+
 process,exist,firefox.exe
 while (%errorlevel% != 0)
 {
 	SetTitleMatchMode,2
 	ifwinexist,  - Mozilla Firefox
 	{
-		winactivate
-		sleep 500
-		send #{down}
-		sleep 500
-		winactivate
+		winrestore,  - Mozilla Firefox
 		sleep 1000
-		Winclose
+		Winclose,  - Mozilla Firefox
 		msgbox,0,Closing Firefox,Closing Firefox,1
 	}
 	else
 	{
-		msgbox,0,whelp,I couldn't find Firefox.,2
+		msgbox,0,gimmy a bit,Still waiting for Firefox to finish closing,2
 	}
 	sleep 2000
 	process,exist,firefox.exe
@@ -40,6 +39,7 @@ while (%errorlevel% != 0)
 	process,exist,GoogleChromePortable.exe
 }
 msgbox,0,done,done,1
+
 
 ;	closing Notepad++
 process,exist,notepad++.exe
@@ -63,6 +63,18 @@ while (%errorlevel% != 0)
 msgbox,0,done,done,1
 
 
+;	closing workrave
+msgbox,0,Closing workrave,Closing workrave,1
+process,exist,Workrave.exe
+while (%errorlevel% != 0)
+{
+	Runwait %ComSpec% /C "taskkill /F /IM Workrave.exe"
+	sleep 1000
+	process,exist,Workrave.exe
+}
+msgbox,0,0,done,1
+
+
 ;	closing texter
 msgbox,0,Closing texter,Closing texter,1
 process,exist,texter.exe
@@ -77,6 +89,7 @@ while (%errorlevel% != 0)
 	process,exist,texter.exe
 }
 msgbox,0,0,done,1
+
 
 
 ;	closing PortableApps thing
@@ -120,6 +133,7 @@ while (%errorlevel% != 0)
 msgbox,0,0,done,1
 
 
+
 ;	closing wintabs
 msgbox,0,Closing WindowTabs,Closing WindowTabs,1
 process,exist,WindowTabs.exe
@@ -135,6 +149,7 @@ while (%errorlevel% != 0)
 	process,exist,WindowTabs.exe
 }
 msgbox,0,0,done,1
+
 
 
 ; opening TrueCrypt
