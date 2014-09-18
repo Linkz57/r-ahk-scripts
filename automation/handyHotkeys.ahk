@@ -1,5 +1,5 @@
-; handyHotkeys.ahk v1.4
-; just a bunch of stuff I would like to keep quickly accessable like typing the clipboard.
+; handyHotkeys.ahk v1.5
+; just a bunch of stuff I would like to keep quickly accessible like typing the clipboard.
 
 ; Sleep Monitors
 ^Down::
@@ -182,15 +182,10 @@ exitapp
 	return
 }
 ;;Temporary hotkey
-; ^!t::
-; WinGet, id, list, , , Program Manager
-; Loop, %id%
-; {
-	; StringTrimRight, this_id, id%a_index%, 0
-	; WinGetTitle, this_title, ahk_id %this_id%
-	; winclose,%this_title%
-; }
-; return
+^!t::
+FileGetSize, newSize, C:\t.txt
+msgbox,0,0,newsize is %newSize%
+return
 
 
 ^!r::
@@ -219,7 +214,19 @@ RButton & WheelUp::
 {
 	run M:\sjunk\ahk scripts\src\logout.ahk
 	Runwait %ComSpec% /C ""C:\Program Files\12noon Display Changer\dc.exe" -width="1280" -height="1024" -monitor="\\.\DISPLAY1""
-	Runwait %ComSpec% /C ""C:\Program Files\12noon Display Changer\dc.exe" -width="1280" -height="1024" -monitor="\\.\DISPLAY2"
+	Runwait %ComSpec% /C ""C:\Program Files\12noon Display Changer\dc.exe" -width="1280" -height="1024" -monitor="\\.\DISPLAY2""
+	exitapp
+}
+
+;; shut down computer
+^!#+s::
+{
+	del /F /Q shutdown.txt
+	run M:\sjunk\ahk scripts\src\logout.ahk
+	Runwait %ComSpec% /C ""C:\Program Files\12noon Display Changer\dc.exe" -width="1280" -height="1024" -monitor="\\.\DISPLAY1""
+	Runwait %ComSpec% /C ""C:\Program Files\12noon Display Changer\dc.exe" -width="1280" -height="1024" -monitor="\\.\DISPLAY2""
+	sleep 1000
+	Runwait %ComSpec% /C "echo shutdown > shutdown.txt"
 	exitapp
 }
 
