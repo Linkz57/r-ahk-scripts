@@ -13,7 +13,7 @@ if A_OSVersion in WIN_XP
 }
 
 SetTimer,ChangeButtonNames,50
-msgbox,3,Install printer script v3,Do you want to install the big printer/scanner in room 1100f (the 1100-1200 workroom) `n`nOr from the 2301 workroom?`n`nYou could choose both`, but pick one now and you can run this program again and pick the other later.,120
+msgbox,515,Install printer script v3.2,Do you want to install the big printer/scanner in room 1100f (the 1100-1200 workroom) `n`nOr from the 2301 workroom?`n`nYou could choose both`, but pick one now and you can run this program again and pick the other later.,120
 IfMsgBox CANCEL
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe,10
@@ -57,7 +57,7 @@ progress,2,Preparing your computer,Please Wait,The Unfaltering March Of `Progres
 sleep 2000
 winactivate
 progress,5,Preparing your computer,Please Wait,The Unfaltering March Of `Progress
-Run,%ComSpec% /C "PnPutil.exe -i -a "OEMSETUP.INF" && timeout /t 15",I:\it\p\r\ricoh_pro_8110s\print\disk1
+Runwait,%ComSpec% /c "PnPutil.exe -i -a "OEMSETUP.INF" && timeout /t 15",I:\it\p\r\ricoh_pro_8110s\print\disk1
 sleep 1500
 progress,7,Preparing your computer,Please Wait,The Unfaltering March Of `Progress
 sleep 2000
@@ -105,7 +105,7 @@ loop
 	sleep 1000
 	send !{enter}
 	sleep 5000
-	ifwinexist,2301 - RICOH Pro 8110S Properties
+	ifwinexist,%humanName%
 	{
 		break
 	}
@@ -159,8 +159,9 @@ ifwinexist,Update Driver Warning
 {
 	send !y
 }
-winwait,Update Driver Software - RICOH Pro 8100S WIA,RICOH Pro 8100S WIA
-sleep 3000
+winwait,Update Driver Software
+progress,85,Waiting longer than is needed`nTo give the driver some more time to install.,Please Wait,The Unfaltering March Of `Progress
+sleep 30000
 winactivate
 send !c
 winclose,Properties
