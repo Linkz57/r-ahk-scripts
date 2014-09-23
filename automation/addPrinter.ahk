@@ -205,8 +205,8 @@ sleep 1000
 send {enter}
 progress,100,%A_Space%,Done!,The Unfaltering March Of `Progress
 sleep 2000
-msgbox,0,All clear,All clear!`nyou're good to go. If you want to set your printer as the default`, right click on "%humanName%" and click "Set as default".`nIf you want to scan then I'd recommend dragging the printer called "%humanName%" to your desktop for easy access. Once it's there, right click it and select "Start scan".,60
-msgbox,0,Oh and also,If you have any questions`, then you can email my creator Tyler.Francis@humble.k12.tx.us `nif you have to tell him I messed up then, well... please be nice about it. `nYou know he can be sometimes...,10
+msgbox,0,All clear,All clear!`nyou're good to go. If you want to set your printer as the default`, right click on "%humanName%" and click "Set as default".`n`nIf you want to scan then I'd recommend dragging the printer called "%humanName%" to your desktop for easy access. Once it's there`, right click it and select "Start scan".,60
+msgbox,0,Oh and also,If you have any questions`, then you can email my creator Tyler.Francis@humble.k12.tx.us `n`nif you have to tell him I messed up then`, well... please be nice about it. `nYou know he can be sometimes...,10
 winclose,Devices and Printers
 run control printers
 send %humanName%
