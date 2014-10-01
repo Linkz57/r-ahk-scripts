@@ -1,4 +1,4 @@
-;; update ua installers v0.2
+;; update ua installers v0.3
 
 ;;test-only variables. Delete after version 1
 rej = open
@@ -9,9 +9,13 @@ FlashFetchIterations = 0
 FirefoxTimoutCount = 0
 JavaTimoutCount = 0
 FlashTimoutCount = 0
-UpdateFirefox = false
+UpdateFirefox = true
 UpdateJava = true
 UpdateFlash = true
+JavaRemoteInstallerLink = 0
+InstallFirefoxFromIntranet = true
+InstallJavaFromIntranet = true
+InstallFlashFromIntranet = true
 
 ; listvars
 ; pause
@@ -19,6 +23,12 @@ UpdateFlash = true
 ;; clean up workspace
 Runwait %ComSpec% /C "del /q c:\udua"
 Runwait %ComSpec% /C "rmdir /s /q c:\udua"
+sleep 1000
+Runwait %ComSpec% /C "mkdir c:\udua"
+Runwait %ComSpec% /C "mkdir c:\udua\flash"
+Runwait %ComSpec% /C "mkdir c:\udua\firefox"
+Runwait %ComSpec% /C "mkdir c:\udua\reader"
+Runwait %ComSpec% /C "mkdir c:\udua\java"
 IfWinExist,Archived Flash Player versions - Mozilla Firefox
 {
 	winactivate,Archived Flash Player versions - Mozilla Firefox
@@ -171,6 +181,11 @@ if UpdateJava in true
 	winclose
 	StringSplit,RemoteJavaVersionArray,RemoteJavaVersionRaw,%A_Space%
 	winactivate,Java Downloads for All Operating Systems - Mozilla Firefox
+	send +{F10}
+	sleep 500
+	send a
+	JavaRemoteInstallerLink = %clipboard%
+	winactivate,Java Downloads for All Operating Systems - Mozilla Firefox
 	send ^w
 }
 
@@ -181,7 +196,7 @@ if UpdateJava in true
 
 
 
-;; find version of Adobe Flash Firefox installer
+;; find version of Adobe Flash installer
 flashfetch:
 listvars
 if UpdateFlash in true
@@ -240,11 +255,6 @@ if UpdateFlash in true
 		send ^w
 	}
 	StringSplit,RemoteFlashVersionArray,RemoteFlashVersionRaw,%A_Space%,"_archive.zip"
-	Runwait %ComSpec% /C "mkdir c:\udua"
-	Runwait %ComSpec% /C "mkdir c:\udua\flash"
-	Runwait %ComSpec% /C "mkdir c:\udua\firefox"
-	Runwait %ComSpec% /C "mkdir c:\udua\reader"
-	Runwait %ComSpec% /C "mkdir c:\udua\java"
 	msgbox,0,Hold your horses,I'm going to download (but not install) the latest version of Flash to see `if it's compatible with Windows.`nJust give me a few seconds.,4
 	UrlDownloadToFile,http://download.macromedia.com/pub/flashplayer/installers/archive/%RemoteFlashVersionArray2%_archive.zip,c:\udua\flash%RemoteFlashVersionArray2%.zip
 	Runwait %ComSpec% /C "..\7-ZipPortable\App\7-Zip\7z.exe e -y -oc:\udua\flash c:\udua\flash%RemoteFlashVersionArray2%.zip"
@@ -286,17 +296,17 @@ StringReplace,RemoteFirefoxInstallerVersionWithoutPeriods,RemoteFirefoxVersionAr
 
 
 
-if %LocalFirefoxInstallerVersionWithoutPeriods% > %RemoteFirefoxInstallerVersionWithoutPeriods%
+if (LocalFirefoxInstallerVersionWithoutPeriods > RemoteFirefoxInstallerVersionWithoutPeriods)
 {
 	msgbox,0,Whelp something broked,This is odd... The Firefox version I had planned on installing is supposedly NEWER than the latest version available from the folks who make it. `nI don't really understand what must have gone wrong but I'm going to ignore this oddity and try to keep going.,15
 }
 
-if %LocalFirefoxInstallerVersionWithoutPeriods% == %RemoteFirefoxInstallerVersionWithoutPeriods%
+if (LocalFirefoxInstallerVersionWithoutPeriods == RemoteFirefoxInstallerVersionWithoutPeriods)
 {
 	msgbox,0,Hey guess what,Good news: the version of Firefox that I had planned on installing is the latest version.,5
 }
 
-if %LocalFirefoxInstallerVersionWithoutPeriods% < %RemoteFirefoxInstallerVersionWithoutPeriods%
+if (LocalFirefoxInstallerVersionWithoutPeriods < RemoteFirefoxInstallerVersionWithoutPeriods)
 {
 	msgbox,0,It looks like I need to update,The local installer is out of date. I'm gonna go fetch the newest version--I'll be right back.,4
 	UrlDownloadToFile,https://download.mozilla.org/?product=firefox-%RemoteFirefoxVersionArray4%esr&os=win&lang=en-US,C:\udua\firefox\FirefoxSetup%RemoteFirefoxVersionArray4%esr.exe
@@ -304,13 +314,13 @@ if %LocalFirefoxInstallerVersionWithoutPeriods% < %RemoteFirefoxInstallerVersion
 	if errorlevel
 	{
 		msgbox,0,Hey look`, I found a snag!,Long story short: someone `else is running this same script`, so I can't replace my usual version of Firefox with the update I just got.`nDon't worry`,I'll still update YOUR Firefox`, just not anyone else's.,15
-		InstallFromIntranet = false
+		InstallFirefoxFromIntranet = false
 	}
 	else
 	{
 		filemove,C:\udua\firefox\Firefox*.exe,FirefoxSetup.exe,0
 		filemove,Firefox*.exe.version,Firefox Setup %RemoteFirefoxVersionArray4%esr.exe.version
-		InstallFromIntranet = true
+		InstallFirefoxFromIntranet = true
 		msgbox,0,Everything's Shiny here`, captain,It looks like everything went smoothly enough. Now you and anyone `else who runs this script will have the latest version of Firefox available to install. `nI'll get around to actually installing it later`, but I just wanted to take this moment to congratulate myself.,10
 	}
 }
@@ -340,35 +350,6 @@ if rej in open
 	StringReplace,JavaInstallerVersionJustNumbers,JavaInstallerVersion,jre1.,,All
 	StringReplace,JavaInstallerVersionJustNumbers,JavaInstallerVersionJustNumbers,.msi.version,,All
 	StringReplace,JavaInstallerVersionJustNumbers,JavaInstallerVersionJustNumbers,.0_,,All
-	
-	if %JavaInstallerVersionJustNumbers% > %RemoteJavaVersionJustNumbers%
-	{
-		msgbox,0,Whelp something broked,This is odd... The Java version I had planned on installing is supposedly NEWER than the latest version available from the folks who make it. `nI don't really understand what must have gone wrong but I'm going to ignore this oddity and try to keep going.,15
-	}
-
-	if %JavaInstallerVersionJustNumbers% == %RemoteJavaVersionJustNumbers%
-	{
-		msgbox,0,Hey guess what,Good news: the version of Java that I had planned on installing is the latest version.,5
-	}
-
-	; if %JavaInstallerVersionJustNumbers% < %RemoteJavaVersionJustNumbers%
-	; {
-		; msgbox,0,It looks like I need to update,The local installer is out of date. I'm gonna go fetch the newest version--I'll be right back.,4
-		; UrlDownloadToFile,https://download.mozilla.org/?product=firefox-%RemoteFirefoxVersionArray4%esr&os=win&lang=en-US,C:\udua\firefox\FirefoxSetup%RemoteFirefoxVersionArray4%esr.exe
-		; filemove,FirefoxSetup.exe,FirefoxSetup.exe.%FirefoxInstallerVersionArray3%.bak,1
-		; if errorlevel
-		; {
-			; msgbox,0,Hey look`, I found a snag!,Long story short: someone `else is running this same script`, so I can't replace my usual version of Java with the update I just got.`nDon't worry`,I'll still update YOUR Java`, just not anyone else's.,15
-			; InstallFromIntranet = false
-		; }
-		; else
-		; {
-			; filemove,C:\udua\firefox\Firefox*.exe,FirefoxSetup.exe,0
-			; filemove,Firefox*.exe.version,Firefox Setup %RemoteFirefoxVersionArray4%esr.exe.version
-			; InstallFromIntranet = true
-			; msgbox,0,Everything's Shiny here`, captain,It looks like everything went smoothly enough. Now you and anyone `else who runs this script will have the latest version of Java available to install. `nI'll get around to actually installing it later`, but I just wanted to take this moment to congratulate myself.,10
-		; }
-	; }
 }
 else
 {
@@ -383,6 +364,24 @@ if rej in open
 	}
 }
 
+if (JavaInstallerVersionJustNumbers > RemoteJavaVersionJustNumbers)
+{
+	msgbox,0,Whelp something broked,This is odd... The Java version I had planned on installing is supposedly NEWER than the latest version available from the folks who make it. `nI don't really understand what must have gone wrong but I'm going to ignore this oddity and try to keep going.,15
+}
+
+if (JavaInstallerVersionJustNumbers == RemoteJavaVersionJustNumbers)
+{
+	msgbox,0,Hey guess what,Good news: the version of Java that I had planned on installing is the latest version.,5
+}
+
+if (JavaInstallerVersionJustNumbers < RemoteJavaVersionJustNumbers)
+{
+	msgbox,0,It looks like I need to update,The local installer is out of date. I'm gonna go fetch the newest version--I'll be right back.,4
+	UrlDownloadToFile,%JavaRemoteInstallerLink%,C:\udua\java\%RemoteJavaVersionArray2%.exe
+	
+;	%HOMEDRIVE%%HOMEPATH%\AppData\LocalLow\Sun\Java
+	InstallJavaFromIntranet = false
+}
 
 
 
