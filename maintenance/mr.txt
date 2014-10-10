@@ -1,4 +1,4 @@
-REM mr.txt v1.7
+REM mr.txt v1.8
 REM This is a very basic batch file written by Tyler Francis that--in tandem with another script cleverly named "Remove"--attempts to remove many programs that would not be useful and/or allowed in a school environment. It's rather aggressive about this, especially in the first "silent" half of this file, so make sure you're ok with losing all of the programs and files mentioned here.
 
 C:
@@ -230,11 +230,31 @@ REM below is DriverUpdate 2.2.35877
 REM below is Driver Restore 8.1
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {273130E8-117C-4237-A0FA-83EBBF11E051}
 
+REM below is LG United Mobile Drivers 3.10.1.0
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {55031CEF-CE75-4A5C-8DEA-60577820529B}
+
+REM below is ScorpionSaver 1.0.0.0
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {9B65F9A3-9D24-452A-B6EF-1457D65E4259}
+
 REM below is PC Speed Maximizer 3.2
 "C:\Program Files\PC Speed Maximizer\unins000.exe" /SILENT
 
 REM below is PC PC Driver Kit 3.1
 "C:\Program Files\PC Driver Kit\unins000.exe" /SILENT
+
+REM below is Euro Truck Simulator
+"C:\Program Files\Euro Truck Simulator 2\unins000.exe" /SILENT
+
+REM below is GreyGray
+"%ProgramFiles%\GreyGray\GreyGrayuninstall.exe" /S
+
+REM below is M-Downloader 1.0.0.63
+"C:\Program Files\M-Downloader\unins000.exe" /SILENT
+
+REM below is Software Updater 1.8.3
+"C:\Program Files\Software Updater\unins000.exe" /SILENT
+
+
 
 
 
@@ -995,6 +1015,24 @@ C:\PROGRA~1\MOVIES~1\Datamngr\SRTOOL~1\FF\uninstall.exe
 "%ProgramData%\WindowsMangerProtect\ProtectWindowsManager.exe" -uninstall
 "%appdata%\istart123\UninstallManager.exe"  -ptid=tugs
 "%ProgramFiles%\fst_us_217\unins000.exe"
+"%ProgramFiles%\OtShot\uninstall.exe"
+"%ProgramFiles%\FreeTime\FormatFactory\uninst.exe"
+"%ProgramFiles%\PCFixSpeed\unins000.exe" /SILENT
+"%ProgramFiles%\BetterSurf\BetterSurfPlusV1\uninstall.exe"
+"%ProgramFiles%\Build and Shoot\uninst.exe"
+"%appdata%\DictAddon\uninst.exe"
+"%ProgramFiles%\MediaPlayerV1\MediaPlayerV1alpha774\uninstall.exe"
+"%ProgramFiles%\MediaViewV1\MediaViewV1alpha3497\uninstall.exe"
+"%appdata%\.minecraft\minecraft launcher\Uninstall.exe"
+"%ProgramFiles%\RadarSync\unins000.exe" /SILENT
+"%ProgramFiles%\Re-markit\Uninstall.exe"
+"%ProgramFiles%\VideoPlayerV3\VideoPlayerV3beta281\uninstall.exe"
+"%ProgramFiles%\WebexpEnhancedV1\WebexpEnhancedV1alpha583\uninstall.exe"
+
+
+
+
+
 
 
 
@@ -1085,6 +1123,12 @@ del /F /Q /S "%ProgramFiles%\Quiknowledge"
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Quiknowledge" /F
 reg delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\qksvc" /F
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Quiknowledge" /F
+
+
+REM InstallX Search Protect for Yahoo
+REM ---------------------------------
+taskkill /f /im searchprotector.exe
+del /F /Q /S C:\Users\student\AppData\Roaming\InstallX Search Protect for Yahoo
 
 REM ===========================================
 
