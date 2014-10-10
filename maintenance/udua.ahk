@@ -1,4 +1,4 @@
-;; update ua installers v0.3
+;; update ua installers v0.5
 
 ;;test-only variables. Delete after version 1
 rej = open
@@ -17,13 +17,11 @@ InstallFirefoxFromIntranet = true
 InstallJavaFromIntranet = true
 InstallFlashFromIntranet = true
 
-; listvars
-; pause
-
 ;; clean up workspace
 Runwait %ComSpec% /C "del /q c:\udua"
 Runwait %ComSpec% /C "rmdir /s /q c:\udua"
 sleep 1000
+;; recreate workspace
 Runwait %ComSpec% /C "mkdir c:\udua"
 Runwait %ComSpec% /C "mkdir c:\udua\flash"
 Runwait %ComSpec% /C "mkdir c:\udua\firefox"
@@ -66,11 +64,11 @@ ReaderInstallerVersion = %A_LoopFileName%
 
 ;; find version of Adobe Flash IE installer
 loop, flashplayer*winax.msi.version
-FlashIEInstallerVersion = %A_LoopFileName%
+FlashIeInstallerVersion = %A_LoopFileName%
 
 ;; find version of Adobe Flash Firefox installer
 loop, flashplayer*win.msi.version
-FlashFXInstallerVersion = %A_LoopFileName%
+FlashFfInstallerVersion = %A_LoopFileName%
 
 ;; find version of Internet Explorer installer
 loop, ie*_win7_x86.msi.version
@@ -89,6 +87,9 @@ listvars
 ; pause
 if UpdateFirefox in true
 {
+	Run %ComSpec% /C ""C:\Program Files\Mozilla Firefox\firefox.exe" about:blank" ; open a blank page to keep Firefox open while opening and closing these other tabs.
+	settitlematchmode,2
+	winwait,Mozilla Firefox
 	Run %ComSpec% /C ""C:\Program Files\Mozilla Firefox\firefox.exe" https://www.mozilla.org/en-US/firefox/organizations/all/"
 ;	msgbox,0,0,error level is %errorlevel%,2
 	settitlematchmode,3
@@ -358,7 +359,7 @@ else
 }
 if rej in open
 {
-	if (ojavr == "unset")
+	if (ojavr == "")													; unset
 	{
 		msgbox,0,Sorry,I can't figure out what version of Oracle Java you're using which probably means you don't have it installed. I'm going to install the latest one I have`, even `if you don't need it.,5
 	}
@@ -372,6 +373,7 @@ if (JavaInstallerVersionJustNumbers > RemoteJavaVersionJustNumbers)
 if (JavaInstallerVersionJustNumbers == RemoteJavaVersionJustNumbers)
 {
 	msgbox,0,Hey guess what,Good news: the version of Java that I had planned on installing is the latest version.,5
+	InstallJavaFromIntranet = true
 }
 
 if (JavaInstallerVersionJustNumbers < RemoteJavaVersionJustNumbers)
@@ -384,13 +386,193 @@ if (JavaInstallerVersionJustNumbers < RemoteJavaVersionJustNumbers)
 }
 
 
+;;	Check Flash installed version against installer version
+if rej in open
+{
+	RunWait %ComSpec% /C "REG QUERY "HKEY_LOCAL_MACHINE\SOFTWARE\Macromedia\FlashPlayerActiveX" /V Version > c:\udua\flash\ie.txt" ;get Flash IE version from registry, commit to file for reading back in
+	RunWait %ComSpec% /C "REG QUERY "HKEY_LOCAL_MACHINE\SOFTWARE\Macromedia\FlashPlayerPlugin" /V Version > c:\udua\flash\ff.txt" ;get Flash FF version from registry, commit to file for reading back in
+	sleep 1000
+	fileread,installedIeFlashRaw,c:\udua\flash\ie.txt 					; read back in to variable
+	fileread,installedFfFlashRaw,c:\udua\flash\ff.txt 					; read back in to variable
+																		;;whittle down Flash IE REG string to usable numbers
+	StringReplace,installedIeFlash,installedIeFlashRaw,HKEY_LOCAL_MACHINE\SOFTWARE\Macromedia\FlashPlayerActiveX,,All ; take out first line
+	StringReplace,installedIeFlash,installedIeFlash,`r`n,,All			; take out new lines
+	StringReplace,installedIeFlash,installedIeFlash,` ,,All 			; take out spaces
+	StringReplace,installedIeFlash,installedIeFlash,REG_SZ,,All			; take out remaining REG cruft info
+	StringReplace,installedIeFlash,installedIeFlash,Version,,All		; take out remaining REG cruft info
+	StringReplace,installedIeFlashOnlyNumbers,installedIeFlash,.,,All	; take out version-type separators for math later
+																		;;whittle down Flash FF REG string to usable numbers
+	StringReplace,installedFfFlash,installedFfFlashRaw,HKEY_LOCAL_MACHINE\SOFTWARE\Macromedia\FlashPlayerPlugin,,All 	; take out first line
+	StringReplace,installedFfFlash,installedFfFlash,`r`n,,All 			; take out new lines
+	StringReplace,installedFfFlash,installedFfFlash,` ,,All				; take out spaces
+	StringReplace,installedFfFlash,installedFfFlash,REG_SZ,,All			; take out remaining REG cruft info
+	StringReplace,installedFfFlash,installedFfFlash,Version,,All 		; take out remaining REG cruft info
+	StringReplace,installedFfFlashOnlyNumbers,installedFfFlash,.,,All	; take out version-type separators for math later	
+																		;;whittle down Flash IE .version string to usable number
+	StringReplace,FlashIeInstallerVersionJustNumbers,FlashIeInstallerVersion,flashplayer,,All	; take out beginning
+	StringReplace,FlashIeInstallerVersionJustNumbers,FlashIeInstallerVersionJustNumbers,winax.msi.version,,All	; take out ending
+	StringReplace,FlashIeInstallerVersionJustNumbers,FlashIeInstallerVersionJustNumbers,_,,All	; take out the three underscores in middle
+	StringReplace,FlashIeInstallerVersionJustNumbers,FlashIeInstallerVersionJustNumbers,r,,All	; take out a single 'r' separating major and minor version
+																		;;whittle down Flash FF .version string to usable number
+	StringReplace,FlashFfInstallerVersionJustNumbers,FlashFfInstallerVersion,flashplayer,,All	; take out beginning
+	StringReplace,FlashFfInstallerVersionJustNumbers,FlashFfInstallerVersionJustNumbers,win.msi.version,,All	; take out ending
+	StringReplace,FlashFfInstallerVersionJustNumbers,FlashFfInstallerVersionJustNumbers,_,,All	; take out the three underscores in middle
+	StringReplace,FlashFfInstallerVersionJustNumbers,FlashFfInstallerVersionJustNumbers,r,,All	; take out a single 'r' separating major and minor version
+}
+else
+{
+	msgbox,0,Sorry,I can't figure out what version of Adobe Flash you're using`, so I'm just going to install the latest one I have`, even `if you don't need it.,5
+	installedIeFlash = unknown
+	installedFfFlash = unknown
+}
+
+if rej in open
+{
+	if (installedIeFlash == "")											; unset
+	{
+		if (installedFfFlash == "")										; unset
+		{
+			msgbox,0,Sorry,I can't figure out what version of Adobe Flash you're using`, which probably means you don't have it installed. `nI'm going to install the latest one I have`, even `if you don't need it.,5
+		}
+	}
+}
+
+
+
+
+if (FlashIeInstallerVersionJustNumbers > RemoteJavaVersionJustNumbers)
+{
+	msgbox,0,Whelp something broked,This is odd... The Java version I had planned on installing is supposedly NEWER than the latest version available from the folks who make it. `nI don't really understand what must have gone wrong but I'm going to ignore this oddity and try to keep going.,15
+}
+
+if (JavaInstallerVersionJustNumbers == RemoteJavaVersionJustNumbers)
+{
+	msgbox,0,Hey guess what,Good news: the version of Java that I had planned on installing is the latest version.,5
+	InstallJavaFromIntranet = true
+}
+
+if (JavaInstallerVersionJustNumbers < RemoteJavaVersionJustNumbers)
+{
+	msgbox,0,It looks like I need to update,The local installer is out of date. I'm gonna go fetch the newest version--I'll be right back.,4
+	UrlDownloadToFile,%JavaRemoteInstallerLink%,C:\udua\java\%RemoteJavaVersionArray2%.exe
+	
+
+	InstallJavaFromIntranet = false
+}
+
+	
+;;WIP
+
+
+
+
+
+; if (JavaInstallerVersionJustNumbers > RemoteJavaVersionJustNumbers)
+; {
+	; msgbox,0,Whelp something broked,This is odd... The Java version I had planned on installing is supposedly NEWER than the latest version available from the folks who make it. `nI don't really understand what must have gone wrong but I'm going to ignore this oddity and try to keep going.,15
+; }
+
+; if (JavaInstallerVersionJustNumbers == RemoteJavaVersionJustNumbers)
+; {
+	; msgbox,0,Hey guess what,Good news: the version of Java that I had planned on installing is the latest version.,5
+	; InstallJavaFromIntranet = true
+; }
+
+; if (JavaInstallerVersionJustNumbers < RemoteJavaVersionJustNumbers)
+; {
+	; msgbox,0,It looks like I need to update,The local installer is out of date. I'm gonna go fetch the newest version--I'll be right back.,4
+	; UrlDownloadToFile,%JavaRemoteInstallerLink%,C:\udua\java\%RemoteJavaVersionArray2%.exe
+	
+
+	; InstallJavaFromIntranet = false
+; }
+
+
+
+; IE version check
+if rej in open
+{
+	RunWait %ComSpec% /C "del /F /Q c:\ci.txt"
+	sleep 1000
+	RunWait %ComSpec% /C "REG QUERY "HKLM\SOFTWARE\Microsoft\Internet Explorer" /V "svcVersion" > C:\ci.txt"
+	sleep 1000
+	; SizeCheck
+	FileGetSize, ciSize, C:\ci.txt
+	;msgbox,0,0,size is %Size%
+	if (ciSize < 5) ; less than 5B
+	{
+		RunWait %ComSpec% /C "del /F /Q c:\ci.txt"
+		sleep 1000
+		RunWait %ComSpec% /C "REG QUERY "HKLM\SOFTWARE\Microsoft\Internet Explorer" /V "Version" > C:\ci.txt"
+		sleep 1000
+		FileGetSize, ci2Size, C:\ci.txt
+		if (ci2Size < 5) ; less than 5B
+		{
+			RunWait %ComSpec% /C "del /F /Q c:\ci.txt"
+			msgbox,0,Sorry about this,Sorry but I'm unable to get access to the specific information your want.
+		}
+	}
+	Run %ComSpec% /C "notepad c:\ci.txt"
+	sleep 3000
+	send ^{home}
+	sleep 500
+	send ^f
+	sleep 500
+	send REG_SZ
+	sleep 500
+	send {enter}
+	sleep 500
+	send !{F4}
+	sleep 500
+	send +^{home}
+	sleep 500
+	send {backspace}
+	sleep 500
+	send {del 10}
+	sleep 500
+	send +{end}
+	sleep 500
+	send ^c
+	sleep 500
+	send !{F4}
+	sleep 1000
+	send !n
+	sleep 2000
+	ieversion = %clipboard%
+	RunWait %ComSpec% /C "del /F /Q c:\ci.txt"
+	msgbox,0,Microsoft Internet Explorer found,You already have Microsoft Internet Explorer installed (version %ieversion%),7
+}
+else
+{
+	msgbox,0,Sorry,I can't figure out what version of Microsoft Internet Explorer you're using`, so I'm just going to install the latest one I have`, even `if you don't need it.,5
+	ojavr = unknown
+}
+if rej in open
+{
+	if (ieversion == "unset")
+	{
+		msgbox,0,Sorry,I can't figure out what version of Microsoft Internet Explorer you're using, which is odd. I'm going to install the latest one I have`, even `if you don't need it.,5
+	}
+}
+	
+
+
+
+
+
+
+settitlematchmode,3
+winactivate,Mozilla Firefox
+sleep 1000
+send ^w
 
 listvars
+msgbox,0,0,pausing,1
 pause
 
 Runwait %ComSpec% /C "del /q c:\udua"
 Runwait %ComSpec% /C "rmdir /s /q c:\udua"
-;;WIP
+
 
 exitapp
 
