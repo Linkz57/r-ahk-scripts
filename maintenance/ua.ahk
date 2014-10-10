@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v2.5.2,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
+MsgBox,4,Update Automatically v2.6,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe,10
@@ -237,262 +237,144 @@ else
 		}
 	}
 	RunWait %ComSpec% /C "del /F /Q c:\t.txt"
-	if udua in true
-	{	
-		progress,12,Checking Firefox,Checking versions of installed programs,The Unfaltering March Of `Progress
-		sleep 1000
+	; if udua in true
+	; {
+		; progress,12,Checking Firefox,Checking versions of installed programs,The Unfaltering March Of `Progress
+		; sleep 1000
 		
 	;;	Check Firefox installed version against installer version
-		loop, firefox*.version
-		FirefoxInstallerVersion = %A_LoopFileName%
+		
 
-		IniRead, FirefoxVersion, %ProgramFiles%\Mozilla Firefox\application.ini, App, Version
-		IniRead, FirefoxRepo, %ProgramFiles%\Mozilla Firefox\application.ini, App, SourceRepository
+		; progress,13,Checking Adobe Reader,Checking versions of installed programs,The Unfaltering March Of `Progress
+		; sleep 1000
+		
+		;; Adobe Reader version check
+		; if rej in open
+		; {
+			; RunWait %ComSpec% /C "REG QUERY "HKEY_LOCAL_MACHINE\SOFTWARE\Adobe\Acrobat Reader" > c:\t.txt"
+			; sleep 1000
+			; run %ComSpec% /C "notepad c:\t.txt"
+			; sleep 3000
+			; send ^{home}
+			; sleep 500
+			; send ^f
+			; sleep 500
+			; send Reader\
+			; sleep 500
+			; send {enter}
+			; sleep 500
+			; send !{F4}
+			; sleep 500
+			; send +{home}
+			; sleep 500
+			; send {backspace 2}
+			; sleep 500
+			; send {del 6}
+			; sleep 500
+			; send +{end}
+			; sleep 500
+			; send ^c
+			; sleep 500
+			; send !{F4}
+			; sleep 1000
+			; send !n
+			; sleep 2000
+			; areedr = %clipboard%
+			; RunWait %ComSpec% /C "del /F /Q c:\t.txt"
+			; msgbox,0,Adobe Reader found,You already have Adobe Reader installed (major version %areedr%),5
+		; }
+		; else
+		; {
+			; msgbox,0,Sorry,I can't figure out what version of Adobe Reader you're using`, so I'm just going to install the latest one I have`, even `if you don't need it.,5
+			; areedr = unknown
+		; }
+		; if rej in open
+		; {
+			; if (areedr == "unset")
+			; {
+				; msgbox,0,Sorry,I can't figure out what version of Adobe Reader you're using which probably means you don't have it installed. I'm going to install the latest one I have`, even `if you don't need it.,5
+			; }
+		; }
+		
+		; progress,14,Checking Adobe Flash Player,Checking versions of installed programs,The Unfaltering March Of `Progress
+		; sleep 1000
+		
+		;; Adobe Flash version check
 
-
-		FoundPos := RegExMatch(FirefoxRepo, "(esr)", FirefoxRepoFiltered)
-		msgbox,0,0,Firefox %FirefoxVersion% %FirefoxRepoFiltered% is currently installed,3
-		msgbox,0,0,%FirefoxInstallerVersion% is the version I want to install.,3
-
-		progress,13,Checking Adobe Reader,Checking versions of installed programs,The Unfaltering March Of `Progress
-		sleep 1000
 		
-		; Adobe Reader version check
-		if rej in open
-		{
-			RunWait %ComSpec% /C "REG QUERY "HKEY_LOCAL_MACHINE\SOFTWARE\Adobe\Acrobat Reader" > c:\t.txt"
-			sleep 1000
-			run %ComSpec% /C "notepad c:\t.txt"
-			sleep 3000
-			send ^{home}
-			sleep 500
-			send ^f
-			sleep 500
-			send Reader\
-			sleep 500
-			send {enter}
-			sleep 500
-			send !{F4}
-			sleep 500
-			send +{home}
-			sleep 500
-			send {backspace 2}
-			sleep 500
-			send {del 6}
-			sleep 500
-			send +{end}
-			sleep 500
-			send ^c
-			sleep 500
-			send !{F4}
-			sleep 1000
-			send !n
-			sleep 2000
-			areedr = %clipboard%
-			RunWait %ComSpec% /C "del /F /Q c:\t.txt"
-			msgbox,0,Adobe Reader found,You already have Adobe Reader installed (major version %areedr%),5
-		}
-		else
-		{
-			msgbox,0,Sorry,I can't figure out what version of Adobe Reader you're using`, so I'm just going to install the latest one I have`, even `if you don't need it.,5
-			areedr = unknown
-		}
-		if rej in open
-		{
-			if (areedr == "unset")
-			{
-				msgbox,0,Sorry,I can't figure out what version of Adobe Reader you're using which probably means you don't have it installed. I'm going to install the latest one I have`, even `if you don't need it.,5
-			}
-		}
+		; progress,15,Checking Java,Checking versions of installed programs,The Unfaltering March Of `Progress
+		; sleep 1000
 		
-		progress,14,Checking Adobe Flash Player,Checking versions of installed programs,The Unfaltering March Of `Progress
-		sleep 1000
+		;; Java version check
 		
-		; Adobe Flash version check
-		if rej in open
-		{
-			RunWait %ComSpec% /C "del /F /Q c:\t.txt"
-			sleep 1000
-			RunWait %ComSpec% /C "REG QUERY HKEY_LOCAL_MACHINE\SOFTWARE\Macromedia\FlashPlayer /V "CurrentVersion" > c:\t.txt"
-			sleep 1000
-			run %ComSpec% /C "notepad c:\t.txt"
-			sleep 3000
-			send ^{home}
-			sleep 500
-			send ^f
-			sleep 500
-			send REG_SZ
-			sleep 500
-			send {enter}
-			sleep 500
-			send !{F4}
-			sleep 500
-			send +^{home}
-			sleep 500
-			send {backspace}
-			sleep 500
-			send {del 10}
-			sleep 500
-			send ^h
-			sleep 500
-			send `,
-			sleep 500
-			send {tab}
-			sleep 500
-			send `.
-			sleep 500
-			send !a
-			sleep 1000
-			send !{F4}
-			sleep 500
-			send +{end}
-			sleep 500
-			send ^c
-			sleep 500
-			send !{F4}
-			sleep 1000
-			send !n
-			sleep 2000
-			aflsh = %clipboard%
-			RunWait %ComSpec% /C "del /F /Q c:\t.txt"
-			msgbox,0,Adobe Flash found,You already have Adobe Flash installed (version %aflsh%),5
-		}
-		else
-		{
-			msgbox,0,Sorry,I can't figure out what version of Adobe Flash you're using`, so I'm just going to install the latest one I have`, even `if you don't need it.,5
-			aflsh = unknown
-		}
-		if rej in open
-		{
-			if (aflsh == "unset")
-			{
-				msgbox,0,Sorry,I can't figure out what version of Adobe Flash you're using which probably means you don't have it installed. I'm going to install the latest one I have`, even `if you don't need it.,5
-			}
-		}
-		
-		progress,15,Checking Java,Checking versions of installed programs,The Unfaltering March Of `Progress
-		sleep 1000
-		
-		; Java version check
-		if rej in open
-		{
-			RunWait %ComSpec% /C "del /F /Q c:\t.txt"
-			sleep 1000
-			RunWait %ComSpec% /C "REG QUERY "HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Plug-in" > c:\t.txt"
-			sleep 1000
-			run %ComSpec% /C "notepad c:\t.txt"
-			sleep 3000
-			send ^{home}
-			sleep 500
-			send ^f
-			sleep 500
-			send Plug-in\
-			sleep 500
-			send {enter}
-			sleep 500
-			send !{F4}
-			sleep 500
-			send +^{home}
-			sleep 500
-			send {backspace}
-			sleep 500
-			send {del 8}
-			sleep 500
-			send +{end}
-			sleep 500
-			send ^c
-			sleep 500
-			send !{F4}
-			sleep 1000
-			send !n
-			sleep 2000
-			ojavr = %clipboard%
-			RunWait %ComSpec% /C "del /F /Q c:\t.txt"
-			msgbox,0,Oracle Java found,You already have Oracle Java installed (version %ojavr%),5
-		}
-		else
-		{
-			msgbox,0,Sorry,I can't figure out what version of Oracle Java you're using`, so I'm just going to install the latest one I have`, even `if you don't need it.,5
-			ojavr = unknown
-		}
-		if rej in open
-		{
-			if (ojavr == "unset")
-			{
-				msgbox,0,Sorry,I can't figure out what version of Oracle Java you're using which probably means you don't have it installed. I'm going to install the latest one I have`, even `if you don't need it.,5
-			}
-		}
-		
-		progress,16,Checking Internet Explorer,Checking versions of installed programs,The Unfaltering March Of `Progress
-		sleep 1000
 		
 		
 		; IE version check
-		if rej in open
-		{
-			RunWait %ComSpec% /C "del /F /Q c:\ci.txt"
-			sleep 1000
-			RunWait %ComSpec% /C "REG QUERY "HKLM\SOFTWARE\Microsoft\Internet Explorer" /V "svcVersion" > C:\ci.txt"
-			sleep 1000
-			; SizeCheck
-			FileGetSize, ciSize, C:\ci.txt
-			;msgbox,0,0,size is %Size%
-			if (ciSize < 5) ; less than 5B
-			{
-				RunWait %ComSpec% /C "del /F /Q c:\ci.txt"
-				sleep 1000
-				RunWait %ComSpec% /C "REG QUERY "HKLM\SOFTWARE\Microsoft\Internet Explorer" /V "Version" > C:\ci.txt"
-				sleep 1000
-				FileGetSize, ci2Size, C:\ci.txt
-				if (ci2Size < 5) ; less than 5B
-				{
-					RunWait %ComSpec% /C "del /F /Q c:\ci.txt"
-					msgbox,0,Sorry about this,Sorry but I'm unable to get access to the specific information your want.
-				}
-			}
-			Run %ComSpec% /C "notepad c:\ci.txt"
-			sleep 3000
-			send ^{home}
-			sleep 500
-			send ^f
-			sleep 500
-			send REG_SZ
-			sleep 500
-			send {enter}
-			sleep 500
-			send !{F4}
-			sleep 500
-			send +^{home}
-			sleep 500
-			send {backspace}
-			sleep 500
-			send {del 10}
-			sleep 500
-			send +{end}
-			sleep 500
-			send ^c
-			sleep 500
-			send !{F4}
-			sleep 1000
-			send !n
-			sleep 2000
-			ieversion = %clipboard%
-			RunWait %ComSpec% /C "del /F /Q c:\ci.txt"
-			msgbox,0,Microsoft Internet Explorer found,You already have Microsoft Internet Explorer installed (version %ieversion%),7
-		}
-		else
-		{
-			msgbox,0,Sorry,I can't figure out what version of Microsoft Internet Explorer you're using`, so I'm just going to install the latest one I have`, even `if you don't need it.,5
-			ojavr = unknown
-		}
-		if rej in open
-		{
-			if (ieversion == "unset")
-			{
-				msgbox,0,Sorry,I can't figure out what version of Microsoft Internet Explorer you're using, which is odd. I'm going to install the latest one I have`, even `if you don't need it.,5
-			}
-		}
-	}
+		; if rej in open
+		; {
+			; RunWait %ComSpec% /C "del /F /Q c:\ci.txt"
+			; sleep 1000
+			; RunWait %ComSpec% /C "REG QUERY "HKLM\SOFTWARE\Microsoft\Internet Explorer" /V "svcVersion" > C:\ci.txt"
+			; sleep 1000
+;			; SizeCheck
+			; FileGetSize, ciSize, C:\ci.txt
+;			; msgbox,0,0,size is %Size%
+			; if (ciSize < 5) ; less than 5B
+			; {
+				; RunWait %ComSpec% /C "del /F /Q c:\ci.txt"
+				; sleep 1000
+				; RunWait %ComSpec% /C "REG QUERY "HKLM\SOFTWARE\Microsoft\Internet Explorer" /V "Version" > C:\ci.txt"
+				; sleep 1000
+				; FileGetSize, ci2Size, C:\ci.txt
+				; if (ci2Size < 5) ; less than 5B
+				; {
+					; RunWait %ComSpec% /C "del /F /Q c:\ci.txt"
+					; msgbox,0,Sorry about this,Sorry but I'm unable to get access to the specific information your want.
+				; }
+			; }
+			; Run %ComSpec% /C "notepad c:\ci.txt"
+			; sleep 3000
+			; send ^{home}
+			; sleep 500
+			; send ^f
+			; sleep 500
+			; send REG_SZ
+			; sleep 500
+			; send {enter}
+			; sleep 500
+			; send !{F4}
+			; sleep 500
+			; send +^{home}
+			; sleep 500
+			; send {backspace}
+			; sleep 500
+			; send {del 10}
+			; sleep 500
+			; send +{end}
+			; sleep 500
+			; send ^c
+			; sleep 500
+			; send !{F4}
+			; sleep 1000
+			; send !n
+			; sleep 2000
+			; ieversion = %clipboard%
+			; RunWait %ComSpec% /C "del /F /Q c:\ci.txt"
+			; msgbox,0,Microsoft Internet Explorer found,You already have Microsoft Internet Explorer installed (version %ieversion%),7
+		; }
+		; else
+		; {
+			; msgbox,0,Sorry,I can't figure out what version of Microsoft Internet Explorer you're using`, so I'm just going to install the latest one I have`, even `if you don't need it.,5
+			; ojavr = unknown
+		; }
+		; if rej in open
+		; {
+			; if (ieversion == "unset")
+			; {
+				; msgbox,0,Sorry,I can't figure out what version of Microsoft Internet Explorer you're using, which is odd. I'm going to install the latest one I have`, even `if you don't need it.,5
+			; }
+		; }
+	; }
 	
 	
 	scriptstart:
@@ -669,7 +551,7 @@ else
 	sleep 2000
 	SetTimer,altr,-15000
 	RunWait %ComSpec% /C "msiexec /package adobereader.msi /qb /norestart" ; /update adobereaderpatch.msp"
-	progress,80,and probably failing--this part needs some work,Patching Adobe Reader,The Unfaltering March Of `Progress
+	progress,80,%A_Space%,Patching Adobe Reader,The Unfaltering March Of `Progress
 	SetTimer,altr,-10000
 	RunWait %ComSpec% /C "msiexec.exe /update adobereaderpatch.msp /qb /norestart"
 
