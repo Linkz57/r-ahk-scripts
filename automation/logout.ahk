@@ -1,10 +1,10 @@
-; logout.ahk v2.4
+; logout.ahk v2.5
 ; the idea is I close a bunch of programs then open Truecrypt.
-
-;	closing firefox
 
 Run %ComSpec% /C "shutdown /r /t 600
 
+;	closing firefox
+errorlevel = 
 process,exist,firefox.exe
 while (%errorlevel% != 0)
 {
@@ -20,21 +20,34 @@ while (%errorlevel% != 0)
 	{
 		msgbox,0,gimmy a bit,Still waiting for Firefox to finish closing,2
 	}
+	if (%A_Index% > 10)
+	{
+		Runwait %ComSpec% /C "taskkill /F /IM firefox.exe"
+	}
+	if (%A_Index% > 15)
+	{
+		Runwait %ComSpec% /C "taskkill /F /IM firefoxportable.exe"
+	}
 	sleep 2000
 	process,exist,firefox.exe
 }
 msgbox,0,done,done,1
 
 ;	closing Chrome
-
+errorlevel = 
+SetTitleMatchMode,2
 process,exist,GoogleChromePortable.exe
 while (%errorlevel% != 0)
 {
+	winclose,` - Google Chrome
 	if (%A_Index% > 10)
 	{
 		Runwait %ComSpec% /C "taskkill /F /IM GoogleChromePortable.exe"
 	}
-	Runwait %ComSpec% /C "taskkill /F /IM chrome.exe"
+	if (%A_Index% > 5)
+	{
+		Runwait %ComSpec% /C "taskkill /F /IM chrome.exe"
+	}
 	sleep 1000
 	process,exist,GoogleChromePortable.exe
 }
@@ -42,6 +55,7 @@ msgbox,0,done,done,1
 
 
 ;	closing Notepad++
+errorlevel = 
 process,exist,notepad++.exe
 while (%errorlevel% != 0)
 {
@@ -64,6 +78,7 @@ msgbox,0,done,done,1
 
 
 ;	closing workrave
+errorlevel = 
 msgbox,0,Closing workrave,Closing workrave,1
 process,exist,Workrave.exe
 while (%errorlevel% != 0)
@@ -76,6 +91,7 @@ msgbox,0,0,done,1
 
 
 ;	closing texter
+errorlevel = 
 msgbox,0,Closing texter,Closing texter,1
 process,exist,texter.exe
 while (%errorlevel% != 0)
@@ -93,6 +109,7 @@ msgbox,0,0,done,1
 
 
 ;	closing PortableApps thing
+errorlevel = 
 SetTitleMatchMode,3
 process,exist,PortableAppsPlatform.exe
 while (%errorlevel% != 0)
@@ -114,6 +131,7 @@ msgbox,0,0,done,1
 
 
 ;	closing Launchy
+errorlevel = 
 SetTitleMatchMode,3
 process,exist,Launchy.exe
 while (%errorlevel% != 0)
@@ -135,6 +153,7 @@ msgbox,0,0,done,1
 
 
 ;	closing wintabs
+errorlevel = 
 msgbox,0,Closing WindowTabs,Closing WindowTabs,1
 process,exist,WindowTabs.exe
 while (%errorlevel% != 0)
