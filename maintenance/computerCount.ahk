@@ -1,5 +1,5 @@
-;; Computer Count v1
-;; Written by Tyler Francis, started on 2014-09-03 at 09:14:56
+;; Computer Count v2
+;; Written by Tyler Francis, started on 2014-10-22 at 10-52-01
 ;; The goal of this script is to collect all of the information I can from all of the computers we have at Humble High School. This info will mostly be used for inventory, but I can also see it being used for troubleshooting. For example, walking a user through changing their resolution is different in Windows XP than it is in Windows 7.
 
 reg = open
@@ -20,7 +20,7 @@ inputbox,roomnumber,One more thing,Excellent`, thank you. `n`nOne last thing`: w
 msgbox,0,Alright`, hands off,OK that's all I need`, thank you. Sit back`, relax`, and under no circumstances touch the mouse or keyboard!`n`nAll of this is automated`, so keep your hands to yourself until I give you the all-clear at the end.,30
 IfMsgBox OK
 {
-	msgbox,48,WOA WOA WOA,What did I JUST tell you??`n`nHands off`, bro. Stand up and walk away if you have to. Just stop touching things for like 5 minutes.,30
+	msgbox,48,WOA WOA WOA,What did I JUST tell you??`n`nHands off`, bro. Stand up and walk away if you have to. Just stop touching things for like 5 minutes.,10
 	IfMsgBox OK
 	{
 		msgbox,16,You know what? Fine.,If we're going to have a problem following directions`, then I'm not even going to try. `n`nLaunch this program again when you're ready to take this seriously.,20
@@ -337,6 +337,25 @@ else
 RunWait %ComSpec% /C "del /F /Q c:\cr.txt"
 
 ;mailitall:
+FoundPos := RegExMatch(thiscomputertxt, "(780)", modelnumber780)
+FoundPos := RegExMatch(thiscomputertxt, "(745)", modelnumber745)
+FoundPos := RegExMatch(thiscomputertxt, "(755)", modelnumber755)
+
+StringReplace,roomnumber,roomnumber,`r`n,|,All
+StringReplace,roomnumber,roomnumber,`,,,All
+StringReplace,ieversion,ieversion,`r`n,|,All
+StringReplace,ieversion,ieversion,`,,,All
+StringReplace,reg,reg,`r`n,|,All
+StringReplace,reg,reg,`,,,All
+StringReplace,res,res,`r`n,|,All
+StringReplace,res,res,`,,,All
+StringReplace,winversion,winversion,`r`n,|,All
+StringReplace,winversion,winversion,`,,,All
+StringReplace,thiscomputertxt,thiscomputertxt,`r`n,|,All
+StringReplace,thiscomputertxt,thiscomputertxt,`,,,All
+
+fileappend,%A_YYYY%/%A_Mon%/%A_Mday% %A_Hour%:%A_Min%:%A_Sec%`,%roomnumber%`,%modelnumber780%`,%modelnumber755%`,%modelnumber745%`,%ieversion%`,%reg%`,%res%`,%winversion%`,%thiscomputertxt%`, `n,i:\it\t\computerCount\computerCount.txt
+
 
 Run mailto:tyler.francis@humble.k12.tx.us?subject=Room`%20%roomnumber%Computer`%20Information&body=Internet`%20Explorer`%20Version`%0A%ieversion%`%0A`%0A`%0A`%0AMicrosoft`%20Windows`%20Version`%0A%winversion%`%0A`%0A`%0A`%0A`%0A`%0A`%0A`%0ADisplay`%20Resolution`%0A`%0A`%0A`%0A`%0A`%0A%res%`%0A`%0ARegistry`%20Status`%0A%reg%`%0A`%0A`%0A`%0A`%0A`%0ARoom`%20Number`%0A%roomnumber%`%0A`%0A`%0A`%0A`%0A`%0AComputer`%20Model`%20Number`%0A%thiscomputertxt%
 sleep 20000
