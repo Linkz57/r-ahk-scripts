@@ -1,4 +1,4 @@
-;; Computer Count v2
+;; Computer Count v2.0.1
 ;; Written by Tyler Francis, started on 2014-10-22 at 10-52-01
 ;; The goal of this script is to collect all of the information I can from all of the computers we have at Humble High School. This info will mostly be used for inventory, but I can also see it being used for troubleshooting. For example, walking a user through changing their resolution is different in Windows XP than it is in Windows 7.
 
@@ -357,7 +357,7 @@ StringReplace,thiscomputertxt,thiscomputertxt,`,,,All
 fileappend,%A_YYYY%/%A_Mon%/%A_Mday% %A_Hour%:%A_Min%:%A_Sec%`,%roomnumber%`,%modelnumber780%`,%modelnumber755%`,%modelnumber745%`,%ieversion%`,%reg%`,%res%`,%winversion%`,%thiscomputertxt%`, `n,i:\it\t\computerCount\computerCount.txt
 
 
-Run mailto:tyler.francis@humble.k12.tx.us?subject=Room`%20%roomnumber%Computer`%20Information&body=Internet`%20Explorer`%20Version`%0A%ieversion%`%0A`%0A`%0A`%0AMicrosoft`%20Windows`%20Version`%0A%winversion%`%0A`%0A`%0A`%0A`%0A`%0A`%0A`%0ADisplay`%20Resolution`%0A`%0A`%0A`%0A`%0A`%0A%res%`%0A`%0ARegistry`%20Status`%0A%reg%`%0A`%0A`%0A`%0A`%0A`%0ARoom`%20Number`%0A%roomnumber%`%0A`%0A`%0A`%0A`%0A`%0AComputer`%20Model`%20Number`%0A%thiscomputertxt%
+Run mailto:tyler.francis@humble.k12.tx.us?subject=Room`%20%roomnumber%`%20Computer`%20Information&body=Internet`%20Explorer`%20Version`%0A%ieversion%`%0A`%0A`%0A`%0AMicrosoft`%20Windows`%20Version`%0A%winversion%`%0A`%0A`%0A`%0A`%0A`%0A`%0A`%0ADisplay`%20Resolution`%0A`%0A`%0A`%0A`%0A`%0A%res%`%0A`%0ARegistry`%20Status`%0A%reg%`%0A`%0A`%0A`%0A`%0A`%0ARoom`%20Number`%0A%roomnumber%`%0A`%0A`%0A`%0A`%0A`%0AComputer`%20Model`%20Number`%0A%thiscomputertxt%`%0A
 sleep 20000
 run %ComSpec% /C "del /F /Q c:\ci.txt"
 sleep 20000
