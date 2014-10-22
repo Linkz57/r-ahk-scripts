@@ -1,4 +1,4 @@
-;; Computer Count v2.1
+;; Computer Count v2.2
 ;; Written by Tyler Francis, started on 2014-10-22 at 10-52-01
 ;; The goal of this script is to collect all of the information I can from all of the computers we have at Humble High School. This info will mostly be used for inventory, but I can also see it being used for troubleshooting. For example, walking a user through changing their resolution is different in Windows XP than it is in Windows 7.
 
@@ -20,7 +20,7 @@ inputbox,roomnumber,Quick Question,What is your room number?,,,,,,,600,Mah Room 
 msgbox,0,Alright`, hands off,OK that's all I need`, thank you. Sit back`, relax`, and under no circumstances touch the mouse or keyboard!`n`nAll of this is automated`, so keep your hands to yourself until I give you the all-clear at the end.,30
 IfMsgBox OK
 {
-	msgbox,48,WOA WOA WOA,What did I JUST tell you??`n`nHands off`, bro. Stand up and walk away if you have to. Just stop touching things for like 5 minutes.,10
+	msgbox,48,WOA    WOA    WOA,What did I JUST tell you??`n`nHands off`, bro. Stand up and walk away if you have to. Just stop touching things for like 5 minutes.,10
 	IfMsgBox OK
 	{
 		msgbox,16,You know what? Fine.,If we're going to have a problem following directions`, then I'm not even going to try. `n`nLaunch this program again when you're ready to take this seriously.,20
@@ -324,14 +324,17 @@ FileCopy, c:\LD620.txt, C:\thiscomputerinfo.txt
 FileCopy, c:\745.txt, C:\thiscomputerinfo.txt
 FileCopy, c:\755.txt, C:\thiscomputerinfo.txt
 FileCopy, c:\780w72010.txt, C:\thiscomputerinfo.txt
-ifexist,C:\thiscomputerinfo.txt
+
+ifnotexist ,C:\thiscomputerinfo.txt
 {
-	fileread,thiscomputertxt,C:\thiscomputerinfo.txt
+	loop, c:\*.txt
+	{
+		fileappend,%A_LoopFileName%`n,C:\thiscomputerinfo.txt
+	}
 }
 else
 {
-	loop, c:\*.txt
-	thiscomputertxt = %A_LoopFileName%
+	fileread,thiscomputertxt,C:\thiscomputerinfo.txt
 }
 ;msgbox,0,0,res is '%res%'
 RunWait %ComSpec% /C "del /F /Q c:\cr.txt"
@@ -356,6 +359,7 @@ StringReplace,thiscomputertxt,thiscomputertxt,`,,,All
 
 fileappend,%A_YYYY%/%A_Mon%/%A_Mday% %A_Hour%:%A_Min%:%A_Sec%`,%roomnumber%`,%modelnumber780%`,%modelnumber755%`,%modelnumber745%`,%ieversion%`,%reg%`,%res%`,%winversion%`,%thiscomputertxt%`, `n,i:\it\t\computerCount\computerCount.txt
 
+settitlematchmode,2
 ifwinexist,Novell GroupWise - 
 {
 	Run mailto:tyler.francis@humble.k12.tx.us?subject=Room`%20%roomnumber%`%20Computer`%20Information&body=Internet`%20Explorer`%20Version`%0A%ieversion%`%0A`%0A`%0A`%0AMicrosoft`%20Windows`%20Version`%0A%winversion%`%0A`%0A`%0A`%0A`%0A`%0A`%0A`%0ADisplay`%20Resolution`%0A`%0A`%0A`%0A`%0A`%0A%res%`%0A`%0ARegistry`%20Status`%0A%reg%`%0A`%0A`%0A`%0A`%0A`%0ARoom`%20Number`%0A%roomnumber%`%0A`%0A`%0A`%0A`%0A`%0AComputer`%20Model`%20Number`%0A%thiscomputertxt%`%0A
