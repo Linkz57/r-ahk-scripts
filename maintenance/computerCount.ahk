@@ -1,21 +1,21 @@
-;; Computer Count v2.0.1
+;; Computer Count v2.1
 ;; Written by Tyler Francis, started on 2014-10-22 at 10-52-01
 ;; The goal of this script is to collect all of the information I can from all of the computers we have at Humble High School. This info will mostly be used for inventory, but I can also see it being used for troubleshooting. For example, walking a user through changing their resolution is different in Windows XP than it is in Windows 7.
 
 reg = open
 
 msgbox,0,Ready?,I'm about to collect information about your computer. `n`nThis will mostly be used for inventory`, but I can also see it being used for troubleshooting computer problems you might call me about.,15
-settitlematchmode,2
-ifwinnotexist,Novell GroupWise - 
-{
-	run C:\Novell\GroupWise\grpwise.exe
-	SetTimer,movelogin,-1000
-	msgbox,4096,Two more things,Please log into GroupWise.,10
-	winwait,Novell GroupWise - 
-	sleep 5000
-}
-WinMinimize,Novell GroupWise - 
-inputbox,roomnumber,One more thing,Excellent`, thank you. `n`nOne last thing`: what is your room number?,,,,,,,600,Mah Room Number
+; settitlematchmode,2
+; ifwinnotexist,Novell GroupWise - 
+; {
+	; run C:\Novell\GroupWise\grpwise.exe
+	; SetTimer,movelogin,-1000
+	; msgbox,4096,Two more things,Please log into GroupWise.,10
+	; winwait,Novell GroupWise - 
+	; sleep 5000
+; }
+; WinMinimize,Novell GroupWise - 
+inputbox,roomnumber,Quick Question,What is your room number?,,,,,,,600,Mah Room Number
 
 msgbox,0,Alright`, hands off,OK that's all I need`, thank you. Sit back`, relax`, and under no circumstances touch the mouse or keyboard!`n`nAll of this is automated`, so keep your hands to yourself until I give you the all-clear at the end.,30
 IfMsgBox OK
@@ -356,14 +356,21 @@ StringReplace,thiscomputertxt,thiscomputertxt,`,,,All
 
 fileappend,%A_YYYY%/%A_Mon%/%A_Mday% %A_Hour%:%A_Min%:%A_Sec%`,%roomnumber%`,%modelnumber780%`,%modelnumber755%`,%modelnumber745%`,%ieversion%`,%reg%`,%res%`,%winversion%`,%thiscomputertxt%`, `n,i:\it\t\computerCount\computerCount.txt
 
-
-Run mailto:tyler.francis@humble.k12.tx.us?subject=Room`%20%roomnumber%`%20Computer`%20Information&body=Internet`%20Explorer`%20Version`%0A%ieversion%`%0A`%0A`%0A`%0AMicrosoft`%20Windows`%20Version`%0A%winversion%`%0A`%0A`%0A`%0A`%0A`%0A`%0A`%0ADisplay`%20Resolution`%0A`%0A`%0A`%0A`%0A`%0A%res%`%0A`%0ARegistry`%20Status`%0A%reg%`%0A`%0A`%0A`%0A`%0A`%0ARoom`%20Number`%0A%roomnumber%`%0A`%0A`%0A`%0A`%0A`%0AComputer`%20Model`%20Number`%0A%thiscomputertxt%`%0A
-sleep 20000
-run %ComSpec% /C "del /F /Q c:\ci.txt"
-sleep 20000
-Run %ComSpec% /C "del /F /Q c:\thiscomputerinfo.txt"
-sleep 20000
-send !d
+ifwinexist,Novell GroupWise - 
+{
+	Run mailto:tyler.francis@humble.k12.tx.us?subject=Room`%20%roomnumber%`%20Computer`%20Information&body=Internet`%20Explorer`%20Version`%0A%ieversion%`%0A`%0A`%0A`%0AMicrosoft`%20Windows`%20Version`%0A%winversion%`%0A`%0A`%0A`%0A`%0A`%0A`%0A`%0ADisplay`%20Resolution`%0A`%0A`%0A`%0A`%0A`%0A%res%`%0A`%0ARegistry`%20Status`%0A%reg%`%0A`%0A`%0A`%0A`%0A`%0ARoom`%20Number`%0A%roomnumber%`%0A`%0A`%0A`%0A`%0A`%0AComputer`%20Model`%20Number`%0A%thiscomputertxt%`%0A
+	sleep 20000
+	run %ComSpec% /C "del /F /Q c:\ci.txt"
+	sleep 20000
+	Run %ComSpec% /C "del /F /Q c:\thiscomputerinfo.txt"
+	sleep 20000
+	send !d
+}
+else
+{
+	runwait %ComSpec% /C "del /F /Q c:\ci.txt"
+	Runwait %ComSpec% /C "del /F /Q c:\thiscomputerinfo.txt"
+}
 msgbox,0,All Clear,It's all clear. Thanks for the info,5
 
 exitapp
@@ -382,10 +389,10 @@ esc::
 	ExitApp
 }
 
-movelogin:
-{
-	winmove,Two more things,Please log into GroupWise.,(A_ScreenWidth/2)-100,(A_ScreenHeight/4)
-	return
-}
+; movelogin:
+; {
+	; winmove,Two more things,Please log into GroupWise.,(A_ScreenWidth/2)-100,(A_ScreenHeight/4)
+	; return
+; }
 
 exitapp
