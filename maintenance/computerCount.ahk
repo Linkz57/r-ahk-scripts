@@ -1,4 +1,4 @@
-;; Computer Count v2.2
+;; Computer Count v3
 ;; Written by Tyler Francis, started on 2014-10-22 at 10-52-01
 ;; The goal of this script is to collect all of the information I can from all of the computers we have at Humble High School. This info will mostly be used for inventory, but I can also see it being used for troubleshooting. For example, walking a user through changing their resolution is different in Windows XP than it is in Windows 7.
 
@@ -26,6 +26,12 @@ IfMsgBox OK
 		msgbox,16,You know what? Fine.,If we're going to have a problem following directions`, then I'm not even going to try. `n`nLaunch this program again when you're ready to take this seriously.,20
 		exitapp
 	}
+}
+
+;; XP gives odd reg exports. Rather than planning for those oddities by duplicating and editing 200 lines of code, I'm going to just accept the raw data. I doubt I'll use it anyway. As of Thursday, October 23, 2014 at 2:49 PM I'm only interested in the computer's model number. Period. This other stuff is just future proofing and filling out inventory on the likely chance it comes in handy.
+if A_OSVersion in WIN_XP
+{
+	goto,afterreg
 }
 
 
@@ -316,6 +322,7 @@ afterreg:
 
 ;; computer model number
 RunWait %ComSpec% /C "del /F /Q c:\ci.txt"
+RunWait %ComSpec% /C "del /F /Q c:\thiscomputerinfo.txt"
 FileCopy, c:\780w7.txt, C:\thiscomputerinfo.txt
 FileCopy, c:\780.txt, C:\thiscomputerinfo.txt
 FileCopy, c:\LD610AD.txt, C:\thiscomputerinfo.txt
@@ -332,14 +339,71 @@ ifnotexist ,C:\thiscomputerinfo.txt
 		fileappend,%A_LoopFileName%`n,C:\thiscomputerinfo.txt
 	}
 }
-else
-{
-	fileread,thiscomputertxt,C:\thiscomputerinfo.txt
-}
-;msgbox,0,0,res is '%res%'
+fileread,thiscomputertxt,C:\thiscomputerinfo.txt
+
+
 RunWait %ComSpec% /C "del /F /Q c:\cr.txt"
 
+
+;; Get installed programs
+RunWait %ComSpec% /C "del /F /Q c:\thiscomputerinfo.txt"
+msgbox,0,Please wait... for like`, ever,I'm about to read this computer's loadset. This takes about 3 minutes. `n`nsooooo just keep sitting there`, and keep not touching anything,5
+RunWait %ComSpec% /C "wmic product list > c:\thiscomputerinfo.txt"
+sleep 2000
+fileread,wmiclist,C:\thiscomputerinfo.txt
+RunWait %ComSpec% /C "del /F /Q c:\thiscomputerinfo.txt"
+
+;; Get name and MAC from ipconfig
+;; Get name and MAC from ipconfig
+RunWait %ComSpec% /C "del /F /Q c:\thiscomputerinfo.txt"
+RunWait %ComSpec% /C "ipconfig /all > C:\thiscomputerinfo.txt"
+fileread,ipconfigraw,C:\thiscomputerinfo.txt
+filereadline,hostname,c:\thiscomputerinfo.txt,4
+
+run %ComSpec% /C "notepad c:\thiscomputerinfo.txt"
+settitlematchmode,3
+winactivate,thiscomputerinfo.txt - Notepad
+sleep 2000
+send ^f
+sleep 500
+send Physical Address
+sleep 500
+send {enter}
+sleep 500
+winclose,Find
+sleep 500
+send {right}
+send ^f
+sleep 500
+send `:
+sleep 500
+send {enter}
+sleep 500
+winclose,Find
+sleep 500
+send {right}
+sleep 500
+send +{end}
+sleep 500
+send ^c
+sleep 500
+winclose,thiscomputerinfo.txt - Notepad
+sleep 2000
+ifwinexist,Notepad ; i.e. the 'are you sure you want to save' box
+{
+	winactivate
+	send !n
+}
+macaddress = %Clipboard%
+
+RunWait %ComSpec% /C "del /F /Q c:\thiscomputerinfo.txt"
+
+
 ;mailitall:
+FoundPos := RegExMatch(ipconfigraw, "(780)", modelnumber780)
+FoundPos := RegExMatch(thiscomputertxt, "(745)", modelnumber745)
+FoundPos := RegExMatch(thiscomputertxt, "(755)", modelnumber755)
+
 FoundPos := RegExMatch(thiscomputertxt, "(780)", modelnumber780)
 FoundPos := RegExMatch(thiscomputertxt, "(745)", modelnumber745)
 FoundPos := RegExMatch(thiscomputertxt, "(755)", modelnumber755)
@@ -357,7 +421,18 @@ StringReplace,winversion,winversion,`,,,All
 StringReplace,thiscomputertxt,thiscomputertxt,`r`n,|,All
 StringReplace,thiscomputertxt,thiscomputertxt,`,,,All
 
-fileappend,%A_YYYY%/%A_Mon%/%A_Mday% %A_Hour%:%A_Min%:%A_Sec%`,%roomnumber%`,%modelnumber780%`,%modelnumber755%`,%modelnumber745%`,%ieversion%`,%reg%`,%res%`,%winversion%`,%thiscomputertxt%`, `n,i:\it\t\computerCount\computerCount.txt
+StringReplace,wmiclist,wmiclist,` ` ` ` ,` ` ,All
+StringReplace,wmiclist,wmiclist,` ` ,%A_Tab%,All
+
+StringReplace,hostname,hostname,` ` ` Host Name . . . . . . . . . . . . :` ,,All
+StringReplace,ipconfigraw,ipconfigraw,`r`n,|,All
+StringReplace,ipconfigraw,ipconfigraw,`,,,All
+
+
+fileappend,%wmiclist%,i:\it\t\computerCount\wmic__%macaddress%__%A_YYYY%-%A_Mon%-%A_Mday%_%A_Hour%-%A_Min%-%A_Sec%.txt
+
+
+fileappend,%A_YYYY%/%A_Mon%/%A_Mday% %A_Hour%:%A_Min%:%A_Sec%`,%roomnumber%`,%modelnumber780%%modelnumber755%%modelnumber745%`,%macaddress%`,%hostname%`,%ieversion%`,%reg%`,%res%`,%winversion%`,%thiscomputertxt%`,%ipconfigraw%`, `n,i:\it\t\computerCount\computerCount-v2.txt
 
 settitlematchmode,2
 ifwinexist,Novell GroupWise - 
@@ -367,13 +442,16 @@ ifwinexist,Novell GroupWise -
 	run %ComSpec% /C "del /F /Q c:\ci.txt"
 	sleep 20000
 	Run %ComSpec% /C "del /F /Q c:\thiscomputerinfo.txt"
-	sleep 20000
+	sleep 10000
+	RunWait %ComSpec% /C "del /F /Q c:\cr.txt"
+	sleep 10000
 	send !d
 }
 else
 {
 	runwait %ComSpec% /C "del /F /Q c:\ci.txt"
 	Runwait %ComSpec% /C "del /F /Q c:\thiscomputerinfo.txt"
+	RunWait %ComSpec% /C "del /F /Q c:\cr.txt"
 }
 msgbox,0,All Clear,It's all clear. Thanks for the info,5
 
@@ -387,16 +465,12 @@ exitapp
 
 esc::
 {
-	; msgbox,0,Fine geez,Exiting...,1
+	msgbox,0,Fine geez,Exiting...,1
 	Run %ComSpec% /C "del /F /Q c:\thiscomputerinfo.txt"
 	run %ComSpec% /C "del /F /Q c:\ci.txt"
 	ExitApp
 }
 
-; movelogin:
-; {
-	; winmove,Two more things,Please log into GroupWise.,(A_ScreenWidth/2)-100,(A_ScreenHeight/4)
-	; return
-; }
+
 
 exitapp
