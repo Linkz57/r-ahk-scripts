@@ -1,4 +1,4 @@
-;; Computer Count v3
+;; Computer Count v3.1
 ;; Written by Tyler Francis, started on 2014-10-22 at 10-52-01
 ;; The goal of this script is to collect all of the information I can from all of the computers we have at Humble High School. This info will mostly be used for inventory, but I can also see it being used for troubleshooting. For example, walking a user through changing their resolution is different in Windows XP than it is in Windows 7.
 
@@ -345,15 +345,6 @@ fileread,thiscomputertxt,C:\thiscomputerinfo.txt
 RunWait %ComSpec% /C "del /F /Q c:\cr.txt"
 
 
-;; Get installed programs
-RunWait %ComSpec% /C "del /F /Q c:\thiscomputerinfo.txt"
-msgbox,0,Please wait... for like`, ever,I'm about to read this computer's loadset. This takes about 3 minutes. `n`nsooooo just keep sitting there`, and keep not touching anything,5
-RunWait %ComSpec% /C "wmic product list > c:\thiscomputerinfo.txt"
-sleep 2000
-fileread,wmiclist,C:\thiscomputerinfo.txt
-RunWait %ComSpec% /C "del /F /Q c:\thiscomputerinfo.txt"
-
-;; Get name and MAC from ipconfig
 ;; Get name and MAC from ipconfig
 RunWait %ComSpec% /C "del /F /Q c:\thiscomputerinfo.txt"
 RunWait %ComSpec% /C "ipconfig /all > C:\thiscomputerinfo.txt"
@@ -399,11 +390,25 @@ macaddress = %Clipboard%
 RunWait %ComSpec% /C "del /F /Q c:\thiscomputerinfo.txt"
 
 
-;mailitall:
-FoundPos := RegExMatch(ipconfigraw, "(780)", modelnumber780)
-FoundPos := RegExMatch(thiscomputertxt, "(745)", modelnumber745)
-FoundPos := RegExMatch(thiscomputertxt, "(755)", modelnumber755)
+;; Get installed programs
+RunWait %ComSpec% /C "del /F /Q c:\thiscomputerinfo.txt"
+msgbox,0,Please wait... for like`, ever,I'm about to read this computer's loadset. This takes about 3 minutes. `n`nsooooo just keep sitting there`, and keep not touching anything,5
+RunWait %ComSpec% /C "wmic product list > c:\thiscomputerinfo.txt"
+sleep 2000
+filemove,c:\thiscomputerinfo.txt,i:\it\t\computerCount\wmic__%macaddress%__%A_YYYY%-%A_Mon%-%A_Mday%_%A_Hour%-%A_Min%-%A_Sec%.txt
+; fileread,wmiclist,C:\thiscomputerinfo.txt
+; RunWait %ComSpec% /C "del /F /Q c:\thiscomputerinfo.txt"
 
+;; get smaller list for inclusion in spreadsheet
+msgbox,0,Keep waiting,Almost done with this part...,5
+RunWait %ComSpec% /C "del /F /Q c:\thiscomputerinfo.txt"
+RunWait %ComSpec% /C "wmic product get name > c:\thiscomputerinfo.txt"
+sleep 2000
+fileread,wmicnames,C:\thiscomputerinfo.txt
+RunWait %ComSpec% /C "del /F /Q c:\thiscomputerinfo.txt"
+
+
+;mailitall:
 FoundPos := RegExMatch(thiscomputertxt, "(780)", modelnumber780)
 FoundPos := RegExMatch(thiscomputertxt, "(745)", modelnumber745)
 FoundPos := RegExMatch(thiscomputertxt, "(755)", modelnumber755)
@@ -421,18 +426,18 @@ StringReplace,winversion,winversion,`,,,All
 StringReplace,thiscomputertxt,thiscomputertxt,`r`n,|,All
 StringReplace,thiscomputertxt,thiscomputertxt,`,,,All
 
-StringReplace,wmiclist,wmiclist,` ` ` ` ,` ` ,All
-StringReplace,wmiclist,wmiclist,` ` ,%A_Tab%,All
+StringReplace,wmicnames,wmicnames,` ` ` ,,All
+StringReplace,wmicnames,wmicnames,`r`n,`,,All
 
 StringReplace,hostname,hostname,` ` ` Host Name . . . . . . . . . . . . :` ,,All
 StringReplace,ipconfigraw,ipconfigraw,`r`n,|,All
 StringReplace,ipconfigraw,ipconfigraw,`,,,All
 
 
-fileappend,%wmiclist%,i:\it\t\computerCount\wmic__%macaddress%__%A_YYYY%-%A_Mon%-%A_Mday%_%A_Hour%-%A_Min%-%A_Sec%.txt
+; fileappend,%wmiclist%,i:\it\t\computerCount\wmic__%macaddress%__%A_YYYY%-%A_Mon%-%A_Mday%_%A_Hour%-%A_Min%-%A_Sec%.txt
 
 
-fileappend,%A_YYYY%/%A_Mon%/%A_Mday% %A_Hour%:%A_Min%:%A_Sec%`,%roomnumber%`,%modelnumber780%%modelnumber755%%modelnumber745%`,%macaddress%`,%hostname%`,%ieversion%`,%reg%`,%res%`,%winversion%`,%thiscomputertxt%`,%ipconfigraw%`, `n,i:\it\t\computerCount\computerCount-v2.txt
+fileappend,%A_YYYY%/%A_Mon%/%A_Mday% %A_Hour%:%A_Min%:%A_Sec%`,%roomnumber%`,%modelnumber780%%modelnumber755%%modelnumber745%`,%macaddress%`,%hostname%`,%ieversion%`,%reg%`,%res%`,%winversion%`,%thiscomputertxt%`,%ipconfigraw%`,%wmicnames%`, `n,i:\it\t\computerCount\computerCount-v2.txt
 
 settitlematchmode,2
 ifwinexist,Novell GroupWise - 
