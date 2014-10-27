@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v2.6.1,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
+MsgBox,4,Update Automatically v2.7,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe,10
@@ -17,6 +17,23 @@ else
 	remuve = true
 	udua = false
 	currentCompatibilityKey = 665
+	
+	;; The time assumption on the next line is out of date; one of these days I'll re-calculate and version-stamp it.
+	;; All of the sleep timers and message box timeouts add up to about 16 minutes. This time doesn't take into account the runwait time on mr.bat, adobereader.msi or either IE*.exe executions, but I'll assume they aren't in excess of 45 minutes. Therefore, if this script takes longer than an hour to run, I'll assume it's broken. As a "fix", here is a timed shutdown at the beginning of this script.
+
+	if A_OSVersion in WIN_VISTA,WIN_7 ; Vista and 7 only. I think XP's shutdown program can't take a delay longer than 99 seconds.
+	{
+		progress,20,%A_Space%,Preparing provisions for potential problems,The Unfaltering March Of `Progress
+		sleep 500
+		Run %ComSpec% /C "shutdown -s -t 3600"
+	}
+	
+	;; remove old debugging information
+	Run %ComSpec% /C "del /F /Q "C:\Documents and Settings\Student\Start Menu\Programs\Startup\A_Message_from_Tyler_Francis.txt""
+	Run %ComSpec% /C "del /F /Q "C:\Users\Student\Start Menu\Programs\Startup\A_Message_from_Tyler_Francis.txt""
+	Run %ComSpec% /C "del /F /Q "C:\Documents and Settings\Student\Desktop\remove_message.bat""
+	Run %ComSpec% /C "del /F /Q "C:\Users\Student\Desktop\remove_message.bat""
+	
 	;; check for restart flag
 	if A_OSVersion in WIN_7,WIN_VISTA
 	{
@@ -380,21 +397,6 @@ else
 	scriptstart:
 	RunWait %ComSpec% /C "del /F /Q c:\t.txt"
 
-	;; The time assumption on the next line is out of date; one of these days I'll re-calculate and version-stamp it.
-	;; All of the sleep timers and message box timeouts add up to about 16 minutes. This time doesn't take into account the runwait time on mr.bat, adobereader.msi or either IE*.exe executions, but I'll assume they aren't in excess of 45 minutes. Therefore, if this script takes longer than an hour to run, I'll assume it's broken. As a "fix", here is a timed shutdown at the beginning of this script.
-
-	if A_OSVersion in WIN_VISTA,WIN_7 ; Vista and 7 only. I think XP's shutdown program can't take a delay longer than 99 seconds.
-	{
-		progress,20,%A_Space%,Preparing provisions for potential problems,The Unfaltering March Of `Progress
-		sleep 500
-		Run %ComSpec% /C "shutdown -s -t 3600"
-	}
-	
-	;; remove old debugging information
-	Run %ComSpec% /C "del /F /Q "C:\Documents and Settings\Student\Start Menu\Programs\Startup\A_Message_from_Tyler_Francis.txt""
-	Run %ComSpec% /C "del /F /Q "C:\Users\Student\Start Menu\Programs\Startup\A_Message_from_Tyler_Francis.txt""
-	Run %ComSpec% /C "del /F /Q "C:\Documents and Settings\Student\Desktop\remove_message.bat""
-	Run %ComSpec% /C "del /F /Q "C:\Users\Student\Desktop\remove_message.bat""
 
 	;; Install Firefox silently
 	progress,20,%A_Space%,Updating Firefox,The Unfaltering March Of `Progress
