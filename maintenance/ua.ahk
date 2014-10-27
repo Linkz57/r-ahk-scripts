@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v2.6,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
+MsgBox,4,Update Automatically v2.6.1,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe,10
@@ -166,11 +166,11 @@ else
 					{
 						break
 					}
-					if %A_INDEX% > 10
+					if A_INDEX > 10
 					{
 						send {tab}
 					}
-					if %A_INDEX% > 20
+					if A_INDEX > 20
 					{
 						break
 						msgbox,0,Well This is embarrassing,I can't figure out how to manually add those sites. I won't be able to install the latest Internet Explorer.`n`nSorry...,20
