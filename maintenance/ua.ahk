@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v2.7.1,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
+MsgBox,4,Update Automatically v2.8,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe,10
@@ -16,6 +16,7 @@ else
 	restaart = true
 	remuve = true
 	udua = false
+	gpeditattempt = 0
 	currentCompatibilityKey = 665
 	
 	;; remove old debugging information
@@ -165,78 +166,93 @@ else
 		{
 			if A_OSVersion in WIN_7,WIN_VISTA
 			{
-				progress,13,Probability is... a work in progress`nIf I spend more than 4 minutes typing the letter 'b' then hit Esc please,Checking probability of success,The Unfaltering March Of `Progress
-				Run %ComSpec% /C ""%ProgramFiles%\Internet Explorer\iexplore.exe" about:blank"
-
-				settitlematchmode,2
-				winwait,Internet Explorer
-				sleep 5000
-				loop
+				progress,13,Probability is... a work in progress,Checking probability of success,The Unfaltering March Of `Progress
+				if gpedit in true
 				{
-					winactivate,Internet Explorer
-					sleep 1000
-					send !x
-					sleep 1000
-					send b
-					sleep 2000
-
-					settitlematchmode,2
-					ifwinexist,Compatibility View Settings
-					{
-						break
-					}
-					if A_INDEX > 10
-					{
-						send {tab}
-					}
-					if A_INDEX > 20
-					{
-						break
-						msgbox,0,Well This is embarrassing,I can't figure out how to manually add those sites. I won't be able to install the latest Internet Explorer.`n`nSorry...,20
-						kronus = bad
-						rej = locked
-						goto,scriptstart
-					}
-				}
-				settitlematchmode,2
-				ifwinexist,Compatibility View Settings
-				{
-					winactivate,Compatibility View Settings
-					sleep, 1000
-					send kronos-as
-					sleep 500
-					send {enter}
-					sleep 500
-					send state.tx.us
-					sleep 500
-					send {enter}
-					sleep 500
-					send testsecuritytraining.com
-					sleep 500
-					send {enter}
-					sleep 500
-					send munis-as
-					sleep 500
-					send {enter}
-					sleep 500
-					send humble.int
-					sleep 500
-					send {enter}
-					sleep 500
-					send ed.gov
-					sleep 500
-					send {enter}
-					sleep 1000
-					send !c
-					settitlematchmode,2
-					winclose,Internet Explorer
+					goto,scriptstart
 				}
 				else
 				{
-					msgbox,0,I'm confused,Well this is odd... I swear I just opened Internet Explorer`, but now I can't find it.`nOh well`, I suppose I won't be able to install the latest Internet Explorer.,20
-					kronus = bad
-					rej = locked
-					goto,scriptstart
+					if gpeditattempt > 2
+					{
+						progress,14,Probability is... a work in progress`nIf I spend more than 4 minutes typing the letter 'b' then hit Esc please,Checking probability of success,The Unfaltering March Of `Progress
+
+						Run %ComSpec% /C ""%ProgramFiles%\Internet Explorer\iexplore.exe" about:blank"
+
+						settitlematchmode,2
+						winwait,Internet Explorer
+						sleep 5000
+						loop
+						{
+							winactivate,Internet Explorer
+							sleep 1000
+							send !x
+							sleep 1000
+							send b
+							sleep 2000
+
+							settitlematchmode,2
+							ifwinexist,Compatibility View Settings
+							{
+								break
+							}
+							if A_INDEX > 10
+							{
+								send {tab}
+							}
+							if A_INDEX > 20
+							{
+								break
+								msgbox,0,Well This is embarrassing,I can't figure out how to manually add those sites. I won't be able to install the latest Internet Explorer.`n`nSorry...,20
+								kronus = bad
+								rej = locked
+								goto,scriptstart
+							}
+						}
+						settitlematchmode,2
+						ifwinexist,Compatibility View Settings
+						{
+							winactivate,Compatibility View Settings
+							sleep, 1000
+							send kronos-as
+							sleep 500
+							send {enter}
+							sleep 500
+							send state.tx.us
+							sleep 500
+							send {enter}
+							sleep 500
+							send testsecuritytraining.com
+							sleep 500
+							send {enter}
+							sleep 500
+							send munis-as
+							sleep 500
+							send {enter}
+							sleep 500
+							send humble.int
+							sleep 500
+							send {enter}
+							sleep 500
+							send ed.gov
+							sleep 500
+							send {enter}
+							sleep 1000
+							send !c
+							settitlematchmode,2
+							winclose,Internet Explorer
+							goto,scriptstart
+						}
+						else
+						{
+							msgbox,0,I'm confused,Well this is odd... I swear I just opened Internet Explorer`, but now I can't find it.`nOh well`, I suppose I won't be able to install the latest Internet Explorer.,20
+							kronus = bad
+							rej = locked
+							goto,scriptstart
+						}
+					}
+					gpeditattempt ++
+					goto,enablereggpedit
 				}
 			}
 		}
@@ -602,8 +618,15 @@ else
 			Runwait,%ComSpec% /C "PnPutil.exe -i -a "igdlh.inf" && timeout /t 15",i:\it\o\intelq45
 		}
 	}
+	
+	;;reset gpedit
+	if gpedit in true
+	{
+		goto,disablereggpedit
+	}
 
 	;; One Final cleanup
+	onefinalcleanup:
 	sleep 2000
 	Run %ComSpec% /C "del /F /Q c:\mr.bat"
 	Run %ComSpec% /C "del /F /Q "C:\Documents and Settings\Student\Start Menu\Programs\Startup\A_Message_from_Tyler_Francis.txt""
@@ -748,6 +771,88 @@ else
 		sleep 500
 		winactivate, Alright you're done
 		return
+	}
+	
+	enablereggpedit:
+	{
+		;; enable regedit
+		run gpedit.msc 					; Local Group Policy Editor
+		settitlematchmode,3
+		winwait,Local Group Policy Editor
+		msgbox,0,Wait for a bit,Hold on`, give me a bit...,5
+		sleep 10000 					; Want to make absolutely sure it's open and ready
+		winactivate,Local Group Policy Editor
+		;; navigation
+		sleep 2000
+		send {right}
+		sleep 2000
+		send User Configuration
+		sleep 2000
+		send {right}
+		sleep 2000
+		send Administrative Templates
+		sleep 2000
+		send {right}
+		sleep 2000
+		send System
+		sleep 2000
+		send {tab}
+		sleep 2000
+		send Prevent access to registry editing tools
+		sleep 2000
+		send {enter}
+		winwait,Prevent access to registry editing tools
+		sleep 2000
+		winactivate,Prevent access to registry editing tools
+		send !c 					; set to Not Configured. It seems more polite than "disabled"
+		sleep 2000
+		send !a
+		sleep 2000
+		send {enter}
+		sleep 2000
+		winclose,Local Group Policy Editor
+		gpedit = true
+	}
+	disablereggpedit:
+	{
+		;; enable regedit
+		run gpedit.msc 					; Local Group Policy Editor
+		settitlematchmode,3
+		winwait,Local Group Policy Editor
+		msgbox,0,Wait for a bit,Hold on`, give me a bit...,5
+		sleep 10000 					; Want to make absolutely sure it's open and ready
+		winactivate,Local Group Policy Editor
+		;; navigation
+		sleep 2000
+		send {right}
+		sleep 2000
+		send User Configuration
+		sleep 2000
+		send {right}
+		sleep 2000
+		send Administrative Templates
+		sleep 2000
+		send {right}
+		sleep 2000
+		send System
+		sleep 2000
+		send {tab}
+		sleep 2000
+		send Prevent access to registry editing tools
+		sleep 2000
+		send {enter}
+		winwait,Prevent access to registry editing tools
+		sleep 2000
+		winactivate,Prevent access to registry editing tools
+		send !e 					; set to "Enabled" as it was when I found it.
+		sleep 2000
+		send !a
+		sleep 2000
+		send {enter}
+		sleep 2000
+		winclose,Local Group Policy Editor
+		gpedit = 
+		goto,onefinalcleanup
 	}
 	
 	computerover:
