@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v2.8,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
+MsgBox,4,Update Automatically v2.8.1,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe,10
@@ -812,6 +812,7 @@ else
 		sleep 2000
 		winclose,Local Group Policy Editor
 		gpedit = true
+		goto,scriptstart
 	}
 	disablereggpedit:
 	{
