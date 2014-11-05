@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v2.8.1,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
+MsgBox,4,Update Automatically v2.9,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe,10
@@ -99,7 +99,7 @@ else
 	progress,5,there goes Chrome,Closing some remaining programs,The Unfaltering March Of `Progress
 	sleep 1000
 	Runwait %ComSpec% /C "taskkill /F /IM AcroRd32.exe"
-	progress,6,there goes Adoobe Reader,Closing some remaining programs,The Unfaltering March Of `Progress
+	progress,6,there goes Adobe Reader,Closing some remaining programs,The Unfaltering March Of `Progress
 	sleep 1000
 	Runwait %ComSpec% /C "taskkill /F /IM AcroRd64.exe"
 	progress,7,there goes Notepad,Closing some remaining programs,The Unfaltering March Of `Progress
@@ -114,13 +114,15 @@ else
 	
 	;; The time assumption on the next line is out of date; one of these days I'll re-calculate and version-stamp it.
 	;; All of the sleep timers and message box timeouts add up to about 16 minutes. This time doesn't take into account the runwait time on mr.bat, adobereader.msi or either IE*.exe executions, but I'll assume they aren't in excess of 45 minutes. Therefore, if this script takes longer than an hour to run, I'll assume it's broken. As a "fix", here is a timed shutdown at the beginning of this script.
-
+	
 	if A_OSVersion in WIN_VISTA,WIN_7 ; Vista and 7 only. I think XP's shutdown program can't take a delay longer than 99 seconds.
 	{
 		progress,11,%A_Space%,Preparing provisions for potential problems,The Unfaltering March Of `Progress
 		sleep 500
 		Run %ComSpec% /C "shutdown -s -t 3600"
 	}
+	
+	registrycheck:
 	
 	progress,12,,Checking probability of success,The Unfaltering March Of `Progress
 	sleep 1000
@@ -167,90 +169,93 @@ else
 			if A_OSVersion in WIN_7,WIN_VISTA
 			{
 				progress,13,Probability is... a work in progress,Checking probability of success,The Unfaltering March Of `Progress
-				if gpedit in true
+				if gpeditattempt > 1
 				{
-					goto,scriptstart
-				}
-				else
-				{
-					if gpeditattempt > 2
+					progress,14,Probability is... a work in progress`nIf I spend more than 4 minutes typing the letter 'b' then hit Esc please,Checking probability of success,The Unfaltering March Of `Progress
+
+					Run %ComSpec% /C ""%ProgramFiles%\Internet Explorer\iexplore.exe" about:blank"
+
+					settitlematchmode,2
+					winwait,Internet Explorer
+					sleep 5000
+					loop
 					{
-						progress,14,Probability is... a work in progress`nIf I spend more than 4 minutes typing the letter 'b' then hit Esc please,Checking probability of success,The Unfaltering March Of `Progress
+						winactivate,Internet Explorer
+						sleep 1000
+						send !x
+						sleep 1000
+						send b
+						sleep 2000
 
-						Run %ComSpec% /C ""%ProgramFiles%\Internet Explorer\iexplore.exe" about:blank"
-
-						settitlematchmode,2
-						winwait,Internet Explorer
-						sleep 5000
-						loop
-						{
-							winactivate,Internet Explorer
-							sleep 1000
-							send !x
-							sleep 1000
-							send b
-							sleep 2000
-
-							settitlematchmode,2
-							ifwinexist,Compatibility View Settings
-							{
-								break
-							}
-							if A_INDEX > 10
-							{
-								send {tab}
-							}
-							if A_INDEX > 20
-							{
-								break
-								msgbox,0,Well This is embarrassing,I can't figure out how to manually add those sites. I won't be able to install the latest Internet Explorer.`n`nSorry...,20
-								kronus = bad
-								rej = locked
-								goto,scriptstart
-							}
-						}
 						settitlematchmode,2
 						ifwinexist,Compatibility View Settings
 						{
-							winactivate,Compatibility View Settings
-							sleep, 1000
-							send kronos-as
-							sleep 500
-							send {enter}
-							sleep 500
-							send state.tx.us
-							sleep 500
-							send {enter}
-							sleep 500
-							send testsecuritytraining.com
-							sleep 500
-							send {enter}
-							sleep 500
-							send munis-as
-							sleep 500
-							send {enter}
-							sleep 500
-							send humble.int
-							sleep 500
-							send {enter}
-							sleep 500
-							send ed.gov
-							sleep 500
-							send {enter}
-							sleep 1000
-							send !c
-							settitlematchmode,2
-							winclose,Internet Explorer
-							goto,scriptstart
+							break
 						}
-						else
+						if A_INDEX > 10
 						{
-							msgbox,0,I'm confused,Well this is odd... I swear I just opened Internet Explorer`, but now I can't find it.`nOh well`, I suppose I won't be able to install the latest Internet Explorer.,20
+							send {tab}
+						}
+						if A_INDEX > 20
+						{
+							break
+							msgbox,0,Well This is embarrassing,I can't figure out how to manually add those sites. I won't be able to install the latest Internet Explorer.`n`nSorry...,20
 							kronus = bad
 							rej = locked
 							goto,scriptstart
 						}
 					}
+					settitlematchmode,2
+					ifwinexist,Compatibility View Settings
+					{
+						winactivate,Compatibility View Settings
+						sleep, 1000
+						send kronos-as
+						sleep 500
+						send {enter}
+						sleep 500
+						send state.tx.us
+						sleep 500
+						send {enter}
+						sleep 500
+						send testsecuritytraining.com
+						sleep 500
+						send {enter}
+						sleep 500
+						send munis-as
+						sleep 500
+						send {enter}
+						sleep 500
+						send humble.int
+						sleep 500
+						send {enter}
+						sleep 500
+						send ed.gov
+						sleep 500
+						send {enter}
+						sleep 1000
+						send !c
+						settitlematchmode,2
+						winclose,Internet Explorer
+						goto,scriptstart
+					}
+					else
+					{
+						msgbox,0,I'm confused,Well this is odd... I swear I just opened Internet Explorer`, but now I can't find it.`nOh well`, I suppose I won't be able to install the latest Internet Explorer.,20
+						kronus = bad
+						rej = locked
+						goto,scriptstart
+					}
+				}
+				if gpedit in true
+				{
+					msgbox,0,This bit is a work in progress,I already tried unlocking the registry... but I don't think it worked. I'm going to assume the registry is still locked`, and try to work around it.,10
+					kronus = bad
+					rej = locked
+					goto,scriptstart
+				}
+				else
+				{
 					gpeditattempt ++
 					goto,enablereggpedit
 				}
@@ -274,141 +279,7 @@ else
 	RunWait %ComSpec% /C "del /F /Q c:\t.txt"
 	; if udua in true
 	; {
-		; progress,12,Checking Firefox,Checking versions of installed programs,The Unfaltering March Of `Progress
-		; sleep 1000
-		
-	;;	Check Firefox installed version against installer version
-		
 
-		; progress,13,Checking Adobe Reader,Checking versions of installed programs,The Unfaltering March Of `Progress
-		; sleep 1000
-		
-		;; Adobe Reader version check
-		; if rej in open
-		; {
-			; RunWait %ComSpec% /C "REG QUERY "HKEY_LOCAL_MACHINE\SOFTWARE\Adobe\Acrobat Reader" > c:\t.txt"
-			; sleep 1000
-			; run %ComSpec% /C "notepad c:\t.txt"
-			; sleep 3000
-			; send ^{home}
-			; sleep 500
-			; send ^f
-			; sleep 500
-			; send Reader\
-			; sleep 500
-			; send {enter}
-			; sleep 500
-			; send !{F4}
-			; sleep 500
-			; send +{home}
-			; sleep 500
-			; send {backspace 2}
-			; sleep 500
-			; send {del 6}
-			; sleep 500
-			; send +{end}
-			; sleep 500
-			; send ^c
-			; sleep 500
-			; send !{F4}
-			; sleep 1000
-			; send !n
-			; sleep 2000
-			; areedr = %clipboard%
-			; RunWait %ComSpec% /C "del /F /Q c:\t.txt"
-			; msgbox,0,Adobe Reader found,You already have Adobe Reader installed (major version %areedr%),5
-		; }
-		; else
-		; {
-			; msgbox,0,Sorry,I can't figure out what version of Adobe Reader you're using`, so I'm just going to install the latest one I have`, even `if you don't need it.,5
-			; areedr = unknown
-		; }
-		; if rej in open
-		; {
-			; if (areedr == "unset")
-			; {
-				; msgbox,0,Sorry,I can't figure out what version of Adobe Reader you're using which probably means you don't have it installed. I'm going to install the latest one I have`, even `if you don't need it.,5
-			; }
-		; }
-		
-		; progress,14,Checking Adobe Flash Player,Checking versions of installed programs,The Unfaltering March Of `Progress
-		; sleep 1000
-		
-		;; Adobe Flash version check
-
-		
-		; progress,15,Checking Java,Checking versions of installed programs,The Unfaltering March Of `Progress
-		; sleep 1000
-		
-		;; Java version check
-		
-		
-		
-		; IE version check
-		; if rej in open
-		; {
-			; RunWait %ComSpec% /C "del /F /Q c:\ci.txt"
-			; sleep 1000
-			; RunWait %ComSpec% /C "REG QUERY "HKLM\SOFTWARE\Microsoft\Internet Explorer" /V "svcVersion" > C:\ci.txt"
-			; sleep 1000
-;			; SizeCheck
-			; FileGetSize, ciSize, C:\ci.txt
-;			; msgbox,0,0,size is %Size%
-			; if (ciSize < 5) ; less than 5B
-			; {
-				; RunWait %ComSpec% /C "del /F /Q c:\ci.txt"
-				; sleep 1000
-				; RunWait %ComSpec% /C "REG QUERY "HKLM\SOFTWARE\Microsoft\Internet Explorer" /V "Version" > C:\ci.txt"
-				; sleep 1000
-				; FileGetSize, ci2Size, C:\ci.txt
-				; if (ci2Size < 5) ; less than 5B
-				; {
-					; RunWait %ComSpec% /C "del /F /Q c:\ci.txt"
-					; msgbox,0,Sorry about this,Sorry but I'm unable to get access to the specific information your want.
-				; }
-			; }
-			; Run %ComSpec% /C "notepad c:\ci.txt"
-			; sleep 3000
-			; send ^{home}
-			; sleep 500
-			; send ^f
-			; sleep 500
-			; send REG_SZ
-			; sleep 500
-			; send {enter}
-			; sleep 500
-			; send !{F4}
-			; sleep 500
-			; send +^{home}
-			; sleep 500
-			; send {backspace}
-			; sleep 500
-			; send {del 10}
-			; sleep 500
-			; send +{end}
-			; sleep 500
-			; send ^c
-			; sleep 500
-			; send !{F4}
-			; sleep 1000
-			; send !n
-			; sleep 2000
-			; ieversion = %clipboard%
-			; RunWait %ComSpec% /C "del /F /Q c:\ci.txt"
-			; msgbox,0,Microsoft Internet Explorer found,You already have Microsoft Internet Explorer installed (version %ieversion%),7
-		; }
-		; else
-		; {
-			; msgbox,0,Sorry,I can't figure out what version of Microsoft Internet Explorer you're using`, so I'm just going to install the latest one I have`, even `if you don't need it.,5
-			; ojavr = unknown
-		; }
-		; if rej in open
-		; {
-			; if (ieversion == "unset")
-			; {
-				; msgbox,0,Sorry,I can't figure out what version of Microsoft Internet Explorer you're using, which is odd. I'm going to install the latest one I have`, even `if you don't need it.,5
-			; }
-		; }
 	; }
 	
 	
@@ -812,11 +683,11 @@ else
 		sleep 2000
 		winclose,Local Group Policy Editor
 		gpedit = true
-		goto,scriptstart
+		goto,registrycheck
 	}
 	disablereggpedit:
 	{
-		;; enable regedit
+		;; disable regedit
 		run gpedit.msc 					; Local Group Policy Editor
 		settitlematchmode,3
 		winwait,Local Group Policy Editor
