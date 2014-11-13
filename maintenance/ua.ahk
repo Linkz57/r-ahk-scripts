@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v2.9,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
+MsgBox,4,Update Automatically v2.11,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe,10
@@ -61,25 +61,25 @@ else
 	}
 	
 	;; Ask for update permission
-	msgbox,4,Would you like me to check for updates first?,The software I plan to install may be out of date. I don't know that it is`, I'm just guessing that it might be. `nWould you like me to check for updates and then download the newest version of Firefox`, Flash`, and Java before installing them?,60
-	IfMsgBox No
-	{
-		MsgBox,0,No problem,Yeah`,that's probably just as well. I doubt much has changed in the world since the last time I've checked.,10
-		udua = false
-	}
-	IfMsgBox Yes
-	{
-		msgbox,0,Alright I'll check soon,Ok you've convinced me. I'll check for updates in a few minutes before I install anything.,10
-		udua = true
-	}
-	IfMsgBox Timeout
-	{
-		msgbox,0,Hello? Is anyone in there? Just nod `if you can hear me.,Maybe you've nodded off or something. No matter`, I won't check for updates before I install Firefox`, Flash`, Java`, Internet Explorer`, and Adobe Reader.,5
-		udua = false
-	}
+	; msgbox,4,Would you like me to check for updates first?,The software I plan to install may be out of date. I don't know that it is`, I'm just guessing that it might be. `nWould you like me to check for updates and then download the newest version of Firefox`, Flash`, and Java before installing them?,60
+	; IfMsgBox No
+	; {
+		; MsgBox,0,No problem,Yeah`,that's probably just as well. I doubt much has changed in the world since the last time I've checked.,10
+		; udua = false
+	; }
+	; IfMsgBox Yes
+	; {
+		; msgbox,0,Alright I'll check soon,Ok you've convinced me. I'll check for updates in a few minutes before I install anything.,10
+		; udua = true
+	; }
+	; IfMsgBox Timeout
+	; {
+		; msgbox,0,Hello? Is anyone in there? Just nod `if you can hear me.,Maybe you've nodded off or something. No matter`, I won't check for updates before I install Firefox`, Flash`, Java`, Internet Explorer`, and Adobe Reader.,5
+		; udua = false
+	; }
 
 	; Regestry and IE success test
-	msgbox,0,Alright let's do this,Thanks`, that's all of my questions for now.,10
+	; msgbox,0,Alright let's do this,Thanks`, that's all of my questions for now.,10
 	
 	MsgBox,0,Ok here we go,Remove your hands from the mouse and keyboard!`n`nAt the very end you'll be asked `if you want to shut down your computer and that is the ONLY time you can `click anything. At times it will look like your computer is just sitting here doing nothing. Please resist the urge to "help it along". DO NOT `click anything. DO NOT type anything. This entire `process is automated. Any interaction on your part will cause this update to go all haywire and you'll have to start it all over again. Don't even `click "ok" on this box. In fact get up and walk away. Make yourself some tea and come back in about 10 minutes and this will be done. Don't keep reading this to see what will happen--leave. Go. Now. Make like a tree and turn off your monitor.,30
 	
