@@ -1,4 +1,4 @@
-MsgBox,4,Update Automatically v2.11,This script written by Tyler Francis wants to install the latest version of "Firefox" "Flash" "Java" "Adobe Reader" and "Internet Explorer" as well as remove a few of the junk programs that you probably don't want. Are you ok with this? Please close all open programs before answering.,120
+MsgBox,4,Update Automatically v3,This script written by Tyler Francis (now gone from this world) wants to fix a bunch of stuff.`n`nAre you ok with this? Please close all open programs before answering.,120
 IfMsgBox No
 {
 	MsgBox,0,Nothing Installed,Ok some other time maybe,10
@@ -288,9 +288,9 @@ else
 
 
 	;; Install Firefox silently
-	progress,20,%A_Space%,Updating Firefox,The Unfaltering March Of `Progress
-	Runwait FirefoxSetup.exe -ms
-	sleep 2000
+	; progress,20,%A_Space%,Updating Firefox,The Unfaltering March Of `Progress
+	; Runwait FirefoxSetup.exe -ms
+	; sleep 2000
 
 	;; Remove Internet Explorer proxy settings
 	progress,22,disabling system proxies,Adjusting Internet Options,The Unfaltering March Of `Progress
@@ -303,17 +303,17 @@ else
 	Sleep 2000
 
 ;	; Flash Player Internet Explorer installation
-	progress,26,for Internet Explorer,Updating Adobe Flash,The Unfaltering March Of `Progress
-	SetTimer,altr,-15000
-	Runwait %ComSpec% /C "flashplayerIE.msi /qb /norestart"
-	sleep 2000
+	; progress,26,for Internet Explorer,Updating Adobe Flash,The Unfaltering March Of `Progress
+	; SetTimer,altr,-15000
+	; Runwait %ComSpec% /C "flashplayerIE.msi /qb /norestart"
+	; sleep 2000
 
 ;	; Flash Player Firefox plugin installation
-	sleep 2000
-	progress,35,for Firefox,Updating Adobe Flash,The Unfaltering March Of `Progress
-	SetTimer,altr,-13000
-	Runwait %ComSpec% /C "flashplayerFF.msi /qb /norestart"
-	sleep 2000
+	; sleep 2000
+	; progress,35,for Firefox,Updating Adobe Flash,The Unfaltering March Of `Progress
+	; SetTimer,altr,-13000
+	; Runwait %ComSpec% /C "flashplayerFF.msi /qb /norestart"
+	; sleep 2000
 	
 	;; Misc Removal Script setup
 	if remuve in true
@@ -432,19 +432,36 @@ else
 
 	;; Java Installation
 	javainstall:
-	progress,60,%A_Space%,Updating Java,The Unfaltering March Of `Progress
-	SetTimer,altr,-10000
-	SetTimer,javadllerror,-30000
-	RunWait %ComSpec% /C "java.msi /passive /norestart"
+	; progress,60,%A_Space%,Updating Java,The Unfaltering March Of `Progress
+	; SetTimer,altr,-10000
+	; SetTimer,javadllerror,-30000
+	; RunWait %ComSpec% /C "java.msi /passive /norestart"
 
 	;; Adobe Reader installation
-	progress,70,%A_Space%,Updating Adobe Reader,The Unfaltering March Of `Progress
-	sleep 2000
+	; progress,70,%A_Space%,Updating Adobe Reader,The Unfaltering March Of `Progress
+	; sleep 2000
+	; SetTimer,altr,-15000
+	; RunWait %ComSpec% /C "msiexec /package adobereader.msi /qb /norestart" ; /update adobereaderpatch.msp"
+	; progress,80,%A_Space%,Patching Adobe Reader,The Unfaltering March Of `Progress
+	; SetTimer,altr,-10000
+	; RunWait %ComSpec% /C "msiexec.exe /update adobereaderpatch.msp /qb /norestart"
+	
+	
+	;;Hidden NINITE Shame, because I never finished udua.ahk
+	progress,60,%A_Space%,Installing newer versions of Flash,The Unfaltering March Of `Progress
 	SetTimer,altr,-15000
-	RunWait %ComSpec% /C "msiexec /package adobereader.msi /qb /norestart" ; /update adobereaderpatch.msp"
-	progress,80,%A_Space%,Patching Adobe Reader,The Unfaltering March Of `Progress
-	SetTimer,altr,-10000
-	RunWait %ComSpec% /C "msiexec.exe /update adobereaderpatch.msp /qb /norestart"
+	Run "Ninite-Flash-Flash-IE-Installer.exe"
+	settitlematchmode,2
+	winwait,Ninite,Finished.
+	winclose
+	sleep 5000
+	
+	progress,70,%A_Space%,Installing newer versions of Firefox`, Java`, and Reader,The Unfaltering March Of `Progress
+	SetTimer,altr,-15000
+	Run "Ninite-Firefox-Java8-Reader-Installer.exe"
+	settitlematchmode,2
+	winwait,Ninite,Finished.
+	winclose
 
 	;; Internet Explorer installation
 	sleep 2000
@@ -521,8 +538,8 @@ else
 		{
 			Run %ComSpec% /C "shutdown -a"
 			sleep 500
-			Run %ComSpec% /C "shutdown -s -t 5"
-			MsgBox, 4096, Shutdown, Alright--shutting down...,5
+			Run %ComSpec% /C "shutdown -r -t 5"
+			MsgBox, 4096, Restart, Alright--restarting...,5
 			ExitApp
 		}
 		else IfMsgBox No
@@ -534,9 +551,9 @@ else
 		}
 		IfMsgBox Timeout
 		{
-			Run %ComSpec% /C "shutdown -r -t 10"
+			Run %ComSpec% /C "shutdown -s -t 10"
 			sleep 1000
-			MsgBox, 4096, Restart, Alright--restarting...,5
+			MsgBox, 4096, Shutdown, Alright--shutting down...,5
 			ExitApp
 		}
 	}
