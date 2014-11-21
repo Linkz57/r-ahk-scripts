@@ -1,4 +1,4 @@
-REM mr.txt v1.8
+REM mr.txt v1.11
 REM This is a very basic batch file written by Tyler Francis that--in tandem with another script cleverly named "Remove"--attempts to remove many programs that would not be useful and/or allowed in a school environment. It's rather aggressive about this, especially in the first "silent" half of this file, so make sure you're ok with losing all of the programs and files mentioned here.
 
 C:
@@ -236,6 +236,13 @@ REM below is LG United Mobile Drivers 3.10.1.0
 REM below is ScorpionSaver 1.0.0.0
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {9B65F9A3-9D24-452A-B6EF-1457D65E4259}
 
+REM below is Search App by Ask 12.18.0.87
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {5245414C-312D-5350-00A7-A758B70C1200}
+
+REM below is LPT System Updater Service -- I don't think this uninstaller does anything
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {BC0BF363-63AB-4FF7-8EF1-AE0D7F711B24}
+
+
 REM below is PC Speed Maximizer 3.2
 "C:\Program Files\PC Speed Maximizer\unins000.exe" /SILENT
 
@@ -253,6 +260,9 @@ REM below is M-Downloader 1.0.0.63
 
 REM below is Software Updater 1.8.3
 "C:\Program Files\Software Updater\unins000.exe" /SILENT
+
+REM below is Lignum 1.0
+"C:\Program Files\Digipen\Lignum\unins000.exe" /SILENT
 
 
 
@@ -1028,7 +1038,23 @@ C:\PROGRA~1\MOVIES~1\Datamngr\SRTOOL~1\FF\uninstall.exe
 "%ProgramFiles%\Re-markit\Uninstall.exe"
 "%ProgramFiles%\VideoPlayerV3\VideoPlayerV3beta281\uninstall.exe"
 "%ProgramFiles%\WebexpEnhancedV1\WebexpEnhancedV1alpha583\uninstall.exe"
-
+"%ProgramData%\unicoupons\24.exe" /s /n /i:"ExecuteCommands;UninstallCommands" ""
+"%ProgramData%\TicTaCouponn\W60I9SO_iO.exe" /s /n /i:"ExecuteCommands;UninstallCommands" ""
+"%ProgramData%\SaveraPrio\ZhTtmdBPw.exe" /s /n /i:"ExecuteCommands;UninstallCommands" ""
+"%ProgramData%\SAAleSMaggnet\E4O8OXnhsPwIiq.exe" /s /n /i:"ExecuteCommands;UninstallCommands" ""
+"%ProgramData%\PrIncueCoUUpoon\zGAaRQq6m6LoLF.exe" /s /n /i:"ExecuteCommands;UninstallCommands" ""
+"%ProgramData%\LoucukySHHOpppEr\7LP5g.exe" /s /n /i:"ExecuteCommands;UninstallCommands" ""
+"%appdata%\DigitalSites\UpdateProc\UpdateTask.exe" /Uninstall
+"%ProgramFiles%\ARO 2012\unins000.exe" /SILENT
+"%ProgramFiles%\PriceFinder\PriceFinderUninstall.exe"
+"%ProgramFiles%\SystemRequirementsLab\Uninstall.exe"
+"%ProgramData%\CouponFactory\CouponFactory.exe" /progname=CouponFactory /progver=3.4.2 /progpub=CouponFactory /proguninstallurl=asdahjka.com /deleteappfolder=0 /deletefile1="%appdata%\appdataFr2.bin" /deletefile2="%ProgramFiles%\Google\Chrome\Application\update.dll" /deletefile3="%ProgramFiles%\Google\Chrome\Application\chrome.dll" /VERYSILENT
+"%ProgramFiles%\Mobogenie3\Uninstall.exe"
+"%ProgramData%\RoyalShopperAppp\pRScRf_v.exe" /s /n /i:"ExecuteCommands;UninstallCommands" ""
+"%ProgramData%\SaalesMaGnet\P10WEbB.exe" /s /n /i:"ExecuteCommands;UninstallCommands" ""
+"%ProgramData%\SalesiCheaccker\X6rCUTRNlY.exe" /s /n /i:"ExecuteCommands;UninstallCommands" ""
+"%ProgramData%\SaverPro\6BaLtI7Z7XH64j.exe" /s /n /i:"ExecuteCommands;UninstallCommands" ""
+"%ProgramData%\TicTTaCuoupon\e7.exe" /s /n /i:"ExecuteCommands;UninstallCommands" ""
 
 
 
@@ -1043,6 +1069,7 @@ rundll32 C:\PROGRA~1\RECIPE~2\bar\1.bin\2jBar.dll,O
 rundll32 C:\PROGRA~1\HOMEWO~2\bar\1.bin\7eBar.dll,O
 rundll32 "C:\Program Files\FromDocToPDF_65\bar\1.bin\65Bar.dll",O mindsparktoolbarkey="FromDocToPDF_65" uninstalltype="IE"
 rundll32 "C:\Program Files\FromDocToPDF_65\bar\1.bin\65Bar.dll",O mindsparktoolbarkey="FromDocToPDF_65" uninstalltype="FF"
+"C:\Windows\system32\RUNDLL32.EXE" "C:\PROGRA~2\INTERE~1\INTERE~1.DLL",_uninstall /un /uq
 
 
 
@@ -1128,7 +1155,52 @@ reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Quiknowledge" /F
 REM InstallX Search Protect for Yahoo
 REM ---------------------------------
 taskkill /f /im searchprotector.exe
-del /F /Q /S C:\Users\student\AppData\Roaming\InstallX Search Protect for Yahoo
+del /F /Q /S "C:\Users\student\AppData\Roaming\InstallX Search Protect for Yahoo"
+
+REM Coupon Factory
+REM --------------
+taskkill /f /im chrome.exe
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{37476589-E48E-439E-A706-56189E2ED4C4}_is1" /f
+
+REM QuickShare 11.24.60.15709 -- PROBABLY A VIRUS
+REM --------------
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {11D4FAA0-A577-4FA8-B24E-D24283D861D1}
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{11D4FAA0-A577-4FA8-B24E-D24283D861D1}" /f
+reg delete "HKEY_CURRENT_USER\Software\Microsoft\Installer\Features\0AAF4D11775A8AF42BE42D24388D161D" /f
+reg delete "HKEY_CURRENT_USER\Software\Microsoft\Installer\Products\0AAF4D11775A8AF42BE42D24388D161D" /f
+reg delete "HKEY_CURRENT_USER\Software\Microsoft\Installer\UpgradeCodes\5E8031606EB60A64C882918F8FF38DD4" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UpgradeCodes\5E8031606EB60A64C882918F8FF38DD4" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-21-335828624-1094581449-641743058-1000\Components\016A7206F164D5243BE66200904CD4AC" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-21-335828624-1094581449-641743058-1000\Components\016A7206F164D5243BE662E09C4CD4AC" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-21-335828624-1094581449-641743058-1000\Components\0B394BFA95E9CAE4FBB27DB664DCBD0E" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-21-335828624-1094581449-641743058-1000\Components\0B51A54BED003754EB928BEF1B2E8A42" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-21-335828624-1094581449-641743058-1000\Components\0B51AA2BED003754EB928BEF1B2E8A42" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-21-335828624-1094581449-641743058-1000\Components\0B61AA2BED003754EB929BEF1B2E8A42" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-21-335828624-1094581449-641743058-1000\Components\0B6A7206F164D5243BE662E09C4CD4AC" /f
+REM and others... it is a long list of keys
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-21-335828624-1094581449-641743058-1000\Products\0AAF4D11775A8AF42BE42D24388D161D" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{11D4FAA0-A577-4FA8-B24E-D24283D861D1}" /f
+del /F /Q /S "C:\Users\student\AppData\Roaming\Microsoft\Installer\{11D4FAA0-A577-4FA8-B24E-D24283D861D1}"
+
+REM RoyalShopperAppp
+REM --------------
+del /F /Q /S "%ProgramData%\RoyalShopperAppp"
+
+REM SaalesMaGnet
+REM --------------
+del /F /Q /S "%ProgramData%\SaalesMaGnet"
+
+REM SalesiCheaccker
+REM --------------
+del /F /Q /S "%ProgramData%\SalesiCheaccker"
+
+REM SaverPro
+REM --------------
+del /F /Q /S "%ProgramData%\SaverPro"
+
+REM SaverPro
+REM --------------
+del /F /Q /S "%ProgramData%\TicTTaCuoupon"
 
 REM ===========================================
 
