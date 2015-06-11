@@ -1,5 +1,5 @@
-REM mr.txt v1.11
-REM This is a very basic batch file written by Tyler Francis that--in tandem with another script cleverly named "Remove"--attempts to remove many programs that would not be useful and/or allowed in a school environment. It's rather aggressive about this, especially in the first "silent" half of this file, so make sure you're ok with losing all of the programs and files mentioned here.
+REM mr.txt v2
+REM This is a very basic batch file written by Tyler Francis that--in tandem with another script cleverly named "Remove"--attempts to remove many programs that would not be useful and/or allowed in a medium business environment. It's rather aggressive about this, especially in the first "silent" half of this file, so make sure you're ok with losing all of the programs and files mentioned here.
 
 C:
 cd "%USERPROFILE%"
@@ -8,10 +8,10 @@ cd "%USERPROFILE%"
 REM ~ begin automatic removal ~
 
 REM below is HTC driver
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {6D6664A9-3342-4948-9B7E-034EFE366F0F}
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {6D6664A9-3342-4948-9B7E-034EFE366F0F}
 
 REM below is HTC sync
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {7A3FFA58-876F-489C-B6CF-0503916224DF}
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {7A3FFA58-876F-489C-B6CF-0503916224DF}
 
 REM below is Flip Toast
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {B25D67C4-E885-43F8-8085-B532F6261529}
@@ -51,10 +51,10 @@ REM below is Free Natural Text to Speech Reader 2007
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {3E5DA526-F420-45A6-9F27-D2B5246D6823}
 
 REM below is Angry Birds
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {0CE0711D-A5E3-4E98-B3C0-0227A5E000CA}
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {0CE0711D-A5E3-4E98-B3C0-0227A5E000CA}
 
 REM below is Angry Birds Space
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {3F2A323E-60C4-41E8-8CCB-9715D1D750C3}
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {3F2A323E-60C4-41E8-8CCB-9715D1D750C3}
 
 REM below is UPEK TouchChip Fingerprint Reader
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {C3FA63E2-AFD3-41FD-B48F-1D942CC71943}
@@ -75,7 +75,7 @@ REM below is WinZip 16.5
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {CD95F661-A5C4-44F5-A6AA-ECDD91C240D2}
 
 REM below is Project 64
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {9559F7CA-5E34-4237-A2D9-D856464AD727}
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {9559F7CA-5E34-4237-A2D9-D856464AD727}
 
 REM below is Strongvault Online Backup
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {3002C8EB-2A7E-419B-B77F-5AD7E9F54A5A}
@@ -93,10 +93,10 @@ REM below is PxMergeModule
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {024521CF-C07E-4F8E-8481-0D75695E03AF}
 
 REM below is Apple iCloud
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {FDB5E0F3-86EA-4379-8A2F-1BC2436543E9}
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {FDB5E0F3-86EA-4379-8A2F-1BC2436543E9}
 
 REM below is Kaspersky Security Scan
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {5D4875F6-89D1-4E9C-B7B9-9164C9D20C9C} 
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {5D4875F6-89D1-4E9C-B7B9-9164C9D20C9C} 
 
 REM below is J2SE Runtime Environment 5.0 Update 10
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {3248F0A8-6813-11D6-A77B-00B0D0150100}
@@ -105,7 +105,7 @@ REM below is MSN Toolbar
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {B6EF6DCE-078E-4952-A7FA-352A9C349EB0}
 
 REM below is PlayStation Network Downloader
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {B6659DD8-00A7-4A24-BBFB-C1F6982E5D66}
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {B6659DD8-00A7-4A24-BBFB-C1F6982E5D66}
 
 REM below is PhotoShowExpress
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {3250260C-7A95-4632-893B-89657EB5545B}
@@ -187,15 +187,15 @@ REM below is Surveyor Agent
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {387C6048-ABD5-4862-9DF7-711AABE561BB}
 
 REM below is Google Drive
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {E87022D3-C8C9-4C76-8E27-BC7F18F9B8FB}
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {E87022D3-C8C9-4C76-8E27-BC7F18F9B8FB}
 
 REM below is Strongvault Online Backup
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {4DC876FD-105A-431A-87B2-C1BE7C1CDD51}
 
 REM below is Android USB Drivers
-"C:\Program Files\Froyo_Android_Driver\unins000.exe" /SILENT
+REM "C:\Program Files\Froyo_Android_Driver\unins000.exe" /SILENT
 
-"C:\Program Files\PCTechHotline\unins000.exe" /SILENT
+REM "C:\Program Files\PCTechHotline\unins000.exe" /SILENT
 
 REM below is Driver Detective 8.1
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {5D6D605B-E4B7-490B-A794-9284BC3D2A8B}
@@ -250,7 +250,7 @@ REM below is PC PC Driver Kit 3.1
 "C:\Program Files\PC Driver Kit\unins000.exe" /SILENT
 
 REM below is Euro Truck Simulator
-"C:\Program Files\Euro Truck Simulator 2\unins000.exe" /SILENT
+REM "C:\Program Files\Euro Truck Simulator 2\unins000.exe" /SILENT
 
 REM below is GreyGray
 "%ProgramFiles%\GreyGray\GreyGrayuninstall.exe" /S
@@ -449,25 +449,38 @@ REM Below are Java version 7, 32 bit
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217048FF}&& REM Java - 7u48 - x86
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217049FF}&& REM Java - 7u49 - x86
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217050FF}&& REM Java - 7u50 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217051FF}&& REM Java - 7u51 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217052FF}&& REM Java - 7u52 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217053FF}&& REM Java - 7u53 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217054FF}&& REM Java - 7u54 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217055FF}&& REM Java - 7u55 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217056FF}&& REM Java - 7u56 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217057FF}&& REM Java - 7u57 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217058FF}&& REM Java - 7u58 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217059FF}&& REM Java - 7u59 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217060FF}&& REM Java - 7u60 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217061FF}&& REM Java - 7u61 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217062FF}&& REM Java - 7u62 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217063FF}&& REM Java - 7u63 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217064FF}&& REM Java - 7u64 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217065FF}&& REM Java - 7u65 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217066FF}&& REM Java - 7u66 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217067FF}&& REM Java - 7u67 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217051FF}&& REM Java - 7u51 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217052FF}&& REM Java - 7u52 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217053FF}&& REM Java - 7u53 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217054FF}&& REM Java - 7u54 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217055FF}&& REM Java - 7u55 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217056FF}&& REM Java - 7u56 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217057FF}&& REM Java - 7u57 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217058FF}&& REM Java - 7u58 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217059FF}&& REM Java - 7u59 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217060FF}&& REM Java - 7u60 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217061FF}&& REM Java - 7u61 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217062FF}&& REM Java - 7u62 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217063FF}&& REM Java - 7u63 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217064FF}&& REM Java - 7u64 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217065FF}&& REM Java - 7u65 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217066FF}&& REM Java - 7u66 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217067FF}&& REM Java - 7u67 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217068FF}&& REM Java - 7u68 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217069FF}&& REM Java - 7u69 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217070FF}&& REM Java - 7u70 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217071FF}&& REM Java - 7u71 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217072FF}&& REM Java - 7u72 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217073FF}&& REM Java - 7u73 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217074FF}&& REM Java - 7u74 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217075FF}&& REM Java - 7u75 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217076FF}&& REM Java - 7u76 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217077FF}&& REM Java - 7u77 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217078FF}&& REM Java - 7u78 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83217079FF}&& REM Java - 7u79 - x86
 
-REM Below are Java version 7, 32 bit
+
+REM Below are Java version 7, 64 bit
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417000FF}&& REM - 7u0 - x64
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417001FF}&& REM - 7u1 - x64
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417002FF}&& REM - 7u2 - x64
@@ -519,31 +532,246 @@ REM Below are Java version 7, 32 bit
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417048FF}&& REM - 7u48 - x64
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417049FF}&& REM - 7u49 - x64
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417050FF}&& REM - 7u50 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417051FF}&& REM - 7u51 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417052FF}&& REM - 7u52 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417053FF}&& REM - 7u53 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417054FF}&& REM - 7u54 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417055FF}&& REM - 7u55 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417056FF}&& REM - 7u56 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417057FF}&& REM - 7u57 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417058FF}&& REM - 7u58 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417059FF}&& REM - 7u59 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417060FF}&& REM - 7u60 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417061FF}&& REM - 7u61 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417062FF}&& REM - 7u62 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417063FF}&& REM - 7u63 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417064FF}&& REM - 7u64 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417065FF}&& REM - 7u65 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417066FF}&& REM - 7u66 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417067FF}&& REM - 7u67 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417068FF}&& REM - 7u68 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417069FF}&& REM - 7u69 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417070FF}&& REM - 7u70 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417071FF}&& REM - 7u71 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417072FF}&& REM - 7u72 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417073FF}&& REM - 7u73 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417074FF}&& REM - 7u74 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417075FF}&& REM - 7u75 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417051FF}&& REM - 7u51 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417052FF}&& REM - 7u52 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417053FF}&& REM - 7u53 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417054FF}&& REM - 7u54 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417055FF}&& REM - 7u55 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417056FF}&& REM - 7u56 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417057FF}&& REM - 7u57 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417058FF}&& REM - 7u58 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417059FF}&& REM - 7u59 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417060FF}&& REM - 7u60 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417061FF}&& REM - 7u61 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417062FF}&& REM - 7u62 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417063FF}&& REM - 7u63 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417064FF}&& REM - 7u64 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417065FF}&& REM - 7u65 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417066FF}&& REM - 7u66 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417067FF}&& REM - 7u67 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417068FF}&& REM - 7u68 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417069FF}&& REM - 7u69 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417070FF}&& REM - 7u70 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417071FF}&& REM - 7u71 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417072FF}&& REM - 7u72 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417073FF}&& REM - 7u73 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417074FF}&& REM - 7u74 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417075FF}&& REM - 7u75 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417076FF}&& REM - 7u76 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417077FF}&& REM - 7u77 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417078FF}&& REM - 7u78 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417079FF}&& REM - 7u79 - x64
+
+
+
+REM Below are Java version 8, 32 bit
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218000F0}&& REM - 8u0 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218001F0}&& REM - 8u1 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218002F0}&& REM - 8u2 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218003F0}&& REM - 8u3 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218004F0}&& REM - 8u4 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218005F0}&& REM - 8u5 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218006F0}&& REM - 8u6 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218007F0}&& REM - 8u7 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218008F0}&& REM - 8u8 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218009F0}&& REM - 8u9 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218010F0}&& REM - 8u10 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218011F0}&& REM - 8u11 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218012F0}&& REM - 8u12 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218013F0}&& REM - 8u13 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218014F0}&& REM - 8u14 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218015F0}&& REM - 8u15 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218016F0}&& REM - 8u16 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218017F0}&& REM - 8u17 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218018F0}&& REM - 8u18 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218019F0}&& REM - 8u19 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218020F0}&& REM - 8u20 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218021F0}&& REM - 8u21 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218022F0}&& REM - 8u22 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218023F0}&& REM - 8u23 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218024F0}&& REM - 8u24 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218025F0}&& REM - 8u25 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218026F0}&& REM - 8u26 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218027F0}&& REM - 8u27 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218028F0}&& REM - 8u28 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218029F0}&& REM - 8u29 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218030F0}&& REM - 8u30 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218031F0}&& REM - 8u31 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218032F0}&& REM - 8u32 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218033F0}&& REM - 8u33 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218034F0}&& REM - 8u34 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218035F0}&& REM - 8u35 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218036F0}&& REM - 8u36 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218037F0}&& REM - 8u37 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218038F0}&& REM - 8u38 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218039F0}&& REM - 8u39 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218040F0}&& REM - 8u40 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218041F0}&& REM - 8u41 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218042F0}&& REM - 8u42 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218043F0}&& REM - 8u43 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218044F0}&& REM - 8u44 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218045F0}&& REM - 8u45 - x86 - current as of 2015-06-11
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218046F0}&& REM - 8u46 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218047F0}&& REM - 8u47 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218048F0}&& REM - 8u48 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218049F0}&& REM - 8u49 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218050F0}&& REM - 8u50 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218051F0}&& REM - 8u51 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218052F0}&& REM - 8u52 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218053F0}&& REM - 8u53 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218054F0}&& REM - 8u54 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218055F0}&& REM - 8u55 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218056F0}&& REM - 8u56 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218057F0}&& REM - 8u57 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218058F0}&& REM - 8u58 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218059F0}&& REM - 8u59 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218060F0}&& REM - 8u60 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218061F0}&& REM - 8u61 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218062F0}&& REM - 8u62 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218063F0}&& REM - 8u63 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218064F0}&& REM - 8u64 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218065F0}&& REM - 8u65 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218066F0}&& REM - 8u66 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218067F0}&& REM - 8u67 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218068F0}&& REM - 8u68 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218069F0}&& REM - 8u69 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218070F0}&& REM - 8u70 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218071F0}&& REM - 8u71 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218072F0}&& REM - 8u72 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218073F0}&& REM - 8u73 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218074F0}&& REM - 8u74 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218075F0}&& REM - 8u75 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218076F0}&& REM - 8u76 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218077F0}&& REM - 8u77 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218078F0}&& REM - 8u78 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218079F0}&& REM - 8u79 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218080F0}&& REM - 8u80 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218081F0}&& REM - 8u81 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218082F0}&& REM - 8u82 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218083F0}&& REM - 8u83 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218084F0}&& REM - 8u84 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218085F0}&& REM - 8u85 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218086F0}&& REM - 8u86 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218087F0}&& REM - 8u87 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218088F0}&& REM - 8u88 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218089F0}&& REM - 8u89 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218090F0}&& REM - 8u90 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218091F0}&& REM - 8u91 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218092F0}&& REM - 8u92 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218093F0}&& REM - 8u93 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218094F0}&& REM - 8u94 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218095F0}&& REM - 8u95 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218096F0}&& REM - 8u96 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218097F0}&& REM - 8u97 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218098F0}&& REM - 8u98 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218099F0}&& REM - 8u99 - x86
+
+
+
+REM Below are Java version 8, 64 bit
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418000F0}&& REM - 8u0 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418001F0}&& REM - 8u1 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418002F0}&& REM - 8u2 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418003F0}&& REM - 8u3 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418004F0}&& REM - 8u4 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418005F0}&& REM - 8u5 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418006F0}&& REM - 8u6 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418007F0}&& REM - 8u7 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418008F0}&& REM - 8u8 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418009F0}&& REM - 8u9 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418010F0}&& REM - 8u10 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418011F0}&& REM - 8u11 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418012F0}&& REM - 8u12 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418013F0}&& REM - 8u13 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418014F0}&& REM - 8u14 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418015F0}&& REM - 8u15 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418016F0}&& REM - 8u16 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418017F0}&& REM - 8u17 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418018F0}&& REM - 8u18 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418019F0}&& REM - 8u19 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418020F0}&& REM - 8u20 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418021F0}&& REM - 8u21 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418022F0}&& REM - 8u22 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418023F0}&& REM - 8u23 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418024F0}&& REM - 8u24 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418025F0}&& REM - 8u25 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418026F0}&& REM - 8u26 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418027F0}&& REM - 8u27 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418028F0}&& REM - 8u28 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418029F0}&& REM - 8u29 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418030F0}&& REM - 8u30 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418031F0}&& REM - 8u31 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418032F0}&& REM - 8u32 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418033F0}&& REM - 8u33 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418034F0}&& REM - 8u34 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418035F0}&& REM - 8u35 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418036F0}&& REM - 8u36 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418037F0}&& REM - 8u37 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418038F0}&& REM - 8u38 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418039F0}&& REM - 8u39 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418040F0}&& REM - 8u40 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418041F0}&& REM - 8u41 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418042F0}&& REM - 8u42 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418043F0}&& REM - 8u43 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418044F0}&& REM - 8u44 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418045F0}&& REM - 8u45 - x64 - current as of 2015-06-11
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418046F0}&& REM - 8u46 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418047F0}&& REM - 8u47 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418048F0}&& REM - 8u48 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418049F0}&& REM - 8u49 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418050F0}&& REM - 8u50 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418051F0}&& REM - 8u51 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418052F0}&& REM - 8u52 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418053F0}&& REM - 8u53 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418054F0}&& REM - 8u54 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418055F0}&& REM - 8u55 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418056F0}&& REM - 8u56 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418057F0}&& REM - 8u57 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418058F0}&& REM - 8u58 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418059F0}&& REM - 8u59 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418060F0}&& REM - 8u60 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418061F0}&& REM - 8u61 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418062F0}&& REM - 8u62 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418063F0}&& REM - 8u63 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418064F0}&& REM - 8u64 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418065F0}&& REM - 8u65 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418066F0}&& REM - 8u66 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418067F0}&& REM - 8u67 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418068F0}&& REM - 8u68 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418069F0}&& REM - 8u69 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418070F0}&& REM - 8u70 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418071F0}&& REM - 8u71 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418072F0}&& REM - 8u72 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418073F0}&& REM - 8u73 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418074F0}&& REM - 8u74 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418075F0}&& REM - 8u75 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418076F0}&& REM - 8u76 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418077F0}&& REM - 8u77 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418078F0}&& REM - 8u78 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418079F0}&& REM - 8u79 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418080F0}&& REM - 8u80 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418081F0}&& REM - 8u81 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418082F0}&& REM - 8u82 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418083F0}&& REM - 8u83 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418084F0}&& REM - 8u84 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418085F0}&& REM - 8u85 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418086F0}&& REM - 8u86 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418087F0}&& REM - 8u87 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418088F0}&& REM - 8u88 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418089F0}&& REM - 8u89 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418090F0}&& REM - 8u90 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418091F0}&& REM - 8u91 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418092F0}&& REM - 8u92 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418093F0}&& REM - 8u93 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418094F0}&& REM - 8u94 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418095F0}&& REM - 8u95 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418096F0}&& REM - 8u96 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418097F0}&& REM - 8u97 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418098F0}&& REM - 8u98 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418099F0}&& REM - 8u99 - x64
+
+
+
 
 
 
@@ -610,7 +838,7 @@ REM ~ begin manual removal ~
 
 
 "%USERPROFILE%\Application Data\SanDisk\SanDiskSecureAccess_Manager.exe" --uninstall
-"%ProgramFiles%\WinRAR\Uninstall.exe"
+REM "%ProgramFiles%\WinRAR\Uninstall.exe"
 "%ProgramFiles%\AssaultCube_v1.1.0.4\Uninstall.exe"
 "%ProgramFiles%\Vocal Remover\unins000.exe"
 "%ProgramFiles%\AnalogX\VocalRemover\vremu.exe"
@@ -620,11 +848,11 @@ REM ~ begin manual removal ~
 "%ProgramFiles%\PCFix\unins000.exe"
 %HOMEDRIVE%\hello\uninstall.exe -j "%HOMEDRIVE%\hello\jdk7"
 "%ProgramFiles%\WinUtilities\unins000.exe"
-"%USERPROFILE%\Application Data\Spotify\Uninstall.exe"
+REM "%USERPROFILE%\Application Data\Spotify\Uninstall.exe"
 "%ProgramFiles%\Reviversoft\Registry Reviver\unins000.exe"
 "%ProgramFiles%\Notepad++\uninstall.exe"
 "%USERPROFILE%\Local Settings\Application Data\Mixxx\uninst.exe"
-"%ProgramFiles%\K-Lite Codec Pack\unins000.exe"
+REM "%ProgramFiles%\K-Lite Codec Pack\unins000.exe"
 "%ProgramFiles%\MusicFrost\unins000.exe"
 "%ProgramFiles%\FinalVideoDownloader\unins000.exe"
 "%ProgramFiles%\miniMRP\unins000.exe"
@@ -650,11 +878,11 @@ REM ~ begin manual removal ~
 "%ProgramFiles%\Music Mixer\uninstall.exe"
 "%ProgramFiles%\McAfee Security Scan\uninstall.exe"
 "%ProgramFiles%\Punch! Pro\UNWISE.EXE"
-"%ProgramFiles%\Malwarebytes' Anti-Malware\unins000.exe"
+REM "%ProgramFiles%\Malwarebytes' Anti-Malware\unins000.exe"
 "%ProgramFiles%\Norton Security Scan\Engine\2.7.3.34\InstWrap.exe"
 "%ProgramFiles%\Google\Quick Search Box\GoogleQuickSearchBoxSetup.exe"  /force /standalone /uninstall
-"%ProgramFiles%\Yahoo! Games\Homesteader\Uninstall.exe"
-"%ProgramFiles%\Yahoo! Games\Mahjongg Dimensions Deluxe - Tiles in Time\Uninstall.exe"
+REM "%ProgramFiles%\Yahoo! Games\Homesteader\Uninstall.exe"
+REM "%ProgramFiles%\Yahoo! Games\Mahjongg Dimensions Deluxe - Tiles in Time\Uninstall.exe"
 "%USERPROFILE%\Local Settings\Application Data\Yahoo!\BrowserPlus\BrowserPlusUninstaller.exe"
 "%ProgramFiles%\Registry Mechanic\unins000.exe"
 "%USERPROFILE%\Application Data\WindSolutions\CopyTransControlCenter\Applications\CopyTransControlCenter.exe" /uninstall
@@ -669,7 +897,7 @@ REM "%ProgramFiles%\TI Education\TI-83 Plus Flash Debugger\UNWISE.EXE"
 "%ProgramFiles%\FarStone\VirtualDrive\Setup.exe"
 "%ProgramFiles%\Mediaplayer Lite\unins000.exe"
 "%ProgramFiles%\Blinkx\templates\uninstall.exe"
-"%ProgramFiles%\SugarSync\uninstall.exe"
+REM "%ProgramFiles%\SugarSync\uninstall.exe"
 REM "%ProgramFiles%\Google\Picasa3\Uninstall.exe"
 "%ProgramFiles%\PC Tools Registry Mechanic\unins000.exe"
 "%ProgramFiles%\Netscape\Netscape Browser\NSUninst.exe"
@@ -678,7 +906,7 @@ REM "%ProgramFiles%\Google\Picasa3\Uninstall.exe"
 "%ProgramFiles%\Internet Download Manager\Uninstall.exe"
 "%ProgramFiles%\Advanced Registry Optimizer\unins000.exe"
 "%ProgramFiles%\Auto Clicker\unins000.exe"
-"%ProgramFiles%\Euro Truck Simulator\uninst.exe"
+REM "%ProgramFiles%\Euro Truck Simulator\uninst.exe"
 "%ProgramFiles%\Zoom Downloader\uninstall.exe"
 "%ProgramFiles%\Zoom Downloader\uninstall.exe" /ul /UserID=69d05747-1b02-4746-9214-bb0af1f4b7ef /SourceID=google_dm-display-us-250x250_v1
 "%ProgramFiles%\Bus Driver\uninst.exe"
@@ -708,14 +936,14 @@ REM "%ProgramFiles%\Google\Picasa3\Uninstall.exe"
 "%ProgramFiles%\Common Files\DVDVideoSoft\Uninstall.exe"
 "%ProgramFiles%\Norton Security Scan\Engine\3.0.1.8\InstWrap.exe"
 "%ProgramFiles%\FrostWire 5\Uninstall.exe"
-"%ProgramFiles%\PopCap Games\Zuma's Revenge\PopUninstall.exe" "%ProgramFiles%\PopCap Games\Zuma's Revenge\Install.log"
-"%ProgramFiles%\Disney\Disney Online\ToontownOnline\uninst.exe"
+REM "%ProgramFiles%\PopCap Games\Zuma's Revenge\PopUninstall.exe" "%ProgramFiles%\PopCap Games\Zuma's Revenge\Install.log"
+REM "%ProgramFiles%\Disney\Disney Online\ToontownOnline\uninst.exe"
 "%ProgramFiles%\ePlaybus.com\Billiards\unins000.exe"
 "%ProgramFiles%\ePlaybus.com\Air Transporter\unins000.exe"
 "%ProgramFiles%\ePlaybus.com\Aquacubes\unins000.exe"
 "%ProgramFiles%\ePlaybus.com\Crusade 2\unins000.exe"
 "%ProgramFiles%\GameSpy Arcade\UNWISE.EXE"
-"%ProgramFiles%\Microsoft Games\Halo Trial\UNINSTAL.EXE" /runtemp
+REM "%ProgramFiles%\Microsoft Games\Halo Trial\UNINSTAL.EXE" /runtemp
 "%ProgramFiles%\PopCap Games\Plants vs. Zombies\PopUninstall.exe" "%ProgramFiles%\PopCap Games\Plants vs. Zombies\Install.log"
 "%USERPROFILE%\Local Settings\Application Data\ArcadeCandy\candyRemove.exe"
 "%ProgramFiles%\Moviestorm\uninstall.exe"
@@ -734,7 +962,7 @@ REM "%ProgramFiles%\Google\Picasa3\Uninstall.exe"
 "%ProgramFiles%\Convert Pdf to Gif Psd Jpeg\unins000.exe"
 "%ProgramFiles%\PrivacySafeGuard\unins000.exe"
 "%ProgramFiles%\Flash Player Pro\unins000.exe"
-"%ProgramFiles%\7-Zip\Uninstall.exe"
+REM "%ProgramFiles%\7-Zip\Uninstall.exe"
 "%ProgramFiles%\Halo Combat Evolved\Uninstal.exe"
 "%ProgramFiles%\MagicDisc\UNWISE.EXE"
 "%ProgramFiles%\RegistryFix\unins000.exe"
@@ -742,21 +970,21 @@ REM "%ProgramFiles%\Google\Picasa3\Uninstall.exe"
 "%ProgramFiles%\HotPotatoes6\unins000.exe"
 "%ProgramFiles%\TeacherWorks\UNWISE.EXE"
 "%ProgramFiles%\PC Optimizer Pro\uninst.exe"
-"%USERPROFILE%\Application Data\Dropbox\bin\Uninstall.exe"
-"%ProgramFiles%\PopCap Games\Amazing Adventures 5\PopUninstall.exe" "%ProgramFiles%\PopCap Games\Amazing Adventures 5\Install.log"
+REM "%USERPROFILE%\Application Data\Dropbox\bin\Uninstall.exe"
+REM "%ProgramFiles%\PopCap Games\Amazing Adventures 5\PopUninstall.exe" "%ProgramFiles%\PopCap Games\Amazing Adventures 5\Install.log"
 REM "%ProgramFiles%\Google\Google Updater\GoogleUpdater.exe" -uninstall
 "%ProgramFiles%\InterActual\InterActual Player\inuninst.exe"
 "%ProgramFiles%\Free YouTube Downloader\unins000.exe"
 "%ProgramFiles%\AC3Filter\AC3Filter1.63_Uninstall.EXE"
 "%ProgramFiles%\ListenToYouTube\unins000.exe"
 "%ProgramFiles%\Free Youtube To Mp3\unins000.exe"
-"%ProgramFiles%\Runescape Apocalypse Client\uninst.exe"
+REM "%ProgramFiles%\Runescape Apocalypse Client\uninst.exe"
 "%ProgramFiles%\GameTop.com\Extreme Racers\unins000.exe"
 "%ProgramFiles%\GameTop.com\Real Race\unins000.exe"
 "%ProgramFiles%\MP3FreeDownloader\uninst.exe"
 "%USERPROFILE%\Local Settings\Application Data\MapleStudio\ChromePlus\Application\2.0.3.55\Installer\setup.exe"  --uninstall
 "%ProgramFiles%\Mario Forever\Uninstall.exe"
-"%ProgramFiles%\Minecraft\unins000.exe"
+REM "%ProgramFiles%\Minecraft\unins000.exe"
 "%ProgramFiles%\InstallShield Installation Information\{2987EE84-C4EE-4FF5-8160-32DE00D6ABC6}\setup.exe"
 "%ProgramFiles%\Optimizer Pro\unins000.exe"
 "%ProgramFiles%\iPod Copy Expert\unins000.exe"
@@ -798,7 +1026,7 @@ REM "%ProgramFiles%\Google\Google Updater\GoogleUpdater.exe" -uninstall
 "%ProgramFiles%\Download Manager and Options\Uninstaller.exe"
 "%ProgramFiles%\Qwiklinx\unins000.exe"
 "%ProgramFiles%\Updater By SweetPacks\unins000.exe"
-"%ProgramFiles%\Minecraft PC Gamer Demo\unins000.exe"
+REM "%ProgramFiles%\Minecraft PC Gamer Demo\unins000.exe"
 "%ProgramFiles%\Facebook Pro\unins000.exe"
 REM "%ProgramFiles%\CEV Multimedia\MPU20024 Housing Design & Decisions\MPU20024_Uninstal.exe"
 REM "%ProgramFiles%\CEV Multimedia\trg\MPU20007\MPU20007_Uninstal.exe"
@@ -871,13 +1099,13 @@ REM C:\Windows\IsUninst.exe -f"C:\Program Files\Goodheart-Willcox\Housing Decisi
 "%ProgramFiles%\WinZip Driver Updater\unins000.exe"
 REM "C:\Program Files\Browsersafeguard\uninstall.browsersafeguard.exe" /u /UserID=37efb983-f474-4743-9d78-72652319a23a /SourceID=google_browsersafeguard-display-us-CPC-300x250-23909039453 /ImplementationID=browsersafeguard-pitch
 "%ProgramFiles%\Browsersafeguard\uninstall.browsersafeguard.exe" /u
-"%appdata%\Spotify\Spotify.exe" /uninstall
-"%ProgramFiles%\TeamViewer\Version7\uninstall.exe"
+REM "%appdata%\Spotify\Spotify.exe" /uninstall
+REM "%ProgramFiles%\TeamViewer\Version7\uninstall.exe"
 "%ProgramFiles%\FLV Media Player\unins000.exe"
 "%ProgramFiles%\glindorus\glindorusuninstall.exe"
 "%ProgramFiles%\Advanced System Protector\unins000.exe"
 "%ProgramFiles%\Plus-HD-1.6\Uninstall.exe" /fromcontrolpanel=1
-"%ProgramFiles%\Winamp\UninstWA.exe"
+REM "%ProgramFiles%\Winamp\UninstWA.exe"
 "%ProgramFiles%\Common Files\Symantec Shared\NSSSetup\{3FADAA19-E595-44CA-A072-58B6B0851768}_2_0_0\NSSSetup.exe" /X
 "%ProgramFiles%\Google\Google Toolbar\Component\GoogleToolbarManager_08875ABF44579E20.exe" /uninstall
 "%PUBLIC%\Application Data\Kodak\EasyShareSetup\$SETUP_140002_71c0f8c\Setup.exe" /APR-REMOVE
@@ -931,7 +1159,7 @@ REM below is Snap.do
 "%ProgramFiles%\LyricsBuddy-1\Uninstall.exe" /fromcontrolpanel=1
 "%ProgramFiles%\Plus-HD-1.3\Uninstall.exe" /fromcontrolpanel=1
 "%ProgramFiles%\PricePeep\uninstall.exe"
-"%ProgramFiles%\Project64 2.1\unins000.exe" /SILENT
+REM "%ProgramFiles%\Project64 2.1\unins000.exe" /SILENT
 "%ProgramFiles%\SaltarSmart\SaltarSmartuninstall.exe" /S
 "%userprofile%\AppData\Local\SevereWeatherAlerts\uninstall.exe"
 "%ProgramFiles%\Social Privacy\uninstall.exe"
@@ -939,14 +1167,14 @@ REM below is Snap.do
 C:\ProgramData\TubeDimmer\uninstall.exe" /kb=y /ic=2
 C:\ProgramData\Updater\Uninstall.exe" /ic=U2
 "%ProgramFiles%\VideoPlayer\uninstall.exe"
-"%ProgramFiles%\Yahoo Games\Burger Shop\Uninstall.exe"
+REM "%ProgramFiles%\Yahoo Games\Burger Shop\Uninstall.exe"
 "%ProgramFiles%\Google\Google Toolbar\Component\GoogleToolbarManager_231F3FD17DB59CFD.exe" /uninstall
 REM below is SanDisk TransferMate
 RunDll32 C:\PROGRA~1\COMMON~1\INSTAL~1\engine\6\INTEL3~1\Ctor.dll,LaunchSetup "C:\Program Files\InstallShield Installation Information\{601C6E14-DF1E-4113-A8C8-F9DB90CB0D88}\Setup.exe" -l0x9 
-"%ProgramFiles%\Unity\Editor\Uninstall.exe"
+REM "%ProgramFiles%\Unity\Editor\Uninstall.exe"
 "%USERPROFILE%\Local Settings\Application Data\Unity\WebPlayer\Uninstall.exe"
-"%ProgramFiles%\Sony Online Entertainment\Wheel of Fortune Deluxe\Uninstall Wheel of Fortune Deluxe.exe"
-"%ProgramFiles%\WinPcap\uninstall.exe"
+REM "%ProgramFiles%\Sony Online Entertainment\Wheel of Fortune Deluxe\Uninstall Wheel of Fortune Deluxe.exe"
+REM "%ProgramFiles%\WinPcap\uninstall.exe"
 "%userprofile%\AppData\Local\GCC\uninstall.exe
 "%userprofile%\AppData\Local\SevereWeatherAlerts\uninstall.exe
 "%ProgramFiles%\Fighters\SLOW-PCfighter\Uninstall.exe" Remove SHORT_UNINSTALL=1
@@ -972,7 +1200,7 @@ REM need to first disable network adapter before running this "%ProgramFiles%\Ho
 "%ProgramFiles%\Download Internet Explorer 10\unins000.exe"
 "%ProgramFiles%\LyricsParty-1\Uninstall.exe"
 "%PUBLIC%\Application Data\SaveAs\uninstall.exe"
-"%appdata%\uTorrent\uTorrent.exe" /UNINSTALL
+REM "%appdata%\uTorrent\uTorrent.exe" /UNINSTALL
 "%ProgramFiles%\Applian Technologies\Applian FLV and Media Player\uninstall.exe"
 "%ProgramFiles%\ZipDownloader\uninstall.exe"
 "%ProgramFiles%\Video Performer Manager\2.6.1249.132\{16cdff19-861d-48e3-a751-d99a27784753}\uninstall.exe" /Uninstall /{15D2D75C-9CB2-4efd-BAD7-B9B4CB4BC693} /su=3c3761ed8b873225 /um
@@ -993,7 +1221,7 @@ c:\Config.msi\{AB56B977-66D9-411E-B4AA-F4BAD1AD5EBF}\PCOSetup_1.0.15.0.exe /unin
 "%ProgramFiles%\BrowseBurst\BrowseBurstuninstall.exe" /S
 "%ProgramFiles%\PureLeads\Uninstall.exe"
 "%ProgramFiles%\The weDownload Manager\Uninstall.exe" /fromcontrolpanel=1
-"%userprofile%\AppData\Local\Unity\WebPlayer\Uninstall.exe"
+REM "%userprofile%\AppData\Local\Unity\WebPlayer\Uninstall.exe"
 "%appdata%\PriceMeterUpdater\UpdateProc\UpdateTask.exe" /Uninstall
 "%appdata%\DIGITA~1\UpdateProc\UpdateTask.exe" /Uninstall
 "%appdata%\VOPackage\uninstall.exe"
@@ -1006,7 +1234,7 @@ c:\Config.msi\{AB56B977-66D9-411E-B4AA-F4BAD1AD5EBF}\PCOSetup_1.0.15.0.exe /unin
 "%appdata%\FlvPlayer\uninstall.exe"
 "%ProgramFiles%\Linkey\uninstall.exe"
 "%ProgramFiles%\Mysearchdial\1.8.29.0\uninstall.exe" 
-C:\WINDOWS\system32\javaws.exe -uninstall
+REM C:\WINDOWS\system32\javaws.exe -uninstall
 "%USERPROFILE%\Local Settings\Application Data\couponamazing\uninst.exe"
 "%USERPROFILE%\Application Data\HoolappForAndroid\UpdateProc\UpdateTask.exe" /Uninstall
 "%ProgramFiles%\PasswordBox\uninstall.exe"
@@ -1033,7 +1261,7 @@ C:\PROGRA~1\MOVIES~1\Datamngr\SRTOOL~1\FF\uninstall.exe
 "%appdata%\DictAddon\uninst.exe"
 "%ProgramFiles%\MediaPlayerV1\MediaPlayerV1alpha774\uninstall.exe"
 "%ProgramFiles%\MediaViewV1\MediaViewV1alpha3497\uninstall.exe"
-"%appdata%\.minecraft\minecraft launcher\Uninstall.exe"
+REM "%appdata%\.minecraft\minecraft launcher\Uninstall.exe"
 "%ProgramFiles%\RadarSync\unins000.exe" /SILENT
 "%ProgramFiles%\Re-markit\Uninstall.exe"
 "%ProgramFiles%\VideoPlayerV3\VideoPlayerV3beta281\uninstall.exe"
@@ -1064,11 +1292,11 @@ C:\PROGRA~1\MOVIES~1\Datamngr\SRTOOL~1\FF\uninstall.exe
 
 
 REM rundll32.exe dfshim.dll,ShArpMaintain DellSystemDetect.application, Culture=neutral, PublicKeyToken=0f612f649c4a10af, processorArchitecture=msil
-rundll32 C:\PROGRA~1\DICTIO~2\bar\1.bin\v4Bar.dll,O
-rundll32 C:\PROGRA~1\RECIPE~2\bar\1.bin\2jBar.dll,O
-rundll32 C:\PROGRA~1\HOMEWO~2\bar\1.bin\7eBar.dll,O
-rundll32 "C:\Program Files\FromDocToPDF_65\bar\1.bin\65Bar.dll",O mindsparktoolbarkey="FromDocToPDF_65" uninstalltype="IE"
-rundll32 "C:\Program Files\FromDocToPDF_65\bar\1.bin\65Bar.dll",O mindsparktoolbarkey="FromDocToPDF_65" uninstalltype="FF"
+REM rundll32 C:\PROGRA~1\DICTIO~2\bar\1.bin\v4Bar.dll,O
+REM rundll32 C:\PROGRA~1\RECIPE~2\bar\1.bin\2jBar.dll,O
+REM rundll32 C:\PROGRA~1\HOMEWO~2\bar\1.bin\7eBar.dll,O
+REM rundll32 "C:\Program Files\FromDocToPDF_65\bar\1.bin\65Bar.dll",O mindsparktoolbarkey="FromDocToPDF_65" uninstalltype="IE"
+REM rundll32 "C:\Program Files\FromDocToPDF_65\bar\1.bin\65Bar.dll",O mindsparktoolbarkey="FromDocToPDF_65" uninstalltype="FF"
 "C:\Windows\system32\RUNDLL32.EXE" "C:\PROGRA~2\INTERE~1\INTERE~1.DLL",_uninstall /un /uq
 
 
@@ -1081,37 +1309,37 @@ timeout /t 5
 
 
 REM ****************
-REM chrome uninstallers
+REM Asus bloatware uninstallers
 
-REM "%ProgramFiles%\Google\Chrome\Application\15.0.874.120\Installer\setup.exe"  --uninstall --system-level
-REM "%ProgramFiles%\Google\Chrome\Application\18.0.1025.142\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
-REM "%ProgramFiles%\Google\Chrome\Application\17.0.963.83\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
-REM "%ProgramFiles%\Google\Chrome\Application\18.0.1025.152\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
-REM "%ProgramFiles%\Google\Chrome\Application\17.0.963.56\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
-REM "%ProgramFiles%\Google\Chrome\Application\18.0.1025.162\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
-REM "%ProgramFiles%\Google\Chrome\Application\12.0.742.100\Installer\setup.exe"  --uninstall --system-level
-REM "%USERPROFILE%\Local Settings\Application Data\Google\Chrome\Application\9.0.597.94\Installer\setup.exe"  --uninstall
-REM "%USERPROFILE%\Local Settings\Application Data\Google\Chrome\Application\18.0.1025.168\Installer\setup.exe"  --uninstall --multi-install --chrome
-REM "%ProgramFiles%\Google\Chrome\Application\18.0.1025.168\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
-REM "%USERPROFILE%\Local Settings\Application Data\Google\Chrome\Application\11.0.696.68\Installer\setup.exe"  --uninstall
-REM "%USERPROFILE%\Local Settings\Application Data\Google\Chrome\Application\11.0.696.60\Installer\setup.exe"  --uninstall
-REM "%ProgramFiles%\Google\Chrome\Application\21.0.1180.89\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
-REM "%ProgramFiles%\Google\Chrome\Application\13.0.782.220\Installer\setup.exe"  --uninstall --system-level
-REM "%USERPROFILE%\Local Settings\Application Data\Google\Chrome\Application\22.0.1229.79\Installer\setup.exe"  --uninstall --multi-install --chrome
-REM "%ProgramFiles%\Google\Chrome\Application\22.0.1229.92\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level --verbose-logging
-REM "%ProgramFiles%\Google\Chrome\Application\22.0.1229.94\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level --verbose-logging
-REM "%USERPROFILE%\Local Settings\Application Data\Google\Chrome\Application\10.0.648.205\Installer\setup.exe"  --uninstall --chrome
-REM "%ProgramFiles%\Google\Chrome\Application\23.0.1271.97\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level
-REM "%USERPROFILE%\Local Settings\Application Data\Google\Chrome\Application\chrome.exe" /uninstall
-REM "%ProgramFiles%\Google\Chrome\Application\21.0.1180.89\Installer\setup.exe"  --uninstall --multi-install --chrome --system-level\MixPad\uninst.exe"
-REM "%ProgramFiles%\Google\Chrome\Application\28.0.1500.95\Installer\setup.exe" --uninstall --multi-install --chrome --system-level
-REM "%USERPROFILE%\Local Settings\Application Data\Google\Chrome\Application\17.0.963.83\Installer\setup.exe"  --uninstall --multi-install --chrome
+REM below is ASUS Instant Key
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {D97A1B80-131F-4692-9543-E652956D8B99}
+REM below is ASUS LifeFrame3
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {1DBD1F12-ED93-49C0-A7CC-56CBDE488158}
+REM below is ASUS Splendid Video Enhancement Technology
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {0969AF05-4FF6-4C00-9406-43599238DE0D}
+REM below is ASUS USB Charger Plus
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {A859E3E5-C62F-4BFA-AF1D-2B95E03166AF}
+REM below is ASUS Tutor
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {58172D66-2F69-4215-9AEC-ED8196023736}
+REM below is ASUS Live Update
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {FA540E67-095C-4A1B-97BA-4D547DEC9AF4}
+REM below is ASUS Screen Saver
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {0FBEEDF8-30FA-4FA3-B31F-C9C7E7E8DFA2}
+REM below is ASUS Instant Connect
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {89ECB85A-D933-4CEA-9116-5CBC9C2ED95B}
+REM below is ASUS InstantOn
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {749F674B-2674-47E8-879C-5626A06B2A91}
+REM below is ASUS Power4Gear Hybrid
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {9B6239BF-4E85-4590-8D72-51E30DB1A9AA}
+REM below is ASUS N Series Demo
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {246B4AFF-6540-4B72-93E8-B9EB86D37589}
+
+
 
 REM sleep5000.exe
 timeout /t 5
 
-REM del /F /Q "%ProgramFiles%\Google\Chrome\Application\chrome.exe"
-REM del /F /Q /S "%ProgramFiles%\Google"
+
 
 REM ****************
 
@@ -1124,8 +1352,8 @@ timeout /t 5
 del /F /Q /S "%ALLUSERSPROFILE%\Start Menu\Programs\Google Quick Search Box"
 del /F /Q "%ProgramData%\Microsoft\Windows\Start Menu\Programs\Startup\McAfee Security Scan Plus"
 del /F /Q /S "%ProgramFiles%\FarStone"
-del /F /Q /S "%USERPROFILE%\Application Data\Spotify"
-del /F /Q "%USERPROFILE%\Desktop\Spotify.lnk"
+REM del /F /Q /S "%USERPROFILE%\Application Data\Spotify"
+REM del /F /Q "%USERPROFILE%\Desktop\Spotify.lnk"
 del /F /Q /S "%ProgramFiles%\Tweet Adder 3"
 del /F /Q "%ALLUSERSPROFILE%\Start Menu\Programs\Startup\Adobe Acrobat Speed Launcher.lnk"
 del /F /Q "%ALLUSERSPROFILE%\Start Menu\Programs\Startup\Adobe Acrobat Synchronizer.lnk"
