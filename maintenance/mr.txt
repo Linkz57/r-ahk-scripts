@@ -1,4 +1,4 @@
-REM mr.txt v2.1
+REM mr.txt v2.2
 REM This is a very basic batch file written by Tyler Francis that--in tandem with another script cleverly named "Remove"--attempts to remove many programs that would not be useful and/or allowed in a medium business environment. It's rather aggressive about this, especially in the first "silent" half of this file, so make sure you're ok with losing all of the programs and files mentioned here.
 
 C:
@@ -1312,33 +1312,35 @@ REM ****************
 REM Asus bloatware uninstallers
 
 REM below is ASUS Instant Key
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {D97A1B80-131F-4692-9543-E652956D8B99}
+%SYSTEMROOT%\system32\msiexec.exe /x {D97A1B80-131F-4692-9543-E652956D8B99}
 REM below is ASUS LifeFrame3
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {1DBD1F12-ED93-49C0-A7CC-56CBDE488158}
+%SYSTEMROOT%\system32\msiexec.exe /x {1DBD1F12-ED93-49C0-A7CC-56CBDE488158}
 REM below is ASUS Splendid Video Enhancement Technology
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {0969AF05-4FF6-4C00-9406-43599238DE0D}
+%SYSTEMROOT%\system32\msiexec.exe /x {0969AF05-4FF6-4C00-9406-43599238DE0D}
 REM below is ASUS USB Charger Plus
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {A859E3E5-C62F-4BFA-AF1D-2B95E03166AF}
+%SYSTEMROOT%\system32\msiexec.exe /x {A859E3E5-C62F-4BFA-AF1D-2B95E03166AF}
 REM below is ASUS Tutor
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {58172D66-2F69-4215-9AEC-ED8196023736}
+%SYSTEMROOT%\system32\msiexec.exe /x {58172D66-2F69-4215-9AEC-ED8196023736}
 REM below is ASUS Live Update
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {FA540E67-095C-4A1B-97BA-4D547DEC9AF4}
+%SYSTEMROOT%\system32\msiexec.exe /x {FA540E67-095C-4A1B-97BA-4D547DEC9AF4}
 REM below is ASUS Screen Saver
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {0FBEEDF8-30FA-4FA3-B31F-C9C7E7E8DFA2}
+%SYSTEMROOT%\system32\msiexec.exe /x {0FBEEDF8-30FA-4FA3-B31F-C9C7E7E8DFA2}
 REM below is ASUS Instant Connect
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {89ECB85A-D933-4CEA-9116-5CBC9C2ED95B}
+%SYSTEMROOT%\system32\msiexec.exe /x {89ECB85A-D933-4CEA-9116-5CBC9C2ED95B}
 REM below is ASUS InstantOn
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {749F674B-2674-47E8-879C-5626A06B2A91}
+%SYSTEMROOT%\system32\msiexec.exe /x {749F674B-2674-47E8-879C-5626A06B2A91}
 REM below is ASUS Power4Gear Hybrid
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {9B6239BF-4E85-4590-8D72-51E30DB1A9AA}
+%SYSTEMROOT%\system32\msiexec.exe /x {9B6239BF-4E85-4590-8D72-51E30DB1A9AA}
 REM below is ASUS N Series Demo
-%SYSTEMROOT%\system32\msiexec.exe /qn /x {246B4AFF-6540-4B72-93E8-B9EB86D37589}
+%SYSTEMROOT%\system32\msiexec.exe /x {246B4AFF-6540-4B72-93E8-B9EB86D37589}
 
 
 
 REM sleep5000.exe
 timeout /t 5
 
+"C:\Program Files (x86)\ASUS\MyBitCast\uninst.exe"
+"C:\Program Files (x86)\ASUS\WebStorage Sync Agent\uninst.exe"
 
 
 REM ****************
