@@ -1,4 +1,4 @@
-REM mr.txt v2
+REM mr.txt v2.1
 REM This is a very basic batch file written by Tyler Francis that--in tandem with another script cleverly named "Remove"--attempts to remove many programs that would not be useful and/or allowed in a medium business environment. It's rather aggressive about this, especially in the first "silent" half of this file, so make sure you're ok with losing all of the programs and files mentioned here.
 
 C:
@@ -837,7 +837,7 @@ REM	del /F /Q /S "%ProgramFiles%\Free Offers from Freeze.com"
 REM ~ begin manual removal ~
 
 
-"%USERPROFILE%\Application Data\SanDisk\SanDiskSecureAccess_Manager.exe" --uninstall
+REM "%USERPROFILE%\Application Data\SanDisk\SanDiskSecureAccess_Manager.exe" --uninstall
 REM "%ProgramFiles%\WinRAR\Uninstall.exe"
 "%ProgramFiles%\AssaultCube_v1.1.0.4\Uninstall.exe"
 "%ProgramFiles%\Vocal Remover\unins000.exe"
