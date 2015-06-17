@@ -1,28 +1,34 @@
-; handyHotkeys.ahk v1.5
+; handyHotkeys.ahk v1.6-work
 ; just a bunch of stuff I would like to keep quickly accessible like typing the clipboard.
 
 ; Sleep Monitors
 ^Down::
 {
 	SendMessage 0x112, 0xF170, 2, , Program Manager
+	DllCall("LockWorkStation")
+	return
+}
+^Up::
+{
+	SendMessage 0x112, 0xF170, 2, , Program Manager
 	return
 }
 
 ; Lower Resolution
-^NumPad1::
-{
-	Runwait %ComSpec% /C ""C:\Program Files\12noon Display Changer\dc.exe" -width="1024" -height="768" -monitor="\\.\DISPLAY1""
-	Runwait %ComSpec% /C ""C:\Program Files\12noon Display Changer\dc.exe" -width="1024" -height="768" -monitor="\\.\DISPLAY2""
-	return
-}
+; ^NumPad1::
+; {
+	; Runwait %ComSpec% /C ""C:\Program Files\12noon Display Changer\dc.exe" -width="1024" -height="768" -monitor="\\.\DISPLAY1""
+	; Runwait %ComSpec% /C ""C:\Program Files\12noon Display Changer\dc.exe" -width="1024" -height="768" -monitor="\\.\DISPLAY2""
+	; return
+; }
 
 ; Increase Resolution 
-^NumPad2::
-{
-	Runwait %ComSpec% /C ""C:\Program Files\12noon Display Changer\dc.exe" -width="1280" -height="1024" -monitor="\\.\DISPLAY1""
-	Runwait %ComSpec% /C ""C:\Program Files\12noon Display Changer\dc.exe" -width="1280" -height="1024" -monitor="\\.\DISPLAY2""
-	return
-}
+; ^NumPad2::
+; {
+	; Runwait %ComSpec% /C ""C:\Program Files\12noon Display Changer\dc.exe" -width="1280" -height="1024" -monitor="\\.\DISPLAY1""
+	; Runwait %ComSpec% /C ""C:\Program Files\12noon Display Changer\dc.exe" -width="1280" -height="1024" -monitor="\\.\DISPLAY2""
+	; return
+; }
 
 ; Type Clipboard
 ^!v::
@@ -34,15 +40,15 @@
 }
 
 ; Open Kronos
-^!k::
-{
-	run %ComSpec% /C ""C:\Program Files\Internet Explorer\iexplore.exe" http://kronos-as/wfc/portal"
-	sleep 20000
-	run http://cd.justinjc.com/30m
-	sleep 1800000
-	run %ComSpec% /C ""C:\Program Files\Internet Explorer\iexplore.exe" http://kronos-as/wfc/portal"
-	return
-}
+; ^!k::
+; {
+	; run %ComSpec% /C ""C:\Program Files\Internet Explorer\iexplore.exe" http://kronos-as/wfc/portal"
+	; sleep 20000
+	; run http://cd.justinjc.com/30m
+	; sleep 1800000
+	; run %ComSpec% /C ""C:\Program Files\Internet Explorer\iexplore.exe" http://kronos-as/wfc/portal"
+	; return
+; }
 	
 ; Generic Timestamp
 ^!d::
@@ -75,55 +81,55 @@
 }
 
 ; Printer datestamp
-^!p::
-{
-	sleep 700
-	send {home}
-	sleep 100
-	send +{end}
-	sleep 100
-	send ^v
-	sleep 100
-	send ` `-` 
-	sleep 100
-	send %A_YYYY%
-	sleep 100
-	send -
-	sleep 100
-	send %A_Mon%
-	sleep 100
-	send -
-	sleep 100
-	send %A_Mday%
-	sleep 100
-	send _
-	sleep 100
-	send %A_Hour%
-	sleep 100
-	send -
-	sleep 100
-	send %A_Min%
-	sleep 100
-	send -
-	sleep 100
-	send %A_Sec%
-	sleep 100
-	send {enter}
-	return
-}
+; ^!p::
+; {
+	; sleep 700
+	; send {home}
+	; sleep 100
+	; send +{end}
+	; sleep 100
+	; send ^v
+	; sleep 100
+	; send ` `-` 
+	; sleep 100
+	; send %A_YYYY%
+	; sleep 100
+	; send -
+	; sleep 100
+	; send %A_Mon%
+	; sleep 100
+	; send -
+	; sleep 100
+	; send %A_Mday%
+	; sleep 100
+	; send _
+	; sleep 100
+	; send %A_Hour%
+	; sleep 100
+	; send -
+	; sleep 100
+	; send %A_Min%
+	; sleep 100
+	; send -
+	; sleep 100
+	; send %A_Sec%
+	; sleep 100
+	; send {enter}
+	; return
+; }
 
 ;speak selected text, stolen from this guy https://stackoverflow.com/questions/21175199/how-do-i-stop-sapi-spvoice-reading-is-as-island
-^!s::
-{
-	ClipSaved := ClipboardAll   
-	clipboard = ; Start off empty to allow ClipWait to detect when the text has arrived.
-	Send ^c
-	ClipWait  ; Wait for the clipboard to contain text.
-	ComObjCreate("SAPI.SpVoice").Speak(clipboard)
-	Clipboard := ClipSaved 
-	ClipSaved = ; Free the memory 
-	return
-}
+; ^!s::
+; {
+	; ClipSaved := ClipboardAll   
+	; clipboard = ; Start off empty to allow ClipWait to detect when the text has arrived.
+	; Send ^c
+	; ClipWait  ; Wait for the clipboard to contain text.
+	; ComObjCreate("SAPI.SpVoice").Speak(clipboard)
+	; Clipboard := ClipSaved 
+	; ClipSaved = ; Free the memory 
+	; return
+; }
 
 ; speak selected text with Google TTS, stolen and then edited from this guy http://www.autohotkey.com/board/topic/64269-google-text-to-speech-tts/
 ; ^!s::
@@ -183,8 +189,11 @@ exitapp
 }
 ;;Temporary hotkey
 ^!t::
-FileGetSize, newSize, C:\t.txt
-msgbox,0,0,newsize is %newSize%
+loop,1000
+{
+;sleep 100
+click
+}
 return
 
 
@@ -210,25 +219,25 @@ RButton & WheelUp::
 }
 
 ;; log off of computer
-^!#+l::
-{
-	run M:\sjunk\ahk scripts\src\logout.ahk
-	Runwait %ComSpec% /C ""C:\Program Files\12noon Display Changer\dc.exe" -width="1280" -height="1024" -monitor="\\.\DISPLAY1""
-	Runwait %ComSpec% /C ""C:\Program Files\12noon Display Changer\dc.exe" -width="1280" -height="1024" -monitor="\\.\DISPLAY2""
-	exitapp
-}
+; ^!#+l::
+; {
+	; run M:\sjunk\ahk scripts\src\logout.ahk
+	; Runwait %ComSpec% /C ""C:\Program Files\12noon Display Changer\dc.exe" -width="1280" -height="1024" -monitor="\\.\DISPLAY1""
+	; Runwait %ComSpec% /C ""C:\Program Files\12noon Display Changer\dc.exe" -width="1280" -height="1024" -monitor="\\.\DISPLAY2""
+	; exitapp
+; }
 
 ;; shut down computer
-^!#+s::
-{
-	del /F /Q shutdown.txt
-	run M:\sjunk\ahk scripts\src\logout.ahk
-	Runwait %ComSpec% /C ""C:\Program Files\12noon Display Changer\dc.exe" -width="1280" -height="1024" -monitor="\\.\DISPLAY1""
-	Runwait %ComSpec% /C ""C:\Program Files\12noon Display Changer\dc.exe" -width="1280" -height="1024" -monitor="\\.\DISPLAY2""
-	sleep 1000
-	Runwait %ComSpec% /C "echo shutdown > shutdown.txt"
-	exitapp
-}
+; ^!#+s::
+; {
+	; del /F /Q shutdown.txt
+	; run M:\sjunk\ahk scripts\src\logout.ahk
+	; Runwait %ComSpec% /C ""C:\Program Files\12noon Display Changer\dc.exe" -width="1280" -height="1024" -monitor="\\.\DISPLAY1""
+	; Runwait %ComSpec% /C ""C:\Program Files\12noon Display Changer\dc.exe" -width="1280" -height="1024" -monitor="\\.\DISPLAY2""
+	; sleep 1000
+	; Runwait %ComSpec% /C "echo shutdown > shutdown.txt"
+	; exitapp
+; }
 
 
 
