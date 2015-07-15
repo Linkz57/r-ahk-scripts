@@ -1,4 +1,4 @@
-; handyHotkeys.ahk v1.6-work
+; handyHotkeys.ahk v1.7-work
 ; just a bunch of stuff I would like to keep quickly accessible like typing the clipboard.
 
 ; Sleep Monitors
@@ -34,7 +34,15 @@
 ^!v::
 {
 	sleep 700
-	SetKeyDelay, 50
+	SetKeyDelay, 30
+	SendRaw, %Clipboard%
+	return
+}
+
+^!b::
+{
+	sleep 700
+	SetKeyDelay, 200
 	SendRaw, %Clipboard%
 	return
 }
