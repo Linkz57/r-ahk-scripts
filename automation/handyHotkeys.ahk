@@ -1,4 +1,4 @@
-; handyHotkeys.ahk v1.7-work
+; handyHotkeys.ahk v1.8-work
 ; just a bunch of stuff I would like to keep quickly accessible like typing the clipboard.
 
 ; Sleep Monitors
@@ -33,6 +33,7 @@
 ; Type Clipboard
 ^!v::
 {
+	stringreplace, Clipboard, Clipboard,`r,,all
 	sleep 700
 	SetKeyDelay, 30
 	SendRaw, %Clipboard%
@@ -41,8 +42,10 @@
 
 ^!b::
 {
+;	StringLower, Clipboard, Clipboard
+	stringreplace, Clipboard, Clipboard,`r,,all
 	sleep 700
-	SetKeyDelay, 200
+	SetKeyDelay, 100
 	SendRaw, %Clipboard%
 	return
 }
@@ -197,7 +200,7 @@ exitapp
 }
 ;;Temporary hotkey
 ^!t::
-loop,1000
+;loop,1000
 {
 ;sleep 100
 click
