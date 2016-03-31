@@ -1,4 +1,4 @@
-REM mr.txt v2.2
+REM mr.txt v2.3
 REM This is a very basic batch file written by Tyler Francis that--in tandem with another script cleverly named "Remove"--attempts to remove many programs that would not be useful and/or allowed in a medium business environment. It's rather aggressive about this, especially in the first "silent" half of this file, so make sure you're ok with losing all of the programs and files mentioned here.
 
 C:
@@ -314,6 +314,20 @@ REM below are actually quiet uninstallers
 
 
 
+REM remove old Java
+
+
+REM Below are Java SE Runtimes.
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {3248F0A8-6813-11D6-A77B-00B0D0160000}&& REM - Java(TM) SE Runtime Environment 6 (probably 32 bit)
+
+
+
+REM below are Java Development kits
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {64A3A4F4-B792-11D6-A78A-00B0D0170750}&& REM - Java SE Development Kit 7 Update 75 (64-bit)
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {64A3A4F4-B792-11D6-A78A-00B0D0170790}&& REM - Java SE Development Kit 7 Update 79 (64-bit)
+
+
+
 REM Below are some old versions of Java
 
 REM Below are Java version 6
@@ -561,6 +575,7 @@ REM Below are Java version 7, 64 bit
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417077FF}&& REM - 7u77 - x64
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417078FF}&& REM - 7u78 - x64
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86417079FF}&& REM - 7u79 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F06417079FF}&& REM - 7u79 - x64
 
 
 
@@ -610,39 +625,39 @@ REM Below are Java version 8, 32 bit
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218042F0}&& REM - 8u42 - x86
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218043F0}&& REM - 8u43 - x86
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218044F0}&& REM - 8u44 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218045F0}&& REM - 8u45 - x86 - current as of 2015-06-11
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218046F0}&& REM - 8u46 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218047F0}&& REM - 8u47 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218048F0}&& REM - 8u48 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218049F0}&& REM - 8u49 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218050F0}&& REM - 8u50 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218051F0}&& REM - 8u51 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218052F0}&& REM - 8u52 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218053F0}&& REM - 8u53 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218054F0}&& REM - 8u54 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218055F0}&& REM - 8u55 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218056F0}&& REM - 8u56 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218057F0}&& REM - 8u57 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218058F0}&& REM - 8u58 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218059F0}&& REM - 8u59 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218060F0}&& REM - 8u60 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218061F0}&& REM - 8u61 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218062F0}&& REM - 8u62 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218063F0}&& REM - 8u63 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218064F0}&& REM - 8u64 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218065F0}&& REM - 8u65 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218066F0}&& REM - 8u66 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218067F0}&& REM - 8u67 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218068F0}&& REM - 8u68 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218069F0}&& REM - 8u69 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218070F0}&& REM - 8u70 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218071F0}&& REM - 8u71 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218072F0}&& REM - 8u72 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218073F0}&& REM - 8u73 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218074F0}&& REM - 8u74 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218075F0}&& REM - 8u75 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218076F0}&& REM - 8u76 - x86
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218077F0}&& REM - 8u77 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218045F0}&& REM - 8u45 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218046F0}&& REM - 8u46 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218047F0}&& REM - 8u47 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218048F0}&& REM - 8u48 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218049F0}&& REM - 8u49 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218050F0}&& REM - 8u50 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218051F0}&& REM - 8u51 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218052F0}&& REM - 8u52 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218053F0}&& REM - 8u53 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218054F0}&& REM - 8u54 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218055F0}&& REM - 8u55 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218056F0}&& REM - 8u56 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218057F0}&& REM - 8u57 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218058F0}&& REM - 8u58 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218059F0}&& REM - 8u59 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218060F0}&& REM - 8u60 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218061F0}&& REM - 8u61 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218062F0}&& REM - 8u62 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218063F0}&& REM - 8u63 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218064F0}&& REM - 8u64 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218065F0}&& REM - 8u65 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218066F0}&& REM - 8u66 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218067F0}&& REM - 8u67 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218068F0}&& REM - 8u68 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218069F0}&& REM - 8u69 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218070F0}&& REM - 8u70 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218071F0}&& REM - 8u71 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218072F0}&& REM - 8u72 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218073F0}&& REM - 8u73 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218074F0}&& REM - 8u74 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218075F0}&& REM - 8u75 - x86
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218076F0}&& REM - 8u76 - x86
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218077F0}&& REM - 8u77 - x86 - current as of 2016-03-31
 REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218078F0}&& REM - 8u78 - x86
 REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218079F0}&& REM - 8u79 - x86
 REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F83218080F0}&& REM - 8u80 - x86
@@ -714,39 +729,39 @@ REM Below are Java version 8, 64 bit
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418042F0}&& REM - 8u42 - x64
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418043F0}&& REM - 8u43 - x64
 %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418044F0}&& REM - 8u44 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418045F0}&& REM - 8u45 - x64 - current as of 2015-06-11
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418046F0}&& REM - 8u46 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418047F0}&& REM - 8u47 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418048F0}&& REM - 8u48 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418049F0}&& REM - 8u49 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418050F0}&& REM - 8u50 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418051F0}&& REM - 8u51 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418052F0}&& REM - 8u52 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418053F0}&& REM - 8u53 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418054F0}&& REM - 8u54 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418055F0}&& REM - 8u55 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418056F0}&& REM - 8u56 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418057F0}&& REM - 8u57 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418058F0}&& REM - 8u58 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418059F0}&& REM - 8u59 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418060F0}&& REM - 8u60 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418061F0}&& REM - 8u61 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418062F0}&& REM - 8u62 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418063F0}&& REM - 8u63 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418064F0}&& REM - 8u64 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418065F0}&& REM - 8u65 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418066F0}&& REM - 8u66 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418067F0}&& REM - 8u67 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418068F0}&& REM - 8u68 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418069F0}&& REM - 8u69 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418070F0}&& REM - 8u70 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418071F0}&& REM - 8u71 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418072F0}&& REM - 8u72 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418073F0}&& REM - 8u73 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418074F0}&& REM - 8u74 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418075F0}&& REM - 8u75 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418076F0}&& REM - 8u76 - x64
-REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418077F0}&& REM - 8u77 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418045F0}&& REM - 8u45 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418046F0}&& REM - 8u46 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418047F0}&& REM - 8u47 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418048F0}&& REM - 8u48 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418049F0}&& REM - 8u49 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418050F0}&& REM - 8u50 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418051F0}&& REM - 8u51 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418052F0}&& REM - 8u52 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418053F0}&& REM - 8u53 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418054F0}&& REM - 8u54 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418055F0}&& REM - 8u55 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418056F0}&& REM - 8u56 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418057F0}&& REM - 8u57 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418058F0}&& REM - 8u58 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418059F0}&& REM - 8u59 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418060F0}&& REM - 8u60 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418061F0}&& REM - 8u61 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418062F0}&& REM - 8u62 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418063F0}&& REM - 8u63 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418064F0}&& REM - 8u64 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418065F0}&& REM - 8u65 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418066F0}&& REM - 8u66 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418067F0}&& REM - 8u67 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418068F0}&& REM - 8u68 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418069F0}&& REM - 8u69 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418070F0}&& REM - 8u70 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418071F0}&& REM - 8u71 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418072F0}&& REM - 8u72 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418073F0}&& REM - 8u73 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418074F0}&& REM - 8u74 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418075F0}&& REM - 8u75 - x64
+%SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418076F0}&& REM - 8u76 - x64
+REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418077F0}&& REM - 8u77 - x64 - current as of 2016-03-31
 REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418078F0}&& REM - 8u78 - x64
 REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418079F0}&& REM - 8u79 - x64
 REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418080F0}&& REM - 8u80 - x64
@@ -776,9 +791,8 @@ REM %SYSTEMROOT%\system32\msiexec.exe /qn /x {26A24AE4-039D-4CA4-87B4-2F86418099
 
 
 
-
 REM sleep5000.exe
-timout /t 5
+timeout /t 5
 
 del /F /Q /S "%USERPROFILE%\Desktop\*.exe"
 del /F /Q /S /A:H "%USERPROFILE%\Desktop\*.exe"
