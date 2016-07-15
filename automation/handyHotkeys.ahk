@@ -1,11 +1,13 @@
-; handyHotkeys.ahk v1.8-work
+; handyHotkeys.ahk v1.9-work
 ; just a bunch of stuff I would like to keep quickly accessible like typing the clipboard.
 
 ; Sleep Monitors
 ^Down::
 {
-	SendMessage 0x112, 0xF170, 2, , Program Manager
-	DllCall("LockWorkStation")
+	run C:\Users\tfrancis\Documents\sjunk\ahk\src\logout.ahk
+	msgbox,0,Hold up,Wait a minute,2
+	; SendMessage 0x112, 0xF170, 2, , Program Manager
+	; DllCall("LockWorkStation")
 	return
 }
 ^Up::
@@ -42,24 +44,17 @@
 
 ^!b::
 {
+	Stringupper, Clipboard, Clipboard
 ;	StringLower, Clipboard, Clipboard
 	stringreplace, Clipboard, Clipboard,`r,,all
 	sleep 700
-	SetKeyDelay, 100
+	SetKeyDelay, 50
 	SendRaw, %Clipboard%
 	return
 }
 
-; Open Kronos
-; ^!k::
-; {
-	; run %ComSpec% /C ""C:\Program Files\Internet Explorer\iexplore.exe" http://kronos-as/wfc/portal"
-	; sleep 20000
-	; run http://cd.justinjc.com/30m
-	; sleep 1800000
-	; run %ComSpec% /C ""C:\Program Files\Internet Explorer\iexplore.exe" http://kronos-as/wfc/portal"
-	; return
-; }
+;Keep window on top
+^!k::Winset, Alwaysontop, , A
 	
 ; Generic Timestamp
 ^!d::
